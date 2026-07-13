@@ -6,6 +6,7 @@ import { Architecture } from './pages/Architecture';
 import { CRDs } from './pages/CRDs';
 import { Roadmap } from './pages/Roadmap';
 import { Pricing } from './pages/Pricing';
+import { NerdearlaTalk } from './pages/NerdearlaTalk';
 import './index.css';
 
 function ScrollToTop() {
@@ -31,6 +32,7 @@ function App() {
           <Route path="roadmap" element={<Roadmap />} />
           <Route path="pricing" element={<Pricing />} />
         </Route>
+        <Route path="/nerdearla-2026" element={<NerdearlaTalk />} />
       </Routes>
     </HashRouter>
   );
