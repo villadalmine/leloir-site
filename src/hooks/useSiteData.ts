@@ -3,11 +3,12 @@ import { useState, useEffect } from 'react';
 export function useSiteData<T>(filename: string) {
   const [data, setData] = useState<T | null>(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     fetch(`${import.meta.env.BASE_URL}data/${filename}`)
       .then(res => {
-        if (!res.ok) throw new Error(`Failed to load ${filename}`);
+        if (!res.ok) throw new Error(`Failed to load ${filename}: ${res.status} ${res.statusText}`);
         return res.json();
       })
       .then(json => {
@@ -15,12 +16,13 @@ export function useSiteData<T>(filename: string) {
         setLoading(false);
       })
       .catch(err => {
-        console.error(err);
+        console.error('Fetch error:', err);
+        setError(err.toString());
         setLoading(false);
       });
   }, [filename]);
 
-  return { data, loading };
+  return { data, loading, error };
 }
 
 export function useSiteText(filename: string) {

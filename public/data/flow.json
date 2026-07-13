@@ -8,221 +8,182 @@
     "ja": "仕組み"
   },
   "title": {
-    "en": "How it works — a real incident, step by step",
-    "es": "Cómo funciona — un incidente real, paso a paso",
-    "de": "So funktioniert es — ein echter Vorfall, Schritt für Schritt",
-    "fr": "Comment ça marche — un incident réel, étape par étape",
-    "zh": "工作原理——一次真实事件，逐步演示",
-    "ja": "動作の仕組み — 実際のインシデントをステップごとに"
+    "en": "How it works — Lifecycle of a Managed Agent",
+    "es": "Cómo funciona — Ciclo de vida de un Agente Administrado",
+    "de": "So funktioniert es — Lebenszyklus eines verwalteten Agenten",
+    "fr": "Comment ça marche — Cycle de vie d'un agent géré",
+    "zh": "工作原理——受管智能体的生命周期",
+    "ja": "動作の仕組み — 管理されたエージェントのライフサイクル"
   },
   "sub": {
-    "en": "The payment API is CrashLooping. This is exactly what the E2E test (make e2e-scenario) runs and asserts on every build — nothing here is a mockup.",
-    "es": "La API de pagos está en CrashLoop. Esto es exactamente lo que el test E2E (make e2e-scenario) ejecuta y verifica en cada build — nada acá es una maqueta.",
-    "de": "Die Payment-API ist im CrashLoop. Genau das führt der E2E-Test (make e2e-scenario) bei jedem Build aus und prüft es — nichts davon ist ein Mockup.",
-    "fr": "L'API de paiement est en CrashLoop. C'est exactement ce que le test E2E (make e2e-scenario) exécute et vérifie à chaque build — rien ici n'est une maquette.",
-    "zh": "支付 API 正在 CrashLoop。这正是端到端测试（make e2e-scenario）在每次构建时运行并断言的内容——这里没有任何是演示假象。",
-    "ja": "支払い API が CrashLoop に陥っています。これはまさに E2E テスト（make e2e-scenario）が各ビルドで実行し検証する内容です。ここにモックアップは一切ありません。"
+    "en": "Leloir abstracts the infrastructure, security, and governance from the agent logic. Here is how any agent (SRE, coding, or data analysis) operates within the control plane.",
+    "es": "Leloir abstrae la infraestructura, seguridad y gobernanza de la lógica del agente. Así es como cualquier agente (SRE, coding o análisis de datos) opera dentro del control plane.",
+    "de": "Leloir abstrahiert die Infrastruktur, Sicherheit und Governance von der Agentenlogik. So operiert jeder Agent (SRE, Coding oder Datenanalyse) innerhalb der Control Plane.",
+    "fr": "Leloir abstrait l'infrastructure, la sécurité et la gouvernance de la logique de l'agent. Voici comment tout agent (SRE, codage ou analyse de données) opère au sein du plan de contrôle.",
+    "zh": "Leloir 将基础设施、安全性和治理从智能体逻辑中抽象出来。以下是任何智能体（SRE、编码或数据分析）在控制平面内的运行方式。",
+    "ja": "Leloir はインフラ、セキュリティ、ガバナンスをエージェントのロジックから抽象化します。SRE、コーディング、データ分析など、あらゆるエージェントがコントロールプレーン内でどのように動作するかを示します。"
   },
   "kindLabels": {
-    "alert":     {"en": "alert",       "es": "alerta",       "de": "Alarm",       "fr": "alerte",       "zh": "告警",       "ja": "アラート"},
-    "route":     {"en": "route",       "es": "routing",      "de": "Routing",     "fr": "routage",      "zh": "路由",       "ja": "ルーティング"},
-    "tool":      {"en": "MCP tool",    "es": "tool MCP",     "de": "MCP-Tool",    "fr": "outil MCP",    "zh": "MCP 工具",   "ja": "MCP ツール"},
-    "skill":     {"en": "skill",       "es": "skill",        "de": "Skill",       "fr": "skill",        "zh": "技能",       "ja": "スキル"},
-    "a2a-allow": {"en": "A2A allowed", "es": "A2A permitido","de": "A2A erlaubt", "fr": "A2A autorisé", "zh": "A2A 允许",   "ja": "A2A 許可"},
-    "a2a-deny":  {"en": "A2A blocked", "es": "A2A bloqueado","de": "A2A blockiert","fr": "A2A bloqué",  "zh": "A2A 阻止",   "ja": "A2A ブロック"},
-    "budget":    {"en": "budget",      "es": "presupuesto",  "de": "Budget",      "fr": "budget",       "zh": "预算",       "ja": "予算"},
-    "answer":    {"en": "answer",      "es": "respuesta",    "de": "Antwort",     "fr": "réponse",      "zh": "答复",       "ja": "回答"},
-    "audit":     {"en": "audit",       "es": "auditoría",    "de": "Audit",       "fr": "audit",        "zh": "审计",       "ja": "監査"}
+    "trigger":   {"en": "trigger",     "es": "trigger",      "de": "Auslöser",    "fr": "déclencheur", "zh": "触发",       "ja": "トリガー"},
+    "sandbox":   {"en": "sandbox",     "es": "sandbox",      "de": "Sandbox",     "fr": "sandbox",     "zh": "沙箱",       "ja": "サンドボックス"},
+    "gateway":   {"en": "gateway",     "es": "gateway",      "de": "Gateway",     "fr": "passerelle",  "zh": "网关",       "ja": "ゲートウェイ"},
+    "a2a":       {"en": "A2A policy",  "es": "política A2A", "de": "A2A-Richtlinie", "fr": "politique A2A", "zh": "A2A 策略",  "ja": "A2A ポリシー"},
+    "guardrail": {"en": "guardrail",   "es": "guardrail",    "de": "Leitplanke",  "fr": "garde-fou",   "zh": "护栏",       "ja": "ガードレール"},
+    "budget":    {"en": "budget",      "es": "presupuesto",  "de": "Budget",      "fr": "budget",      "zh": "预算",       "ja": "予算"},
+    "approval":  {"en": "approval",    "es": "aprobación",   "de": "Freigabe",    "fr": "approbation", "zh": "审批",       "ja": "承認"},
+    "audit":     {"en": "audit",       "es": "auditoría",    "de": "Audit",       "fr": "audit",       "zh": "审计",       "ja": "監査"}
   },
   "steps": [
     {
-      "n": 1, "kind": "alert", "actor": "Alertmanager",
+      "n": 1, "kind": "trigger", "actor": "Webhook / Cron / API",
       "action": {
-        "en": "PaymentAPIHighErrorRate fires",
-        "es": "Se dispara PaymentAPIHighErrorRate",
-        "de": "PaymentAPIHighErrorRate wird ausgelöst",
-        "fr": "PaymentAPIHighErrorRate se déclenche",
-        "zh": "触发 PaymentAPIHighErrorRate",
-        "ja": "PaymentAPIHighErrorRate が発火"
+        "en": "Agent execution is triggered",
+        "es": "Se dispara la ejecución del agente",
+        "de": "Agentenausführung wird ausgelöst",
+        "fr": "L'exécution de l'agent est déclenchée",
+        "zh": "触发智能体执行",
+        "ja": "エージェントの実行がトリガーされる"
       },
       "detail": {
-        "en": "Error rate 42% over 5m in namespace team-payments. The webhook lands on Leloir.",
-        "es": "Tasa de error 42% en 5m en el namespace team-payments. El webhook llega a Leloir.",
-        "de": "Fehlerrate 42% über 5m im Namespace team-payments. Der Webhook erreicht Leloir.",
-        "fr": "Taux d'erreur 42% sur 5m dans le namespace team-payments. Le webhook arrive sur Leloir.",
-        "zh": "命名空间 team-payments 中 5 分钟错误率 42%。Webhook 到达 Leloir。",
-        "ja": "namespace team-payments で 5 分間のエラー率 42%。Webhook が Leloir に届きます。"
+        "en": "A task arrives via webhook, a scheduled cron, or human API call. Leloir routes the request to the designated agent pool based on tenant rules.",
+        "es": "Llega una tarea vía webhook, cron programado o llamada de API humana. Leloir rutea la petición al pool de agentes designado basándose en las reglas del tenant.",
+        "de": "Eine Aufgabe trifft per Webhook, Cronjob oder API-Aufruf ein. Leloir leitet die Anfrage basierend auf Mandantenregeln an den entsprechenden Agenten-Pool weiter.",
+        "fr": "Une tâche arrive via webhook, cron programmé ou appel API. Leloir achemine la demande vers le pool d'agents désigné selon les règles du tenant.",
+        "zh": "任务通过 webhook、计划 cron 或人为 API 调用到达。Leloir 根据租户规则将请求路由到指定的智能体池。",
+        "ja": "Webhook、スケジュールされた Cron、または人間の API 呼び出しを介してタスクが届きます。Leloir はテナントのルールに基づいて要求を指定のエージェントプールにルーティングします。"
       }
     },
     {
-      "n": 2, "kind": "route", "actor": "Leloir",
+      "n": 2, "kind": "sandbox", "actor": "Orchestrator",
       "action": {
-        "en": "Routes the alert to the 'sre-triage' agent",
-        "es": "Routea la alerta al agente 'sre-triage'",
-        "de": "Leitet den Alarm an den Agenten 'sre-triage'",
-        "fr": "Route l'alerte vers l'agent 'sre-triage'",
-        "zh": "将告警路由到 'sre-triage' 智能体",
-        "ja": "アラートを 'sre-triage' エージェントへルーティング"
+        "en": "Capabilities are injected dynamically",
+        "es": "Inyección dinámica de capacidades",
+        "de": "Funktionen werden dynamisch injiziert",
+        "fr": "Les capacités sont injectées dynamiquement",
+        "zh": "动态注入能力",
+        "ja": "機能が動的に注入される"
       },
       "detail": {
-        "en": "The AlertRoute CRD matches the labels and picks the tenant's agent (tenant team-payments).",
-        "es": "El CRD AlertRoute matchea las labels y elige el agente del tenant (tenant team-payments).",
-        "de": "Das AlertRoute-CRD matcht die Labels und wählt den Agenten des Tenants (Tenant team-payments).",
-        "fr": "Le CRD AlertRoute correspond aux labels et choisit l'agent du tenant (tenant team-payments).",
-        "zh": "AlertRoute CRD 匹配标签并选择该租户的智能体（租户 team-payments）。",
-        "ja": "AlertRoute CRD がラベルに一致し、テナントのエージェントを選びます（テナント team-payments）。"
+        "en": "An ephemeral, isolated environment is spun up. MCP Tools, credentials, and prompts are mounted specifically for this run, adhering strictly to the tenant's RBAC profile.",
+        "es": "Se levanta un entorno efímero y aislado. Tools MCP, credenciales y prompts se montan específicamente para esta ejecución, respetando estrictamente el perfil RBAC del tenant.",
+        "de": "Eine isolierte Umgebung wird gestartet. MCP-Tools, Anmeldeinformationen und Prompts werden nur für diesen Durchlauf eingebunden, unter strikter Einhaltung des RBAC-Profils.",
+        "fr": "Un environnement éphémère et isolé est créé. Les outils MCP, les identifiants et les prompts sont montés pour cette exécution, respectant le profil RBAC.",
+        "zh": "启动短暂且隔离的环境。专门为此运行挂载 MCP 工具、凭据和提示词，严格遵守租户的 RBAC 配置文件。",
+        "ja": "一時的で隔離された環境が起動します。MCP ツール、認証情報、プロンプトがテナントの RBAC プロファイルに厳格に従い、この実行のためにマウントされます。"
       }
     },
     {
-      "n": 3, "kind": "tool", "actor": "sre-triage",
+      "n": 3, "kind": "gateway", "actor": "Proxy Gateway",
       "action": {
-        "en": "Looks at the pods → kubectl_get_pods",
-        "es": "Mira los pods → kubectl_get_pods",
-        "de": "Schaut sich die Pods an → kubectl_get_pods",
-        "fr": "Regarde les pods → kubectl_get_pods",
-        "zh": "查看 Pod → kubectl_get_pods",
-        "ja": "Pod を確認 → kubectl_get_pods"
+        "en": "All I/O passes through the gateway",
+        "es": "Todo I/O pasa por el gateway",
+        "de": "Alle I/O läuft über das Gateway",
+        "fr": "Toutes les E/S passent par la passerelle",
+        "zh": "所有 I/O 均通过网关",
+        "ja": "すべての I/O はゲートウェイを通過"
       },
       "detail": {
-        "en": "Sees payment-api in CrashLoopBackOff (7 restarts). The tool goes through the MCP gateway, scoped to the tenant's namespace.",
-        "es": "Ve payment-api en CrashLoopBackOff (7 reinicios). La tool pasa por el gateway MCP, scoped al namespace del tenant.",
-        "de": "Sieht payment-api in CrashLoopBackOff (7 Neustarts). Das Tool läuft über das MCP-Gateway, begrenzt auf den Namespace des Tenants.",
-        "fr": "Voit payment-api en CrashLoopBackOff (7 redémarrages). L'outil passe par la passerelle MCP, limité au namespace du tenant.",
-        "zh": "发现 payment-api 处于 CrashLoopBackOff（重启 7 次）。工具经由 MCP 网关，限定在该租户的命名空间内。",
-        "ja": "payment-api が CrashLoopBackOff（7 回再起動）と判明。ツールは MCP ゲートウェイ経由で、テナントの namespace に限定されます。"
+        "en": "The agent makes API calls or uses tools. Instead of direct access, every request is intercepted, evaluated, and brokered by the Leloir Gateway.",
+        "es": "El agente hace llamadas de API o usa herramientas. En lugar de acceso directo, cada petición es interceptada, evaluada y gestionada por el Gateway de Leloir.",
+        "de": "Der Agent tätigt API-Aufrufe. Statt direktem Zugriff wird jede Anfrage abgefangen, ausgewertet und vom Leloir-Gateway vermittelt.",
+        "fr": "L'agent effectue des appels API. Au lieu d'un accès direct, chaque requête est interceptée, évaluée et relayée par la passerelle Leloir.",
+        "zh": "智能体进行 API 调用或使用工具。每个请求并非直接访问，而是由 Leloir 网关拦截、评估和代理。",
+        "ja": "エージェントが API 呼び出しやツールを使用します。直接アクセスではなく、すべての要求が Leloir ゲートウェイによって傍受、評価、および仲介されます。"
       }
     },
     {
-      "n": 4, "kind": "tool", "actor": "sre-triage",
+      "n": 4, "kind": "a2a", "actor": "Agent-to-Agent",
       "action": {
-        "en": "Reads the crash logs → kubectl_logs",
-        "es": "Lee los logs del crash → kubectl_logs",
-        "de": "Liest die Crash-Logs → kubectl_logs",
-        "fr": "Lit les logs du crash → kubectl_logs",
-        "zh": "读取崩溃日志 → kubectl_logs",
-        "ja": "クラッシュログを読む → kubectl_logs"
+        "en": "Multi-agent collaboration is validated",
+        "es": "Se valida la colaboración multi-agente",
+        "de": "Multi-Agenten-Zusammenarbeit wird validiert",
+        "fr": "La collaboration multi-agents est validée",
+        "zh": "验证多智能体协作",
+        "ja": "マルチエージェントコラボレーションの検証"
       },
       "detail": {
-        "en": "Logs show 'DB connection refused, pool timeout' followed by OOMKilled. Points at the database.",
-        "es": "Los logs muestran 'DB connection refused, pool timeout' seguido de OOMKilled. Apunta a la base de datos.",
-        "de": "Logs zeigen 'DB connection refused, pool timeout' gefolgt von OOMKilled. Deutet auf die Datenbank.",
-        "fr": "Les logs montrent 'DB connection refused, pool timeout' puis OOMKilled. Pointe vers la base de données.",
-        "zh": "日志显示 'DB connection refused, pool timeout'，随后 OOMKilled，指向数据库。",
-        "ja": "ログに 'DB connection refused, pool timeout' に続いて OOMKilled。データベースを示唆します。"
+        "en": "If the agent delegates to a specialized sub-agent, the A2A (Agent-to-Agent) policy checks the canInvoke graph. Unauthorized delegations are blocked.",
+        "es": "Si el agente delega a un sub-agente especializado, la política A2A chequea el grafo canInvoke. Las delegaciones no autorizadas son bloqueadas.",
+        "de": "Wenn der Agent an einen Sub-Agenten delegiert, prüft die A2A-Richtlinie den canInvoke-Graphen. Nicht autorisierte Delegationen werden blockiert.",
+        "fr": "Si l'agent délègue à un sous-agent, la politique A2A vérifie le graphe canInvoke. Les délégations non autorisées sont bloquées.",
+        "zh": "如果智能体委托给专业的子智能体，A2A 策略将检查 canInvoke 图。未经授权的委托将被阻止。",
+        "ja": "エージェントが専門のサブエージェントに委任する場合、A2A ポリシーが canInvoke グラフを確認します。許可されていない委任はブロックされます。"
       }
     },
     {
-      "n": 5, "kind": "skill", "actor": "sre-triage",
+      "n": 5, "kind": "guardrail", "actor": "Shadow Mode",
       "action": {
-        "en": "Applies the DB-incident runbook (skill)",
-        "es": "Aplica el runbook de incidentes de DB (skill)",
-        "de": "Wendet das DB-Vorfall-Runbook an (Skill)",
-        "fr": "Applique le runbook d'incident DB (skill)",
-        "zh": "应用数据库事件手册（技能）",
-        "ja": "DB インシデントの Runbook（スキル）を適用"
+        "en": "Destructive actions are intercepted",
+        "es": "Las acciones destructivas son interceptadas",
+        "de": "Destruktive Aktionen werden abgefangen",
+        "fr": "Les actions destructrices sont interceptées",
+        "zh": "拦截破坏性操作",
+        "ja": "破壊的アクションの傍受"
       },
       "detail": {
-        "en": "The runbook says: correlate pool saturation with recent deploys, then escalate to the DB specialist. Skills come from a SkillSource CRD.",
-        "es": "El runbook dice: correlacionar la saturación del pool con deploys recientes, luego escalar al especialista de DB. Las skills vienen de un CRD SkillSource.",
-        "de": "Das Runbook sagt: Pool-Sättigung mit jüngsten Deploys korrelieren, dann an den DB-Spezialisten eskalieren. Skills stammen aus einem SkillSource-CRD.",
-        "fr": "Le runbook dit : corréler la saturation du pool avec les déploiements récents, puis escalader vers le spécialiste DB. Les skills viennent d'un CRD SkillSource.",
-        "zh": "手册指示：将连接池饱和与近期部署关联，然后升级给数据库专家。技能来自 SkillSource CRD。",
-        "ja": "Runbook の指示：プール枯渇を直近のデプロイと突き合わせ、DB スペシャリストへエスカレーション。スキルは SkillSource CRD から取得します。"
+        "en": "A risky command (e.g., dropping a database) hits the gateway. If running in Shadow Mode, Leloir halts the action but returns a fake 200 OK to prevent LLM panic.",
+        "es": "Un comando riesgoso (ej. borrar base de datos) llega al gateway. Si está en Shadow Mode, Leloir frena la acción pero devuelve un 200 OK falso para evitar que el LLM entre en pánico.",
+        "de": "Ein riskantes Kommando erreicht das Gateway. Im Shadow Mode stoppt Leloir die Aktion, gibt aber ein gefälschtes 200 OK zurück, um eine LLM-Panik zu vermeiden.",
+        "fr": "Une commande risquée atteint la passerelle. En Shadow Mode, Leloir arrête l'action mais renvoie un faux 200 OK pour éviter la panique du LLM.",
+        "zh": "风险命令（例如删除数据库）到达网关。如果运行在 Shadow Mode，Leloir 会停止该操作，但返回一个假的 200 OK，防止 LLM 发生崩溃。",
+        "ja": "危険なコマンド（データベースの削除など）がゲートウェイに到達します。Shadow Mode の場合、Leloir はアクションを停止しますが、LLM のパニックを防ぐために偽の 200 OK を返します。"
       }
     },
     {
-      "n": 6, "kind": "a2a-allow", "actor": "sre-triage → db-specialist",
+      "n": 6, "kind": "budget", "actor": "FinOps",
       "action": {
-        "en": "Invokes the DB specialist over A2A — policy ALLOWS it",
-        "es": "Invoca al especialista de DB por A2A — la política lo PERMITE",
-        "de": "Ruft den DB-Spezialisten per A2A auf — die Richtlinie ERLAUBT es",
-        "fr": "Invoque le spécialiste DB via A2A — la politique l'AUTORISE",
-        "zh": "通过 A2A 调用数据库专家——策略允许",
-        "ja": "A2A で DB スペシャリストを呼び出す — ポリシーが許可"
+        "en": "Tokens and costs are throttled",
+        "es": "Tokens y costos son estrangulados",
+        "de": "Tokens und Kosten werden gedrosselt",
+        "fr": "Les jetons et les coûts sont limités",
+        "zh": "Token 与成本节流",
+        "ja": "トークンとコストの抑制"
       },
       "detail": {
-        "en": "canInvoke lists db-specialist, so it runs as a depth-1 sub-investigation: prometheus_query → connection pool 100/100 saturated since the 14:02 deploy.",
-        "es": "canInvoke incluye db-specialist, así que corre como sub-investigación depth-1: prometheus_query → pool de conexiones 100/100 saturado desde el deploy de las 14:02.",
-        "de": "canInvoke listet db-specialist, also läuft es als Sub-Untersuchung der Tiefe 1: prometheus_query → Verbindungspool 100/100 gesättigt seit dem 14:02-Deploy.",
-        "fr": "canInvoke liste db-specialist, il s'exécute donc en sous-investigation de profondeur 1 : prometheus_query → pool de connexions 100/100 saturé depuis le déploiement de 14h02.",
-        "zh": "canInvoke 包含 db-specialist，因此作为深度 1 的子调查运行：prometheus_query → 自 14:02 部署起连接池 100/100 饱和。",
-        "ja": "canInvoke に db-specialist が含まれるため、深さ 1 のサブ調査として実行：prometheus_query → 14:02 のデプロイ以降、接続プールが 100/100 で飽和。"
+        "en": "Every LLM inference is metered against the TenantBudget. If an agent loops infinitely, it is forcefully terminated once the monetary or token cap is breached.",
+        "es": "Cada inferencia del LLM es medida contra el TenantBudget. Si un agente entra en loop infinito, es terminado por la fuerza una vez que se supera el límite monetario o de tokens.",
+        "de": "Jede LLM-Inferenz wird gegen das TenantBudget gemessen. Wenn ein Agent in eine Endlosschleife gerät, wird er zwangsweise beendet, sobald das Limit überschritten ist.",
+        "fr": "Chaque inférence LLM est mesurée selon le TenantBudget. Si un agent tourne en boucle, il est terminé de force une fois la limite atteinte.",
+        "zh": "每个 LLM 推理都针对 TenantBudget 进行计量。如果智能体陷入无限循环，一旦突破资金或 Token 上限，就会被强制终止。",
+        "ja": "すべての LLM 推論は TenantBudget に対して計測されます。エージェントが無限ループに陥った場合、金額またはトークンの上限に達した時点で強制終了されます。"
       }
     },
     {
-      "n": 7, "kind": "a2a-deny", "actor": "sre-triage ✗ prod-deployer",
+      "n": 7, "kind": "approval", "actor": "Human-in-the-Loop",
       "action": {
-        "en": "Tries prod-deployer for a rollback — BLOCKED",
-        "es": "Intenta prod-deployer para un rollback — BLOQUEADO",
-        "de": "Versucht prod-deployer für ein Rollback — BLOCKIERT",
-        "fr": "Tente prod-deployer pour un rollback — BLOQUÉ",
-        "zh": "尝试用 prod-deployer 回滚——被阻止",
-        "ja": "ロールバックのため prod-deployer を試みる — ブロック"
+        "en": "Requires human approval for sensitive state changes",
+        "es": "Requiere aprobación humana para cambios de estado sensibles",
+        "de": "Benötigt menschliche Freigabe für sensible Änderungen",
+        "fr": "Nécessite l'approbation humaine pour les changements sensibles",
+        "zh": "敏感状态更改需人工审批",
+        "ja": "機密状態の変更には人間の承認が必要"
       },
       "detail": {
-        "en": "prod-deployer is not in canInvoke, so the A2A guard denies it, audits the denial, and increments the deny metric. The investigation continues — the guard is not fatal.",
-        "es": "prod-deployer no está en canInvoke, así que el guard A2A lo deniega, audita la denegación e incrementa la métrica de deny. La investigación continúa — el guard no es fatal.",
-        "de": "prod-deployer ist nicht in canInvoke, also verweigert der A2A-Guard, auditiert die Ablehnung und erhöht die Deny-Metrik. Die Untersuchung läuft weiter — der Guard ist nicht fatal.",
-        "fr": "prod-deployer n'est pas dans canInvoke, donc le garde A2A le refuse, audite le refus et incrémente la métrique de refus. L'investigation continue — le garde n'est pas fatal.",
-        "zh": "prod-deployer 不在 canInvoke 中，因此 A2A 守卫拒绝、审计该拒绝并递增拒绝指标。调查继续——守卫并非致命。",
-        "ja": "prod-deployer は canInvoke に無いため、A2A ガードが拒否し、拒否を監査し、拒否メトリクスを加算します。調査は継続 — ガードは致命的ではありません。"
+        "en": "For actions strictly governed by ApprovalPolicies (like applying terraform), the agent's workflow pauses and waits asynchronously for an authorized human to approve the plan.",
+        "es": "Para acciones gobernadas estrictamente por ApprovalPolicies (como aplicar terraform), el flujo del agente se pausa y espera de forma asíncrona a que un humano autorizado apruebe el plan.",
+        "de": "Für Aktionen, die streng durch ApprovalPolicies geregelt sind, pausiert der Agent und wartet asynchron auf die Freigabe eines autorisierten Menschen.",
+        "fr": "Pour les actions strictement régies par les ApprovalPolicies, le flux de l'agent se met en pause et attend qu'un humain autorisé approuve le plan.",
+        "zh": "对于受 ApprovalPolicies 严格管辖的操作（如应用 terraform），智能体的工作流会暂停，异步等待授权人员批准该计划。",
+        "ja": "ApprovalPolicies によって厳格に管理されるアクション（terraform の適用など）の場合、エージェントのワークフローは一時停止し、権限のある人間が承認するのを非同期で待ちます。"
       }
     },
     {
-      "n": 8, "kind": "budget", "actor": "control plane",
+      "n": 8, "kind": "audit", "actor": "Audit Log",
       "action": {
-        "en": "Every LLM call debits the budget",
-        "es": "Cada llamada LLM descuenta del presupuesto",
-        "de": "Jeder LLM-Aufruf belastet das Budget",
-        "fr": "Chaque appel LLM débite le budget",
-        "zh": "每次 LLM 调用都从预算扣减",
-        "ja": "各 LLM 呼び出しが予算を消費"
+        "en": "Every move is cryptographically logged",
+        "es": "Cada movimiento es logueado criptográficamente",
+        "de": "Jeder Schritt wird kryptografisch protokolliert",
+        "fr": "Chaque mouvement est journalisé cryptographiquement",
+        "zh": "每个动作均被加密记录",
+        "ja": "すべてのアクションが暗号学的にログ記録される"
       },
       "detail": {
-        "en": "The TenantBudget CRD caps tokens and USD; a warning fires at 80%. If the cap is hit, the investigation stops with budget_exhausted.",
-        "es": "El CRD TenantBudget limita tokens y USD; salta un aviso al 80%. Si se alcanza el tope, la investigación para con budget_exhausted.",
-        "de": "Das TenantBudget-CRD begrenzt Tokens und USD; bei 80% erfolgt eine Warnung. Bei Erreichen des Limits stoppt die Untersuchung mit budget_exhausted.",
-        "fr": "Le CRD TenantBudget plafonne les tokens et l'USD ; une alerte se déclenche à 80%. Si le plafond est atteint, l'investigation s'arrête avec budget_exhausted.",
-        "zh": "TenantBudget CRD 限制 token 与美元；达到 80% 时告警。若触及上限，调查以 budget_exhausted 停止。",
-        "ja": "TenantBudget CRD がトークンと USD を制限し、80% で警告。上限に達すると調査は budget_exhausted で停止します。"
-      }
-    },
-    {
-      "n": 9, "kind": "answer", "actor": "sre-triage",
-      "action": {
-        "en": "Delivers the root cause and recommendation",
-        "es": "Entrega la causa raíz y la recomendación",
-        "de": "Liefert die Ursache und Empfehlung",
-        "fr": "Livre la cause racine et la recommandation",
-        "zh": "给出根因与建议",
-        "ja": "根本原因と推奨事項を提示"
-      },
-      "detail": {
-        "en": "Root cause: the 14:02 deploy raised concurrency without raising the DB pool. Recommendation: roll back — a write action, so it requires human approval per ApprovalPolicy.",
-        "es": "Causa raíz: el deploy de las 14:02 subió la concurrencia sin subir el pool de DB. Recomendación: rollback — acción de escritura, así que requiere aprobación humana según ApprovalPolicy.",
-        "de": "Ursache: Der 14:02-Deploy erhöhte die Nebenläufigkeit ohne den DB-Pool zu vergrößern. Empfehlung: Rollback — eine Schreibaktion, daher menschliche Freigabe gemäß ApprovalPolicy nötig.",
-        "fr": "Cause racine : le déploiement de 14h02 a augmenté la concurrence sans augmenter le pool DB. Recommandation : rollback — une action d'écriture, donc approbation humaine requise selon ApprovalPolicy.",
-        "zh": "根因：14:02 的部署提高了并发但未增大数据库连接池。建议：回滚——属写操作，因此依据 ApprovalPolicy 需人工审批。",
-        "ja": "根本原因：14:02 のデプロイが DB プールを増やさずに並行度を上げた。推奨：ロールバック — 書き込み操作のため、ApprovalPolicy により人による承認が必要。"
-      }
-    },
-    {
-      "n": 10, "kind": "audit", "actor": "control plane",
-      "action": {
-        "en": "Everything lands in the audit hash-chain",
-        "es": "Todo queda en el audit hash-chain",
-        "de": "Alles landet in der Audit-Hash-Chain",
-        "fr": "Tout est consigné dans la hash-chain d'audit",
-        "zh": "一切进入审计哈希链",
-        "ja": "すべてが監査ハッシュチェーンに記録"
-      },
-      "detail": {
-        "en": "Who triggered it, which agent ran, which tools and A2A calls (allowed and denied), tokens and cost — tamper-evident and queryable per tenant.",
-        "es": "Quién la disparó, qué agente corrió, qué tools y llamadas A2A (permitidas y denegadas), tokens y costo — a prueba de manipulación y consultable por tenant.",
-        "de": "Wer sie auslöste, welcher Agent lief, welche Tools und A2A-Aufrufe (erlaubt und verweigert), Tokens und Kosten — manipulationssicher und pro Tenant abfragbar.",
-        "fr": "Qui l'a déclenchée, quel agent a tourné, quels outils et appels A2A (autorisés et refusés), tokens et coût — inviolable et interrogeable par tenant.",
-        "zh": "谁触发、哪个智能体运行、哪些工具与 A2A 调用（允许与拒绝）、token 与成本——防篡改且可按租户查询。",
-        "ja": "誰が起動し、どのエージェントが実行され、どのツールと A2A 呼び出し（許可・拒否）、トークンとコストか — 改ざん検知可能でテナント単位に照会可能。"
+        "en": "The agent succeeds or fails, and its entire history—prompts, decisions, blocked actions, and exact costs—is written to an immutable audit chain, fully observable to the tenant.",
+        "es": "El agente termina (éxito o falla), y todo su historial —prompts, decisiones, acciones bloqueadas y costos exactos— se escribe en una cadena de auditoría inmutable, totalmente observable para el tenant.",
+        "de": "Der Agent beendet die Aufgabe, und seine gesamte Historie wird in eine unveränderliche Audit-Kette geschrieben, die für den Mandanten vollständig einsehbar ist.",
+        "fr": "L'agent termine sa tâche, et tout son historique est écrit dans une chaîne d'audit immuable, entièrement observable par le tenant.",
+        "zh": "智能体完成任务（成功或失败），其完整的历史记录——提示词、决策、被阻止的操作以及确切的成本——将写入不可变的审计链，租户可完全观察到。",
+        "ja": "エージェントが終了し、その全履歴（プロンプト、意思決定、ブロックされたアクション、正確なコスト）は不変の監査チェーンに書き込まれ、テナントに完全に可視化されます。"
       }
     }
   ]

@@ -1,54 +1,108 @@
 import { useSiteData, t } from '../hooks/useSiteData';
 
 export function Home() {
-  const { data, loading } = useSiteData<any>('manifest.json');
+  const { data: manifest, loading: manifestLoading, error: manifestError } = useSiteData<any>('manifest.json');
+  const { data: featuresData, loading: featuresLoading, error: featuresError } = useSiteData<any>('features.json');
 
-  if (loading || !data) return <div className="container" style={{ padding: '100px 24px', textAlign: 'center' }}>Loading...</div>;
+  if (manifestError || featuresError) {
+    return <div className="container" style={{ padding: '100px 24px', textAlign: 'center', color: 'red' }}>
+      <h2>Error Loading Data</h2>
+      <p>{manifestError || featuresError}</p>
+    </div>;
+  }
+
+  if (manifestLoading || featuresLoading || !manifest || !featuresData) {
+    return <div className="container" style={{ padding: '100px 24px', textAlign: 'center' }}>Loading...</div>;
+  }
+
+  const getTierClass = (tier: string) => {
+    switch(tier) {
+      case 'OSS': return 'badge-oss';
+      case 'Team': return 'badge-team';
+      case 'Mission Critical': return 'badge-mc';
+      default: return 'badge-oss';
+    }
+  };
 
   return (
     <div id="introduction" className="container" style={{ padding: '80px 24px', textAlign: 'center' }}>
-      <h1>Leloir Governance</h1>
-      <p className="lead" style={{ maxWidth: '600px', margin: '0 auto 32px' }}>
-        {t(data.project.description)}
-      </p>
-
-      <div style={{ background: 'var(--surface)', padding: '32px', borderRadius: '12px', border: '1px solid var(--line)', maxWidth: '800px', margin: '0 auto 48px' }}>
-        <h2 style={{ fontSize: '24px', marginBottom: '16px', color: 'var(--fg)' }}>
-          When an agent gets compromised via prompt injection, your credentials shouldn't be.
-        </h2>
-        <p style={{ color: 'var(--muted)', fontSize: '18px', margin: 0 }}>
-          Letting your AI Agents handle raw credentials and API Keys is a security disaster waiting to happen. 
-          Leloir is the Zero-Trust Control Plane designed to solve this for "Day 2" AI in production.
-        </p>
-      </div>
       
-      <div className="badges" style={{ justifyContent: 'center', marginBottom: '64px' }}>
+      {/* Hero Section */}
+      <h1>{manifest.project.name} Governance</h1>
+      <p className="lead" style={{ maxWidth: '700px', margin: '0 auto 24px' }}>
+        {t(manifest.project.tagline)}
+      </p>
+      
+      <div className="badges" style={{ justifyContent: 'center', marginBottom: '32px' }}>
         <span className="pill">Zero-Trust Architecture</span>
         <span className="pill">Kubernetes Native</span>
         <span className="pill">No Vendor Lock-in</span>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '32px', textAlign: 'left', maxWidth: '1000px', margin: '0 auto' }}>
-        <div style={{ padding: '24px', background: 'var(--surface)', borderRadius: '12px', border: '1px solid var(--line)' }}>
-          <h3 style={{ marginTop: 0, color: 'var(--accent)', display: 'flex', alignItems: 'center', gap: '8px' }}>🛡️ Strict Zero-Trust</h3>
-          <p style={{ color: 'var(--muted)', margin: 0, lineHeight: 1.6 }}>Anti-spoofing JWT validation and transparent credential injection via Envoy, hardened at the network layer with Cilium mTLS (SPIFFE). Agents <strong>never</strong> touch a secret.</p>
-        </div>
-        <div style={{ padding: '24px', background: 'var(--surface)', borderRadius: '12px', border: '1px solid var(--line)' }}>
-          <h3 style={{ marginTop: 0, color: 'var(--accent)', display: 'flex', alignItems: 'center', gap: '8px' }}>💸 Proactive FinOps</h3>
-          <p style={{ color: 'var(--muted)', margin: 0, lineHeight: 1.6 }}>Leloir monitors spend velocity in real-time. If an LLM enters an infinite loop and skyrockets your OpenAI bill, Leloir imposes a <strong>Financial Quarantine</strong> and isolates the tenant.</p>
-        </div>
-        <div style={{ padding: '24px', background: 'var(--surface)', borderRadius: '12px', border: '1px solid var(--line)' }}>
-          <h3 style={{ marginTop: 0, color: 'var(--accent)', display: 'flex', alignItems: 'center', gap: '8px' }}>🧠 Episodic Memory</h3>
-          <p style={{ color: 'var(--muted)', margin: 0, lineHeight: 1.6 }}>When resolving an alert, Leloir stores the incident in pgvector. When a similar alert occurs, the orchestrator injects the past resolution into the agent as an ephemeral Skill.</p>
+      <div style={{ marginBottom: '64px' }}>
+        <a href={manifest.project.repo} target="_blank" rel="noreferrer" className="btn btn-primary" style={{ fontSize: '16px', padding: '12px 32px' }}>
+          {t(manifest.ui.cta_repo)}
+        </a>
+      </div>
+
+      {/* Differentiators Section (Mapped dynamically from manifest.json) */}
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '32px', textAlign: 'left', maxWidth: '1200px', margin: '0 auto 80px' }}>
+        {manifest.differentiators.map((diff: any, idx: number) => (
+          <div key={idx} className="glass-card" style={{ padding: '32px', transition: 'transform 0.3s' }} onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-4px)'} onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}>
+            <h3 style={{ marginTop: 0, color: 'var(--accent)', display: 'flex', alignItems: 'center', gap: '12px', fontSize: '20px' }}>
+              <span style={{ fontSize: '24px' }}>{diff.icon}</span> 
+              {t(diff.title)}
+            </h3>
+            <p style={{ color: 'var(--muted)', margin: 0, lineHeight: 1.7, fontSize: '15px' }}>
+              {t(diff.text)}
+            </p>
+          </div>
+        ))}
+      </div>
+
+      {/* Features Grid (Mapped dynamically from features.json) */}
+      <div style={{ textAlign: 'left', maxWidth: '1200px', margin: '0 auto' }}>
+        <h2 style={{ fontSize: '32px', color: 'var(--fg)', marginBottom: '16px', textAlign: 'center', borderBottom: 'none' }}>
+          {t(featuresData.title)}
+        </h2>
+        <p style={{ color: 'var(--muted)', fontSize: '18px', textAlign: 'center', maxWidth: '700px', margin: '0 auto 48px' }}>
+          {t(featuresData.sub)}
+        </p>
+
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '24px' }}>
+          {featuresData.features.map((feat: any) => (
+            <div key={feat.id} className="card" style={{ padding: '24px', display: 'flex', flexDirection: 'column' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '16px' }}>
+                <h3 style={{ margin: 0, fontSize: '18px', color: 'var(--fg)' }}>{t(feat.title)}</h3>
+                <span className={`badge ${getTierClass(feat.tier)}`}>{feat.tier}</span>
+              </div>
+              <p style={{ margin: 0, color: 'var(--muted)', fontSize: '14px', lineHeight: 1.6, flexGrow: 1 }}>
+                {t(feat.desc)}
+              </p>
+            </div>
+          ))}
         </div>
       </div>
 
-      <div style={{ marginTop: '80px', paddingTop: '64px', borderTop: '1px solid var(--line)', textAlign: 'left', maxWidth: '800px', margin: '80px auto 0' }}>
-        <h2 style={{ fontSize: '24px', color: 'var(--fg)', marginBottom: '16px' }}>What's in a name?</h2>
-        <p style={{ color: 'var(--muted)', fontSize: '16px', lineHeight: 1.6, margin: 0 }}>
-          <strong>Luis Federico Leloir</strong> was an Argentine physician and biochemist who received the 1970 Nobel Prize in Chemistry for his discovery of the metabolic pathways in carbohydrates. Just as Leloir uncovered the fundamental regulatory mechanisms of cellular biology, this project aims to provide the fundamental regulatory mechanisms and governance for AI agents in production environments.
+      {/* Why Leloir / Analogy Section */}
+      <div className="glass-card" style={{ textAlign: 'left', maxWidth: '800px', margin: '80px auto 0', padding: '40px' }}>
+        <h2 style={{ fontSize: '28px', color: 'var(--fg)', marginTop: 0, marginBottom: '20px', borderBottom: 'none', display: 'flex', alignItems: 'center', gap: '12px' }}>
+          <span>🧬</span> Why the name "Leloir"?
+        </h2>
+        <p style={{ color: 'var(--muted)', fontSize: '16px', lineHeight: 1.8, margin: 0 }}>
+          <strong>Luis Federico Leloir</strong> was an Argentine physician and biochemist who received the 1970 Nobel Prize in Chemistry for his discovery of the metabolic pathways in carbohydrates. 
+          <br/><br/>
+          Just as Leloir uncovered the fundamental <em>regulatory mechanisms of cellular biology</em>, this project aims to provide the fundamental <strong>regulatory mechanisms and governance</strong> for autonomous AI agents in production environments.
         </p>
       </div>
+
+      {/* Footer Note */}
+      <div style={{ marginTop: '80px', paddingTop: '64px', borderTop: '1px solid var(--line)', textAlign: 'center', maxWidth: '800px', margin: '80px auto 40px' }}>
+        <p style={{ color: 'var(--muted)', fontSize: '14px' }}>
+          {t(manifest.project.pitch)}
+        </p>
+      </div>
+
     </div>
   );
 }

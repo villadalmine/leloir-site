@@ -12,7 +12,19 @@ export function Pricing() {
     <div id="features" className="container" style={{ padding: '80px 24px' }}>
       <div style={{ textAlign: 'center', marginBottom: '64px' }}>
         <h1 style={{ fontSize: '48px', marginBottom: '24px' }}>{t(data.title)}</h1>
-        <p className="lead" style={{ maxWidth: '800px', margin: '0 auto' }}>{t(data.sub)}</p>
+        <p className="lead" style={{ maxWidth: '800px', margin: '0 auto', marginBottom: '40px' }}>{t(data.sub)}</p>
+
+        <div className="glass-card" style={{ maxWidth: '800px', margin: '0 auto', padding: '24px', textAlign: 'left', display: 'flex', gap: '24px', alignItems: 'flex-start', backgroundColor: 'rgba(56, 189, 248, 0.05)', border: '1px solid rgba(56, 189, 248, 0.2)' }}>
+          <div style={{ fontSize: '32px' }}>🔓</div>
+          <div>
+            <h3 style={{ margin: '0 0 8px', fontSize: '18px', color: 'var(--fg)' }}>Open Core & Source Available</h3>
+            <p style={{ margin: 0, color: 'var(--muted)', fontSize: '15px', lineHeight: 1.6 }}>
+              Leloir is built on an Open Core model. The core control plane, proxy gateway, and fundamental orchestration features are <strong>100% Free and Open Source</strong> (Apache 2.0). 
+              <br/><br/>
+              Similar to companies like <strong>GitLab</strong> or <strong>Kong</strong>, our <em>Team</em> and <em>Mission Critical</em> enterprise capabilities live in the same repository. This gives you <strong>full transparency to inspect the code</strong> for security and compliance audits, though unlocking and running those enterprise modules in production requires a commercial license key.
+            </p>
+          </div>
+        </div>
       </div>
 
       <div className="glass-card" style={{ padding: '0', overflowX: 'auto', marginBottom: '64px' }}>

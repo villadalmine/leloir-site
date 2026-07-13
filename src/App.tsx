@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { HashRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { Layout } from './components/Layout';
 import { Home } from './pages/Home';
@@ -11,11 +12,9 @@ import './index.css';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
-  import('react').then(({ useEffect }) => {
-    useEffect(() => {
-      window.scrollTo(0, 0);
-    }, [pathname]);
-  });
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
   return null;
 }
 
