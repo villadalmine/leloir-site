@@ -77,3 +77,21 @@ Para llegar perfectos a la fecha de grabación (julio-agosto), este es nuestro p
 | **Antigravity (Yo)** | - Gobernaré esta presentación y la narrativa.<br>- Diseñaré los slides visuales (si usamos markdown/react) en el `leloir-site`.<br>- Armaré el guion palabra por palabra para que lo leas en el video.<br>- Seré el revisor técnico de Claude para asegurar que lo que mostremos funcione de verdad. |
 | **Claude** | - Implementar el Chart de Helm público (actualmente en curso) para que la gente tenga qué instalar al final de la charla.<br>- Levantar el entorno de demo perfecto en Kubernetes (con Envoy, HolmesGPT y los 2 tenants) para poder grabar la demo sin fallos. |
 | **Humano (Tú)** | - Orquestarnos. Eres el nexo entre Claude (backend/infra) y yo (frontend/marketing/estrategia).<br>- Llenar los datos logísticos en Sessionize hoy mismo.<br>- Grabar el video cuando tengamos el entorno y el guion listo. |
+
+---
+
+## 4. Q&A "Must-have" Questions & Answers (Cheat Sheet)
+
+El comité y el público de Nerdearla harán preguntas difíciles. Aquí están las respuestas preparadas para lucir tu experiencia en SRE e Infraestructura:
+
+**Pregunta 1: ¿Cuál es la diferencia entre un API Gateway tradicional (Kong/NGINX) y un Control Plane de Agentes de IA?**
+> **Respuesta:** "Un API Gateway tradicional entiende de *bytes*, *rutas HTTP* y *rate limiting* por IP. Un Control Plane para IA (Leloir) entiende de **Tokens** y **Contexto Semántico**. NGINX no sabe que una petición HTTP cuesta $0.05 dólares o que el payload contiene una inyección de prompt maliciosa. Un Control Plane de IA intercepta la petición, mide el costo en tokens, verifica el presupuesto del *Tenant* (FinOps), y guarda el contexto en vectores. Es un Gateway que 'entiende' el idioma de los LLMs."
+
+**Pregunta 2: Si el agente alucina un comando destructivo (ej: borrar un namespace), ¿cómo lo detienes sin romper el flujo?**
+> **Respuesta:** "Aquí entra el patrón de **'Shadow Mode'** (Modo Sombra). Si usas Leloir en el medio, Leloir intercepta la llamada de `kubectl delete`. Si el agente no tiene permisos, Leloir bloquea la acción real en el cluster, pero le devuelve un falso 'HTTP 200 OK' o una simulación al agente. El LLM cree que tuvo éxito y sigue razonando felizmente, pero tú proteges la infraestructura. Al final, los humanos revisan qué *hubiera* hecho el agente."
+
+**Pregunta 3: ¿Interceptar todo el tráfico no agrega demasiada latencia (TTFB) a las respuestas del modelo?**
+> **Respuesta:** "Es una preocupación súper válida (el 'Time To First Token' es crítico). Sí, agregar un salto de red suma unos milisegundos, pero a nivel arquitectónico lo mitigamos con **Semantic Caching**. Si un agente pide investigar una alerta que otro agente ya resolvió hace 5 minutos, el Control Plane responde casi instantáneamente desde la caché vectorial sin pegarle al LLM. En promedio, no solo no sumas latencia, sino que terminas bajando los tiempos de respuesta drásticamente para problemas recurrentes."
+
+**Pregunta 4: ¿Esto sirve solo para modelos Open Source locales o también para APIs como OpenAI/Anthropic?**
+> **Respuesta:** "Sirve para ambos (es agnóstico). Para entornos militares o bancarios, usarás el Control Plane ruteando hacia modelos locales (Ollama/vLLM) para garantizar 100% de Soberanía de Datos. Pero para empresas más flexibles, actúa como un *Proxy transparente*. El agente le habla a la plataforma creyendo que es OpenAI, Leloir inyecta la API Key corporativa, audita el gasto, y hace el proxy hacia la nube. Es un patrón 'Bring Your Own Model' (BYOM)."
