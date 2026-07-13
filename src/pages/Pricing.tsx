@@ -6,7 +6,11 @@ export function Pricing() {
 
   if (loading || !data) return <div className="container" style={{ padding: '100px 24px', textAlign: 'center' }}>Loading...</div>;
 
-  const tiers = ['OSS', 'Team', 'Mission Critical'];
+  const tiers = [
+    { id: 'OSS', name: 'Open Source', license: 'Apache 2.0 (Free)', class: 'badge-oss' },
+    { id: 'Team', name: 'Team', license: 'Source-Available (Commercial)', class: 'badge-team' },
+    { id: 'Mission Critical', name: 'Mission Critical', license: 'Source-Available (Commercial)', class: 'badge-mc' }
+  ];
 
   return (
     <div id="features" className="container" style={{ padding: '80px 24px' }}>
@@ -21,7 +25,7 @@ export function Pricing() {
             <p style={{ margin: 0, color: 'var(--muted)', fontSize: '15px', lineHeight: 1.6 }}>
               Leloir is built on an Open Core model. The core control plane, proxy gateway, and fundamental orchestration features are <strong>100% Free and Open Source</strong> (Apache 2.0). 
               <br/><br/>
-              Similar to companies like <strong>GitLab</strong> or <strong>Kong</strong>, our <em>Team</em> and <em>Mission Critical</em> enterprise capabilities live in the same repository. This gives you <strong>full transparency to inspect the code</strong> for security and compliance audits, though unlocking and running those enterprise modules in production requires a commercial license key.
+              Similar to companies like <strong>GitLab</strong> or <strong>Kong</strong>, our enterprise capabilities live in the exact same public repository. This gives your security team <strong>full transparency to inspect and audit the code</strong>, though unlocking these modules in production requires a commercial license key.
             </p>
           </div>
         </div>
@@ -33,10 +37,15 @@ export function Pricing() {
             <tr style={{ borderBottom: '1px solid var(--line)' }}>
               <th style={{ padding: '24px', fontWeight: 600, fontSize: '18px', width: '40%' }}>Feature</th>
               {tiers.map(tier => (
-                <th key={tier} style={{ padding: '24px', fontWeight: 600, textAlign: 'center' }}>
-                  <span className={`badge ${tier === 'OSS' ? 'badge-oss' : tier === 'Team' ? 'badge-team' : 'badge-mc'}`}>
-                    {tier}
-                  </span>
+                <th key={tier.id} style={{ padding: '24px', textAlign: 'center' }}>
+                  <div style={{ marginBottom: '8px' }}>
+                    <span className={`badge ${tier.class}`}>
+                      {tier.name}
+                    </span>
+                  </div>
+                  <div style={{ fontSize: '12px', color: 'var(--muted)', fontWeight: 'normal' }}>
+                    {tier.license}
+                  </div>
                 </th>
               ))}
             </tr>
@@ -67,8 +76,8 @@ export function Pricing() {
                     </p>
                   </td>
                   {tiers.map(tier => (
-                    <td key={tier} style={{ padding: '24px', textAlign: 'center' }}>
-                      {hasFeature(tier) ? (
+                    <td key={tier.id} style={{ padding: '24px', textAlign: 'center' }}>
+                      {hasFeature(tier.id) ? (
                         <Check size={24} style={{ color: 'var(--ok)', margin: '0 auto' }} />
                       ) : (
                         <Minus size={24} style={{ color: 'var(--line)', margin: '0 auto' }} />
