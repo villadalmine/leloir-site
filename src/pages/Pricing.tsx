@@ -25,7 +25,7 @@ export function Pricing() {
             <p style={{ margin: 0, color: 'var(--muted)', fontSize: '15px', lineHeight: 1.6 }}>
               Leloir is built on an Open Core model. The core control plane, proxy gateway, and fundamental orchestration features are <strong>100% Free and Open Source</strong> (Apache 2.0). 
               <br/><br/>
-              Similar to companies like <strong>GitLab</strong> or <strong>Kong</strong>, our enterprise capabilities live in the exact same public repository. This gives your security team <strong>full transparency to inspect and audit the code</strong>, though unlocking these modules in production requires a commercial license key.
+              Following the industry standard <strong>Open Core</strong> model, our enterprise capabilities live in the exact same public repository. This gives your security team <strong>full transparency to inspect and audit the code</strong>, though unlocking these modules in production requires a commercial license key.
             </p>
           </div>
         </div>
