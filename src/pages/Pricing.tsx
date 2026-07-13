@@ -54,7 +54,14 @@ export function Pricing() {
               return (
                 <tr key={i} style={{ borderBottom: i === data.features.length - 1 ? 'none' : '1px solid var(--line)' }}>
                   <td style={{ padding: '24px' }}>
-                    <h4 style={{ margin: '0 0 8px', fontSize: '16px' }}>{t(f.title)}</h4>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '12px', margin: '0 0 8px' }}>
+                      <h4 style={{ margin: 0, fontSize: '16px' }}>{t(f.title)}</h4>
+                      {f.status === 'planned' && (
+                        <span style={{ fontSize: '11px', padding: '2px 8px', borderRadius: '12px', background: 'rgba(251, 191, 36, 0.1)', color: '#fbbf24', border: '1px solid rgba(251, 191, 36, 0.2)' }}>
+                          Roadmap
+                        </span>
+                      )}
+                    </div>
                     <p style={{ margin: 0, fontSize: '14px', color: 'var(--muted)', lineHeight: 1.5 }}>
                       {t(f.desc)}
                     </p>
