@@ -7,9 +7,9 @@ export function Pricing() {
   if (loading || !data) return <div className="container" style={{ padding: '100px 24px', textAlign: 'center' }}>Loading...</div>;
 
   const tiers = [
-    { id: 'OSS', name: 'Open Source', license: 'Apache 2.0 (Free)', class: 'badge-oss' },
-    { id: 'Team', name: 'Team', license: 'Source-Available (Commercial)', class: 'badge-team' },
-    { id: 'Mission Critical', name: 'Mission Critical', license: 'Source-Available (Commercial)', class: 'badge-mc' }
+    { id: 'OSS', name: 'Open Source', price: '$0', license: 'Apache 2.0 (Free)', class: 'badge-oss', cta: 'Get Started', link: 'https://github.com/villadalmine/leloir' },
+    { id: 'Team', name: 'Team', price: 'Paid', license: 'Source-Available (Commercial)', class: 'badge-team', cta: 'Contact Sales', link: 'mailto:rino@villadalmine.club?subject=Leloir%20Sales' },
+    { id: 'Mission Critical', name: 'Mission Critical', price: 'Custom', license: 'Source-Available (Commercial)', class: 'badge-mc', cta: 'Contact Sales', link: 'mailto:rino@villadalmine.club?subject=Leloir%20Sales' }
   ];
 
   return (
@@ -43,9 +43,15 @@ export function Pricing() {
                       {tier.name}
                     </span>
                   </div>
-                  <div style={{ fontSize: '12px', color: 'var(--muted)', fontWeight: 'normal' }}>
+                  <div style={{ fontSize: '28px', fontWeight: 'bold', margin: '16px 0 8px', color: 'var(--fg)' }}>
+                    {tier.price}
+                  </div>
+                  <div style={{ fontSize: '12px', color: 'var(--muted)', fontWeight: 'normal', marginBottom: '24px' }}>
                     {tier.license}
                   </div>
+                  <a href={tier.link} className={tier.cta === 'Contact Sales' ? 'btn btn-primary' : 'btn btn-outline'} style={{ padding: '10px 16px', fontSize: '14px', width: '100%', display: 'block', textAlign: 'center', boxSizing: 'border-box' }}>
+                    {tier.cta}
+                  </a>
                 </th>
               ))}
             </tr>
