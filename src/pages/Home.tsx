@@ -14,7 +14,7 @@ export function Home() {
 
       <div style={{ background: 'var(--surface)', padding: '32px', borderRadius: '12px', border: '1px solid var(--line)', maxWidth: '800px', margin: '0 auto 48px' }}>
         <h2 style={{ fontSize: '24px', marginBottom: '16px', color: 'var(--fg)' }}>
-          "If an agent gets compromised via prompt injection, your credentials are compromised too."
+          When an agent gets compromised via prompt injection, your credentials shouldn't be.
         </h2>
         <p style={{ color: 'var(--muted)', fontSize: '18px', margin: 0 }}>
           Letting your AI Agents handle raw credentials and API Keys is a security disaster waiting to happen. 
