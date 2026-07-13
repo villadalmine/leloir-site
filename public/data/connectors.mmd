@@ -1,0 +1,25 @@
+flowchart LR
+  subgraph inj["INJECTED into the agent's PROMPT — knowledge & data (no broker)"]
+    direction TB
+    S["SKILLS · SkillSource CRD<br/>runbooks / instructions<br/>(git · configmap · inline)<br/>= what the agent KNOWS"]
+    C["CONTEXT · assembled by the orchestrator<br/>alert + labels + tenant + related signals<br/>→ InvestigateRequest<br/>= the incident ITSELF"]
+  end
+
+  AG["the AGENT<br/>(Mode 1: SDK-native)<br/>the LLM decides what to do"]
+
+  subgraph broker["through the TOOL BROKER — actions, GOVERNED (this is what we call 'MCP gateway')"]
+    direction TB
+    GW["the broker is NOT a tool.<br/>It is a governed FRONT DOOR in front of the tenant's MCP tool servers:<br/>per-tenant allowlist · credentials · rate-limit · audit"]
+    T["TOOLS · MCPServer CRD<br/>kubectl · prometheus · …<br/>= what the agent DOES"]
+    M["MEMORY · also an MCPServer CRD<br/>read_memory / write_memory<br/>= recall ACROSS investigations"]
+    GW --> T
+    GW --> M
+  end
+
+  S -.->|prompt| AG
+  C -.->|prompt| AG
+  AG -->|tool calls| GW
+
+  classDef know fill:#26456e,stroke:#5b8fd6,color:#fff;
+  classDef act fill:#1a7f64,stroke:#0d3,color:#fff;
+  class S,C know; class GW act;

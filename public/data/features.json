@@ -1,0 +1,180 @@
+{
+  "title": {
+    "en": "Features & Tiers",
+    "es": "Caracter\u00edsticas & Tiers",
+    "de": "Funktionen & Tiers",
+    "fr": "Fonctionnalit\u00e9s & Tiers",
+    "zh": "\u529f\u80fd\u4e0e\u5c42\u7ea7",
+    "ja": "\u6a5f\u80fd\u3068\u968e\u5c64"
+  },
+  "sub": {
+    "en": "Leloir provides a robust open-source core for AI governance. Advanced operational and strict-security capabilities require a commercial license.",
+    "es": "Leloir provee un core open-source robusto para gobernanza de IA. Capacidades operativas avanzadas y seguridad estricta requieren licencia comercial.",
+    "de": "Leloir bietet einen robusten Open-Source-Kern. Erweiterte Betriebs- und Sicherheitsfunktionen erfordern eine kommerzielle Lizenz.",
+    "fr": "Leloir fournit un noyau open-source robuste. Les capacit\u00e9s op\u00e9rationnelles avanc\u00e9es exigent une licence.",
+    "zh": "Leloir \u63d0\u4f9b\u5f3a\u5927\u7684\u5f00\u6e90 AI \u6cbb\u7406\u6838\u5fc3\u3002\u9ad8\u7ea7\u64cd\u4f5c\u548c\u4e25\u683c\u5b89\u5168\u529f\u80fd\u9700\u5546\u4e1a\u8bb8\u53ef\u8bc1\u3002",
+    "ja": "Leloir \u306f\u5805\u7262\u306a\u30aa\u30fc\u30d7\u30f3\u30bd\u30fc\u30b9\u30b3\u30a2\u3092\u63d0\u4f9b\u3057\u307e\u3059\u3002\u9ad8\u5ea6\u306a\u904b\u7528\u304a\u3088\u3073\u53b3\u683c\u306a\u30bb\u30ad\u30e5\u30ea\u30c6\u30a3\u6a5f\u80fd\u306b\u306f\u30e9\u30a4\u30bb\u30f3\u30b9\u304c\u5fc5\u8981\u3067\u3059\u3002"
+  },
+  "features": [
+    {
+      "id": "envoy-gateway",
+      "tier": "OSS",
+      "title": {
+        "en": "Envoy AI Gateway (JWT L7)",
+        "es": "Envoy AI Gateway (JWT L7)",
+        "de": "Envoy AI Gateway (JWT L7)",
+        "fr": "Envoy AI Gateway (JWT L7)",
+        "zh": "Envoy AI Gateway (JWT L7)",
+        "ja": "Envoy AI Gateway (JWT L7)"
+      },
+      "desc": {
+        "en": "The core data plane. Inspects and proxies all LLM and tool traffic, validating JWTs at layer 7 before traffic hits the Orchestrator.",
+        "es": "The core data plane. Inspects and proxies all LLM and tool traffic, validating JWTs at layer 7 before traffic hits the Orchestrator.",
+        "de": "The core data plane. Inspects and proxies all LLM and tool traffic, validating JWTs at layer 7 before traffic hits the Orchestrator.",
+        "fr": "The core data plane. Inspects and proxies all LLM and tool traffic, validating JWTs at layer 7 before traffic hits the Orchestrator.",
+        "zh": "The core data plane. Inspects and proxies all LLM and tool traffic, validating JWTs at layer 7 before traffic hits the Orchestrator.",
+        "ja": "The core data plane. Inspects and proxies all LLM and tool traffic, validating JWTs at layer 7 before traffic hits the Orchestrator."
+      }
+    },
+    {
+      "id": "dashboards",
+      "tier": "OSS",
+      "title": {
+        "en": "CISO Grafana Dashboards",
+        "es": "CISO Grafana Dashboards",
+        "de": "CISO Grafana Dashboards",
+        "fr": "CISO Grafana Dashboards",
+        "zh": "CISO Grafana Dashboards",
+        "ja": "CISO Grafana Dashboards"
+      },
+      "desc": {
+        "en": "Pre-built, plug-and-play Grafana dashboards mapping Leloir Prometheus metrics to executive summaries, cost analysis, and threat detection views.",
+        "es": "Pre-built, plug-and-play Grafana dashboards mapping Leloir Prometheus metrics to executive summaries, cost analysis, and threat detection views.",
+        "de": "Pre-built, plug-and-play Grafana dashboards mapping Leloir Prometheus metrics to executive summaries, cost analysis, and threat detection views.",
+        "fr": "Pre-built, plug-and-play Grafana dashboards mapping Leloir Prometheus metrics to executive summaries, cost analysis, and threat detection views.",
+        "zh": "Pre-built, plug-and-play Grafana dashboards mapping Leloir Prometheus metrics to executive summaries, cost analysis, and threat detection views.",
+        "ja": "Pre-built, plug-and-play Grafana dashboards mapping Leloir Prometheus metrics to executive summaries, cost analysis, and threat detection views."
+      }
+    },
+    {
+      "id": "rbac-budgets",
+      "tier": "OSS",
+      "title": {
+        "en": "Basic Budgets & K8s RBAC",
+        "es": "Basic Budgets & K8s RBAC",
+        "de": "Basic Budgets & K8s RBAC",
+        "fr": "Basic Budgets & K8s RBAC",
+        "zh": "Basic Budgets & K8s RBAC",
+        "ja": "Basic Budgets & K8s RBAC"
+      },
+      "desc": {
+        "en": "Leverages native Kubernetes RBAC to isolate agent permissions. Sets hard caps on tokens and tool calls per execution.",
+        "es": "Leverages native Kubernetes RBAC to isolate agent permissions. Sets hard caps on tokens and tool calls per execution.",
+        "de": "Leverages native Kubernetes RBAC to isolate agent permissions. Sets hard caps on tokens and tool calls per execution.",
+        "fr": "Leverages native Kubernetes RBAC to isolate agent permissions. Sets hard caps on tokens and tool calls per execution.",
+        "zh": "Leverages native Kubernetes RBAC to isolate agent permissions. Sets hard caps on tokens and tool calls per execution.",
+        "ja": "Leverages native Kubernetes RBAC to isolate agent permissions. Sets hard caps on tokens and tool calls per execution."
+      }
+    },
+    {
+      "id": "rag-memory",
+      "tier": "Team",
+      "title": {
+        "en": "RAG Episodic Memory",
+        "es": "RAG Episodic Memory",
+        "de": "RAG Episodic Memory",
+        "fr": "RAG Episodic Memory",
+        "zh": "RAG Episodic Memory",
+        "ja": "RAG Episodic Memory"
+      },
+      "desc": {
+        "en": "Uses pgvector to store incident resolutions. Upon a new alert, automatically retrieves the nearest historical incident in the same tenant to pre-load a dynamic runbook.",
+        "es": "Uses pgvector to store incident resolutions. Upon a new alert, automatically retrieves the nearest historical incident in the same tenant to pre-load a dynamic runbook.",
+        "de": "Uses pgvector to store incident resolutions. Upon a new alert, automatically retrieves the nearest historical incident in the same tenant to pre-load a dynamic runbook.",
+        "fr": "Uses pgvector to store incident resolutions. Upon a new alert, automatically retrieves the nearest historical incident in the same tenant to pre-load a dynamic runbook.",
+        "zh": "Uses pgvector to store incident resolutions. Upon a new alert, automatically retrieves the nearest historical incident in the same tenant to pre-load a dynamic runbook.",
+        "ja": "Uses pgvector to store incident resolutions. Upon a new alert, automatically retrieves the nearest historical incident in the same tenant to pre-load a dynamic runbook."
+      }
+    },
+    {
+      "id": "auto-quarantine",
+      "tier": "Team",
+      "title": {
+        "en": "Anomaly Auto-Quarantine",
+        "es": "Anomaly Auto-Quarantine",
+        "de": "Anomaly Auto-Quarantine",
+        "fr": "Anomaly Auto-Quarantine",
+        "zh": "Anomaly Auto-Quarantine",
+        "ja": "Anomaly Auto-Quarantine"
+      },
+      "desc": {
+        "en": "Detects anomalous agent behavior (e.g., massive fan-out, unapproved destructive K8s writes) and automatically pauses the investigation pending Human-In-The-Loop review.",
+        "es": "Detects anomalous agent behavior (e.g., massive fan-out, unapproved destructive K8s writes) and automatically pauses the investigation pending Human-In-The-Loop review.",
+        "de": "Detects anomalous agent behavior (e.g., massive fan-out, unapproved destructive K8s writes) and automatically pauses the investigation pending Human-In-The-Loop review.",
+        "fr": "Detects anomalous agent behavior (e.g., massive fan-out, unapproved destructive K8s writes) and automatically pauses the investigation pending Human-In-The-Loop review.",
+        "zh": "Detects anomalous agent behavior (e.g., massive fan-out, unapproved destructive K8s writes) and automatically pauses the investigation pending Human-In-The-Loop review.",
+        "ja": "Detects anomalous agent behavior (e.g., massive fan-out, unapproved destructive K8s writes) and automatically pauses the investigation pending Human-In-The-Loop review."
+      }
+    },
+    {
+      "id": "siem",
+      "tier": "Team",
+      "title": {
+        "en": "SIEM Audit Log Streaming",
+        "es": "SIEM Audit Log Streaming",
+        "de": "SIEM Audit Log Streaming",
+        "fr": "SIEM Audit Log Streaming",
+        "zh": "SIEM Audit Log Streaming",
+        "ja": "SIEM Audit Log Streaming"
+      },
+      "desc": {
+        "en": "Streams raw agent decision logs (tool payloads, token usage, containment triggers) directly to your preferred enterprise SIEM or log management platform for deep compliance auditing.",
+        "es": "Streams raw agent decision logs (tool payloads, token usage, containment triggers) directly to your preferred enterprise SIEM or log management platform for deep compliance auditing.",
+        "de": "Streams raw agent decision logs (tool payloads, token usage, containment triggers) directly to your preferred enterprise SIEM or log management platform for deep compliance auditing.",
+        "fr": "Streams raw agent decision logs (tool payloads, token usage, containment triggers) directly to your preferred enterprise SIEM or log management platform for deep compliance auditing.",
+        "zh": "Streams raw agent decision logs (tool payloads, token usage, containment triggers) directly to your preferred enterprise SIEM or log management platform for deep compliance auditing.",
+        "ja": "Streams raw agent decision logs (tool payloads, token usage, containment triggers) directly to your preferred enterprise SIEM or log management platform for deep compliance auditing."
+      }
+    },
+    {
+      "id": "mtls",
+      "tier": "Mission Critical",
+      "title": {
+        "en": "Zero-Trust Hardened (mTLS/SPIFFE)",
+        "es": "Zero-Trust Hardened (mTLS/SPIFFE)",
+        "de": "Zero-Trust Hardened (mTLS/SPIFFE)",
+        "fr": "Zero-Trust Hardened (mTLS/SPIFFE)",
+        "zh": "Zero-Trust Hardened (mTLS/SPIFFE)",
+        "ja": "Zero-Trust Hardened (mTLS/SPIFFE)"
+      },
+      "desc": {
+        "en": "Enforces strict cryptographic identity for every component via SPIFFE/SPIRE. All inter-service and agent-to-tool communication is strictly authenticated via mutual TLS.",
+        "es": "Enforces strict cryptographic identity for every component via SPIFFE/SPIRE. All inter-service and agent-to-tool communication is strictly authenticated via mutual TLS.",
+        "de": "Enforces strict cryptographic identity for every component via SPIFFE/SPIRE. All inter-service and agent-to-tool communication is strictly authenticated via mutual TLS.",
+        "fr": "Enforces strict cryptographic identity for every component via SPIFFE/SPIRE. All inter-service and agent-to-tool communication is strictly authenticated via mutual TLS.",
+        "zh": "Enforces strict cryptographic identity for every component via SPIFFE/SPIRE. All inter-service and agent-to-tool communication is strictly authenticated via mutual TLS.",
+        "ja": "Enforces strict cryptographic identity for every component via SPIFFE/SPIRE. All inter-service and agent-to-tool communication is strictly authenticated via mutual TLS."
+      }
+    },
+    {
+      "id": "airgapped",
+      "tier": "Mission Critical",
+      "title": {
+        "en": "Air-Gapped Installation",
+        "es": "Air-Gapped Installation",
+        "de": "Air-Gapped Installation",
+        "fr": "Air-Gapped Installation",
+        "zh": "Air-Gapped Installation",
+        "ja": "Air-Gapped Installation"
+      },
+      "desc": {
+        "en": "Provides bundled container images, offline chart dependencies, and specialized configuration for installation in completely disconnected, highly secure environments.",
+        "es": "Provides bundled container images, offline chart dependencies, and specialized configuration for installation in completely disconnected, highly secure environments.",
+        "de": "Provides bundled container images, offline chart dependencies, and specialized configuration for installation in completely disconnected, highly secure environments.",
+        "fr": "Provides bundled container images, offline chart dependencies, and specialized configuration for installation in completely disconnected, highly secure environments.",
+        "zh": "Provides bundled container images, offline chart dependencies, and specialized configuration for installation in completely disconnected, highly secure environments.",
+        "ja": "Provides bundled container images, offline chart dependencies, and specialized configuration for installation in completely disconnected, highly secure environments."
+      }
+    }
+  ]
+}

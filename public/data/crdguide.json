@@ -1,0 +1,437 @@
+{
+ "nav": {
+  "en": "CRDs & triggering",
+  "es": "CRDs y triggering",
+  "de": "CRDs & Auslösung",
+  "fr": "CRDs & déclenchement",
+  "zh": "CRD 与触发",
+  "ja": "CRD とトリガー"
+ },
+ "title": {
+  "en": "How the CRDs work — and how an investigation gets triggered",
+  "es": "Cómo funcionan las CRDs — y cómo se dispara una investigación",
+  "de": "Wie die CRDs funktionieren — und wie eine Untersuchung ausgelöst wird",
+  "fr": "Comment fonctionnent les CRDs — et comment une investigation est déclenchée",
+  "zh": "CRD 如何工作——以及调查如何被触发",
+  "ja": "CRD の仕組み — そして調査がどうトリガーされるか"
+ },
+ "sub": {
+  "en": "Everything is declared in a CRD; the CLI just talks to the same API. Each item below is tagged Proven (there is a test) or Pending (not built yet).",
+  "es": "Todo se declara en una CRD; el CLI solo habla con la misma API. Cada item de abajo está marcado Probado (hay un test) o Pendiente (todavía no construido).",
+  "de": "Alles wird in einem CRD deklariert; die CLI spricht mit derselben API. Jeder Punkt unten ist markiert: Fertig (es gibt einen Test) oder Ausstehend (noch nicht gebaut).",
+  "fr": "Tout est déclaré dans un CRD ; la CLI parle à la même API. Chaque élément ci-dessous est marqué Fait (il y a un test) ou En attente (pas encore construit).",
+  "zh": "一切都在 CRD 中声明；CLI 只是调用同一个 API。下面每一项都标注为“已完成”（有测试）或“待完成”（尚未构建）。",
+  "ja": "すべては CRD で宣言され、CLI は同じ API を呼ぶだけです。以下の各項目は「完了（テストあり）」または「未実装（まだ作っていない）」と明記します。"
+ },
+ "legend": {
+  "tested": {
+   "en": "Done — covered by a test / E2E",
+   "es": "Hecho — cubierto por un test / E2E",
+   "de": "Fertig — durch Test / E2E abgedeckt",
+   "fr": "Fait — couvert par un test / E2E",
+   "zh": "已完成——有测试 / 端到端覆盖",
+   "ja": "完了 — テスト / E2E でカバー"
+  },
+  "designed": {
+   "en": "Pending — not built yet",
+   "es": "Pendiente — todavía no construido",
+   "de": "Ausstehend — noch nicht gebaut",
+   "fr": "En attente — pas encore construit",
+   "zh": "待完成——尚未构建",
+   "ja": "未実装 — まだ作っていない"
+  }
+ },
+ "trigger": {
+  "title": {
+   "en": "Auto-triggering: from an alert to an investigation",
+   "es": "Auto-triggering: de una alerta a una investigación",
+   "de": "Auto-Auslösung: vom Alarm zur Untersuchung",
+   "fr": "Déclenchement auto : d'une alerte à une investigation",
+   "zh": "自动触发：从告警到调查",
+   "ja": "自動トリガー：アラートから調査まで"
+  },
+  "sub": {
+   "en": "No human in the loop to start it — a firing alert becomes a governed investigation. You can also start one by hand from the CLI.",
+   "es": "Sin humano para arrancarla — una alerta firing se vuelve una investigación gobernada. También podés arrancar una a mano desde el CLI.",
+   "de": "Kein Mensch zum Starten nötig — ein feuernder Alarm wird zur gesteuerten Untersuchung. Man kann eine auch manuell per CLI starten.",
+   "fr": "Aucun humain pour la lancer — une alerte active devient une investigation gouvernée. On peut aussi en lancer une à la main via la CLI.",
+   "zh": "无需人工启动——触发中的告警即成为受治理的调查。你也可以用 CLI 手动启动一个。",
+   "ja": "起動に人手は不要 — 発火中のアラートがガバナンス下の調査になります。CLI から手動で開始もできます。"
+  },
+  "steps": [
+   {
+    "kind": "source",
+    "proof": "tested",
+    "text": {
+     "en": "An alert fires",
+     "es": "Se dispara una alerta",
+     "de": "Ein Alarm feuert",
+     "fr": "Une alerte se déclenche",
+     "zh": "告警触发",
+     "ja": "アラートが発火"
+    },
+    "detail": {
+     "en": "Prometheus Alertmanager (proven), or CloudWatch / PagerDuty / Azure / Slack (built, unit-tested). A generic OTel/webhook source is pending (not built yet).",
+     "es": "Prometheus Alertmanager (probado), o CloudWatch / PagerDuty / Azure / Slack (construido, con tests unitarios). Una fuente genérica OTel/webhook está pendiente.",
+     "de": "Prometheus Alertmanager (bewiesen) oder CloudWatch / PagerDuty / Azure / Slack (gebaut, Unit-getestet). Eine generische OTel/Webhook-Quelle ist ausstehend.",
+     "fr": "Prometheus Alertmanager (prouvé), ou CloudWatch / PagerDuty / Azure / Slack (construit, testé unitairement). Une source OTel/webhook générique est en attente.",
+     "zh": "Prometheus Alertmanager（已验证），或 CloudWatch / PagerDuty / Azure / Slack（已构建，有单测）。通用 OTel/webhook 源为待完成。",
+     "ja": "Prometheus Alertmanager（実証済み）、または CloudWatch / PagerDuty / Azure / Slack（実装済み・ユニットテスト済み）。汎用の OTel/Webhook ソースは未実装。"
+    }
+   },
+   {
+    "kind": "webhook",
+    "proof": "tested",
+    "text": {
+     "en": "The webhook receiver ingests it",
+     "es": "El webhook receiver la ingesta",
+     "de": "Der Webhook-Receiver nimmt ihn auf",
+     "fr": "Le récepteur webhook l'ingère",
+     "zh": "Webhook 接收器摄入",
+     "ja": "Webhook レシーバーが取り込む"
+    },
+    "detail": {
+     "en": "POST /webhook/{alertmanager,cloudwatch,pagerduty,azure,slack}. It dedups repeats, drops noise, normalizes to Leloir's alert shape, and forwards only firing alerts.",
+     "es": "POST /webhook/{alertmanager,cloudwatch,pagerduty,azure,slack}. Deduplica repetidos, descarta ruido, normaliza al formato de alerta de Leloir y reenvía solo las firing.",
+     "de": "POST /webhook/{alertmanager,cloudwatch,pagerduty,azure,slack}. Dedupliziert, filtert Rauschen, normalisiert auf Leloirs Alarmformat und leitet nur feuernde weiter.",
+     "fr": "POST /webhook/{alertmanager,cloudwatch,pagerduty,azure,slack}. Déduplique, filtre le bruit, normalise au format d'alerte de Leloir et ne transmet que les actives.",
+     "zh": "POST /webhook/{alertmanager,cloudwatch,pagerduty,azure,slack}。去重、过滤噪声、规范化为 Leloir 告警格式，仅转发触发中的告警。",
+     "ja": "POST /webhook/{alertmanager,cloudwatch,pagerduty,azure,slack}。重複排除・ノイズ除去し、Leloir のアラート形式に正規化して、発火中のみ転送。"
+    }
+   },
+   {
+    "kind": "route",
+    "proof": "tested",
+    "text": {
+     "en": "An AlertRoute CRD matches it",
+     "es": "Una CRD AlertRoute la matchea",
+     "de": "Ein AlertRoute-CRD trifft zu",
+     "fr": "Un CRD AlertRoute correspond",
+     "zh": "AlertRoute CRD 匹配",
+     "ja": "AlertRoute CRD が一致"
+    },
+    "detail": {
+     "en": "The routing engine matches the alert labels + source against your AlertRoutes (highest priority wins) and picks the agent, budget, allowed MCP sources, skills and notify channels.",
+     "es": "El motor de routing matchea las labels + source de la alerta contra tus AlertRoutes (gana la de mayor prioridad) y elige el agente, budget, sources MCP permitidas, skills y canales de notify.",
+     "de": "Die Routing-Engine matcht Labels + Quelle gegen deine AlertRoutes (höchste Priorität gewinnt) und wählt Agent, Budget, erlaubte MCP-Quellen, Skills und Benachrichtigungskanäle.",
+     "fr": "Le moteur de routage compare labels + source aux AlertRoutes (la priorité la plus haute gagne) et choisit l'agent, le budget, les sources MCP autorisées, les skills et les canaux de notification.",
+     "zh": "路由引擎将告警标签 + 来源与你的 AlertRoute 匹配（最高优先级胜出），选择智能体、预算、允许的 MCP 源、技能与通知渠道。",
+     "ja": "ルーティングエンジンがラベル＋ソースを AlertRoute と照合し（最高優先度が勝ち）、エージェント・予算・許可 MCP ソース・スキル・通知先を選びます。"
+    }
+   },
+   {
+    "kind": "run",
+    "proof": "tested",
+    "text": {
+     "en": "The orchestrator runs it under governance",
+     "es": "El orchestrator la corre bajo governance",
+     "de": "Der Orchestrator führt sie gesteuert aus",
+     "fr": "L'orchestrateur l'exécute sous gouvernance",
+     "zh": "编排器在治理下执行",
+     "ja": "オーケストレーターがガバナンス下で実行"
+    },
+    "detail": {
+     "en": "Budget, HITL, A2A guards, audit and metrics apply for the whole investigation — exactly the flow shown in 'How it works' and the dashboards.",
+     "es": "Budget, HITL, guards A2A, audit y métricas aplican a toda la investigación — el mismo flujo de 'Cómo funciona' y los dashboards.",
+     "de": "Budget, HITL, A2A-Guards, Audit und Metriken gelten für die gesamte Untersuchung — genau der Ablauf aus 'So funktioniert es' und den Dashboards.",
+     "fr": "Budget, HITL, gardes A2A, audit et métriques s'appliquent à toute l'investigation — le flux de « Comment ça marche » et des dashboards.",
+     "zh": "预算、HITL、A2A 守卫、审计与指标贯穿整个调查——正是“工作原理”与仪表盘展示的流程。",
+     "ja": "予算・HITL・A2A ガード・監査・メトリクスが調査全体に適用 — 「仕組み」とダッシュボードで示した流れそのものです。"
+    }
+   }
+  ]
+ },
+ "cliNote": {
+  "en": "From the CLI, the same thing by hand: `leloir investigate --tenant team-payments --alert-file payment.json` — it hits the same /api/v1/alerts, gets routed by the same AlertRoute, and streams the investigation.",
+  "es": "Desde el CLI, lo mismo a mano: `leloir investigate --tenant team-payments --alert-file payment.json` — pega al mismo /api/v1/alerts, lo routea la misma AlertRoute y te streamea la investigación.",
+  "de": "Aus der CLI dasselbe manuell: `leloir investigate --tenant team-payments --alert-file payment.json` — trifft dasselbe /api/v1/alerts, wird von derselben AlertRoute geroutet und streamt die Untersuchung.",
+  "fr": "Depuis la CLI, la même chose à la main : `leloir investigate --tenant team-payments --alert-file payment.json` — atteint le même /api/v1/alerts, routé par le même AlertRoute, et diffuse l'investigation.",
+  "zh": "在 CLI 中手动做同样的事：`leloir investigate --tenant team-payments --alert-file payment.json`——调用同一个 /api/v1/alerts，由同一个 AlertRoute 路由，并流式返回调查。",
+  "ja": "CLI でも手動で同じことを：`leloir investigate --tenant team-payments --alert-file payment.json` — 同じ /api/v1/alerts を呼び、同じ AlertRoute でルーティングされ、調査をストリームします。"
+ },
+ "cliProof": "designed",
+ "crds": [
+  {
+   "kind": "Tenant",
+   "proof": "tested",
+   "reconciled": "authoritative",
+   "purpose": {
+    "en": "Defines a tenant and the one-or-more namespaces it owns — one Tenant CR lists all of them; you don't create one per namespace.",
+    "es": "Define un tenant y el/los namespaces que posee — un Tenant CR los lista a todos; no creás uno por namespace.",
+    "de": "Definiert einen Tenant und seine ein oder mehreren Namespaces — ein Tenant-CR listet alle; nicht einen pro Namespace.",
+    "fr": "Définit un tenant et le(s) namespace(s) qu'il possède — un seul CR Tenant les liste tous ; pas un par namespace.",
+    "zh": "定义租户及其拥有的一个或多个命名空间——一个 Tenant CR 列出全部；不是每个命名空间一个。",
+    "ja": "テナントと所有する 1 つ以上の namespace を定義 — 1 つの Tenant CR が全てを列挙。namespace ごとに作りません。"
+   },
+   "usage": {
+    "en": "The namespace→tenant index maps EACH listed namespace to this tenant (anti-spoof). All of them belong to the same tenant because they're in the same Tenant CR.",
+    "es": "El índice namespace→tenant mapea CADA namespace listado a este tenant (anti-spoof). Todos pertenecen al mismo tenant porque están en el mismo Tenant CR.",
+    "de": "Der Namespace→Tenant-Index bildet JEDEN gelisteten Namespace auf diesen Tenant ab (Anti-Spoof). Alle gehören zum selben Tenant, weil sie im selben Tenant-CR stehen.",
+    "fr": "L'index namespace→tenant associe CHAQUE namespace listé à ce tenant (anti-spoof). Tous appartiennent au même tenant car ils sont dans le même CR Tenant.",
+    "zh": "命名空间→租户索引将列出的每个命名空间映射到该租户（防伪造）。它们同属一个租户，因为在同一个 Tenant CR 中。",
+    "ja": "namespace→tenant インデックスが列挙された各 namespace をこのテナントに対応（なりすまし防止）。同じ Tenant CR にあるので全て同一テナント。"
+   },
+   "yaml": "apiVersion: leloir.dev/v1alpha1\nkind: Tenant\nmetadata: { name: team-alpha }\nspec:\n  namespaces: [team-alpha, team-alpha-staging]   # ONE Tenant lists ALL its namespaces\n  displayName: \"Team Alpha\"\n  rbac:\n    adminGroups: [\"sre-leads\"]\n    viewerGroups: [\"developers\"]"
+  },
+  {
+   "kind": "AlertRoute",
+   "proof": "tested",
+   "reconciled": "live",
+   "purpose": {
+    "en": "The auto-investigation rule: which alerts trigger which agent, with which budget, tools, skills and notifications.",
+    "es": "La regla de auto-investigación: qué alertas disparan qué agente, con qué budget, tools, skills y notificaciones.",
+    "de": "Die Auto-Untersuchungsregel: welche Alarme welchen Agenten auslösen, mit welchem Budget, Tools, Skills und Benachrichtigungen.",
+    "fr": "La règle d'auto-investigation : quelles alertes déclenchent quel agent, avec quel budget, outils, skills et notifications.",
+    "zh": "自动调查规则：哪些告警触发哪个智能体，配什么预算、工具、技能与通知。",
+    "ja": "自動調査ルール：どのアラートがどのエージェントを、どの予算・ツール・スキル・通知で起動するか。"
+   },
+   "usage": {
+    "en": "Match by labels + source; highest priority wins. This is 'the watcher / auto-investigation' the flow above uses.",
+    "es": "Matchea por labels + source; gana la de mayor prioridad. Es 'el watcher / auto-investigación' que usa el flujo de arriba.",
+    "de": "Match nach Labels + Quelle; höchste Priorität gewinnt. Das ist der 'Watcher / Auto-Untersuchung' des obigen Flusses.",
+    "fr": "Match par labels + source ; priorité la plus haute gagne. C'est « le watcher / auto-investigation » du flux ci-dessus.",
+    "zh": "按标签 + 来源匹配；最高优先级胜出。即上文流程使用的“watcher / 自动调查”。",
+    "ja": "ラベル＋ソースで一致、最高優先度が勝ち。上の流れの「ウォッチャー / 自動調査」です。"
+   },
+   "yaml": "apiVersion: leloir.dev/v1alpha1\nkind: AlertRoute\nmetadata: { name: critical-db-incidents, namespace: team-alpha }\nspec:\n  enabled: true\n  priority: 200\n  match:\n    labels: { severity: critical, type: database }\n    sources: [alertmanager]        # OTel/generic = designed\n  agent: holmes-prod\n  allowedSources: [prometheus-mcp, kubernetes-mcp, postgres-mcp]\n  skills: [investigate-postgres-incident]\n  notify: [teams-sre]\n  budget: { maxUSD: 3.0, maxTokens: 60000, maxToolCalls: 30 }\n  timeouts: { investigationMinutes: 10 }"
+  },
+  {
+   "kind": "AgentRegistration",
+   "proof": "tested",
+   "reconciled": "a2a-policy",
+   "purpose": {
+    "en": "Registers an agent (BYO) and its A2A policy: which other agents it may invoke.",
+    "es": "Registra un agente (BYO) y su política A2A: a qué otros agentes puede invocar.",
+    "de": "Registriert einen Agenten (BYO) und seine A2A-Richtlinie: welche anderen er aufrufen darf.",
+    "fr": "Enregistre un agent (BYO) et sa politique A2A : quels autres il peut invoquer.",
+    "zh": "注册智能体（自带）及其 A2A 策略：可调用哪些其他智能体。",
+    "ja": "エージェント（持ち込み）と A2A ポリシーを登録：どのエージェントを呼べるか。"
+   },
+   "usage": {
+    "en": "canInvoke / cannotInvoke drive layer 1 of the A2A defense — proven in the scenario E2E (deployer blocked).",
+    "es": "canInvoke / cannotInvoke manejan la capa 1 de la defensa A2A — probado en el E2E de escenario (deployer bloqueado).",
+    "de": "canInvoke / cannotInvoke steuern Schicht 1 der A2A-Verteidigung — im Szenario-E2E bewiesen (Deployer blockiert).",
+    "fr": "canInvoke / cannotInvoke pilotent la couche 1 de la défense A2A — prouvé dans l'E2E scénario (deployer bloqué).",
+    "zh": "canInvoke / cannotInvoke 驱动 A2A 防御第一层——已在场景端到端验证（deployer 被阻止）。",
+    "ja": "canInvoke / cannotInvoke が A2A 防御の第 1 層 — シナリオ E2E で実証（deployer をブロック）。"
+   },
+   "yaml": "apiVersion: leloir.dev/v1alpha1\nkind: AgentRegistration\nmetadata: { name: holmes-prod, namespace: team-alpha }\nspec:\n  adapter: { image: ghcr.io/leloir/adapter-holmesgpt:v1.0.0 }\n  modelConfigRef: azure-openai-corp\n  canInvoke: [\"dba-specialist\"]\n  cannotInvoke: [\"prod-deployer\"]\n  supportsBeingInvoked: true"
+  },
+  {
+   "kind": "TenantBudget",
+   "proof": "tested",
+   "reconciled": "config",
+   "purpose": {
+    "en": "Caps spend: monthly + per-investigation tokens/USD/tool-calls, plus A2A depth & fan-out limits.",
+    "es": "Limita el gasto: mensual + por-investigación en tokens/USD/tool-calls, más límites de depth y fan-out A2A.",
+    "de": "Begrenzt Ausgaben: monatlich + pro Untersuchung (Tokens/USD/Tool-Calls) plus A2A-Tiefe & Fan-out.",
+    "fr": "Plafonne la dépense : mensuel + par investigation (tokens/USD/appels) plus limites de profondeur et fan-out A2A.",
+    "zh": "限制支出：每月 + 每次调查的 token/美元/工具调用，以及 A2A 深度与扇出限制。",
+    "ja": "支出を制限：月次＋調査ごとのトークン/USD/ツール呼び出し、加えて A2A 深さとファンアウト。"
+   },
+   "usage": {
+    "en": "The orchestrator stops at the cap (budget_exhausted). Warning at 80%. Proven in the budget tests.",
+    "es": "El orchestrator para en el tope (budget_exhausted). Aviso al 80%. Probado en los tests de budget.",
+    "de": "Der Orchestrator stoppt am Limit (budget_exhausted). Warnung bei 80%. In den Budget-Tests bewiesen.",
+    "fr": "L'orchestrateur s'arrête au plafond (budget_exhausted). Alerte à 80%. Prouvé dans les tests de budget.",
+    "zh": "编排器在上限处停止（budget_exhausted），80% 告警。已在预算测试中验证。",
+    "ja": "オーケストレーターは上限で停止（budget_exhausted）、80% で警告。予算テストで実証。"
+   },
+   "yaml": "apiVersion: leloir.dev/v1alpha1\nkind: TenantBudget\nmetadata: { name: team-alpha-budget, namespace: team-alpha }\nspec:\n  monthly: { maxUSD: 50.0, alertAtPercent: 80, hardLimitAction: reject }\n  perInvestigation: { maxUSD: 5.0, maxTokens: 100000, maxToolCalls: 50 }\n  a2a: { maxInvocationDepth: 5, maxFanOutPerAgent: 3 }"
+  },
+  {
+   "kind": "MCPServer",
+   "proof": "tested",
+   "reconciled": "syncing",
+   "purpose": {
+    "en": "Declares a tool source for a tenant: transport, endpoint, tool allowlist and which tools need approval.",
+    "es": "Declara una source de tools para un tenant: transport, endpoint, allowlist de tools y cuáles requieren aprobación.",
+    "de": "Deklariert eine Tool-Quelle für einen Tenant: Transport, Endpoint, Tool-Allowlist und welche Freigabe brauchen.",
+    "fr": "Déclare une source d'outils pour un tenant : transport, endpoint, allowlist d'outils et lesquels requièrent approbation.",
+    "zh": "为租户声明工具源：传输、端点、工具允许列表以及哪些需审批。",
+    "ja": "テナントのツールソースを宣言：トランスポート・エンドポイント・ツール許可リスト・承認要否。"
+   },
+   "usage": {
+    "en": "The gateway serves only a tenant's own servers — proven: the fleet dashboard shows cross-tenant/out-of-allowlist calls denied.",
+    "es": "El gateway sirve solo los servers del propio tenant — probado: el fleet dashboard muestra las llamadas cross-tenant/fuera de allowlist denegadas.",
+    "de": "Das Gateway bedient nur die eigenen Server eines Tenants — bewiesen: das Fleet-Dashboard zeigt Cross-Tenant-/Allowlist-Aufrufe als verweigert.",
+    "fr": "La passerelle ne sert que les serveurs du tenant — prouvé : le fleet dashboard montre les appels cross-tenant/hors allowlist refusés.",
+    "zh": "网关只服务租户自己的服务器——已验证：舰队仪表盘显示跨租户/超出允许列表的调用被拒。",
+    "ja": "ゲートウェイはテナント自身のサーバーのみ提供 — 実証：フリートダッシュボードでクロステナント/許可外の呼び出しが拒否と表示。"
+   },
+   "yaml": "apiVersion: leloir.dev/v1alpha1\nkind: MCPServer\nmetadata: { name: kubernetes-mcp, namespace: team-alpha }\nspec:\n  visibility: namespace\n  transport: { type: streamable-http, endpoint: http://kubernetes-mcp.tools.svc:8080 }\n  policies:\n    allowedTools: [\"kubernetes.get_pod\", \"kubernetes.get_logs\", \"kubernetes.get_events\"]\n    requireApproval: [\"kubernetes.exec\", \"kubernetes.delete_pod\"]\n    rateLimit: \"100/min\""
+  },
+  {
+   "kind": "ApprovalPolicy",
+   "proof": "tested",
+   "reconciled": "config",
+   "purpose": {
+    "en": "HITL: which tool actions and which A2A calls need a human to approve before they run.",
+    "es": "HITL: qué acciones de tool y qué llamadas A2A necesitan que un humano apruebe antes de correr.",
+    "de": "HITL: welche Tool-Aktionen und A2A-Aufrufe eine menschliche Freigabe brauchen.",
+    "fr": "HITL : quelles actions d'outil et quels appels A2A nécessitent une approbation humaine.",
+    "zh": "HITL：哪些工具动作与 A2A 调用需人工批准后才执行。",
+    "ja": "HITL：どのツール操作と A2A 呼び出しが実行前に人の承認を要するか。"
+   },
+   "usage": {
+    "en": "Auto-approve read tools; require approval (with timeout + channel) for writes/exec. HITL logic is tested.",
+    "es": "Auto-aprueba tools de lectura; pide aprobación (con timeout + canal) para escrituras/exec. La lógica HITL está testeada.",
+    "de": "Lese-Tools automatisch; Freigabe (mit Timeout + Kanal) für Schreib-/Exec-Aktionen. HITL-Logik ist getestet.",
+    "fr": "Auto-approuve les outils de lecture ; approbation (timeout + canal) pour écritures/exec. La logique HITL est testée.",
+    "zh": "读工具自动批准；写/exec 需审批（含超时 + 渠道）。HITL 逻辑已测试。",
+    "ja": "読み取りツールは自動承認、書き込み/exec は承認要（タイムアウト＋通知先）。HITL ロジックはテスト済み。"
+   },
+   "yaml": "apiVersion: leloir.dev/v1alpha1\nkind: ApprovalPolicy\nmetadata: { name: db-write-protection, namespace: team-alpha }\nspec:\n  tools:\n    autoApprove: [{ tools: [\"kubernetes.get_*\", \"prometheus.*\"], callers: [\"*\"] }]\n    requireApproval: [{ tools: [\"kubernetes.exec\", \"postgres.execute\"], channel: teams-sre, timeoutMinutes: 30 }]"
+  },
+  {
+   "kind": "SkillSource",
+   "proof": "tested",
+   "reconciled": "live",
+   "purpose": {
+    "en": "Where runbooks/skills come from (inline, git, or an MCP), pre-loaded into an investigation.",
+    "es": "De dónde vienen los runbooks/skills (inline, git o un MCP), pre-cargados en una investigación.",
+    "de": "Woher Runbooks/Skills kommen (inline, Git oder MCP), in eine Untersuchung vorgeladen.",
+    "fr": "D'où viennent les runbooks/skills (inline, git ou MCP), préchargés dans une investigation.",
+    "zh": "runbook/技能的来源（内联、git 或 MCP），预加载到调查中。",
+    "ja": "runbook/スキルの出所（インライン・git・MCP）を調査に事前ロード。"
+   },
+   "usage": {
+    "en": "Supports three modes: inline (direct text), configmap (dynamically mounted from Kubernetes), and git (cloned from public or private repositories). Validates Cosign signatures for git skills to prevent supply-chain attacks.",
+    "es": "Soporta tres modos: inline (texto directo), configmap (montado dinámicamente de Kubernetes) y git (repositorios públicos o privados). Valida firmas Cosign para skills de git previniendo ataques de cadena de suministro.",
+    "de": "Unterstützt drei Modi: inline (direkter Text), configmap (dynamisch aus Kubernetes eingebunden) und git (öffentliche oder private Repositories). Validiert Cosign-Signaturen für Git-Skills.",
+    "fr": "Supporte trois modes : inline (texte direct), configmap (monté dynamiquement) et git (dépôts publics ou privés). Valide les signatures Cosign pour les skills git afin de prévenir les attaques de la chaîne d'approvisionnement.",
+    "zh": "支持三种模式：inline（直接文本）、configmap（从 Kubernetes 动态挂载）和 git（从公共或私有仓库克隆）。验证 git 技能的 Cosign 签名以防止供应链攻击。",
+    "ja": "3つのモードをサポート：inline（直接テキスト）、configmap（Kubernetesから動的マウント）、git（パブリック・プライベートリポジトリ）。gitスキルのCosign署名を検証し、サプライチェーン攻撃を防止します。"
+   },
+   "yaml": "apiVersion: leloir.dev/v1alpha1\nkind: SkillSource\nmetadata: { name: contained-scope, namespace: demo-mode2 }\nspec:\n  type: inline             # inline | configmap (git+cosign: declared, pending)\n  inline:\n    - name: contained-scope\n      content: |\n        # Your access scope: namespace demo-mode2 ONLY (read-only) ...\n---\napiVersion: leloir.dev/v1alpha1\nkind: SkillSource\nmetadata: { name: mode2-runbooks, namespace: demo-mode2 }\nspec:\n  type: configmap          # each ConfigMap data key = one skill\n  configmap: { name: mode2-runbooks }\n---\n# Wired on the AlertRoute — resolved from the ROUTE's namespace (tenant boundary):\n#   spec.skills: [contained-scope, mode2-runbooks]\n---\napiVersion: leloir.dev/v1alpha1\nkind: SkillSource\nmetadata: { name: git-runbooks, namespace: demo-mode2 }\nspec:\n  type: git                # public HTTPS; signing/auth declared → FAIL-CLOSED\n  git: { url: https://github.com/villadalmine/leloir, branch: main, path: deploy/demo/skills }"
+  },
+  {
+   "kind": "NotificationChannel",
+   "proof": "designed",
+   "reconciled": "config",
+   "purpose": {
+    "en": "[Q4 ROADMAP] Where results go: Teams/Slack/webhook, and what to include (root cause, cost, evidence).",
+    "es": "[Q4 ROADMAP] A dónde van los resultados: Teams/Slack/webhook, y qué incluir (causa raíz, costo, evidencia).",
+    "de": "[Q4 ROADMAP] Wohin Ergebnisse gehen: Teams/Slack/Webhook, und was enthalten sein soll (Ursache, Kosten, Belege).",
+    "fr": "[Q4 ROADMAP] Où vont les résultats : Teams/Slack/webhook, et quoi inclure (cause racine, coût, preuves).",
+    "zh": "[Q4 ROADMAP] 结果去向：Teams/Slack/webhook，以及包含什么（根因、成本、证据）。",
+    "ja": "[Q4 ROADMAP] 結果の送信先：Teams/Slack/Webhook、含める内容（根本原因・コスト・証拠）。"
+   },
+   "usage": {
+    "en": "Currently in design for Q4. Will allow tenants to define declarative notification sinks (Slack, Teams, PagerDuty) linked from AlertRoute or ApprovalPolicy.",
+    "es": "Actualmente en diseño para Q4. Permitirá a los tenants definir destinos de notificación declarativos (Slack, Teams, PagerDuty) vinculados desde AlertRoute o ApprovalPolicy.",
+    "de": "Derzeit im Design für Q4. Ermöglicht Tenants die Definition deklarativer Benachrichtigungsziele.",
+    "fr": "Actuellement en conception pour le T4. Permettra aux tenants de définir des destinations de notification déclaratives.",
+    "zh": "目前正在 Q4 的设计中。将允许租户定义从 AlertRoute 或 ApprovalPolicy 链接的声明式通知接收端。",
+    "ja": "現在Q4向けに設計中。テナントが宣言的に通知先を定義できるようにします。"
+   },
+   "yaml": "apiVersion: leloir.dev/v1alpha1\nkind: NotificationChannel\nmetadata: { name: teams-sre, namespace: team-alpha }\nspec:\n  type: teams\n  teams: { webhookURLSecretRef: { name: teams-webhook-secret, key: url } }\n  notification: { includeRootCause: true, includeCost: true, onOutcomes: [success, error] }"
+  }
+ ],
+ "metering": {
+  "title": {
+   "en": "Cost & metering — per tenant / app / model / token type",
+   "es": "Costo y metering — por tenant / app / modelo / tipo de token",
+   "de": "Kosten & Metering — pro Tenant / App / Modell / Token-Typ",
+   "fr": "Coût & métrage — par tenant / app / modèle / type de token",
+   "zh": "成本与计量——按 租户 / 应用 / 模型 / token 类型",
+   "ja": "コストと計測 — テナント / アプリ / モデル / トークン種別ごと"
+  },
+  "proof": "tested",
+  "sub": {
+   "en": "Built and proven with real OpenRouter cost (make demo-real-api). Per tenant / model / token type — the shape the platform team needs to bill shared usage.",
+   "es": "Construido y probado con costo real de OpenRouter (make demo-real-api). Por tenant / modelo / tipo de token — la forma que plataforma necesita para cobrar el uso compartido.",
+   "de": "Gebaut und mit echten OpenRouter-Kosten bewiesen (make demo-real-api). Pro Tenant / Modell / Token-Typ — die Form, die das Plattform-Team zur Abrechnung braucht.",
+   "fr": "Construit et prouvé avec un coût OpenRouter réel (make demo-real-api). Par tenant / modèle / type de token — la forme dont la plateforme a besoin pour facturer.",
+   "zh": "已构建并以真实 OpenRouter 成本验证（make demo-real-api）。按 租户 / 模型 / token 类型——平台团队计费共享用量所需的形态。",
+   "ja": "実装済みで、実際の OpenRouter コストで実証（make demo-real-api）。テナント / モデル / トークン種別ごと — 共有利用を課金するために必要な形。"
+  },
+  "model": {
+   "en": "If a tenant brings its own LLM key/endpoint (OpenRouter, vLLM…), spend is theirs and Leloir just records it. If they use the shared cluster endpoint (Envoy AI Gateway), the platform team must attribute and bill what they used.",
+   "es": "Si un tenant trae su propia key/endpoint de LLM (OpenRouter, vLLM…), el gasto es suyo y Leloir solo lo registra. Si usan el endpoint compartido del cluster (Envoy AI Gateway), plataforma tiene que atribuir y cobrar lo que usaron.",
+   "de": "Bringt ein Tenant eigenen LLM-Key/Endpoint (OpenRouter, vLLM…), sind die Kosten seine, Leloir erfasst nur. Nutzen sie den geteilten Cluster-Endpoint (Envoy AI Gateway), muss das Plattform-Team zuordnen und abrechnen.",
+   "fr": "Si un tenant apporte sa clé/endpoint LLM (OpenRouter, vLLM…), la dépense est la sienne et Leloir l'enregistre. S'ils utilisent l'endpoint partagé (Envoy AI Gateway), la plateforme doit attribuer et facturer.",
+   "zh": "若租户自带 LLM 密钥/端点（OpenRouter、vLLM…），支出归其所有，Leloir 仅记录。若使用集群共享端点（Envoy AI Gateway），平台团队须归属并计费其用量。",
+   "ja": "テナントが自前の LLM キー/エンドポイント（OpenRouter・vLLM…）を持つなら費用は本人負担で Leloir は記録のみ。共有のクラスタエンドポイント（Envoy AI Gateway）を使う場合、プラットフォームチームが利用を按分し課金します。"
+  },
+  "dims": {
+   "en": "The view the platform team needs: tenant → app/agent → model → token type, e.g. ns-cliente / holmes / openrouter:gpt-4o-mini / input·cache·output.",
+   "es": "La vista que necesita plataforma: tenant → app/agente → modelo → tipo de token, ej. ns-cliente / holmes / openrouter:gpt-4o-mini / input·cache·output.",
+   "de": "Die Sicht, die das Plattform-Team braucht: Tenant → App/Agent → Modell → Token-Typ, z. B. ns-cliente / holmes / openrouter:gpt-4o-mini / input·cache·output.",
+   "fr": "La vue dont la plateforme a besoin : tenant → app/agent → modèle → type de token, ex. ns-cliente / holmes / openrouter:gpt-4o-mini / input·cache·output.",
+   "zh": "平台团队所需视图：租户 → 应用/智能体 → 模型 → token 类型，例如 ns-cliente / holmes / openrouter:gpt-4o-mini / 输入·缓存·输出。",
+   "ja": "プラットフォームチームが必要とするビュー：テナント → アプリ/エージェント → モデル → トークン種別、例：ns-cliente / holmes / openrouter:gpt-4o-mini / 入力·キャッシュ·出力。"
+  },
+  "metric": "leloir_llm_tokens_total{tenant, app, model, provider, token_type} counter   # token_type: input|cache_read|cache_write|output",
+  "rows": [
+   {
+    "tenant": "ns-cliente-a",
+    "app": "holmes",
+    "model": "openrouter:gpt-4o-mini",
+    "endpoint": "shared",
+    "type": "input",
+    "note": {
+     "en": "billable to tenant",
+     "es": "facturable al tenant",
+     "de": "dem Tenant berechenbar",
+     "fr": "facturable au tenant",
+     "zh": "向租户计费",
+     "ja": "テナントへ課金"
+    }
+   },
+   {
+    "tenant": "ns-cliente-a",
+    "app": "holmes",
+    "model": "openrouter:gpt-4o-mini",
+    "endpoint": "shared",
+    "type": "output",
+    "note": {
+     "en": "billable to tenant",
+     "es": "facturable al tenant",
+     "de": "dem Tenant berechenbar",
+     "fr": "facturable au tenant",
+     "zh": "向租户计费",
+     "ja": "テナントへ課金"
+    }
+   },
+   {
+    "tenant": "ns-cliente-b",
+    "app": "claude-code",
+    "model": "own-key:sonnet",
+    "endpoint": "own-key",
+    "type": "input",
+    "note": {
+     "en": "tenant pays their provider directly",
+     "es": "el tenant paga a su proveedor directo",
+     "de": "Tenant zahlt direkt beim Anbieter",
+     "fr": "le tenant paie son fournisseur directement",
+     "zh": "租户直接向其供应商付费",
+     "ja": "テナントが自社プロバイダーに直接支払い"
+    }
+   },
+   {
+    "tenant": "ns-cliente-a",
+    "app": "holmes",
+    "model": "openrouter:gpt-4o-mini",
+    "endpoint": "shared",
+    "type": "cache_read",
+    "note": {
+     "en": "cheaper — tracked separately",
+     "es": "más barato — se trackea aparte",
+     "de": "günstiger — separat erfasst",
+     "fr": "moins cher — suivi séparément",
+     "zh": "更便宜——单独追踪",
+     "ja": "安価 — 別途トラッキング"
+    }
+   }
+  ],
+  "crdNote": {
+   "en": "Real today: per-LLM token cap (AgentRegistration.modelConfig.maxTokensPerCall), per-tenant/model/type cost from the orchestrator, AND a native LLM gateway (leloir-llm-gateway) that meters any OpenAI-compatible traffic per tenant/model/type from the X-Leloir-Tenant-ID header — leloir_llm_gateway_tokens_total{tenant,model,type}, proven with real OpenRouter calls. Pending: swap that gateway for Envoy AI Gateway to also enforce per-tenant token rate-limits, multi-provider routing and fallback at the shared endpoint.",
+   "es": "Real hoy: tope de tokens por LLM (AgentRegistration.modelConfig.maxTokensPerCall), costo por tenant/modelo/tipo desde el orchestrator, Y un LLM gateway nativo (leloir-llm-gateway) que mide cualquier tráfico OpenAI-compatible por tenant/modelo/tipo desde el header X-Leloir-Tenant-ID — leloir_llm_gateway_tokens_total{tenant,model,type}, probado con llamadas reales a OpenRouter. Pendiente: cambiar ese gateway por Envoy AI Gateway para además aplicar rate-limits de tokens por tenant, routing multi-provider y fallback en el endpoint compartido.",
+   "de": "Heute real: Token-Limit pro LLM, Kosten pro Tenant/Modell/Typ aus dem Orchestrator UND ein natives LLM-Gateway (leloir-llm-gateway), das jeden OpenAI-kompatiblen Traffic pro Tenant/Modell/Typ über den X-Leloir-Tenant-ID-Header misst — mit echten OpenRouter-Aufrufen bewiesen. Ausstehend: dieses Gateway durch Envoy AI Gateway ersetzen, um auch Token-Rate-Limits pro Tenant, Multi-Provider-Routing und Fallback am geteilten Endpoint durchzusetzen.",
+   "fr": "Réel aujourd'hui : plafond de tokens par LLM, coût par tenant/modèle/type depuis l'orchestrateur, ET une passerelle LLM native (leloir-llm-gateway) qui mesure tout trafic OpenAI-compatible par tenant/modèle/type via l'en-tête X-Leloir-Tenant-ID — prouvé avec de vrais appels OpenRouter. En attente : remplacer cette passerelle par Envoy AI Gateway pour aussi appliquer des rate-limits de tokens par tenant, le routage multi-fournisseur et le fallback à l'endpoint partagé.",
+   "zh": "今日已实现：每个 LLM 的 token 上限、来自编排器的按租户/模型/类型成本，以及一个原生 LLM 网关（leloir-llm-gateway），通过 X-Leloir-Tenant-ID 头对任何 OpenAI 兼容流量按租户/模型/类型计量——已用真实 OpenRouter 调用验证。待完成：将该网关替换为 Envoy AI Gateway，以在共享端点同时实施按租户 token 限流、多提供商路由与回退。",
+   "ja": "本日時点で実装済み：LLM ごとのトークン上限、オーケストレーター由来のテナント/モデル/種別コスト、そして X-Leloir-Tenant-ID ヘッダーから OpenAI 互換トラフィックをテナント/モデル/種別で計測するネイティブ LLM ゲートウェイ（leloir-llm-gateway）— 実 OpenRouter 呼び出しで実証。未実装：このゲートウェイを Envoy AI Gateway に置き換え、共有エンドポイントでテナント別トークンのレート制限・マルチプロバイダールーティング・フォールバックも強制する。"
+  }
+ }
+}

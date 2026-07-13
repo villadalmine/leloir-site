@@ -1,0 +1,29 @@
+flowchart TB
+  AM["Alertmanager (alert fires)"]
+  USER["operator / UI"]
+
+  subgraph L1["① INGRESS — north-south · traffic INTO the cluster · the FRONT DOOR"]
+    CG["Cilium Gateway  (Gateway API: GatewayClass + HTTPRoute)<br/>routes leloir.cluster.home + the /webhook path<br/>topology: one shared Gateway + HTTPRoute-per-tenant"]
+  end
+  AM --> CG
+  USER --> CG
+
+  CG --> CP["Leloir control plane<br/>route → agent · budget · HITL · A2A guards · AUDIT hash-chain<br/>(NO gateway required for this — this is the governance core)"]
+  CP --> AG["the tenant's AGENT<br/>HolmesGPT (BYO black-box)  or  an SDK-native adapter"]
+
+  subgraph L2["② LLM EGRESS — east-west · the agent's LLM calls go OUT · the METER"]
+    LG["Leloir LLM gateway  ─or─  Envoy AI Gateway<br/>meter tokens per tenant · inject the PLATFORM's key · rate-limit<br/>needed ONLY for the RENTED model (or authoritative metering)"]
+  end
+  AG -->|"RENTED: only X-Leloir-Tenant-ID, no key"| LG
+  LG --> LLM["LLM provider<br/>Azure OpenAI / vLLM / OpenRouter / litellm"]
+  AG -.->|"OWN-KEY: agent goes DIRECT with its own key — gateway skipped"| LLM
+
+  subgraph L3["③ MONETIZATION — optional · the CASH REGISTER"]
+    APIM["API gateway (WSO2 / APIM)<br/>per-tenant API tokens · quota plans · invoices · dev portal"]
+  end
+  APIM -.->|"issues per-tenant tokens, sits in front of"| LG
+
+  classDef core fill:#1a7f64,stroke:#0d3,color:#fff;
+  classDef meter fill:#7c4dff,stroke:#b39ddb,color:#fff;
+  class CP core;
+  class LG meter;

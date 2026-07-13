@@ -1,0 +1,31 @@
+flowchart TB
+  AM["alert fires"] --> R
+
+  subgraph LEL["LELOIR — incident-response control plane · THE DIFFERENTIATION (build this)"]
+    direction TB
+    R["alert → agent ROUTING (AlertRoute)"]
+    AGENT["the Leloir Agent (Mode 1) — agentic LLM↔tools loop"]
+    GOV["budget 4-layer · HITL approval of actions · A2A guards (depth/fanout) ·<br/>closed-loop remediation · INVESTIGATION audit hash-chain · Tenant = namespace (authoritative)"]
+    R --> AGENT --> GOV
+  end
+
+  subgraph OBOT["OBOT — the MCP tool layer · DON'T REINVENT (adopt this)"]
+    direction TB
+    GWO["MCP Gateway + Server Shim<br/>per-tool authz · OAuth RFC 8693 token-exchange · credential isolation · tool-call audit"]
+    REG["MCP Registry — catalog · GitOps (your git repo) · per-group visibility · official MCP Registry spec"]
+    HOST["MCP Hosting — run / version MCP servers (Docker · K8s)"]
+    GWO --> HOST
+    REG -.->|which servers exist| GWO
+  end
+
+  AGENT -->|"tool calls + tenant identity"| GWO
+
+  MAP["INTEGRATION SEAM (design point):<br/>map Leloir tenant (namespace) → one Obot registry + access group per tenant.<br/>Obot enforces per-tool allowlist/creds/audit; Leloir enforces budget/HITL/A2A on top."]
+  LEL -.- MAP -.- OBOT
+
+  GAP["Obot has NO routing · NO budget · NO HITL · NO A2A · NO closed-loop · NO investigation chain<br/>→ that gap is exactly why Leloir exists (and why it should NOT rebuild Obot's MCP layer)"]
+
+  classDef lel fill:#1a7f64,stroke:#0d3,color:#fff;
+  classDef obot fill:#26456e,stroke:#5b8fd6,color:#fff;
+  classDef note fill:transparent,stroke:#888,color:#aaa;
+  class R,AGENT,GOV lel; class GWO,REG,HOST obot; class MAP,GAP note;

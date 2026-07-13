@@ -1,0 +1,18 @@
+flowchart TB
+  subgraph A["Model A — own-key (the tenant brings their own key)"]
+    direction LR
+    AgA["tenant's agent<br/>(e.g. HolmesGPT)"] -->|"Authorization: TENANT's key"| ProvA["their provider<br/>OpenRouter / OpenAI / …"]
+    AgA -.->|"events: thought, tool, llm.call,<br/>answer (self-reported, AUDITED)"| LelA["Leloir control plane<br/>records usage for visibility"]
+    NoteA["The tenant PAYS THEIR PROVIDER directly.<br/>No gateway needed to bill.<br/>Leloir gives you the audit + the 'what it did'."]
+  end
+  subgraph B["Model B — rented (the tenant uses the PLATFORM's LLM)"]
+    direction LR
+    AgB["tenant's agent"] -->|"X-Leloir-Tenant-ID<br/>NO provider key"| GW["Leloir LLM gateway<br/>(or Envoy AI Gateway)<br/>holds the PLATFORM's key"]
+    GW -->|"injects the platform key"| ProvB["the PLATFORM's LLM<br/>Azure OpenAI / vLLM / via WSO2"]
+    GW -->|"meters per tenant + model"| Bill["leloir_llm_gateway_*<br/>tenant × model × tokens<br/>→ the PLATFORM BILLS the tenant"]
+    NoteB["The tenant NEVER sees the key.<br/>THIS is the only case where the<br/>gateway is needed — to rent + bill."]
+  end
+  classDef k fill:#1a7f64,stroke:#0d3,color:#fff;
+  class GW,Bill k;
+  classDef note fill:transparent,stroke:#888,color:#888,font-size:11px;
+  class NoteA,NoteB note;

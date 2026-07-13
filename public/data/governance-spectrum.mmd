@@ -1,0 +1,28 @@
+flowchart LR
+  subgraph A["A · BYO black-box, self-deployed, OWN creds  (HolmesGPT today)"]
+    direction TB
+    a1["Leloir GOVERNS:<br/>routing · audit of what it REPORTS · HITL if the adapter pauses · budget IF its LLM is routed"]
+    a2["Leloir does NOT control:<br/>its RBAC — could be cluster-admin and you'd never know · its tools · its tokens"]
+    a3["Verdict: WEAK — observability + routing.<br/>The scorecard SAYS so: off-radar + drift, and it alerts."]
+    a1 --- a2 --- a3
+  end
+  subgraph B["B · CONTAINED black-box — you deploy it inside YOUR perimeter"]
+    direction TB
+    b1["+ platform-provisioned ServiceAccount<br/>→ RBAC blast-radius bounded to the tenant ns (foreign ns = forbidden)"]
+    b2["+ NetworkPolicy egress-lock<br/>→ its LLM MUST go through your gateway: metered · budgeted · killable"]
+    b3["+ K8s API only via the MCP gateway (sandbox)<br/>→ tool calls mediated even for a black-box"]
+    b4["Verdict: real CONTAINMENT — PROVEN live (08/07):<br/>egress-lock BLOCKS internet, multi-tenant, without touching the agent's code"]
+    b1 --- b2 --- b3 --- b4
+  end
+  subgraph C["C · SDK-native / first-party agent — uses the CRD models + tools + skills"]
+    direction TB
+    c1["Tools ROUTED through the MCP gateway ·<br/>skills injected via req.Skills · A2A guarded · LLM metered"]
+    c2["Every CRD actually BINDS:<br/>MCPServer allowlist · SkillSource · budget · canInvoke"]
+    c3["Verdict: FULL governance — PROVEN live (08/07):<br/>flagship 5/5, tool call audited, drift 0"]
+    c1 --- c2 --- c3
+  end
+  A ==>|"contain it"| B ==>|"or build it native"| C
+  classDef weak fill:#5a1a1a,stroke:#ff6b6b,color:#fff;
+  classDef mid fill:#5a4a00,stroke:#ffb300,color:#fff;
+  classDef full fill:#1a7f64,stroke:#0d3,color:#fff;
+  class a3 weak; class b4 mid; class c3 full;

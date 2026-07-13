@@ -1,0 +1,229 @@
+{
+  "nav": {
+    "en": "How it works",
+    "es": "Cómo funciona",
+    "de": "So funktioniert's",
+    "fr": "Comment ça marche",
+    "zh": "工作原理",
+    "ja": "仕組み"
+  },
+  "title": {
+    "en": "How it works — a real incident, step by step",
+    "es": "Cómo funciona — un incidente real, paso a paso",
+    "de": "So funktioniert es — ein echter Vorfall, Schritt für Schritt",
+    "fr": "Comment ça marche — un incident réel, étape par étape",
+    "zh": "工作原理——一次真实事件，逐步演示",
+    "ja": "動作の仕組み — 実際のインシデントをステップごとに"
+  },
+  "sub": {
+    "en": "The payment API is CrashLooping. This is exactly what the E2E test (make e2e-scenario) runs and asserts on every build — nothing here is a mockup.",
+    "es": "La API de pagos está en CrashLoop. Esto es exactamente lo que el test E2E (make e2e-scenario) ejecuta y verifica en cada build — nada acá es una maqueta.",
+    "de": "Die Payment-API ist im CrashLoop. Genau das führt der E2E-Test (make e2e-scenario) bei jedem Build aus und prüft es — nichts davon ist ein Mockup.",
+    "fr": "L'API de paiement est en CrashLoop. C'est exactement ce que le test E2E (make e2e-scenario) exécute et vérifie à chaque build — rien ici n'est une maquette.",
+    "zh": "支付 API 正在 CrashLoop。这正是端到端测试（make e2e-scenario）在每次构建时运行并断言的内容——这里没有任何是演示假象。",
+    "ja": "支払い API が CrashLoop に陥っています。これはまさに E2E テスト（make e2e-scenario）が各ビルドで実行し検証する内容です。ここにモックアップは一切ありません。"
+  },
+  "kindLabels": {
+    "alert":     {"en": "alert",       "es": "alerta",       "de": "Alarm",       "fr": "alerte",       "zh": "告警",       "ja": "アラート"},
+    "route":     {"en": "route",       "es": "routing",      "de": "Routing",     "fr": "routage",      "zh": "路由",       "ja": "ルーティング"},
+    "tool":      {"en": "MCP tool",    "es": "tool MCP",     "de": "MCP-Tool",    "fr": "outil MCP",    "zh": "MCP 工具",   "ja": "MCP ツール"},
+    "skill":     {"en": "skill",       "es": "skill",        "de": "Skill",       "fr": "skill",        "zh": "技能",       "ja": "スキル"},
+    "a2a-allow": {"en": "A2A allowed", "es": "A2A permitido","de": "A2A erlaubt", "fr": "A2A autorisé", "zh": "A2A 允许",   "ja": "A2A 許可"},
+    "a2a-deny":  {"en": "A2A blocked", "es": "A2A bloqueado","de": "A2A blockiert","fr": "A2A bloqué",  "zh": "A2A 阻止",   "ja": "A2A ブロック"},
+    "budget":    {"en": "budget",      "es": "presupuesto",  "de": "Budget",      "fr": "budget",       "zh": "预算",       "ja": "予算"},
+    "answer":    {"en": "answer",      "es": "respuesta",    "de": "Antwort",     "fr": "réponse",      "zh": "答复",       "ja": "回答"},
+    "audit":     {"en": "audit",       "es": "auditoría",    "de": "Audit",       "fr": "audit",        "zh": "审计",       "ja": "監査"}
+  },
+  "steps": [
+    {
+      "n": 1, "kind": "alert", "actor": "Alertmanager",
+      "action": {
+        "en": "PaymentAPIHighErrorRate fires",
+        "es": "Se dispara PaymentAPIHighErrorRate",
+        "de": "PaymentAPIHighErrorRate wird ausgelöst",
+        "fr": "PaymentAPIHighErrorRate se déclenche",
+        "zh": "触发 PaymentAPIHighErrorRate",
+        "ja": "PaymentAPIHighErrorRate が発火"
+      },
+      "detail": {
+        "en": "Error rate 42% over 5m in namespace team-payments. The webhook lands on Leloir.",
+        "es": "Tasa de error 42% en 5m en el namespace team-payments. El webhook llega a Leloir.",
+        "de": "Fehlerrate 42% über 5m im Namespace team-payments. Der Webhook erreicht Leloir.",
+        "fr": "Taux d'erreur 42% sur 5m dans le namespace team-payments. Le webhook arrive sur Leloir.",
+        "zh": "命名空间 team-payments 中 5 分钟错误率 42%。Webhook 到达 Leloir。",
+        "ja": "namespace team-payments で 5 分間のエラー率 42%。Webhook が Leloir に届きます。"
+      }
+    },
+    {
+      "n": 2, "kind": "route", "actor": "Leloir",
+      "action": {
+        "en": "Routes the alert to the 'sre-triage' agent",
+        "es": "Routea la alerta al agente 'sre-triage'",
+        "de": "Leitet den Alarm an den Agenten 'sre-triage'",
+        "fr": "Route l'alerte vers l'agent 'sre-triage'",
+        "zh": "将告警路由到 'sre-triage' 智能体",
+        "ja": "アラートを 'sre-triage' エージェントへルーティング"
+      },
+      "detail": {
+        "en": "The AlertRoute CRD matches the labels and picks the tenant's agent (tenant team-payments).",
+        "es": "El CRD AlertRoute matchea las labels y elige el agente del tenant (tenant team-payments).",
+        "de": "Das AlertRoute-CRD matcht die Labels und wählt den Agenten des Tenants (Tenant team-payments).",
+        "fr": "Le CRD AlertRoute correspond aux labels et choisit l'agent du tenant (tenant team-payments).",
+        "zh": "AlertRoute CRD 匹配标签并选择该租户的智能体（租户 team-payments）。",
+        "ja": "AlertRoute CRD がラベルに一致し、テナントのエージェントを選びます（テナント team-payments）。"
+      }
+    },
+    {
+      "n": 3, "kind": "tool", "actor": "sre-triage",
+      "action": {
+        "en": "Looks at the pods → kubectl_get_pods",
+        "es": "Mira los pods → kubectl_get_pods",
+        "de": "Schaut sich die Pods an → kubectl_get_pods",
+        "fr": "Regarde les pods → kubectl_get_pods",
+        "zh": "查看 Pod → kubectl_get_pods",
+        "ja": "Pod を確認 → kubectl_get_pods"
+      },
+      "detail": {
+        "en": "Sees payment-api in CrashLoopBackOff (7 restarts). The tool goes through the MCP gateway, scoped to the tenant's namespace.",
+        "es": "Ve payment-api en CrashLoopBackOff (7 reinicios). La tool pasa por el gateway MCP, scoped al namespace del tenant.",
+        "de": "Sieht payment-api in CrashLoopBackOff (7 Neustarts). Das Tool läuft über das MCP-Gateway, begrenzt auf den Namespace des Tenants.",
+        "fr": "Voit payment-api en CrashLoopBackOff (7 redémarrages). L'outil passe par la passerelle MCP, limité au namespace du tenant.",
+        "zh": "发现 payment-api 处于 CrashLoopBackOff（重启 7 次）。工具经由 MCP 网关，限定在该租户的命名空间内。",
+        "ja": "payment-api が CrashLoopBackOff（7 回再起動）と判明。ツールは MCP ゲートウェイ経由で、テナントの namespace に限定されます。"
+      }
+    },
+    {
+      "n": 4, "kind": "tool", "actor": "sre-triage",
+      "action": {
+        "en": "Reads the crash logs → kubectl_logs",
+        "es": "Lee los logs del crash → kubectl_logs",
+        "de": "Liest die Crash-Logs → kubectl_logs",
+        "fr": "Lit les logs du crash → kubectl_logs",
+        "zh": "读取崩溃日志 → kubectl_logs",
+        "ja": "クラッシュログを読む → kubectl_logs"
+      },
+      "detail": {
+        "en": "Logs show 'DB connection refused, pool timeout' followed by OOMKilled. Points at the database.",
+        "es": "Los logs muestran 'DB connection refused, pool timeout' seguido de OOMKilled. Apunta a la base de datos.",
+        "de": "Logs zeigen 'DB connection refused, pool timeout' gefolgt von OOMKilled. Deutet auf die Datenbank.",
+        "fr": "Les logs montrent 'DB connection refused, pool timeout' puis OOMKilled. Pointe vers la base de données.",
+        "zh": "日志显示 'DB connection refused, pool timeout'，随后 OOMKilled，指向数据库。",
+        "ja": "ログに 'DB connection refused, pool timeout' に続いて OOMKilled。データベースを示唆します。"
+      }
+    },
+    {
+      "n": 5, "kind": "skill", "actor": "sre-triage",
+      "action": {
+        "en": "Applies the DB-incident runbook (skill)",
+        "es": "Aplica el runbook de incidentes de DB (skill)",
+        "de": "Wendet das DB-Vorfall-Runbook an (Skill)",
+        "fr": "Applique le runbook d'incident DB (skill)",
+        "zh": "应用数据库事件手册（技能）",
+        "ja": "DB インシデントの Runbook（スキル）を適用"
+      },
+      "detail": {
+        "en": "The runbook says: correlate pool saturation with recent deploys, then escalate to the DB specialist. Skills come from a SkillSource CRD.",
+        "es": "El runbook dice: correlacionar la saturación del pool con deploys recientes, luego escalar al especialista de DB. Las skills vienen de un CRD SkillSource.",
+        "de": "Das Runbook sagt: Pool-Sättigung mit jüngsten Deploys korrelieren, dann an den DB-Spezialisten eskalieren. Skills stammen aus einem SkillSource-CRD.",
+        "fr": "Le runbook dit : corréler la saturation du pool avec les déploiements récents, puis escalader vers le spécialiste DB. Les skills viennent d'un CRD SkillSource.",
+        "zh": "手册指示：将连接池饱和与近期部署关联，然后升级给数据库专家。技能来自 SkillSource CRD。",
+        "ja": "Runbook の指示：プール枯渇を直近のデプロイと突き合わせ、DB スペシャリストへエスカレーション。スキルは SkillSource CRD から取得します。"
+      }
+    },
+    {
+      "n": 6, "kind": "a2a-allow", "actor": "sre-triage → db-specialist",
+      "action": {
+        "en": "Invokes the DB specialist over A2A — policy ALLOWS it",
+        "es": "Invoca al especialista de DB por A2A — la política lo PERMITE",
+        "de": "Ruft den DB-Spezialisten per A2A auf — die Richtlinie ERLAUBT es",
+        "fr": "Invoque le spécialiste DB via A2A — la politique l'AUTORISE",
+        "zh": "通过 A2A 调用数据库专家——策略允许",
+        "ja": "A2A で DB スペシャリストを呼び出す — ポリシーが許可"
+      },
+      "detail": {
+        "en": "canInvoke lists db-specialist, so it runs as a depth-1 sub-investigation: prometheus_query → connection pool 100/100 saturated since the 14:02 deploy.",
+        "es": "canInvoke incluye db-specialist, así que corre como sub-investigación depth-1: prometheus_query → pool de conexiones 100/100 saturado desde el deploy de las 14:02.",
+        "de": "canInvoke listet db-specialist, also läuft es als Sub-Untersuchung der Tiefe 1: prometheus_query → Verbindungspool 100/100 gesättigt seit dem 14:02-Deploy.",
+        "fr": "canInvoke liste db-specialist, il s'exécute donc en sous-investigation de profondeur 1 : prometheus_query → pool de connexions 100/100 saturé depuis le déploiement de 14h02.",
+        "zh": "canInvoke 包含 db-specialist，因此作为深度 1 的子调查运行：prometheus_query → 自 14:02 部署起连接池 100/100 饱和。",
+        "ja": "canInvoke に db-specialist が含まれるため、深さ 1 のサブ調査として実行：prometheus_query → 14:02 のデプロイ以降、接続プールが 100/100 で飽和。"
+      }
+    },
+    {
+      "n": 7, "kind": "a2a-deny", "actor": "sre-triage ✗ prod-deployer",
+      "action": {
+        "en": "Tries prod-deployer for a rollback — BLOCKED",
+        "es": "Intenta prod-deployer para un rollback — BLOQUEADO",
+        "de": "Versucht prod-deployer für ein Rollback — BLOCKIERT",
+        "fr": "Tente prod-deployer pour un rollback — BLOQUÉ",
+        "zh": "尝试用 prod-deployer 回滚——被阻止",
+        "ja": "ロールバックのため prod-deployer を試みる — ブロック"
+      },
+      "detail": {
+        "en": "prod-deployer is not in canInvoke, so the A2A guard denies it, audits the denial, and increments the deny metric. The investigation continues — the guard is not fatal.",
+        "es": "prod-deployer no está en canInvoke, así que el guard A2A lo deniega, audita la denegación e incrementa la métrica de deny. La investigación continúa — el guard no es fatal.",
+        "de": "prod-deployer ist nicht in canInvoke, also verweigert der A2A-Guard, auditiert die Ablehnung und erhöht die Deny-Metrik. Die Untersuchung läuft weiter — der Guard ist nicht fatal.",
+        "fr": "prod-deployer n'est pas dans canInvoke, donc le garde A2A le refuse, audite le refus et incrémente la métrique de refus. L'investigation continue — le garde n'est pas fatal.",
+        "zh": "prod-deployer 不在 canInvoke 中，因此 A2A 守卫拒绝、审计该拒绝并递增拒绝指标。调查继续——守卫并非致命。",
+        "ja": "prod-deployer は canInvoke に無いため、A2A ガードが拒否し、拒否を監査し、拒否メトリクスを加算します。調査は継続 — ガードは致命的ではありません。"
+      }
+    },
+    {
+      "n": 8, "kind": "budget", "actor": "control plane",
+      "action": {
+        "en": "Every LLM call debits the budget",
+        "es": "Cada llamada LLM descuenta del presupuesto",
+        "de": "Jeder LLM-Aufruf belastet das Budget",
+        "fr": "Chaque appel LLM débite le budget",
+        "zh": "每次 LLM 调用都从预算扣减",
+        "ja": "各 LLM 呼び出しが予算を消費"
+      },
+      "detail": {
+        "en": "The TenantBudget CRD caps tokens and USD; a warning fires at 80%. If the cap is hit, the investigation stops with budget_exhausted.",
+        "es": "El CRD TenantBudget limita tokens y USD; salta un aviso al 80%. Si se alcanza el tope, la investigación para con budget_exhausted.",
+        "de": "Das TenantBudget-CRD begrenzt Tokens und USD; bei 80% erfolgt eine Warnung. Bei Erreichen des Limits stoppt die Untersuchung mit budget_exhausted.",
+        "fr": "Le CRD TenantBudget plafonne les tokens et l'USD ; une alerte se déclenche à 80%. Si le plafond est atteint, l'investigation s'arrête avec budget_exhausted.",
+        "zh": "TenantBudget CRD 限制 token 与美元；达到 80% 时告警。若触及上限，调查以 budget_exhausted 停止。",
+        "ja": "TenantBudget CRD がトークンと USD を制限し、80% で警告。上限に達すると調査は budget_exhausted で停止します。"
+      }
+    },
+    {
+      "n": 9, "kind": "answer", "actor": "sre-triage",
+      "action": {
+        "en": "Delivers the root cause and recommendation",
+        "es": "Entrega la causa raíz y la recomendación",
+        "de": "Liefert die Ursache und Empfehlung",
+        "fr": "Livre la cause racine et la recommandation",
+        "zh": "给出根因与建议",
+        "ja": "根本原因と推奨事項を提示"
+      },
+      "detail": {
+        "en": "Root cause: the 14:02 deploy raised concurrency without raising the DB pool. Recommendation: roll back — a write action, so it requires human approval per ApprovalPolicy.",
+        "es": "Causa raíz: el deploy de las 14:02 subió la concurrencia sin subir el pool de DB. Recomendación: rollback — acción de escritura, así que requiere aprobación humana según ApprovalPolicy.",
+        "de": "Ursache: Der 14:02-Deploy erhöhte die Nebenläufigkeit ohne den DB-Pool zu vergrößern. Empfehlung: Rollback — eine Schreibaktion, daher menschliche Freigabe gemäß ApprovalPolicy nötig.",
+        "fr": "Cause racine : le déploiement de 14h02 a augmenté la concurrence sans augmenter le pool DB. Recommandation : rollback — une action d'écriture, donc approbation humaine requise selon ApprovalPolicy.",
+        "zh": "根因：14:02 的部署提高了并发但未增大数据库连接池。建议：回滚——属写操作，因此依据 ApprovalPolicy 需人工审批。",
+        "ja": "根本原因：14:02 のデプロイが DB プールを増やさずに並行度を上げた。推奨：ロールバック — 書き込み操作のため、ApprovalPolicy により人による承認が必要。"
+      }
+    },
+    {
+      "n": 10, "kind": "audit", "actor": "control plane",
+      "action": {
+        "en": "Everything lands in the audit hash-chain",
+        "es": "Todo queda en el audit hash-chain",
+        "de": "Alles landet in der Audit-Hash-Chain",
+        "fr": "Tout est consigné dans la hash-chain d'audit",
+        "zh": "一切进入审计哈希链",
+        "ja": "すべてが監査ハッシュチェーンに記録"
+      },
+      "detail": {
+        "en": "Who triggered it, which agent ran, which tools and A2A calls (allowed and denied), tokens and cost — tamper-evident and queryable per tenant.",
+        "es": "Quién la disparó, qué agente corrió, qué tools y llamadas A2A (permitidas y denegadas), tokens y costo — a prueba de manipulación y consultable por tenant.",
+        "de": "Wer sie auslöste, welcher Agent lief, welche Tools und A2A-Aufrufe (erlaubt und verweigert), Tokens und Kosten — manipulationssicher und pro Tenant abfragbar.",
+        "fr": "Qui l'a déclenchée, quel agent a tourné, quels outils et appels A2A (autorisés et refusés), tokens et coût — inviolable et interrogeable par tenant.",
+        "zh": "谁触发、哪个智能体运行、哪些工具与 A2A 调用（允许与拒绝）、token 与成本——防篡改且可按租户查询。",
+        "ja": "誰が起動し、どのエージェントが実行され、どのツールと A2A 呼び出し（許可・拒否）、トークンとコストか — 改ざん検知可能でテナント単位に照会可能。"
+      }
+    }
+  ]
+}

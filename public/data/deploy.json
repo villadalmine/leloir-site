@@ -1,0 +1,120 @@
+{
+ "nav": {
+  "en": "Install & tenancy",
+  "es": "Instalación y tenancy",
+  "de": "Installation & Tenancy",
+  "fr": "Installation & tenancy",
+  "zh": "安装与租户",
+  "ja": "インストールとテナンシー"
+ },
+ "title": {
+  "en": "Who installs what — and the tenancy models",
+  "es": "Quién instala qué — y los modelos de tenancy",
+  "de": "Wer installiert was — und die Tenancy-Modelle",
+  "fr": "Qui installe quoi — et les modèles de tenancy",
+  "zh": "谁安装什么——以及租户模型",
+  "ja": "誰が何をインストールするか — そしてテナンシーモデル"
+ },
+ "sub": {
+  "en": "The platform team installs Leloir once; each tenant only declares its own CRs in its own namespace. Here is exactly how.",
+  "es": "El equipo de plataforma instala Leloir una vez; cada tenant solo declara sus CRs en su propio namespace. Así, exactamente.",
+  "de": "Das Plattform-Team installiert Leloir einmal; jeder Tenant deklariert nur seine CRs in seinem Namespace. Genau so.",
+  "fr": "L'équipe plateforme installe Leloir une fois ; chaque tenant ne déclare que ses CR dans son namespace. Voici exactement comment.",
+  "zh": "平台团队安装 Leloir 一次；每个租户只在自己的命名空间声明自己的 CR。具体如下。",
+  "ja": "プラットフォームチームが Leloir を一度だけインストール。各テナントは自分の namespace に自分の CR を宣言するだけ。その手順です。"
+ },
+ "roles": [
+  {
+   "who": {
+    "en": "Platform team (once)",
+    "es": "Equipo de plataforma (una vez)",
+    "de": "Plattform-Team (einmal)",
+    "fr": "Équipe plateforme (une fois)",
+    "zh": "平台团队（一次）",
+    "ja": "プラットフォームチーム（一度）"
+   },
+   "does": {
+    "en": "Installs the 8 CRDs cluster-wide, deploys the control plane + MCP gateway, and creates a Tenant CR per customer that binds a namespace to its owner (this is the anti-spoof source of truth).",
+    "es": "Instala las 8 CRDs a nivel cluster, deploya el control plane + MCP gateway, y crea un Tenant CR por cliente que ata un namespace a su dueño (esta es la fuente de verdad anti-spoof).",
+    "de": "Installiert die 8 CRDs clusterweit, deployt Control Plane + MCP-Gateway und erstellt pro Kunde ein Tenant-CR, das einen Namespace an seinen Eigentümer bindet (Anti-Spoof-Wahrheitsquelle).",
+    "fr": "Installe les 8 CRD à l'échelle du cluster, déploie le control plane + la passerelle MCP, et crée un CR Tenant par client liant un namespace à son propriétaire (source de vérité anti-spoof).",
+    "zh": "在集群范围安装 8 个 CRD，部署控制平面 + MCP 网关，并为每个客户创建 Tenant CR，将命名空间绑定到其所有者（防伪造的真相来源）。",
+    "ja": "8 つの CRD をクラスタ全体にインストールし、コントロールプレーン＋MCP ゲートウェイをデプロイ、顧客ごとに namespace を所有者に紐づける Tenant CR を作成（なりすまし防止の真実の源）。"
+   },
+   "cmd": "helm install leloir oci://ghcr.io/villadalmine/leloir/leloir-controlplane --version 0.2.0 -n leloir-system --create-namespace\nkubectl apply -f tenant-acme.yaml    # binds namespace acme to its owner"
+  },
+  {
+   "who": {
+    "en": "Tenant owner (self-service)",
+    "es": "Dueño del tenant (self-service)",
+    "de": "Tenant-Eigentümer (Self-Service)",
+    "fr": "Propriétaire du tenant (self-service)",
+    "zh": "租户所有者（自助）",
+    "ja": "テナント所有者（セルフサービス）"
+   },
+   "does": {
+    "en": "In their own namespace, declares their agent (AgentRegistration → your image or a built-in), their tools (MCPServer → your MCP endpoint), what to watch (AlertRoute), a budget (TenantBudget) and approvals (ApprovalPolicy). No platform ticket needed.",
+    "es": "En su propio namespace, declara su agente (AgentRegistration → tu imagen o uno built-in), sus tools (MCPServer → tu endpoint MCP), qué mirar (AlertRoute), un budget (TenantBudget) y aprobaciones (ApprovalPolicy). Sin ticket a plataforma.",
+    "de": "Deklariert im eigenen Namespace seinen Agenten (AgentRegistration → dein Image oder eingebaut), seine Tools (MCPServer → dein MCP-Endpoint), was zu beobachten ist (AlertRoute), ein Budget (TenantBudget) und Freigaben (ApprovalPolicy). Kein Plattform-Ticket nötig.",
+    "fr": "Dans son namespace, déclare son agent (AgentRegistration → votre image ou intégré), ses outils (MCPServer → votre endpoint MCP), quoi surveiller (AlertRoute), un budget (TenantBudget) et les approbations (ApprovalPolicy). Sans ticket plateforme.",
+    "zh": "在自己的命名空间声明其智能体（AgentRegistration → 你的镜像或内置）、工具（MCPServer → 你的 MCP 端点）、监控什么（AlertRoute）、预算（TenantBudget）与审批（ApprovalPolicy）。无需平台工单。",
+    "ja": "自分の namespace で、エージェント（AgentRegistration → 自前イメージまたは組込）、ツール（MCPServer → 自前 MCP エンドポイント）、監視対象（AlertRoute）、予算（TenantBudget）、承認（ApprovalPolicy）を宣言。プラットフォームへの依頼は不要。"
+   },
+   "cmd": "# in namespace acme, as the tenant owner:\nkubectl apply -n acme -f my-agent.yaml       # AgentRegistration (BYO agent)\nkubectl apply -n acme -f my-mcp.yaml         # MCPServer (BYO tools)\nkubectl apply -n acme -f my-alertroute.yaml  # what to auto-investigate\n# point your Alertmanager at the webhook and you're live."
+  }
+ ],
+ "modelsTitle": {
+  "en": "Three tenancy models — same CRDs",
+  "es": "Tres modelos de tenancy — las mismas CRDs",
+  "de": "Drei Tenancy-Modelle — dieselben CRDs",
+  "fr": "Trois modèles de tenancy — les mêmes CRD",
+  "zh": "三种租户模型——相同的 CRD",
+  "ja": "3 つのテナンシーモデル — 同じ CRD"
+ },
+ "models": [
+  {
+   "name": {
+    "en": "Platform governs many namespaces",
+    "es": "Plataforma gobierna varios namespaces",
+    "de": "Plattform steuert viele Namespaces",
+    "fr": "La plateforme gouverne plusieurs namespaces",
+    "zh": "平台治理多个命名空间",
+    "ja": "プラットフォームが多数の namespace を統治"
+   },
+   "desc": {
+    "en": "One Leloir install; each customer = one namespace = one Tenant. The platform team sees cross-namespace consumption (which ns, which model, how much) and bills shared usage. This is the platform dashboard.",
+    "es": "Una instalación de Leloir; cada cliente = un namespace = un Tenant. El equipo de plataforma ve el consumo cross-namespace (qué ns, qué modelo, cuánto) y cobra el uso compartido. Es el dashboard de plataforma.",
+    "de": "Eine Leloir-Installation; jeder Kunde = ein Namespace = ein Tenant. Das Plattform-Team sieht namespace-übergreifenden Verbrauch (welcher NS, welches Modell, wie viel) und rechnet ab. Das ist das Plattform-Dashboard.",
+    "fr": "Une installation Leloir ; chaque client = un namespace = un Tenant. L'équipe plateforme voit la consommation inter-namespaces (quel ns, quel modèle, combien) et facture. C'est le dashboard plateforme.",
+    "zh": "一次 Leloir 安装；每个客户 = 一个命名空间 = 一个 Tenant。平台团队查看跨命名空间用量（哪个 ns、哪个模型、多少）并计费共享用量。即平台仪表盘。",
+    "ja": "Leloir を 1 つインストール。各顧客 = 1 namespace = 1 Tenant。プラットフォームチームは namespace 横断の消費（どの ns、どのモデル、いくら）を把握し共有利用を課金。これがプラットフォームダッシュボード。"
+   }
+  },
+  {
+   "name": {
+    "en": "Single customer owns its namespace",
+    "es": "Un customer dueño de su namespace",
+    "de": "Ein Kunde besitzt seinen Namespace",
+    "fr": "Un client possède son namespace",
+    "zh": "单个客户拥有其命名空间",
+    "ja": "単一顧客が自分の namespace を所有"
+   },
+   "desc": {
+    "en": "The customer brings their own key/endpoint and agent; spend is theirs, Leloir just records it. They use the single-tenant dashboard. Platform only provides the control plane.",
+    "es": "El customer trae su propia key/endpoint y agente; el gasto es suyo, Leloir solo lo registra. Usa el dashboard de un solo tenant. Plataforma solo provee el control plane.",
+    "de": "Der Kunde bringt eigenen Key/Endpoint und Agenten; Kosten sind seine, Leloir erfasst nur. Er nutzt das Single-Tenant-Dashboard. Plattform stellt nur den Control Plane.",
+    "fr": "Le client apporte sa clé/endpoint et son agent ; la dépense est la sienne, Leloir l'enregistre. Il utilise le dashboard mono-tenant. La plateforme ne fournit que le control plane.",
+    "zh": "客户自带密钥/端点与智能体；支出归其所有，Leloir 仅记录。使用单租户仪表盘。平台只提供控制平面。",
+    "ja": "顧客が自前のキー/エンドポイントとエージェントを持ち込み、費用は本人負担で Leloir は記録のみ。単一テナントダッシュボードを使用。プラットフォームはコントロールプレーンのみ提供。"
+   }
+  }
+ ],
+ "clarify": {
+  "en": "A Leloir tenant = one or more namespaces bound by a Tenant CR. In these demos tenant-a/b/c are namespaces in the host cluster.",
+  "es": "Un tenant de Leloir = uno o más namespaces atados por un Tenant CR. En estos demos tenant-a/b/c son namespaces del host cluster.",
+  "de": "Ein Leloir-Tenant = ein oder mehrere Namespaces, gebunden durch ein Tenant-CR. In diesen Demos sind tenant-a/b/c Namespaces im Host-Cluster.",
+  "fr": "Un tenant Leloir = un ou plusieurs namespaces liés par un CR Tenant. Dans ces démos, tenant-a/b/c sont des namespaces du host cluster.",
+  "zh": "Leloir 租户 = 由 Tenant CR 绑定的一个或多个命名空间。这些演示中 tenant-a/b/c 是宿主集群的命名空间。",
+  "ja": "Leloir のテナント = Tenant CR で束ねた 1 つ以上の namespace。これらのデモの tenant-a/b/c はホストクラスタの namespace。"
+ }
+}

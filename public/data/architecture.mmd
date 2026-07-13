@@ -1,0 +1,46 @@
+flowchart LR
+  Trigger(["Alert / Webhook"]) --> LCP
+
+  subgraph LCP ["Leloir Control Plane (Governance)"]
+    direction TB
+    API["API Gateway (Auth & OIDC)"]
+    ORCH["Orchestrator (Budgets & HITL)"]
+    AUDIT["Immutable Audit Log"]
+    
+    API --> ORCH --> AUDIT
+  end
+
+  subgraph Agents ["AI Agents"]
+    direction TB
+    AG_GOV["SDK-Native Agent"]
+    AG_BYO["BYO Black-Box Agent (e.g. HolmesGPT)"]
+  end
+
+  LCP -->|"Routes Task & Inject Keys"| Agents
+
+  subgraph MCP ["MCP Gateway (Security Seam)"]
+    direction TB
+    POLICY["ApprovalPolicy Guard"]
+    CRED["Vault Credential Injection"]
+  end
+
+  AG_GOV -->|"MCP Protocol"| MCP
+  AG_BYO -->|"MCP Protocol"| MCP
+  MCP -.->|"Audit Stream"| AUDIT
+
+  subgraph Cluster ["Target K8s Cluster (Tenants)"]
+    direction TB
+    NS1["Namespace: Tenant A<br/>(Sandboxed)"]
+    NS2["Namespace: Tenant B<br/>(Sandboxed)"]
+  end
+
+  MCP -->|"K8s API (Strict RBAC)"| NS1
+  MCP -->|"K8s API (Strict RBAC)"| NS2
+
+  classDef gov fill:#0b0e14,stroke:#5b9dff,color:#e6edf3,stroke-width:2px;
+  classDef mcp fill:#1a1025,stroke:#a855f7,color:#e6edf3,stroke-width:2px;
+  classDef ext fill:#111621,stroke:#222c3f,color:#93a1b5;
+  
+  class LCP,API,ORCH,AUDIT,AG_GOV gov;
+  class MCP,POLICY,CRED mcp;
+  class Trigger,Agents,AG_BYO,Cluster,NS1,NS2 ext;

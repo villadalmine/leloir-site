@@ -1,0 +1,28 @@
+flowchart TB
+  subgraph M1["MODE 1 · Leloir Agent — first-party, SDK-native · THE FLAGSHIP"]
+    direction TB
+    m1a["ONE deployment · multi-tenant BY DESIGN (tenant from X-Leloir-Tenant-ID)"]
+    m1b["the LLM you connect resolves the incident with the tools / skills / context / memory YOUR CRDs give it"]
+    m1c["tools ROUTED through the MCP gateway · budget · HITL · A2A · audit — every CRD BINDS"]
+    m1d["✓ exists today: the openaicompat adapter, proven E2E vs real OpenRouter + real kubernetes-mcp-server"]
+    m1a --- m1b --- m1c --- m1d
+  end
+  subgraph M2["MODE 2 · Contain a third-party BLACK BOX we deploy · the on-ramp"]
+    direction TB
+    m2a["the black box is NOT multi-tenant → run ONE instance PER tenant"]
+    m2b["Leloir supplies the multi-tenancy the agent lacks — via FLEET topology + routing"]
+    m2c["contained: platform-provisioned ServiceAccount (RBAC bounded to the ns) + NetworkPolicy egress-lock (its LLM forced through the gateway)"]
+    m2d["governs: routing · audit · budget · RBAC blast-radius — NOT its internal tool choice"]
+    m2a --- m2b --- m2c --- m2d
+  end
+  subgraph M3["MODE 3 · Deploy a third party with the guardrails IT natively supports"]
+    direction TB
+    m3a["use whatever the agent already offers: read-only mode · its own allowlist · its own approval hooks"]
+    m3b["+ contain the rest (Mode 2). Honest about what Leloir can GUARANTEE vs what it can only observe"]
+    m3a --- m3b
+  end
+  M1 -.->|"already have an agent? on-ramp it"| M2
+  M2 -.->|"agent has native guardrails? use them too"| M3
+  classDef full fill:#1a7f64,stroke:#0d3,color:#fff;
+  classDef mid fill:#5a4a00,stroke:#ffb300,color:#fff;
+  class m1d full; class m2d mid;
