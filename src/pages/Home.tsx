@@ -42,6 +42,13 @@ export function Home() {
           <p style={{ color: 'var(--muted)', margin: 0, lineHeight: 1.6 }}>When resolving an alert, Leloir stores the incident in pgvector. When a similar alert occurs, the orchestrator injects the past resolution into the agent as an ephemeral Skill.</p>
         </div>
       </div>
+
+      <div style={{ marginTop: '80px', paddingTop: '64px', borderTop: '1px solid var(--line)', textAlign: 'left', maxWidth: '800px', margin: '80px auto 0' }}>
+        <h2 style={{ fontSize: '24px', color: 'var(--fg)', marginBottom: '16px' }}>What's in a name?</h2>
+        <p style={{ color: 'var(--muted)', fontSize: '16px', lineHeight: 1.6, margin: 0 }}>
+          <strong>Luis Federico Leloir</strong> was an Argentine physician and biochemist who received the 1970 Nobel Prize in Chemistry for his discovery of the metabolic pathways in carbohydrates. Just as Leloir uncovered the fundamental regulatory mechanisms of cellular biology, this project aims to provide the fundamental regulatory mechanisms and governance for AI agents in production environments.
+        </p>
+      </div>
     </div>
   );
 }
