@@ -21,8 +21,9 @@ Las conferencias técnicas odian que les intenten vender un producto comercial. 
 
 **¿Por qué Leloir encaja perfectamente y no viola esta regla?**
 1. **No hay nada que vender:** Leloir es 100% Open Source (Apache 2.0). No tiene un modelo comercial, no tiene un tier de pago oculto, no pide tarjetas de crédito. Es infraestructura pura.
-2. **El foco es el "Cómo", no el "Qué":** La charla no es un comercial sobre "usa Leloir". La charla es sobre los **desafíos de ingeniería** (aislamiento de RBAC, spoofing de identidades en Envoy, ruteo concurrente) y cómo resolvimos esos problemas arquitectónicamente construyendo esta plataforma.
-3. **El Regalo:** Al final, Leloir se presenta como un "regalo a la comunidad", una implementación de referencia para que los SREs no tengan que reinventar la rueda, no como un producto corporativo.
+2. **El Modelo Open Core (La filosofía de monetización):** Nuestra postura es clarísima y muy justa: **"Si usas open-source, es gratis. Si te conectas a ecosistemas pagos, pagas la licencia."** Si integras Leloir con Dex (OIDC) o modelos locales (Ollama), el uso es 100% gratuito. La única forma en que Leloir cobra es si quieres los conectores Enterprise para plataformas corporativas pagas (Azure AD, AWS Cognito, Datadog, OpenAI Enterprise). Todo lo que mostraremos en la charla será el ecosistema puramente Open Source.
+3. **El foco es el "Cómo", no el "Qué":** La charla no es un comercial sobre "usa Leloir". La charla es sobre los **desafíos de ingeniería** (aislamiento de RBAC, spoofing de identidades en Envoy, ruteo concurrente) y cómo resolvimos esos problemas arquitectónicamente construyendo esta plataforma.
+4. **El Regalo:** Al final, Leloir se presenta como un "regalo a la comunidad", una implementación de referencia para que los SREs no tengan que reinventar la rueda, no como un producto corporativo.
 
 ---
 
