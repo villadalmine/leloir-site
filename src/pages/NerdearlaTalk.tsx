@@ -1,6 +1,31 @@
+import { useState } from 'react';
 import { PresentationDeck, Slide } from '../components/Presentation/PresentationDeck';
 
 export const NerdearlaTalk = () => {
+  const [passcode, setPasscode] = useState('');
+  const [isUnlocked, setIsUnlocked] = useState(false);
+
+  if (!isUnlocked) {
+    return (
+      <div style={{ height: '100vh', width: '100vw', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', backgroundColor: '#0b0f19', color: '#e2e8f0', fontFamily: 'monospace' }}>
+        <h2>[ ACCESO RESTRINGIDO ]</h2>
+        <p style={{ color: '#64748b', marginBottom: '20px' }}>Esta presentación es material confidencial para evaluadores.</p>
+        <input 
+          type="password" 
+          placeholder="Ingresar Código"
+          value={passcode}
+          onChange={(e) => setPasscode(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' && passcode.toUpperCase() === 'NERDEARLA26') {
+              setIsUnlocked(true);
+            }
+          }}
+          style={{ padding: '10px', fontSize: '1.2rem', backgroundColor: '#1e293b', color: '#10b981', border: '1px solid #334155', borderRadius: '5px', textAlign: 'center', outline: 'none' }}
+        />
+      </div>
+    );
+  }
+
   return (
     <PresentationDeck>
       {/* Diapositiva 1: Título */}
