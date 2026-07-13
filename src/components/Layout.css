@@ -32,7 +32,7 @@
   align-items: center;
   gap: 8px;
 }
-.brand span { color: var(--accent); }
+.brand .brand-text span { color: var(--accent); }
 .brand-icon { color: var(--accent); }
 
 .top-nav {

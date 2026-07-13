@@ -9,7 +9,7 @@ export function Layout() {
         <div className="header-inner container">
           <NavLink to="/" className="brand">
             <Shield className="brand-icon" size={24} />
-            Lelo<span>ir</span>
+            <span className="brand-text">Lelo<span>ir</span></span>
           </NavLink>
           <nav className="top-nav">
             <NavLink to="/" className={({ isActive }) => isActive ? 'active' : ''}>Home</NavLink>
