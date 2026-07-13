@@ -15,6 +15,17 @@ La propuesta original con la que se ganó la entrada a Nerdearla estaba basada e
 
 ---
 
+## 1.1. La Regla de Oro: Cero "Vendor Pitch"
+
+Las conferencias técnicas odian que les intenten vender un producto comercial. Es vital que el tono de la charla sea el de un **ingeniero compartiendo sus cicatrices de batalla y sus descubrimientos**, no el de un CEO vendiendo un SaaS.
+
+**¿Por qué Leloir encaja perfectamente y no viola esta regla?**
+1. **No hay nada que vender:** Leloir es 100% Open Source (Apache 2.0). No tiene un modelo comercial, no tiene un tier de pago oculto, no pide tarjetas de crédito. Es infraestructura pura.
+2. **El foco es el "Cómo", no el "Qué":** La charla no es un comercial sobre "usa Leloir". La charla es sobre los **desafíos de ingeniería** (aislamiento de RBAC, spoofing de identidades en Envoy, ruteo concurrente) y cómo resolvimos esos problemas arquitectónicamente construyendo esta plataforma.
+3. **El Regalo:** Al final, Leloir se presenta como un "regalo a la comunidad", una implementación de referencia para que los SREs no tengan que reinventar la rueda, no como un producto corporativo.
+
+---
+
 ## 1.5. Alineación con el Abstract Publicado
 
 Tu abstract es perfecto y el guion cumple cada una de tus promesas textuales:
