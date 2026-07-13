@@ -15,6 +15,17 @@ La propuesta original con la que se ganó la entrada a Nerdearla estaba basada e
 
 ---
 
+## 1.5. Alineación con el Abstract Publicado
+
+Tu abstract es perfecto y el guion cumple cada una de tus promesas textuales:
+
+* *"¿cómo le das a cada equipo capacidades de diagnóstico con IA sin que todos compartan el mismo dashboard, sin mezclar sus permisos, y sin perder de vista cuánto gasta cada uno en tokens?"* -> **Se responde en el Minuto 4 (El Dolor) y se soluciona en la Demo (Minuto 15) mostrando el aislamiento de tenants.**
+* *"Esta charla presenta el diseño de una plataforma de AIOps multi-tenant construida sobre Kubernetes... "* -> **Esa plataforma ES Leloir (se revela en el Minuto 9).**
+* *"Vamos a recorrer la arquitectura: el motor de investigación con IA y sus capas (skills, toolsets, conexión a APIs externas vía MCP)... "* -> **Ese es exactamente el MCP Gateway y el sistema de AgentAdapters de Leloir.**
+* *"y —la parte más interesante— cómo un AI Gateway permite medir y gobernar el consumo de tokens por equipo"* -> **Esa es la demostración en vivo del llmBroker integrado con Envoy AI GW en el Minuto 18 de la demo.**
+
+---
+
 ## 2. Guión Estructural (25 Minutos)
 
 ### Minuto 0:00 - 04:00 | El Dolor (The Pain)
