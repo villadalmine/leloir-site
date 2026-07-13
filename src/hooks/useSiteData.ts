@@ -5,7 +5,7 @@ export function useSiteData<T>(filename: string) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`/data/${filename}`)
+    fetch(`${import.meta.env.BASE_URL}data/${filename}`)
       .then(res => {
         if (!res.ok) throw new Error(`Failed to load ${filename}`);
         return res.json();
@@ -28,7 +28,7 @@ export function useSiteText(filename: string) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`/data/${filename}`)
+    fetch(`${import.meta.env.BASE_URL}data/${filename}`)
       .then(res => {
         if (!res.ok) throw new Error(`Failed to load ${filename}`);
         return res.text();
