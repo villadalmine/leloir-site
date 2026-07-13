@@ -1,0 +1,56 @@
+# Nerdearla 2026: Estrategia de Presentación Leloir
+
+**Charla Aceptada:** "IA para diagnosticar Kubernetes: arquitectura multi-tenant con gobierno de costos por equipos"
+**Duración:** 25 Minutos
+**Formato:** Pre-grabada con Q&A en vivo de 5 minutos al final.
+**Orquestadores:** Usuario (Speaker), Antigravity (Director de Presentación), Claude (Implementador Técnico).
+
+## 1. El Concepto y el Pivot
+
+La propuesta original con la que se ganó la entrada a Nerdearla estaba basada en el uso de **Envoy AI Gateway** y **HolmesGPT** (uniendo un gateway con un agente para controlar costos y aislar acceso). 
+
+**El Pivot:** En lugar de cambiar la charla, usaremos esa arquitectura como el *pasado* (el problema y la prueba de concepto) para revelar a **Leloir** como el *presente* (la solución open-source definitiva).
+
+**Mensaje Central:** "Ponerle agentes de IA a la infraestructura es peligroso y caro. La arquitectura de la hackathon demostró que gobernarlos con un API Gateway y un modelo Multi-Tenant funcionaba. Pero las empresas necesitan algo llave en mano. Por eso, de esa idea nació Leloir, el primer plano de control open-source para enrutar, auditar y contener agentes."
+
+---
+
+## 2. Guión Estructural (25 Minutos)
+
+### Minuto 0:00 - 04:00 | El Dolor (The Pain)
+* **Visual:** Una alerta de Slack a las 3 AM que nadie entiende.
+* **Narrativa:** "Le tiramos IA generativa a nuestros problemas de operaciones (SRE). Pero el remedio fue peor: facturas altísimas en OpenAI y agentes con permisos de cluster-admin rompiendo cosas en producción."
+* **El desafío:** ¿Cómo democratizamos la IA para resolver incidentes en una empresa donde hay 50 equipos distintos y un presupuesto limitado?
+
+### Minuto 04:00 - 09:00 | La Arquitectura de la Hackathon (The Concept)
+* **Visual:** Diagrama del hackathon (HolmesGPT + Envoy AI Gateway).
+* **Narrativa:** "Ese fue mi experimento inicial. Si poníamos un Gateway frente al agente, podíamos cortar el acceso a la llave maestra del proveedor y aplicar rate limits (tokens) por tenant. El concepto funcionó."
+
+### Minuto 09:00 - 15:00 | La Revelación (Enter Leloir)
+* **Visual:** El diagrama de arquitectura de Leloir (Control Plane, AgentAdapters, MCP Gateway, Tenants).
+* **Narrativa:** "Pero esto es una conferencia de ingeniería, no de experimentos. Las empresas reales necesitan rutear alertas automáticamente, orquestar múltiples agentes especializados (A2A) y aplicar políticas Zero Trust. Así que agarré ese concepto de la hackathon y lo convertí en una plataforma open-source completa. Se llama Leloir."
+* **Concepto clave:** Leloir NO es un agente. Es un **Orquestador de Orquestadores**. "Nosotros invocamos a HolmesGPT o agentes custom, pero nosotros gobernamos su perímetro".
+
+### Minuto 15:00 - 22:00 | La Demo (Show, Don't Tell)
+* **Visual:** Una grabación de pantalla pulida y perfecta.
+* **Flujo de la demo:**
+  1. El "Tenant A" (equipo de frontend) recibe una alerta. Leloir la rutea automáticamente a HolmesGPT.
+  2. HolmesGPT resuelve el incidente exitosamente y Leloir le descuenta $0.15 de su presupuesto mensual.
+  3. El "Tenant B" intenta abusar del sistema, pero el Gateway (Envoy) lo bloquea porque agotó su presupuesto. 
+  4. Vemos cómo el agente del Tenant A intenta listar pods del Tenant B, y falla gracias al aislamiento del MCP Gateway (Zero Trust).
+
+### Minuto 22:00 - 25:00 | Cierre, Open Source y Q&A Prep
+* **Visual:** Pantalla gigante con código QR a GitHub (`villadalmine/leloir`) y la web (`leloir-site`).
+* **Narrativa:** "Leloir está 100% open-source, construido para el ecosistema Kubernetes. Instálalo hoy con nuestro Helm Chart público."
+
+---
+
+## 3. División de Tareas (Orquestación Multi-Agente)
+
+Para llegar perfectos a la fecha de grabación (julio-agosto), este es nuestro pacto de trabajo:
+
+| Rol | Tareas Asignadas |
+|---|---|
+| **Antigravity (Yo)** | - Gobernaré esta presentación y la narrativa.<br>- Diseñaré los slides visuales (si usamos markdown/react) en el `leloir-site`.<br>- Armaré el guion palabra por palabra para que lo leas en el video.<br>- Seré el revisor técnico de Claude para asegurar que lo que mostremos funcione de verdad. |
+| **Claude** | - Implementar el Chart de Helm público (actualmente en curso) para que la gente tenga qué instalar al final de la charla.<br>- Levantar el entorno de demo perfecto en Kubernetes (con Envoy, HolmesGPT y los 2 tenants) para poder grabar la demo sin fallos. |
+| **Humano (Tú)** | - Orquestarnos. Eres el nexo entre Claude (backend/infra) y yo (frontend/marketing/estrategia).<br>- Llenar los datos logísticos en Sessionize hoy mismo.<br>- Grabar el video cuando tengamos el entorno y el guion listo. |
