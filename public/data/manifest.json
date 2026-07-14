@@ -2225,6 +2225,25 @@
     "zh": "经门面：demo-mode2 上 memory__remember → memory__recall('redis') 返回该事实；demo-mode1 上相同 recall → 'no memories'（按租户隔离）；leloir 命名空间中非网关 Pod → 被 ingress CNP 阻断。已发布真实 schema；租户 header 由网关写入而非调用方。",
     "ja": "ファサード経由：demo-mode2 で memory__remember → memory__recall('redis') が事実を返す；demo-mode1 で同じ recall → 'no memories'（テナント別分離）；leloir ネームスペースの非ゲートウェイ Pod → ingress CNP でブロック。実スキーマ公開；テナントヘッダはゲートウェイが記述、キャラーではない。"
    }
+  },
+  {
+   "when": "2026-07-14",
+   "claim": {
+    "en": "Memory head-to-head MEASURED through the governed core — same real model, per-consumer keys, every call attributable",
+    "es": "Head-to-head de memoria MEDIDO a través del core gobernado — mismo modelo real, keys por-consumidor, cada llamada atribuible",
+    "de": "Memory-Head-to-Head GEMESSEN durch den regierten Kern — gleiches echtes Modell, Schlüssel pro Verbraucher, jeder Aufruf zuordenbar",
+    "fr": "Head-to-head mémoire MESURÉ via le cœur gouverné — même modèle réel, clés par consommateur, chaque appel attribuable",
+    "zh": "记忆系统对比实测通过受治理核心完成——同一真实模型、按消费者密钥、每次调用可归因",
+    "ja": "メモリのヘッドツーヘッドをガバナンス下のコア経由で実測 — 同一の実モデル、コンシューマ毎のキー、全呼び出しが帰属可能"
+   },
+   "evidence": {
+    "en": "Honcho, Letta and mem0 deployed and benchmarked with the SAME real model (anthropic/claude-sonnet-5) and a per-consumer OpenRouter key each — cost per backend visible in the provider's activity log. All capture/recall crossed Leloir's governed MCP facade and landed in the WORM audit. Honcho 4/4 (recall HIT 330ms, synthesis cites rule+incident, deriver 9-11 observations — free tiers derive ZERO). Letta: archival API sound, but the agent cannot reach its own archival in chat (measured fail). mem0: 8 blockers to first boot, runs only patched, atomizes incident-ids away from the lesson. Verdict: native episodic shape validated by contrast; synthesis must be server-side; memory is a budgeted, attributable LLM consumer like any agent.",
+    "es": "Honcho, Letta y mem0 deployados y benchmarkeados con el MISMO modelo real (anthropic/claude-sonnet-5) y key de OpenRouter por-consumidor — costo por backend visible en el activity del proveedor. Cada capture/recall cruzó la fachada MCP gobernada de Leloir y quedó en el audit WORM. Honcho 4/4 (recall HIT 330ms, síntesis cita regla+incidente, deriver 9-11 observaciones — los free-tier derivan CERO). Letta: API archival sana, pero el agente no llega a su propia archival en chat (fail medido). mem0: 8 blockers para bootear, corre solo parcheado, atomiza los incident-ids lejos de la lección. Veredicto: el shape episódico nativo validado por contraste; la síntesis debe ser server-side; la memoria es un consumidor LLM presupuestado y atribuible como cualquier agente.",
+    "de": "Honcho, Letta und mem0 mit DEMSELBEN echten Modell (anthropic/claude-sonnet-5) und je einem eigenen OpenRouter-Schlüssel deployt und gebenchmarkt — Kosten pro Backend im Activity-Log des Anbieters sichtbar. Jedes capture/recall lief durch Leloirs regierte MCP-Fassade ins WORM-Audit. Honcho 4/4; Letta: Archival-API intakt, aber der Agent erreicht sein eigenes Archiv im Chat nicht (gemessener Fail); mem0: 8 Blocker bis zum ersten Start, läuft nur gepatcht, atomisiert Incident-IDs weg von der Lektion.",
+    "fr": "Honcho, Letta et mem0 déployés et benchmarkés avec le MÊME modèle réel (anthropic/claude-sonnet-5) et une clé OpenRouter par consommateur — coût par backend visible dans l'activité du fournisseur. Chaque capture/recall a traversé la façade MCP gouvernée de Leloir jusqu'à l'audit WORM. Honcho 4/4 ; Letta : API archivale saine mais l'agent n'atteint pas sa propre mémoire en chat (échec mesuré) ; mem0 : 8 blocages avant le premier démarrage, ne tourne que patché, atomise les identifiants d'incident loin de la leçon.",
+    "zh": "Honcho、Letta 和 mem0 均以同一真实模型（anthropic/claude-sonnet-5）部署并测试，每个后端使用独立的 OpenRouter 密钥——各后端成本在提供商活动日志中可见。所有 capture/recall 均经过 Leloir 受治理的 MCP 门面并记入 WORM 审计。Honcho 4/4；Letta：归档 API 正常但代理在对话中无法访问自己的归档（实测失败）；mem0：首次启动前有 8 个障碍，仅打补丁后可运行，且事件 ID 与教训被原子化拆散。",
+    "ja": "Honcho・Letta・mem0 を同一の実モデル（anthropic/claude-sonnet-5）とコンシューマ毎の OpenRouter キーでデプロイ・計測 — バックエンド毎のコストがプロバイダのアクティビティに表示。全ての capture/recall は Leloir のガバナンス下 MCP ファサードを通り WORM 監査に記録。Honcho 4/4；Letta はアーカイブ API は健全だがエージェントがチャット内で自身のアーカイブに到達できない（実測フェイル）；mem0 は初回起動まで 8 つのブロッカー、パッチ適用時のみ動作。"
+   }
   }
  ],
  "categories": [
