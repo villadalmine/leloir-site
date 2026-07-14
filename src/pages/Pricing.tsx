@@ -71,7 +71,7 @@ export function Pricing() {
                   <td style={{ padding: '24px' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '12px', margin: '0 0 8px' }}>
                       <h4 style={{ margin: 0, fontSize: '16px' }}>{t(f.title)}</h4>
-                      {f.status === 'planned' && (
+                      {f.roadmap && (
                         <span style={{ fontSize: '11px', padding: '2px 8px', borderRadius: '12px', background: 'rgba(251, 191, 36, 0.1)', color: '#fbbf24', border: '1px solid rgba(251, 191, 36, 0.2)' }}>
                           Roadmap
                         </span>
