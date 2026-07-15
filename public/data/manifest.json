@@ -1835,6 +1835,29 @@
     "zh": "确定性提炼器 + Argo/Markdown 渲染，已单元测试。真正的 Robusta 动作映射仍待定。",
     "ja": "決定論的ディスティラ + Argo/Markdown レンダラ、単体テスト済み。真の Robusta アクション対応は保留。"
    }
+  },
+  {
+   "id": "notification-channels",
+   "milestone": "Q4",
+   "status": "tested",
+   "commit": "f46294c",
+   "category": "operate",
+   "title": {
+    "en": "Declarative notifications — lifecycle events to Slack/Teams/webhook, governed",
+    "es": "Notificaciones declarativas — eventos del ciclo de vida a Slack/Teams/webhook, gobernadas",
+    "de": "Deklarative Benachrichtigungen — Lifecycle-Events an Slack/Teams/Webhook, reguliert",
+    "fr": "Notifications déclaratives — événements du cycle de vie vers Slack/Teams/webhook, gouvernées",
+    "zh": "声明式通知——生命周期事件发送至 Slack/Teams/webhook，受治理",
+    "ja": "宣言的通知 — ライフサイクルイベントを Slack/Teams/webhook へ、ガバナンス付き"
+   },
+   "body": {
+    "en": "The NotificationChannel CRD (designed in M1) finally has its backend: investigation completed/failed and approval pending/decided dispatch to the tenant's declared channels. Chat webhook URLs only come from tenant-granted Secrets (fail-closed); delivery is fail-open — the WORM audit stays the source of truth. Filters: per-route (AlertRoute.spec.notify), per-event (spec.events) and per-outcome (notification.onOutcomes). Proven by an integration test driving a real investigation into a declared channel.",
+    "es": "El CRD NotificationChannel (diseñado en M1) por fin tiene su backend: investigación completada/fallida y approval pendiente/decidido se despachan a los canales declarados del tenant. Las URLs de webhook de chat solo vienen de Secrets concedidos por el tenant (fail-closed); la entrega es fail-open — el audit WORM sigue siendo la fuente de verdad. Filtros: por ruta (AlertRoute.spec.notify), por evento (spec.events) y por outcome (notification.onOutcomes). Probado con un test de integración que lleva una investigación real hasta un canal declarado.",
+    "de": "Die NotificationChannel-CRD (in M1 entworfen) hat endlich ihr Backend: Untersuchung abgeschlossen/fehlgeschlagen und Freigabe ausstehend/entschieden werden an die deklarierten Kanäle des Tenants gesendet. Chat-Webhook-URLs kommen nur aus vom Tenant gewährten Secrets (fail-closed); die Zustellung ist fail-open — das WORM-Audit bleibt die Quelle der Wahrheit. Filter: pro Route, pro Event und pro Outcome. Bewiesen durch einen Integrationstest mit einer echten Untersuchung.",
+    "fr": "La CRD NotificationChannel (conçue en M1) a enfin son backend : enquête terminée/échouée et approbation en attente/décidée sont envoyées aux canaux déclarés du tenant. Les URLs de webhook de chat ne viennent que de Secrets accordés par le tenant (fail-closed) ; la livraison est fail-open — l'audit WORM reste la source de vérité. Filtres : par route, par événement et par issue. Prouvé par un test d'intégration menant une vraie enquête jusqu'à un canal déclaré.",
+    "zh": "NotificationChannel CRD（M1 设计）终于有了后端：调查完成/失败与审批待定/已决会分发到租户声明的通道。聊天 webhook URL 只能来自租户授权的 Secret（fail-closed）；投递为 fail-open——WORM 审计仍是事实来源。过滤：按路由、按事件、按结果。已通过将真实调查送达声明通道的集成测试验证。",
+    "ja": "NotificationChannel CRD（M1 設計）についにバックエンドが実装：調査の完了/失敗と承認の保留/決定がテナントの宣言チャネルへ配信される。チャット webhook URL はテナント許可の Secret からのみ（fail-closed）；配信は fail-open — WORM 監査が真実の源。フィルタ：ルート毎・イベント毎・結果毎。実際の調査を宣言チャネルまで届ける統合テストで検証済み。"
+   }
   }
  ],
  "actions": [

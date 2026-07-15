@@ -307,25 +307,25 @@
   },
   {
    "kind": "NotificationChannel",
-   "proof": "designed",
-   "reconciled": "config",
+   "proof": "tested",
+   "reconciled": "syncing",
    "purpose": {
-    "en": "[Q4 ROADMAP] Where results go: Teams/Slack/webhook, and what to include (root cause, cost, evidence).",
-    "es": "[Q4 ROADMAP] A dónde van los resultados: Teams/Slack/webhook, y qué incluir (causa raíz, costo, evidencia).",
-    "de": "[Q4 ROADMAP] Wohin Ergebnisse gehen: Teams/Slack/Webhook, und was enthalten sein soll (Ursache, Kosten, Belege).",
-    "fr": "[Q4 ROADMAP] Où vont les résultats : Teams/Slack/webhook, et quoi inclure (cause racine, coût, preuves).",
-    "zh": "[Q4 ROADMAP] 结果去向：Teams/Slack/webhook，以及包含什么（根因、成本、证据）。",
-    "ja": "[Q4 ROADMAP] 結果の送信先：Teams/Slack/Webhook、含める内容（根本原因・コスト・証拠）。"
+    "en": "Where lifecycle results go: Slack/Teams/webhook per tenant. Investigation completed/failed and approval pending/decided, with per-route and per-outcome filters.",
+    "es": "A dónde van los resultados del ciclo de vida: Slack/Teams/webhook por tenant. Investigación completada/fallida y approval pendiente/decidido, con filtros por ruta y por outcome.",
+    "de": "Wohin Lifecycle-Ergebnisse gehen: Slack/Teams/Webhook pro Tenant. Untersuchung abgeschlossen/fehlgeschlagen und Freigabe ausstehend/entschieden, mit Filtern pro Route und Outcome.",
+    "fr": "Où vont les résultats du cycle de vie : Slack/Teams/webhook par tenant. Enquête terminée/échouée et approbation en attente/décidée, avec filtres par route et par issue.",
+    "zh": "生命周期结果的去向：按租户的 Slack/Teams/webhook。调查完成/失败与审批待定/已决，支持按路由和结果过滤。",
+    "ja": "ライフサイクル結果の送信先：テナント毎の Slack/Teams/webhook。調査の完了/失敗と承認の保留/決定を、ルート毎・結果毎のフィルタ付きで通知。"
    },
    "usage": {
-    "en": "Currently in design for Q4. Will allow tenants to define declarative notification sinks (Slack, Teams, PagerDuty) linked from AlertRoute or ApprovalPolicy.",
-    "es": "Actualmente en diseño para Q4. Permitirá a los tenants definir destinos de notificación declarativos (Slack, Teams, PagerDuty) vinculados desde AlertRoute o ApprovalPolicy.",
-    "de": "Derzeit im Design für Q4. Ermöglicht Tenants die Definition deklarativer Benachrichtigungsziele.",
-    "fr": "Actuellement en conception pour le T4. Permettra aux tenants de définir des destinations de notification déclaratives.",
-    "zh": "目前正在 Q4 的设计中。将允许租户定义从 AlertRoute 或 ApprovalPolicy 链接的声明式通知接收端。",
-    "ja": "現在Q4向けに設計中。テナントが宣言的に通知先を定義できるようにします。"
+    "en": "Declare the channel in the tenant's namespace; chat webhook URLs come ONLY from a Secret the tenant grants (namespaced Role to the controlplane SA — fail-closed). AlertRoute.spec.notify narrows a route to specific channels. Delivery is fail-open: a dead endpoint never blocks an investigation; the WORM audit stays the source of truth. v1 dispatches slack|teams|webhook; telegram/pagerduty/opsgenie are declarable but skip with a warn (never silent success).",
+    "es": "Declarás el canal en el namespace del tenant; las URLs de webhook de chat vienen SOLO de un Secret que el tenant concede (Role namespaced al SA del controlplane — fail-closed). AlertRoute.spec.notify acota una ruta a canales específicos. La entrega es fail-open: un endpoint muerto nunca bloquea una investigación; el audit WORM sigue siendo la fuente de verdad. v1 despacha slack|teams|webhook; telegram/pagerduty/opsgenie son declarables pero se saltean con warn (nunca éxito mudo).",
+    "de": "Kanal im Namespace des Tenants deklarieren; Chat-Webhook-URLs kommen NUR aus einem Secret, das der Tenant gewährt (namespaced Role für den Controlplane-SA — fail-closed). AlertRoute.spec.notify begrenzt eine Route auf bestimmte Kanäle. Zustellung ist fail-open: ein toter Endpoint blockiert nie eine Untersuchung; das WORM-Audit bleibt die Quelle der Wahrheit. v1 versendet slack|teams|webhook; telegram/pagerduty/opsgenie sind deklarierbar, werden aber mit Warnung übersprungen.",
+    "fr": "Déclarez le canal dans le namespace du tenant ; les URLs de webhook de chat viennent UNIQUEMENT d'un Secret accordé par le tenant (Role namespacé au SA du controlplane — fail-closed). AlertRoute.spec.notify restreint une route à des canaux précis. La livraison est fail-open : un endpoint mort ne bloque jamais une enquête ; l'audit WORM reste la source de vérité. v1 envoie slack|teams|webhook ; telegram/pagerduty/opsgenie sont déclarables mais ignorés avec un avertissement.",
+    "zh": "在租户命名空间声明通道；聊天 webhook URL 只能来自租户授权的 Secret（对控制面 SA 的命名空间级 Role——fail-closed）。AlertRoute.spec.notify 可将路由限定到特定通道。投递是 fail-open 的：死掉的端点绝不会阻塞调查；WORM 审计仍是事实来源。v1 支持 slack|teams|webhook；telegram/pagerduty/opsgenie 可声明但会带警告跳过（绝不静默成功）。",
+    "ja": "テナントの namespace にチャネルを宣言。チャット webhook URL はテナントが許可した Secret からのみ取得（controlplane SA への namespaced Role — fail-closed）。AlertRoute.spec.notify でルートを特定チャネルに絞れる。配信は fail-open：死んだエンドポイントが調査をブロックすることはなく、WORM 監査が真実の源。v1 は slack|teams|webhook を配信；telegram/pagerduty/opsgenie は宣言可能だが警告付きでスキップ。"
    },
-   "yaml": "apiVersion: leloir.dev/v1alpha1\nkind: NotificationChannel\nmetadata: { name: teams-sre, namespace: team-alpha }\nspec:\n  type: teams\n  teams: { webhookURLSecretRef: { name: teams-webhook-secret, key: url } }\n  notification: { includeRootCause: true, includeCost: true, onOutcomes: [success, error] }"
+   "yaml": "apiVersion: leloir.dev/v1alpha1\nkind: NotificationChannel\nmetadata: { name: oncall-slack, namespace: team-a-ns }\nspec:\n  type: slack\n  slack:\n    webhookURLSecretRef: { name: oncall-slack-webhook, key: url }\n  events: [investigation.failed, approval.pending]\n  # webhook genérico: spec.webhook.url + authSecretRef (Bearer)\n  # filtro fino: spec.notification.onOutcomes: [error, budget_exhausted]"
   }
  ],
  "metering": {
