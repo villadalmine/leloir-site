@@ -2267,6 +2267,25 @@
     "zh": "Honcho、Letta 和 mem0 均以同一真实模型（anthropic/claude-sonnet-5）部署并测试，每个后端使用独立的 OpenRouter 密钥——各后端成本在提供商活动日志中可见。所有 capture/recall 均经过 Leloir 受治理的 MCP 门面并记入 WORM 审计。Honcho 4/4；Letta：归档 API 正常但代理在对话中无法访问自己的归档（实测失败）；mem0：首次启动前有 8 个障碍，仅打补丁后可运行，且事件 ID 与教训被原子化拆散。",
     "ja": "Honcho・Letta・mem0 を同一の実モデル（anthropic/claude-sonnet-5）とコンシューマ毎の OpenRouter キーでデプロイ・計測 — バックエンド毎のコストがプロバイダのアクティビティに表示。全ての capture/recall は Leloir のガバナンス下 MCP ファサードを通り WORM 監査に記録。Honcho 4/4；Letta はアーカイブ API は健全だがエージェントがチャット内で自身のアーカイブに到達できない（実測フェイル）；mem0 は初回起動まで 8 つのブロッカー、パッチ適用時のみ動作。"
    }
+  },
+  {
+   "when": "2026-07-15",
+   "claim": {
+    "en": "Agent governance is MEASURED, not claimed — an auto-generated conformance matrix per agent, every test run",
+    "es": "La governance de agentes se MIDE, no se afirma — matriz de conformance auto-generada por agente, en cada corrida",
+    "de": "Agenten-Governance wird GEMESSEN, nicht behauptet — eine auto-generierte Konformitätsmatrix pro Agent, bei jedem Testlauf",
+    "fr": "La gouvernance des agents est MESURÉE, pas revendiquée — une matrice de conformité auto-générée par agent, à chaque exécution",
+    "zh": "智能体治理是实测的，非声称——每次测试运行自动生成按智能体的合规矩阵",
+    "ja": "エージェントのガバナンスは主張ではなく実測 — テスト実行ごとにエージェント毎の適合マトリクスを自動生成"
+   },
+   "evidence": {
+    "en": "scripts/matrix-agents.sh regenerates AGENT_CONFORMANCE.md from the live control-plane scorecard each run — same logic as the memory matrix, for the agents we support. Measured 2026-07-15: 5 agents governed 5/5 (leloir-agent flagship, HolmesGPT SDK-native mode1, HolmesGPT contained mode2, mode3 native-guardrails, mode4 OpenCode) across the 5 seams (LLM metered, tools via gateway, RBAC no-creds, routed trigger, recorded outcome); raw HolmesGPT off-radar 2/5 (unmetered, own tools) — reported honestly, not faked. The contained-vs-raw contrast is the value demo. kagent (via A2A) and k8sgpt (conformance adapter) join the matrix automatically when deployed.",
+    "es": "scripts/matrix-agents.sh regenera AGENT_CONFORMANCE.md desde el scorecard vivo del control plane en cada corrida — la misma lógica que la matriz de memoria, para los agentes que soportamos. Medido 2026-07-15: 5 agentes gobernados 5/5 (leloir-agent flagship, HolmesGPT SDK-native mode1, HolmesGPT contenido mode2, mode3 guardrails nativos, mode4 OpenCode) en las 5 costuras (LLM metrado, tools por el gateway, RBAC sin creds, trigger ruteado, outcome registrado); HolmesGPT crudo off-radar 2/5 (unmetered, tools propias) — reportado honesto, no fingido. El contraste contenido-vs-crudo es la demo del valor. kagent (vía A2A) y k8sgpt (adapter de conformance) se suman a la matriz solos al desplegarse.",
+    "de": "scripts/matrix-agents.sh regeneriert AGENT_CONFORMANCE.md aus dem Live-Scorecard bei jedem Lauf — gleiche Logik wie die Memory-Matrix. Gemessen 2026-07-15: 5 Agenten 5/5 regiert; rohes HolmesGPT off-radar 2/5 — ehrlich gemeldet. kagent (A2A) und k8sgpt kommen beim Deploy automatisch dazu.",
+    "fr": "scripts/matrix-agents.sh régénère AGENT_CONFORMANCE.md depuis le scorecard live à chaque exécution — même logique que la matrice mémoire. Mesuré le 2026-07-15 : 5 agents gouvernés 5/5 ; HolmesGPT brut off-radar 2/5 — signalé honnêtement. kagent (A2A) et k8sgpt rejoignent la matrice automatiquement au déploiement.",
+    "zh": "scripts/matrix-agents.sh 每次运行都从实时评分卡重新生成 AGENT_CONFORMANCE.md——与记忆矩阵同一逻辑。2026-07-15 实测：5 个智能体 5/5 受治理；原始 HolmesGPT off-radar 2/5——诚实上报。kagent（A2A）与 k8sgpt 部署后自动加入矩阵。",
+    "ja": "scripts/matrix-agents.sh は実行毎にライブのスコアカードから AGENT_CONFORMANCE.md を再生成 — メモリマトリクスと同じロジック。2026-07-15 実測：5 エージェントが 5/5 でガバナンス下；生の HolmesGPT は off-radar 2/5 — 正直に報告。kagent（A2A）と k8sgpt はデプロイ時に自動でマトリクスに加わる。"
+   }
   }
  ],
  "categories": [
