@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { useSiteData, useSiteText, t } from '../hooks/useSiteData';
 import mermaid from 'mermaid';
+import { Cpu } from 'lucide-react';
 
 function Diagram() {
   const { text: mmd, loading } = useSiteText('architecture.mmd');
@@ -45,6 +46,17 @@ export function Architecture() {
             </div>
           ))}
         </div>
+      </div>
+
+      {/* Agnostic Banner */}
+      <div className="glass-card" style={{ marginBottom: '64px', padding: '32px', borderLeft: '4px solid var(--primary)' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
+          <Cpu size={28} color="var(--primary)" />
+          <h2 style={{ fontSize: '24px', margin: 0, color: 'white' }}>Vendor-Agnostic Governance</h2>
+        </div>
+        <p style={{ color: 'var(--muted)', fontSize: '16px', lineHeight: '1.6', margin: 0 }}>
+          Leloir doesn't depend on specific vendors. It depends on <strong>Standard Contracts</strong> (AgentAdapter, Gateway API, OpenAI-compat, MCP). This enforces strict isolation and allows us to rigorously test failure modes across different implementations without locking you into a single ecosystem.
+        </p>
       </div>
 
       {/* Diagram */}

@@ -1,5 +1,5 @@
 import { useSiteData, t } from '../hooks/useSiteData';
-import { CheckCircle2, CircleDashed, Clock } from 'lucide-react';
+import { CheckCircle2, CircleDashed, Clock, Flame, ShieldCheck } from 'lucide-react';
 
 const CATEGORY_META: Record<string, { title: string, desc: string }> = {
   tenancy: {
@@ -26,12 +26,17 @@ const CATEGORY_META: Record<string, { title: string, desc: string }> = {
 
 const getStatusBadge = (status: string) => {
   switch (status) {
+    case 'e2e-chaos':
+      return <span className="badge" style={{ backgroundColor: 'rgba(239, 68, 68, 0.1)', color: '#ef4444', border: '1px solid #ef4444', boxShadow: '0 0 10px rgba(239, 68, 68, 0.2)' }}><Flame size={12} style={{ marginRight: '4px' }} /> Chaos Tested</span>;
+    case 'e2e-happy':
     case 'proven':
-      return <span className="badge" style={{ backgroundColor: 'rgba(52, 211, 153, 0.1)', color: 'var(--ok)', border: '1px solid var(--ok)' }}><CheckCircle2 size={12} style={{ marginRight: '4px' }} /> Tested & Live</span>;
+      return <span className="badge" style={{ backgroundColor: 'rgba(52, 211, 153, 0.1)', color: 'var(--ok)', border: '1px solid var(--ok)' }}><ShieldCheck size={12} style={{ marginRight: '4px' }} /> E2E Verified</span>;
+    case 'unit':
+      return <span className="badge" style={{ backgroundColor: 'rgba(96, 165, 250, 0.1)', color: 'var(--info)', border: '1px solid var(--info)' }}><CheckCircle2 size={12} style={{ marginRight: '4px' }} /> Unit Tested</span>;
     case 'in-progress':
-      return <span className="badge" style={{ backgroundColor: 'rgba(96, 165, 250, 0.1)', color: 'var(--info)', border: '1px solid var(--info)' }}><CircleDashed size={12} style={{ marginRight: '4px' }} /> In Progress</span>;
+      return <span className="badge" style={{ backgroundColor: 'rgba(251, 191, 36, 0.1)', color: 'var(--warn)', border: '1px solid var(--warn)' }}><CircleDashed size={12} style={{ marginRight: '4px' }} /> In Progress</span>;
     default:
-      return <span className="badge" style={{ backgroundColor: 'rgba(251, 191, 36, 0.1)', color: 'var(--warn)', border: '1px solid var(--warn)' }}><Clock size={12} style={{ marginRight: '4px' }} /> Planned</span>;
+      return <span className="badge" style={{ backgroundColor: 'rgba(156, 163, 175, 0.1)', color: '#9ca3af', border: '1px solid #9ca3af' }}><Clock size={12} style={{ marginRight: '4px' }} /> Planned</span>;
   }
 };
 
@@ -47,9 +52,27 @@ export function Roadmap() {
     <div id="roadmap" className="container" style={{ padding: '80px 24px' }}>
       <div style={{ textAlign: 'center', marginBottom: '64px' }}>
         <h1 style={{ fontSize: '48px', marginBottom: '24px' }}>Platform Roadmap</h1>
-        <p className="lead" style={{ maxWidth: '800px', margin: '0 auto' }}>
+        <p className="lead" style={{ maxWidth: '800px', margin: '0 auto', marginBottom: '32px' }}>
           Explore the deep architecture of Leloir and the development status of every strategic component.
         </p>
+
+        {/* Chaos-Tested Banner */}
+        <div className="glass-card" style={{ maxWidth: '900px', margin: '0 auto', padding: '32px', textAlign: 'left', borderLeft: '4px solid #ef4444' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
+            <Flame size={28} color="#ef4444" />
+            <h2 style={{ fontSize: '24px', margin: 0, color: 'white' }}>The Chaos-Tested Standard</h2>
+          </div>
+          <p style={{ color: 'var(--muted)', fontSize: '16px', lineHeight: '1.6', marginBottom: '24px' }}>
+            We downgraded our entire roadmap to 0% "Completed" today. In Leloir, a feature is only considered done when it survives automated fault injection (<span style={{ color: '#ef4444', fontFamily: 'monospace' }}>e2e-chaos</span>) in a production-like environment. Honest engineering means nothing is trusted until it breaks and recovers.
+          </p>
+          <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
+            {getStatusBadge('e2e-chaos')}
+            {getStatusBadge('e2e-happy')}
+            {getStatusBadge('unit')}
+            {getStatusBadge('in-progress')}
+            {getStatusBadge('planned')}
+          </div>
+        </div>
       </div>
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: '64px' }}>

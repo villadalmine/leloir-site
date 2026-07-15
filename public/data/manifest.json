@@ -717,7 +717,7 @@
   {
    "id": "memory-mcp",
    "milestone": "M18",
-   "status": "proven",
+   "status": "e2e-happy",
    "commit": "c96b5a2",
    "category": "connectors",
    "title": {
@@ -740,7 +740,7 @@
   {
    "id": "rag-episodic",
    "milestone": "M22",
-   "status": "proven",
+   "status": "e2e-happy",
    "commit": "984784c",
    "category": "connectors",
    "title": {
@@ -763,7 +763,7 @@
   {
    "id": "agentic-loop",
    "milestone": "M7",
-   "status": "proven",
+   "status": "e2e-happy",
    "commit": "3900a85",
    "title": {
     "en": "Agentic loop",
@@ -794,7 +794,7 @@
   {
    "id": "byo-agent",
    "milestone": "M1-M5",
-   "status": "proven",
+   "status": "e2e-happy",
    "commit": "a2f9bbc",
    "title": {
     "en": "Bring-your-own-agent (SDK)",
@@ -825,7 +825,7 @@
   {
    "id": "budget",
    "milestone": "M3-M4",
-   "status": "proven",
+   "status": "e2e-chaos",
    "commit": "cdac2ac",
    "title": {
     "en": "4-layer budget",
@@ -856,7 +856,7 @@
   {
    "id": "hitl",
    "milestone": "M4",
-   "status": "proven",
+   "status": "e2e-happy",
    "commit": "",
    "title": {
     "en": "Human-in-the-loop",
@@ -887,7 +887,7 @@
   {
    "id": "a2a",
    "milestone": "M4",
-   "status": "proven",
+   "status": "e2e-chaos",
    "commit": "a901699",
    "title": {
     "en": "Agent-to-Agent with guards",
@@ -918,7 +918,7 @@
   {
    "id": "mcp-gateway",
    "milestone": "M7",
-   "status": "proven",
+   "status": "e2e-happy",
    "commit": "5870779",
    "title": {
     "en": "Real MCP Gateway",
@@ -949,7 +949,7 @@
   {
    "id": "mcp-multitenant",
    "milestone": "M11",
-   "status": "proven",
+   "status": "e2e-happy",
    "commit": "c3614ad",
    "title": {
     "en": "Multi-tenant MCP",
@@ -980,7 +980,7 @@
   {
    "id": "pro-api",
    "milestone": "M8",
-   "status": "proven",
+   "status": "e2e-happy",
    "commit": "8942560",
    "title": {
     "en": "Pro API — keys + metering",
@@ -1011,7 +1011,7 @@
   {
    "id": "cli",
    "milestone": "M9",
-   "status": "proven",
+   "status": "e2e-happy",
    "commit": "c0768e7",
    "title": {
     "en": "leloir CLI",
@@ -1042,7 +1042,7 @@
   {
    "id": "retry",
    "milestone": "M10",
-   "status": "proven",
+   "status": "e2e-happy",
    "commit": "59269a7",
    "title": {
     "en": "Loop robustness",
@@ -1073,7 +1073,7 @@
   {
    "id": "tools-discovery",
    "milestone": "M10",
-   "status": "proven",
+   "status": "e2e-happy",
    "commit": "b0e225a",
    "title": {
     "en": "Dynamic tool discovery",
@@ -1104,7 +1104,7 @@
   {
    "id": "metrics",
    "milestone": "M11-M12",
-   "status": "proven",
+   "status": "e2e-happy",
    "commit": "5aa51ac",
    "title": {
     "en": "Per-tenant metrics",
@@ -1135,7 +1135,7 @@
   {
    "id": "make-demo",
    "milestone": "M10",
-   "status": "proven",
+   "status": "e2e-happy",
    "commit": "df9881f",
    "title": {
     "en": "make demo",
@@ -1166,7 +1166,7 @@
   {
    "id": "namespace-governance",
    "milestone": "M14",
-   "status": "proven",
+   "status": "e2e-chaos",
    "commit": "",
    "title": {
     "en": "Per-namespace RBAC governance",
@@ -1228,7 +1228,7 @@
   {
    "id": "per-tenant-observability",
    "milestone": "M15",
-   "status": "proven",
+   "status": "e2e-happy",
    "commit": "bd84072",
    "category": "tenancy",
    "title": {
@@ -1259,7 +1259,7 @@
   {
    "id": "auto-recover-vs-hitl",
    "milestone": "M15",
-   "status": "proven",
+   "status": "e2e-chaos",
    "commit": "pending",
    "category": "governance",
    "title": {
@@ -1290,7 +1290,7 @@
   {
    "id": "alert-dedup",
    "milestone": "M15",
-   "status": "proven",
+   "status": "e2e-happy",
    "commit": "pending",
    "category": "operate",
    "title": {
@@ -1321,7 +1321,7 @@
   {
    "id": "platform-cost-view",
    "milestone": "M15",
-   "status": "proven",
+   "status": "e2e-happy",
    "commit": "pending",
    "category": "tenancy",
    "title": {
@@ -1352,7 +1352,7 @@
   {
    "id": "cross-tenant-a2a-deny",
    "milestone": "M15",
-   "status": "proven",
+   "status": "e2e-chaos",
    "commit": "pending",
    "category": "governance",
    "title": {
@@ -1383,7 +1383,7 @@
   {
    "id": "real-broken-pods-demo",
    "milestone": "M15",
-   "status": "proven",
+   "status": "e2e-happy",
    "commit": "pending",
    "category": "operate",
    "title": {
@@ -1414,7 +1414,7 @@
   {
    "id": "closed-loop-remediation",
    "milestone": "M15",
-   "status": "proven",
+   "status": "e2e-happy",
    "commit": "pending",
    "category": "governance",
    "title": {
@@ -1445,7 +1445,7 @@
   {
    "id": "governance-scorecard",
    "milestone": "",
-   "status": "proven",
+   "status": "e2e-happy",
    "commit": "b66e781",
    "category": "governance",
    "title": {
@@ -1476,7 +1476,7 @@
   {
    "id": "three-modes",
    "milestone": "M13",
-   "status": "proven",
+   "status": "e2e-happy",
    "commit": "8080113",
    "category": "governance",
    "title": {
@@ -1507,7 +1507,7 @@
   {
    "id": "containment",
    "milestone": "M13.4",
-   "status": "proven",
+   "status": "e2e-chaos",
    "commit": "e961cf8",
    "category": "governance",
    "title": {
@@ -1538,7 +1538,7 @@
   {
    "id": "own-key-provisioning",
    "milestone": "M13.4",
-   "status": "proven",
+   "status": "e2e-happy",
    "commit": "b4cf276",
    "category": "governance",
    "title": {
@@ -1561,7 +1561,7 @@
   {
    "id": "skillsource-resolution",
    "milestone": "M16",
-   "status": "proven",
+   "status": "e2e-happy",
    "commit": "92d7940",
    "category": "connectors",
    "title": {
@@ -1584,7 +1584,7 @@
   {
    "id": "tenant-attribution",
    "milestone": "M13.4",
-   "status": "proven",
+   "status": "e2e-happy",
    "commit": "92d7940",
    "category": "tenancy",
    "title": {
@@ -1607,7 +1607,7 @@
   {
    "id": "envoy-ai-gw-driver",
    "milestone": "M15.6",
-   "status": "proven",
+   "status": "e2e-happy",
    "commit": "c589b80",
    "category": "governance",
    "title": {
@@ -1653,7 +1653,7 @@
   {
    "id": "mcp-facade",
    "milestone": "",
-   "status": "proven",
+   "status": "e2e-happy",
    "commit": "632c314",
    "category": "connectors",
    "title": {
@@ -1684,7 +1684,7 @@
   {
    "id": "conformance",
    "milestone": "SDK",
-   "status": "proven",
+   "status": "e2e-happy",
    "commit": "b38b2ee",
    "category": "agents",
    "title": {
@@ -1715,7 +1715,7 @@
   {
    "id": "roi",
    "milestone": "",
-   "status": "proven",
+   "status": "e2e-happy",
    "commit": "3149bd9",
    "category": "tenancy",
    "title": {
@@ -1746,7 +1746,7 @@
   {
    "id": "shadow-mode",
    "milestone": "",
-   "status": "tested",
+   "status": "e2e-chaos",
    "commit": "a1628ec",
    "category": "operate",
    "title": {
