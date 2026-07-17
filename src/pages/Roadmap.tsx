@@ -35,18 +35,21 @@ const getStatusBadge = (status: string) => {
       return <span className="badge" style={{ backgroundColor: 'rgba(96, 165, 250, 0.1)', color: 'var(--info)', border: '1px solid var(--info)' }}><CheckCircle2 size={12} style={{ marginRight: '4px' }} /> Unit Tested</span>;
     case 'in-progress':
       return <span className="badge" style={{ backgroundColor: 'rgba(251, 191, 36, 0.1)', color: 'var(--warn)', border: '1px solid var(--warn)' }}><CircleDashed size={12} style={{ marginRight: '4px' }} /> In Progress</span>;
+    case 'not-tested':
+      return <span className="badge" style={{ backgroundColor: 'rgba(156, 163, 175, 0.1)', color: '#9ca3af', border: '1px solid #9ca3af' }}><Clock size={12} style={{ marginRight: '4px' }} /> Not Tested</span>;
     default:
       return <span className="badge" style={{ backgroundColor: 'rgba(156, 163, 175, 0.1)', color: '#9ca3af', border: '1px solid #9ca3af' }}><Clock size={12} style={{ marginRight: '4px' }} /> Planned</span>;
   }
 };
 
 export function Roadmap() {
-  const { data, loading } = useSiteData<any>('manifest.json');
+  const { data: manifestData, loading: manifestLoading } = useSiteData<any>('manifest.json');
+  const { data: reportData, loading: reportLoading } = useSiteData<any>('report.json');
 
-  if (loading || !data) return <div className="container" style={{ padding: '100px 24px', textAlign: 'center' }}>Loading...</div>;
+  if (manifestLoading || reportLoading || !manifestData || !reportData) return <div className="container" style={{ padding: '100px 24px', textAlign: 'center' }}>Loading...</div>;
 
-  // Extract all unique categories from data.features
-  const categories = Array.from(new Set(data.features.map((f: any) => f.category).filter(Boolean))) as string[];
+  // Extract all unique categories from manifestData.features
+  const categories = Array.from(new Set(manifestData.features.map((f: any) => f.category).filter(Boolean))) as string[];
 
   return (
     <div id="roadmap" className="container" style={{ padding: '80px 24px' }}>
@@ -78,7 +81,7 @@ export function Roadmap() {
       <div style={{ display: 'flex', flexDirection: 'column', gap: '64px' }}>
         {categories.map(cat => {
           const meta = CATEGORY_META[cat] || { title: cat, desc: '' };
-          const features = data.features.filter((f: any) => f.category === cat);
+          const features = manifestData.features.filter((f: any) => f.category === cat);
           
           if (features.length === 0) return null;
 
@@ -99,15 +102,19 @@ export function Roadmap() {
                     </tr>
                   </thead>
                   <tbody>
-                    {features.map((f: any, i: number) => (
+                    {features.map((f: any, i: number) => {
+                      const reportFeature = reportData.features?.find((rf: any) => rf.id === f.id);
+                      const finalStatus = reportFeature ? reportFeature.test_status : f.status;
+                      return (
                       <tr key={i} style={{ borderBottom: '1px solid var(--border)' }}>
                         <td style={{ padding: '16px 8px', fontWeight: 500 }}>{t(f.title)}</td>
                         <td style={{ padding: '16px 8px', color: 'var(--muted)', fontSize: '14px' }}>{t(f.description)}</td>
                         <td style={{ padding: '16px 8px' }}>
-                          {getStatusBadge(f.status)}
+                          {getStatusBadge(finalStatus)}
                         </td>
                       </tr>
-                    ))}
+                      );
+                    })}
                   </tbody>
                 </table>
               </div>
