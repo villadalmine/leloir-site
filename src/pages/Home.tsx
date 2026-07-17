@@ -15,15 +15,6 @@ export function Home() {
     return <div className="container" style={{ padding: '100px 24px', textAlign: 'center' }}>Loading...</div>;
   }
 
-  const getTierClass = (tier: string) => {
-    switch(tier) {
-      case 'OSS': return 'badge-oss';
-      case 'Team': return 'badge-team';
-      case 'Mission Critical': return 'badge-mc';
-      default: return 'badge-oss';
-    }
-  };
-
   return (
     <div id="introduction" className="container" style={{ padding: '80px 24px', textAlign: 'center' }}>
       
@@ -74,7 +65,6 @@ export function Home() {
             <div key={feat.id} className="card" style={{ padding: '24px', display: 'flex', flexDirection: 'column' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '16px' }}>
                 <h3 style={{ margin: 0, fontSize: '18px', color: 'var(--fg)' }}>{t(feat.title)}</h3>
-                <span className={`badge ${getTierClass(feat.tier)}`}>{feat.tier}</span>
               </div>
               <p style={{ margin: 0, color: 'var(--muted)', fontSize: '14px', lineHeight: 1.6, flexGrow: 1 }}>
                 {t(feat.desc)}

@@ -1,0 +1,138 @@
+graph LR
+  classDef dep fill:#3d2b1f,stroke:#c9760a,color:#f5d9b0;
+  classDef feat fill:#1f2d3d,stroke:#3f7fbf,color:#cfe3f5;
+  classDef seam fill:#2d1f3d,stroke:#9f5fbf,color:#e3cff5;
+  classDef actor fill:#1f3d2b,stroke:#3fbf7f,color:#cff5e0;
+  classDef cons fill:#3d1f2b,stroke:#bf3f5f,color:#f5cfda;
+  subgraph CONSUMIDORES
+    C_CISO(["CISO"]):::cons
+    C_SRE_ops(["SRE-ops"]):::cons
+    C_tenant_admin(["tenant-admin"]):::cons
+    C_customer_evaluador(["customer-evaluador"]):::cons
+  end
+  subgraph ACTORES["ACTORES (agentes x modo)"]
+    A_leloir_agent["leloir-agent<br/>all"]:::actor
+    A_mode1_sre["mode1-sre<br/>mode1"]:::actor
+    A_mode2_holmes["mode2-holmes<br/>mode2"]:::actor
+    A_mode3_agent["mode3-agent<br/>mode3"]:::actor
+    A_mode4_opencode["mode4-opencode<br/>mode4"]:::actor
+    A_kagent["kagent<br/>a2a (planned)"]:::actor
+    A_k8sgpt["k8sgpt<br/>conformance (planned)"]:::actor
+    A_holmesgpt_raw["holmesgpt-raw<br/>raw"]:::actor
+  end
+  subgraph SEAMS["COSTURAS de governance"]
+    S_Trigger(["Trigger"]):::seam
+    S_LLM(["LLM"]):::seam
+    S_Tools(["Tools"]):::seam
+    S_RBAC(["RBAC"]):::seam
+    S_Outcome(["Outcome"]):::seam
+  end
+  subgraph FEATURES
+    F_alert_routing["alert-routing"]:::feat
+    F_tenant_isolation["tenant-isolation"]:::feat
+    F_budget_4layer["budget-4layer"]:::feat
+    F_llm_metering_real["llm-metering-real"]:::feat
+    F_perTenant_keys["perTenant-keys"]:::feat
+    F_hitl_approval["hitl-approval"]:::feat
+    F_a2a_delegation["a2a-delegation"]:::feat
+    F_tools_via_gateway["tools-via-gateway"]:::feat
+    F_memory_rag["memory-rag"]:::feat
+    F_memory_mcp["memory-mcp"]:::feat
+    F_memory_honcho["memory-honcho"]:::feat
+    F_containment_egress["containment-egress"]:::feat
+    F_hardening_mtls["hardening-mtls"]:::feat
+    F_hardening_netpol["hardening-netpol"]:::feat
+    F_skillsource["skillsource"]:::feat
+    F_scheduled_inv["scheduled-inv"]:::feat
+    F_shadow_mode["shadow-mode"]:::feat
+    F_quarantine["quarantine"]:::feat
+    F_audit_worm["audit-worm"]:::feat
+    F_audit_siem["audit-siem"]:::feat
+    F_notifications["notifications"]:::feat
+    F_metrics_dashboards["metrics-dashboards"]:::feat
+    F_scorecard_honesty["scorecard-honesty"]:::feat
+  end
+  subgraph DEPS["DEPENDENCIAS de infra"]
+    D_cilium["cilium"]:::dep
+    D_spire["spire"]:::dep
+    D_litellm["litellm"]:::dep
+    D_litellm_operator["litellm-operator"]:::dep
+    D_honcho["honcho"]:::dep
+    D_otel["otel"]:::dep
+    D_prometheus["prometheus"]:::dep
+    D_external_sink["external-sink"]:::dep
+    D_chat_webhook["chat-webhook"]:::dep
+  end
+  C_CISO -->|reads| F_audit_worm
+  C_CISO -->|reads| F_scorecard_honesty
+  C_CISO -->|reads| F_llm_metering_real
+  C_CISO -->|reads| F_metrics_dashboards
+  C_SRE_ops -->|reads| F_notifications
+  C_SRE_ops -->|reads| F_scheduled_inv
+  C_SRE_ops -->|reads| F_memory_rag
+  C_tenant_admin -->|reads| F_budget_4layer
+  C_tenant_admin -->|reads| F_tenant_isolation
+  C_customer_evaluador -->|reads| F_scorecard_honesty
+  C_customer_evaluador -->|reads| F_audit_worm
+  F_alert_routing -->|binds| S_Trigger
+  F_tenant_isolation -->|binds| S_RBAC
+  F_budget_4layer -->|binds| S_LLM
+  F_llm_metering_real -->|binds| S_LLM
+  F_llm_metering_real -->|requires| D_litellm
+  F_llm_metering_real -->|requires| D_otel
+  F_perTenant_keys -->|binds| S_LLM
+  F_perTenant_keys -->|requires| D_litellm_operator
+  F_hitl_approval -->|binds| S_Tools
+  F_a2a_delegation -->|binds| S_Trigger
+  F_tools_via_gateway -->|binds| S_Tools
+  F_memory_rag -->|binds| S_Tools
+  F_memory_mcp -->|binds| S_Tools
+  F_memory_honcho -->|binds| S_Tools
+  F_memory_honcho -->|requires| D_honcho
+  F_memory_honcho -->|requires| D_litellm
+  F_containment_egress -->|binds| S_Tools
+  F_containment_egress -->|requires| D_litellm
+  F_containment_egress -->|requires| D_cilium
+  F_hardening_mtls -->|binds| S_RBAC
+  F_hardening_mtls -->|requires| D_cilium
+  F_hardening_mtls -->|requires| D_spire
+  F_hardening_netpol -->|binds| S_RBAC
+  F_hardening_netpol -->|requires| D_cilium
+  F_skillsource -->|binds| S_Trigger
+  F_scheduled_inv -->|binds| S_Trigger
+  F_shadow_mode -->|binds| S_Tools
+  F_quarantine -->|binds| S_Outcome
+  F_audit_worm -->|binds| S_Outcome
+  F_audit_siem -->|binds| S_Outcome
+  F_audit_siem -->|requires| D_external_sink
+  F_notifications -->|binds| S_Outcome
+  F_notifications -->|requires| D_chat_webhook
+  F_metrics_dashboards -->|binds| S_Outcome
+  F_metrics_dashboards -->|requires| D_prometheus
+  F_scorecard_honesty -->|binds| S_Outcome
+  A_leloir_agent -.->|acts| S_LLM
+  A_leloir_agent -.->|acts| S_Outcome
+  A_leloir_agent -.->|acts| S_RBAC
+  A_leloir_agent -.->|acts| S_Tools
+  A_leloir_agent -.->|acts| S_Trigger
+  A_mode1_sre -.->|acts| S_LLM
+  A_mode1_sre -.->|acts| S_Outcome
+  A_mode1_sre -.->|acts| S_RBAC
+  A_mode1_sre -.->|acts| S_Tools
+  A_mode1_sre -.->|acts| S_Trigger
+  A_mode2_holmes -.->|acts| S_LLM
+  A_mode2_holmes -.->|acts| S_Outcome
+  A_mode2_holmes -.->|acts| S_RBAC
+  A_mode2_holmes -.->|acts| S_Tools
+  A_mode2_holmes -.->|acts| S_Trigger
+  A_mode3_agent -.->|acts| S_LLM
+  A_mode3_agent -.->|acts| S_Outcome
+  A_mode3_agent -.->|acts| S_RBAC
+  A_mode3_agent -.->|acts| S_Tools
+  A_mode3_agent -.->|acts| S_Trigger
+  A_mode4_opencode -.->|acts| S_LLM
+  A_mode4_opencode -.->|acts| S_Outcome
+  A_mode4_opencode -.->|acts| S_RBAC
+  A_mode4_opencode -.->|acts| S_Tools
+  A_mode4_opencode -.->|acts| S_Trigger
+  A_holmesgpt_raw -.->|OFF-RADAR: no pasa por seams| S_Tools

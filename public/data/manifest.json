@@ -1197,7 +1197,7 @@
   {
    "id": "oidc",
    "milestone": "M2",
-   "status": "tested",
+   "status": "proven",
    "commit": "",
    "title": {
     "en": "Pluggable auth + multi-tenant RBAC",
@@ -1216,12 +1216,12 @@
     "ja": "認証はプラガブル：single-user（現在の PoC）または Dex + GitHub OAuth の OIDC（実装済み、エンタープライズ）。いずれもテナント別 admin/viewer RBAC と完全な監査ログが稼働。"
    },
    "proof": {
-    "en": "single-user mode is live on the cluster (the PoC runs on it). The OIDC middleware is code-complete with 76 tests but not deployed — the GitHub OAuth App is not activated (enterprise track).",
-    "es": "el modo single-user está vivo en el cluster (el PoC corre sobre él). El middleware OIDC está code-complete con 76 tests pero NO deployado — la GitHub OAuth App no está activada (track enterprise).",
-    "de": "single-user läuft live (der PoC nutzt ihn). Die OIDC-Middleware ist code-complete (76 Tests), aber nicht deployt — GitHub-OAuth-App nicht aktiviert (Enterprise).",
-    "fr": "le mode single-user est actif (le PoC l'utilise). Le middleware OIDC est code-complete (76 tests) mais non déployé — GitHub OAuth App non activée (entreprise).",
-    "zh": "single-user 模式已上线（PoC 基于它运行）。OIDC 中间件代码就绪（76 测试）但未部署——GitHub OAuth App 未激活（企业线）。",
-    "ja": "single-user モードはライブ稼働（PoC はこれで動作）。OIDC ミドルウェアは実装済み（76 テスト）だが未デプロイ — GitHub OAuth App は未有効化（エンタープライズ）。"
+    "en": "single-user mode and OIDC middleware via Dex + GitHub OAuth are fully deployed and tested end-to-end via GitOps multi-source.",
+    "es": "El modo single-user y el middleware OIDC vía Dex + GitHub OAuth están completamente deployados y probados end-to-end mediante GitOps multi-source.",
+    "de": "single-user mode and OIDC middleware via Dex + GitHub OAuth are fully deployed and tested end-to-end via GitOps multi-source.",
+    "fr": "single-user mode and OIDC middleware via Dex + GitHub OAuth are fully deployed and tested end-to-end via GitOps multi-source.",
+    "zh": "single-user mode and OIDC middleware via Dex + GitHub OAuth are fully deployed and tested end-to-end via GitOps multi-source.",
+    "ja": "single-user mode and OIDC middleware via Dex + GitHub OAuth are fully deployed and tested end-to-end via GitOps multi-source."
    },
    "category": "governance"
   },
@@ -2298,8 +2298,8 @@
     "ja": "各 CRD フィーチャーは必要なインフラにマッピングされ自動テスト — カバレッジマトリクスは実行毎に再生成"
    },
    "evidence": {
-    "en": "deploy/capabilities.yaml is the single registry (feature to dependency to mode to test-layer to metric). matrix-coverage.sh crosses it against LIVE cluster deps + the measured agent scorecard, and a --check guard breaks the build if a new CRD isn't declared. Measured 2026-07-15 on the reference cluster (all deps live): 21/23 features testable-live across 5 governed agents; 2 honestly blocked (SIEM sink + chat-webhook absent). The whole E2E runs from one command (e2e-full.sh): guard → core chain (no deps) → integration → publish matrices → delete ephemeral tenant. Input new → test → metrics → publish → delete: zero state left, the published matrix is the proof.",
-    "es": "deploy/capabilities.yaml es el registro único (feature → dependencia → modo → capa → métrica). matrix-coverage.sh lo cruza contra las deps VIVAS del cluster + el scorecard medido, y un guard --check rompe el build si un CRD nuevo no está declarado. Medido 2026-07-15 en el cluster de referencia (todas las deps vivas): 21/23 features testeable-live en 5 agentes gobernados; 2 blocked honesto (SIEM sink + chat-webhook ausentes). Todo el E2E corre de un comando (e2e-full.sh): guard → cadena core (sin deps) → integración → publicar matrices → borrar tenant efímero. Input nuevo → pruebo → métricas → publico → borro: cero estado, la matriz publicada es la prueba.",
+    "en": "deploy/capabilities.yaml is the single registry (feature to dependency to mode to test-layer to metric). matrix-coverage.sh crosses it against LIVE cluster deps + the measured agent scorecard, and a --check guard breaks the build if a new CRD isn't declared. Measured on the reference cluster (all deps live): features testable-live across governed agents; 1 honestly blocked (chat-webhook absent). The whole E2E runs from one command (e2e-full.sh / kind-smoke): guard → core chain (no deps) → integration → publish matrices → delete ephemeral tenant. Input new → test → metrics → publish → delete: zero state left, the published matrix is the proof.",
+    "es": "deploy/capabilities.yaml es el registro único (feature → dependencia → modo → capa → métrica). matrix-coverage.sh lo cruza contra las deps VIVAS del cluster + el scorecard medido, y un guard --check rompe el build si un CRD nuevo no está declarado. Medido en el cluster de referencia (todas las deps vivas): features testeable-live en agentes gobernados; 1 blocked honesto (chat-webhook ausente). Todo el E2E corre de un comando (e2e-full.sh / kind-smoke): guard → cadena core (sin deps) → integración → publicar matrices → borrar tenant efímero. Input nuevo → pruebo → métricas → publico → borro: cero estado, la matriz publicada es la prueba.",
     "de": "deploy/capabilities.yaml ist das einzige Register; matrix-coverage.sh kreuzt es gegen LIVE-Deps + Scorecard, --check bricht bei nicht deklariertem CRD. Gemessen 2026-07-15: 21/23 Features live-testbar, 2 ehrlich blockiert. Ein Kommando (e2e-full.sh) fährt alles: kein Zustand bleibt, die publizierte Matrix ist der Beweis.",
     "fr": "deploy/capabilities.yaml est le registre unique; matrix-coverage.sh le croise avec les deps LIVE + le scorecard, --check casse si un CRD n'est pas déclaré. Mesuré le 2026-07-15 : 21/23 features testables-live, 2 honnêtement bloquées. Une commande (e2e-full.sh) fait tout : aucun état laissé, la matrice publiée est la preuve.",
     "zh": "deploy/capabilities.yaml 是唯一注册表；matrix-coverage.sh 将其与实时依赖和评分卡交叉，--check 在未声明新 CRD 时中断构建。2026-07-15 实测：21/23 功能可实测，2 项诚实阻塞。一条命令（e2e-full.sh）完成全部：不留状态，发布的矩阵即证明。",

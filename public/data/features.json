@@ -1,24 +1,23 @@
 {
   "title": {
     "en": "Features & Tiers",
-    "es": "Caracter\u00edsticas & Tiers",
+    "es": "Características & Tiers",
     "de": "Funktionen & Tiers",
-    "fr": "Fonctionnalit\u00e9s & Tiers",
-    "zh": "\u529f\u80fd\u4e0e\u5c42\u7ea7",
-    "ja": "\u6a5f\u80fd\u3068\u968e\u5c64"
+    "fr": "Fonctionnalités & Tiers",
+    "zh": "功能与层级",
+    "ja": "機能と階層"
   },
   "sub": {
     "en": "Leloir provides a robust open-source core for AI governance. Advanced operational and strict-security capabilities require a commercial license.",
     "es": "Leloir provee un core open-source robusto para gobernanza de IA. Capacidades operativas avanzadas y seguridad estricta requieren licencia comercial.",
     "de": "Leloir bietet einen robusten Open-Source-Kern. Erweiterte Betriebs- und Sicherheitsfunktionen erfordern eine kommerzielle Lizenz.",
-    "fr": "Leloir fournit un noyau open-source robuste. Les capacit\u00e9s op\u00e9rationnelles avanc\u00e9es exigent une licence.",
-    "zh": "Leloir \u63d0\u4f9b\u5f3a\u5927\u7684\u5f00\u6e90 AI \u6cbb\u7406\u6838\u5fc3\u3002\u9ad8\u7ea7\u64cd\u4f5c\u548c\u4e25\u683c\u5b89\u5168\u529f\u80fd\u9700\u5546\u4e1a\u8bb8\u53ef\u8bc1\u3002",
-    "ja": "Leloir \u306f\u5805\u7262\u306a\u30aa\u30fc\u30d7\u30f3\u30bd\u30fc\u30b9\u30b3\u30a2\u3092\u63d0\u4f9b\u3057\u307e\u3059\u3002\u9ad8\u5ea6\u306a\u904b\u7528\u304a\u3088\u3073\u53b3\u683c\u306a\u30bb\u30ad\u30e5\u30ea\u30c6\u30a3\u6a5f\u80fd\u306b\u306f\u30e9\u30a4\u30bb\u30f3\u30b9\u304c\u5fc5\u8981\u3067\u3059\u3002"
+    "fr": "Leloir fournit un noyau open-source robuste. Les capacités opérationnelles avancées exigent une licence.",
+    "zh": "Leloir 提供强大的开源 AI 治理核心。高级操作和严格安全功能需商业许可证。",
+    "ja": "Leloir は堅牢なオープンソースコアを提供します。高度な運用および厳格なセキュリティ機能にはライセンスが必要です。"
   },
   "features": [
     {
       "id": "envoy-gateway",
-      "tier": "OSS",
       "title": {
         "en": "Envoy AI Gateway (JWT L7)",
         "es": "Envoy AI Gateway (JWT L7)",
@@ -38,7 +37,6 @@
     },
     {
       "id": "dashboards",
-      "tier": "OSS",
       "title": {
         "en": "CISO Grafana Dashboards",
         "es": "CISO Grafana Dashboards",
@@ -58,7 +56,6 @@
     },
     {
       "id": "rbac-budgets",
-      "tier": "OSS",
       "title": {
         "en": "Basic Budgets & K8s RBAC",
         "es": "Basic Budgets & K8s RBAC",
@@ -78,7 +75,6 @@
     },
     {
       "id": "rag-memory",
-      "tier": "Team",
       "title": {
         "en": "RAG Episodic Memory",
         "es": "RAG Episodic Memory",
@@ -97,8 +93,26 @@
       }
     },
     {
+      "id": "pluggable-memory",
+      "title": {
+        "en": "Pluggable Agent Memory (Honcho)",
+        "es": "Pluggable Agent Memory (Honcho)",
+        "de": "Pluggable Agent Memory (Honcho)",
+        "fr": "Pluggable Agent Memory (Honcho)",
+        "zh": "Pluggable Agent Memory (Honcho)",
+        "ja": "Pluggable Agent Memory (Honcho)"
+      },
+      "desc": {
+        "en": "Provides cross-session continuity to black-box agents via the MCP facade without modifying their runtime. Ships with Honcho as the recommended default, or plug your own (Letta, mem0, Cognee).",
+        "es": "Provides cross-session continuity to black-box agents via the MCP facade without modifying their runtime. Ships with Honcho as the recommended default, or plug your own (Letta, mem0, Cognee).",
+        "de": "Provides cross-session continuity to black-box agents via the MCP facade without modifying their runtime. Ships with Honcho as the recommended default, or plug your own (Letta, mem0, Cognee).",
+        "fr": "Provides cross-session continuity to black-box agents via the MCP facade without modifying their runtime. Ships with Honcho as the recommended default, or plug your own (Letta, mem0, Cognee).",
+        "zh": "Provides cross-session continuity to black-box agents via the MCP facade without modifying their runtime. Ships with Honcho as the recommended default, or plug your own (Letta, mem0, Cognee).",
+        "ja": "Provides cross-session continuity to black-box agents via the MCP facade without modifying their runtime. Ships with Honcho as the recommended default, or plug your own (Letta, mem0, Cognee)."
+      }
+    },
+    {
       "id": "auto-quarantine",
-      "tier": "Team",
       "title": {
         "en": "Anomaly Auto-Quarantine",
         "es": "Anomaly Auto-Quarantine",
@@ -118,7 +132,6 @@
     },
     {
       "id": "siem",
-      "tier": "Team",
       "title": {
         "en": "SIEM Audit Log Streaming",
         "es": "SIEM Audit Log Streaming",
@@ -134,12 +147,10 @@
         "fr": "Streams raw agent decision logs (tool payloads, token usage, containment triggers) directly to your preferred enterprise SIEM or log management platform for deep compliance auditing.",
         "zh": "Streams raw agent decision logs (tool payloads, token usage, containment triggers) directly to your preferred enterprise SIEM or log management platform for deep compliance auditing.",
         "ja": "Streams raw agent decision logs (tool payloads, token usage, containment triggers) directly to your preferred enterprise SIEM or log management platform for deep compliance auditing."
-      },
-      "roadmap": true
+      }
     },
     {
       "id": "mtls",
-      "tier": "Mission Critical",
       "title": {
         "en": "Zero-Trust Hardened (mTLS/SPIFFE)",
         "es": "Zero-Trust Hardened (mTLS/SPIFFE)",
@@ -159,7 +170,6 @@
     },
     {
       "id": "airgapped",
-      "tier": "Mission Critical",
       "title": {
         "en": "Air-Gapped Installation",
         "es": "Air-Gapped Installation",
@@ -175,8 +185,7 @@
         "fr": "Provides bundled container images, offline chart dependencies, and specialized configuration for installation in completely disconnected, highly secure environments.",
         "zh": "Provides bundled container images, offline chart dependencies, and specialized configuration for installation in completely disconnected, highly secure environments.",
         "ja": "Provides bundled container images, offline chart dependencies, and specialized configuration for installation in completely disconnected, highly secure environments."
-      },
-      "roadmap": true
+      }
     }
   ]
 }
