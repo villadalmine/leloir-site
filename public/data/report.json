@@ -1,6 +1,6 @@
 {
-  "generated": "2026-07-17T10:56:42Z",
-  "commit": "293c7f7",
+  "generated": "2026-07-17T16:03:03Z",
+  "commit": "0686678",
   "summary": {
     "features_total": 23,
     "e2e_happy": 12,
@@ -18,6 +18,7 @@
       "crd": "AlertRoute",
       "test_status": "e2e-happy",
       "core_affected": true,
+      "substrate": "any",
       "metric": "alerta → investigación creada + ruteada al agente correcto"
     },
     {
@@ -26,6 +27,7 @@
       "crd": "Tenant",
       "test_status": "e2e-chaos",
       "core_affected": true,
+      "substrate": "any",
       "metric": "recall/audit scoped por tenant; cross-tenant = 404 (NO 403: no revelar existencia)"
     },
     {
@@ -34,6 +36,7 @@
       "crd": "TenantBudget",
       "test_status": "e2e-chaos",
       "core_affected": false,
+      "substrate": "any",
       "metric": "BudgetExceededError al exceder tokens/USD/tool-calls"
     },
     {
@@ -42,6 +45,7 @@
       "crd": "TenantBudget-ModelProvider",
       "test_status": "e2e-happy",
       "core_affected": false,
+      "substrate": "standalone-cluster",
       "metric": "audit llm.call con real_model (no alias) + costo"
     },
     {
@@ -50,6 +54,7 @@
       "crd": "AgentRegistration-llmKeyFrom",
       "test_status": "e2e-happy",
       "core_affected": false,
+      "substrate": "any",
       "metric": "virtual key del tenant provista cross-ns; metering per-key"
     },
     {
@@ -58,6 +63,7 @@
       "crd": "ApprovalPolicy",
       "test_status": "e2e-happy",
       "core_affected": false,
+      "substrate": "any",
       "metric": "acción riesgosa → pending → resume approve/reject"
     },
     {
@@ -66,6 +72,7 @@
       "crd": "AgentRegistration-canInvoke",
       "test_status": "e2e-chaos",
       "core_affected": false,
+      "substrate": "any",
       "metric": "canInvoke permite/deniega; depth+fanout capados; budget = min de 4"
     },
     {
@@ -74,6 +81,7 @@
       "crd": "MCPServer",
       "test_status": "e2e-happy",
       "core_affected": false,
+      "substrate": "any",
       "metric": "tool call auditada en el gateway (WORM), caller_agent set"
     },
     {
@@ -82,6 +90,7 @@
       "crd": "RAG-spec-m22",
       "test_status": "e2e-happy",
       "core_affected": false,
+      "substrate": "any",
       "metric": "auto-runbook: alerta repetida recupera resolución previa"
     },
     {
@@ -90,6 +99,7 @@
       "crd": "MCPServer-memory",
       "test_status": "e2e-happy",
       "core_affected": false,
+      "substrate": "any",
       "metric": "remember/recall/forget por tenant, aislado"
     },
     {
@@ -98,6 +108,7 @@
       "crd": "MCPServer-honcho",
       "test_status": "e2e-happy",
       "core_affected": false,
+      "substrate": "any",
       "metric": "black-box recuerda por la fachada; recall HIT medido"
     },
     {
@@ -106,6 +117,7 @@
       "crd": "AgentRegistration-containment",
       "test_status": "e2e-chaos",
       "core_affected": false,
+      "substrate": "standalone-cluster",
       "metric": "egress-lock fuerza al gateway; cluster-scope = Forbidden"
     },
     {
@@ -114,6 +126,7 @@
       "crd": "chart-hardening-mtls",
       "test_status": "e2e-chaos",
       "core_affected": false,
+      "substrate": "standalone-cluster",
       "metric": "gateway→CP :8090 solo por mTLS SPIFFE"
     },
     {
@@ -122,6 +135,7 @@
       "crd": "chart-hardening-networkPolicies",
       "test_status": "e2e-chaos",
       "core_affected": false,
+      "substrate": "standalone-cluster",
       "metric": "listener interno cerrado por CNP; ingress externo denegado"
     },
     {
@@ -130,6 +144,7 @@
       "crd": "SkillSource",
       "test_status": "e2e-happy",
       "core_affected": false,
+      "substrate": "any",
       "metric": "configmap/git → SkillRef inyectado al prompt (git fail-closed sin concesión)"
     },
     {
@@ -138,6 +153,7 @@
       "crd": "ScheduledInvestigation",
       "test_status": "unit",
       "core_affected": false,
+      "substrate": "any",
       "metric": "cron dispara investigación por el mismo pipeline"
     },
     {
@@ -146,6 +162,7 @@
       "crd": "AgentRegistration-shadow",
       "test_status": "e2e-chaos",
       "core_affected": false,
+      "substrate": "any",
       "metric": "acción interceptada; respuesta opaca; evento shadowed en audit"
     },
     {
@@ -154,6 +171,7 @@
       "crd": "anomaly-quarantine",
       "test_status": "e2e-chaos",
       "core_affected": false,
+      "substrate": "any",
       "metric": "thrash → quarantine; auto-release por cooldown"
     },
     {
@@ -162,6 +180,7 @@
       "crd": "audit",
       "test_status": "e2e-happy",
       "core_affected": true,
+      "substrate": "any",
       "metric": "cada evento append-only; query por tenant/investigación"
     },
     {
@@ -170,6 +189,7 @@
       "crd": "audit-streaming",
       "test_status": "not-tested",
       "core_affected": false,
+      "substrate": "external",
       "metric": "eventos forwarded al sink; fail-open si muerto"
     },
     {
@@ -178,6 +198,7 @@
       "crd": "NotificationChannel",
       "test_status": "unit",
       "core_affected": false,
+      "substrate": "external",
       "metric": "evento de ciclo de vida despachado; filtros por ruta/evento/outcome"
     },
     {
@@ -186,6 +207,7 @@
       "crd": "observability",
       "test_status": "e2e-happy",
       "core_affected": false,
+      "substrate": "standalone-cluster",
       "metric": "cada panel Grafana se popula con data real"
     },
     {
@@ -194,6 +216,7 @@
       "crd": "investigation",
       "test_status": "e2e-happy",
       "core_affected": false,
+      "substrate": "any",
       "metric": "off-radar/coverage/drift reportados honesto (no fingido)"
     }
   ],
