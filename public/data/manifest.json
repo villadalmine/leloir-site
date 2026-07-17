@@ -1630,7 +1630,7 @@
   {
    "id": "rbac-posture",
    "milestone": "M13.16",
-   "status": "tested",
+   "status": "proven",
    "commit": "HEAD",
    "category": "governance",
    "title": {
@@ -1777,7 +1777,7 @@
   {
    "id": "otel-ingest",
    "milestone": "",
-   "status": "tested",
+   "status": "proven",
    "commit": "52b4451",
    "category": "tenancy",
    "title": {
@@ -1808,7 +1808,7 @@
   {
    "id": "auto-runbook",
    "milestone": "",
-   "status": "tested",
+   "status": "proven",
    "commit": "13cfc18",
    "category": "operate",
    "title": {
@@ -1839,7 +1839,7 @@
   {
    "id": "notification-channels",
    "milestone": "Q4",
-   "status": "tested",
+   "status": "proven",
    "commit": "f46294c",
    "category": "operate",
    "title": {
