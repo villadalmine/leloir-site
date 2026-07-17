@@ -67,12 +67,12 @@
    "ja": "実証"
   },
   "cta_repo": {
-   "en": "View on GitHub",
-   "es": "Ver en GitHub",
-   "de": "Auf GitHub ansehen",
-   "fr": "Voir sur GitHub",
-   "zh": "在 GitHub 查看",
-   "ja": "GitHub で見る"
+   "en": "GitHub (Coming Soon)",
+   "es": "GitHub (Próximamente)",
+   "de": "GitHub (Demnächst)",
+   "fr": "GitHub (Bientôt disponible)",
+   "zh": "GitHub（敬请期待）",
+   "ja": "GitHub (準備中)"
   },
   "cta_try": {
    "en": "How to try it",
@@ -349,7 +349,7 @@
  },
  "project": {
   "name": "Leloir",
-  "repo": "https://github.com/villadalmine/leloir",
+  "repo": "#",
   "repoVisibility": "private",
   "license": "Enterprise Ready",
   "updated": "2026-07-12",
