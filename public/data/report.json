@@ -1,0 +1,360 @@
+{
+  "generated": "2026-07-17T10:56:42Z",
+  "commit": "293c7f7",
+  "summary": {
+    "features_total": 23,
+    "e2e_happy": 12,
+    "e2e_chaos": 8,
+    "unit": 2,
+    "not_tested": 1,
+    "actors_governed": 5,
+    "actors_planned": 2,
+    "actors_offradar": 1
+  },
+  "features": [
+    {
+      "id": "alert-routing",
+      "seam": "Trigger",
+      "crd": "AlertRoute",
+      "test_status": "e2e-happy",
+      "core_affected": true,
+      "metric": "alerta → investigación creada + ruteada al agente correcto"
+    },
+    {
+      "id": "tenant-isolation",
+      "seam": "RBAC",
+      "crd": "Tenant",
+      "test_status": "e2e-chaos",
+      "core_affected": true,
+      "metric": "recall/audit scoped por tenant; cross-tenant = 404 (NO 403: no revelar existencia)"
+    },
+    {
+      "id": "budget-4layer",
+      "seam": "LLM",
+      "crd": "TenantBudget",
+      "test_status": "e2e-chaos",
+      "core_affected": false,
+      "metric": "BudgetExceededError al exceder tokens/USD/tool-calls"
+    },
+    {
+      "id": "llm-metering-real",
+      "seam": "LLM",
+      "crd": "TenantBudget-ModelProvider",
+      "test_status": "e2e-happy",
+      "core_affected": false,
+      "metric": "audit llm.call con real_model (no alias) + costo"
+    },
+    {
+      "id": "perTenant-keys",
+      "seam": "LLM",
+      "crd": "AgentRegistration-llmKeyFrom",
+      "test_status": "e2e-happy",
+      "core_affected": false,
+      "metric": "virtual key del tenant provista cross-ns; metering per-key"
+    },
+    {
+      "id": "hitl-approval",
+      "seam": "Tools",
+      "crd": "ApprovalPolicy",
+      "test_status": "e2e-happy",
+      "core_affected": false,
+      "metric": "acción riesgosa → pending → resume approve/reject"
+    },
+    {
+      "id": "a2a-delegation",
+      "seam": "Trigger",
+      "crd": "AgentRegistration-canInvoke",
+      "test_status": "e2e-chaos",
+      "core_affected": false,
+      "metric": "canInvoke permite/deniega; depth+fanout capados; budget = min de 4"
+    },
+    {
+      "id": "tools-via-gateway",
+      "seam": "Tools",
+      "crd": "MCPServer",
+      "test_status": "e2e-happy",
+      "core_affected": false,
+      "metric": "tool call auditada en el gateway (WORM), caller_agent set"
+    },
+    {
+      "id": "memory-rag",
+      "seam": "Tools",
+      "crd": "RAG-spec-m22",
+      "test_status": "e2e-happy",
+      "core_affected": false,
+      "metric": "auto-runbook: alerta repetida recupera resolución previa"
+    },
+    {
+      "id": "memory-mcp",
+      "seam": "Tools",
+      "crd": "MCPServer-memory",
+      "test_status": "e2e-happy",
+      "core_affected": false,
+      "metric": "remember/recall/forget por tenant, aislado"
+    },
+    {
+      "id": "memory-honcho",
+      "seam": "Tools",
+      "crd": "MCPServer-honcho",
+      "test_status": "e2e-happy",
+      "core_affected": false,
+      "metric": "black-box recuerda por la fachada; recall HIT medido"
+    },
+    {
+      "id": "containment-egress",
+      "seam": "Tools",
+      "crd": "AgentRegistration-containment",
+      "test_status": "e2e-chaos",
+      "core_affected": false,
+      "metric": "egress-lock fuerza al gateway; cluster-scope = Forbidden"
+    },
+    {
+      "id": "hardening-mtls",
+      "seam": "RBAC",
+      "crd": "chart-hardening-mtls",
+      "test_status": "e2e-chaos",
+      "core_affected": false,
+      "metric": "gateway→CP :8090 solo por mTLS SPIFFE"
+    },
+    {
+      "id": "hardening-netpol",
+      "seam": "RBAC",
+      "crd": "chart-hardening-networkPolicies",
+      "test_status": "e2e-chaos",
+      "core_affected": false,
+      "metric": "listener interno cerrado por CNP; ingress externo denegado"
+    },
+    {
+      "id": "skillsource",
+      "seam": "Trigger",
+      "crd": "SkillSource",
+      "test_status": "e2e-happy",
+      "core_affected": false,
+      "metric": "configmap/git → SkillRef inyectado al prompt (git fail-closed sin concesión)"
+    },
+    {
+      "id": "scheduled-inv",
+      "seam": "Trigger",
+      "crd": "ScheduledInvestigation",
+      "test_status": "unit",
+      "core_affected": false,
+      "metric": "cron dispara investigación por el mismo pipeline"
+    },
+    {
+      "id": "shadow-mode",
+      "seam": "Tools",
+      "crd": "AgentRegistration-shadow",
+      "test_status": "e2e-chaos",
+      "core_affected": false,
+      "metric": "acción interceptada; respuesta opaca; evento shadowed en audit"
+    },
+    {
+      "id": "quarantine",
+      "seam": "Outcome",
+      "crd": "anomaly-quarantine",
+      "test_status": "e2e-chaos",
+      "core_affected": false,
+      "metric": "thrash → quarantine; auto-release por cooldown"
+    },
+    {
+      "id": "audit-worm",
+      "seam": "Outcome",
+      "crd": "audit",
+      "test_status": "e2e-happy",
+      "core_affected": true,
+      "metric": "cada evento append-only; query por tenant/investigación"
+    },
+    {
+      "id": "audit-siem",
+      "seam": "Outcome",
+      "crd": "audit-streaming",
+      "test_status": "not-tested",
+      "core_affected": false,
+      "metric": "eventos forwarded al sink; fail-open si muerto"
+    },
+    {
+      "id": "notifications",
+      "seam": "Outcome",
+      "crd": "NotificationChannel",
+      "test_status": "unit",
+      "core_affected": false,
+      "metric": "evento de ciclo de vida despachado; filtros por ruta/evento/outcome"
+    },
+    {
+      "id": "metrics-dashboards",
+      "seam": "Outcome",
+      "crd": "observability",
+      "test_status": "e2e-happy",
+      "core_affected": false,
+      "metric": "cada panel Grafana se popula con data real"
+    },
+    {
+      "id": "scorecard-honesty",
+      "seam": "Outcome",
+      "crd": "investigation",
+      "test_status": "e2e-happy",
+      "core_affected": false,
+      "metric": "off-radar/coverage/drift reportados honesto (no fingido)"
+    }
+  ],
+  "actors": [
+    {
+      "id": "leloir-agent",
+      "via": "openaicompat",
+      "mode": "all",
+      "governed": true,
+      "kind": "agent",
+      "implements": "agent-adapter"
+    },
+    {
+      "id": "mode1-sre",
+      "via": "holmesgpt-sdk",
+      "mode": "mode1",
+      "governed": true,
+      "kind": "agent",
+      "implements": "agent-adapter"
+    },
+    {
+      "id": "mode2-holmes",
+      "via": "holmesgpt-contained",
+      "mode": "mode2",
+      "governed": true,
+      "kind": "agent",
+      "implements": "agent-adapter"
+    },
+    {
+      "id": "mode3-agent",
+      "via": "native-guardrails",
+      "mode": "mode3",
+      "governed": true,
+      "kind": "agent",
+      "implements": "agent-adapter"
+    },
+    {
+      "id": "mode4-opencode",
+      "via": "opencode",
+      "mode": "mode4",
+      "governed": true,
+      "kind": "agent",
+      "implements": "agent-adapter"
+    },
+    {
+      "id": "kagent",
+      "via": "a2a",
+      "mode": "a2a",
+      "governed": "planned",
+      "kind": "agent",
+      "implements": "agent-adapter"
+    },
+    {
+      "id": "k8sgpt",
+      "via": "k8sgpt-conformance",
+      "mode": "conformance",
+      "governed": "planned",
+      "kind": "agent",
+      "implements": "agent-adapter"
+    },
+    {
+      "id": "holmesgpt-raw",
+      "via": "holmesgpt-uncontained",
+      "mode": "raw",
+      "governed": false,
+      "kind": "agent",
+      "implements": "none"
+    }
+  ],
+  "tools": [
+    {
+      "id": "honcho-memory",
+      "kind": "mcp-server",
+      "transport": "streamable-http",
+      "via": "gateway"
+    }
+  ],
+  "clients": [
+    {
+      "id": "leloir-cli",
+      "reads": "/api/v1/*",
+      "auth": "lk_ api-key",
+      "commands": [
+        "agents",
+        "usage",
+        "apikeys list",
+        "agents --json"
+      ],
+      "status": "e2e-happy"
+    }
+  ],
+  "contracts": [
+    {
+      "id": "agent-adapter",
+      "standard": "AgentAdapter (5 métodos: Identity/Configure/HealthCheck/Investigate→<-chan Event/Shutdown) | A2A | MCP",
+      "seam": [
+        "Trigger",
+        "Tools",
+        "LLM",
+        "RBAC",
+        "Outcome"
+      ]
+    },
+    {
+      "id": "mcp-transport",
+      "standard": "MCP JSON-RPC sobre HTTP; el gateway traduce a grpc | streamable-http | sse | stdio",
+      "seam": [
+        "Tools"
+      ]
+    },
+    {
+      "id": "llm-openai-compat",
+      "standard": "OpenAI-compatible chat/completions (metering + budget en la capa)",
+      "seam": [
+        "LLM"
+      ]
+    },
+    {
+      "id": "gateway-api",
+      "standard": "Gateway API (HTTPRoute) — no un Ingress específico",
+      "seam": [
+        "Trigger"
+      ]
+    },
+    {
+      "id": "cni-netpol-mtls",
+      "standard": "NetworkPolicy L3/L7 + SPIFFE/mTLS — no un CNI específico",
+      "seam": [
+        "RBAC"
+      ]
+    },
+    {
+      "id": "observability-otlp",
+      "standard": "OpenTelemetry OTLP (spans gen_ai) + Prometheus scrape",
+      "seam": [
+        "LLM",
+        "Outcome"
+      ]
+    },
+    {
+      "id": "notification-sink",
+      "standard": "webhook HTTP (Slack/Teams/genérico)",
+      "seam": [
+        "Outcome"
+      ]
+    },
+    {
+      "id": "audit-sink",
+      "standard": "HTTP sink (SIEM/collector) — fail-open",
+      "seam": [
+        "Outcome"
+      ]
+    },
+    {
+      "id": "persistence",
+      "standard": "Postgres + pgvector",
+      "seam": [
+        "Outcome",
+        "Tools"
+      ]
+    }
+  ],
+  "_note": "Proyección pública del report.json de Leloir (E2E-medido). Endpoints internos removidos."
+}
