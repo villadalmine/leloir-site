@@ -1,6 +1,31 @@
 {
-  "generated": "2026-07-18T01:08:15Z",
-  "commit": "7e4c193",
+  "generated": "2026-07-18T08:00:00Z",
+  "commit": "3180e58",
+  "context": {
+    "mode": "layer-a",
+    "cli_measured": true,
+    "chaos_included": true
+  },
+  "chaos": {
+    "measured_at": "2026-07-18T07:55:33Z",
+    "context": "cluster",
+    "experiments": [
+      {
+        "id": "budget-4layer",
+        "result": "SKIP",
+        "reason": "API OIDC sin key"
+      },
+      {
+        "id": "containment-egress",
+        "result": "PASS"
+      },
+      {
+        "id": "tenant-isolation",
+        "result": "SKIP",
+        "reason": "API OIDC sin key"
+      }
+    ]
+  },
   "summary": {
     "features_total": 23,
     "e2e_happy": 12,
