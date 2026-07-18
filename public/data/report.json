@@ -1,6 +1,6 @@
 {
-  "generated": "2026-07-18T16:01:31Z",
-  "commit": "4967d3c",
+  "generated": "2026-07-18T16:10:06Z",
+  "commit": "c89b718",
   "context": {
     "mode": "layer-a",
     "cli_measured": true,
@@ -28,10 +28,10 @@
   },
   "summary": {
     "features_total": 23,
-    "e2e_happy": 12,
+    "e2e_happy": 11,
     "e2e_chaos": 8,
-    "unit": 2,
-    "not_tested": 1,
+    "unit": 4,
+    "not_tested": 0,
     "actors_governed": 5,
     "actors_planned": 2,
     "actors_offradar": 1
@@ -49,7 +49,11 @@
         "k8sgpt",
         "leloir-agent"
       ],
-      "test": [],
+      "test": [
+        "scripts/e2e-hermetic.sh",
+        "scripts/e2e-scenario.sh",
+        "leloir-core/internal/controlplane/routing/routing_test.go"
+      ],
       "metric": "alerta → investigación creada + ruteada al agente correcto"
     },
     {
@@ -63,7 +67,11 @@
         "holmesgpt",
         "kagent-a2a"
       ],
-      "test": [],
+      "test": [
+        "scripts/chaos/tenant-isolation.sh",
+        "leloir-core/internal/controlplane/handlers/tenant_isolation_test.go",
+        "leloir-core/internal/controlplane/registry/xtenant_test.go"
+      ],
       "metric": "recall/audit scoped por tenant; cross-tenant = 404 (NO 403: no revelar existencia)"
     },
     {
@@ -77,7 +85,10 @@
         "envoy-ai-gw",
         "litellm-operator"
       ],
-      "test": [],
+      "test": [
+        "scripts/chaos/budget-4layer.sh",
+        "leloir-core/internal/controlplane/orchestrator/orchestrator_test.go"
+      ],
       "metric": "BudgetExceededError al exceder tokens/USD/tool-calls"
     },
     {
@@ -91,7 +102,11 @@
         "envoy-ai-gw",
         "litellm-operator"
       ],
-      "test": [],
+      "test": [
+        "scripts/e2e-mode2-ownkey.sh",
+        "scripts/e2e-dashboards.sh",
+        "leloir-core/internal/controlplane/handlers/otel_llmcall_test.go"
+      ],
       "metric": "audit llm.call con real_model (no alias) + costo"
     },
     {
@@ -104,7 +119,10 @@
       "agnostic_proof": [
         "litellm-operator"
       ],
-      "test": [],
+      "test": [
+        "scripts/e2e-mode2-ownkey.sh",
+        "leloir-core/internal/controlplane/crdwatcher/agents_llmkey_test.go"
+      ],
       "metric": "virtual key del tenant provista cross-ns; metering per-key"
     },
     {
@@ -118,7 +136,10 @@
         "holmesgpt",
         "leloir-agent"
       ],
-      "test": [],
+      "test": [
+        "scripts/e2e-recovery.sh",
+        "leloir-core/internal/controlplane/orchestrator/orchestrator_test.go"
+      ],
       "metric": "acción riesgosa → pending → resume approve/reject"
     },
     {
@@ -132,7 +153,11 @@
         "holmesgpt",
         "kagent-a2a"
       ],
-      "test": [],
+      "test": [
+        "scripts/chaos/a2a-delegation.sh",
+        "scripts/e2e-scenario.sh",
+        "leloir-core/internal/controlplane/orchestrator/orchestrator_test.go"
+      ],
       "metric": "canInvoke permite/deniega; depth+fanout capados; budget = min de 4"
     },
     {
@@ -146,7 +171,11 @@
         "holmesgpt",
         "k8sgpt"
       ],
-      "test": [],
+      "test": [
+        "scripts/e2e-governed-tool.sh",
+        "leloir-core/internal/mcpgateway/gateway_test.go",
+        "leloir-core/internal/mcpgateway/policy_test.go"
+      ],
       "metric": "tool call auditada en el gateway (WORM), caller_agent set"
     },
     {
@@ -160,21 +189,26 @@
         "holmesgpt",
         "leloir-agent"
       ],
-      "test": [],
+      "test": [
+        "scripts/e2e-rag-memory.sh",
+        "leloir-core/internal/ragmemory/ragmemory_test.go"
+      ],
       "metric": "auto-runbook: alerta repetida recupera resolución previa"
     },
     {
       "id": "memory-mcp",
       "seam": "Tools",
       "crd": "MCPServer-memory",
-      "test_status": "e2e-happy",
+      "test_status": "unit",
       "core_affected": false,
       "substrate": "any",
       "agnostic_proof": [
         "holmesgpt",
         "kagent-a2a"
       ],
-      "test": [],
+      "test": [
+        "leloir-core/internal/memorymcp/server_test.go"
+      ],
       "metric": "remember/recall/forget por tenant, aislado"
     },
     {
@@ -187,7 +221,10 @@
       "agnostic_proof": [
         "holmesgpt"
       ],
-      "test": [],
+      "test": [
+        "scripts/bench-memory.sh",
+        "leloir-core/internal/honchomcp/server_test.go"
+      ],
       "metric": "black-box recuerda por la fachada; recall HIT medido"
     },
     {
@@ -201,7 +238,13 @@
         "holmesgpt",
         "k8sgpt"
       ],
-      "test": [],
+      "test": [
+        "scripts/chaos/containment-egress.sh",
+        "scripts/e2e-mode2-containment.sh",
+        "scripts/e2e-mode2-ownkey.sh",
+        "leloir-core/internal/containment/containment_test.go",
+        "leloir-core/internal/containment/applier_test.go"
+      ],
       "metric": "egress-lock fuerza al gateway; cluster-scope = Forbidden"
     },
     {
@@ -214,7 +257,9 @@
       "agnostic_proof": [
         "cilium-spire"
       ],
-      "test": [],
+      "test": [
+        "scripts/chaos/hardening-mtls.sh"
+      ],
       "metric": "gateway→CP :8090 solo por mTLS SPIFFE"
     },
     {
@@ -227,7 +272,9 @@
       "agnostic_proof": [
         "cilium-spire"
       ],
-      "test": [],
+      "test": [
+        "scripts/chaos/hardening-netpol.sh"
+      ],
       "metric": "listener interno cerrado por CNP; ingress externo denegado"
     },
     {
@@ -241,7 +288,11 @@
         "holmesgpt",
         "leloir-agent"
       ],
-      "test": [],
+      "test": [
+        "scripts/e2e-mode2-ownkey.sh",
+        "leloir-core/internal/controlplane/crdwatcher/skills_test.go",
+        "leloir-core/internal/controlplane/crdwatcher/skills_git_test.go"
+      ],
       "metric": "configmap/git → SkillRef inyectado al prompt (git fail-closed sin concesión)"
     },
     {
@@ -254,7 +305,9 @@
       "agnostic_proof": [
         "leloir-agent"
       ],
-      "test": [],
+      "test": [
+        "leloir-core/internal/controlplane/crdwatcher/investigations_test.go"
+      ],
       "metric": "cron dispara investigación por el mismo pipeline"
     },
     {
@@ -268,7 +321,11 @@
         "holmesgpt",
         "k8sgpt"
       ],
-      "test": [],
+      "test": [
+        "scripts/chaos/shadow-mode.sh",
+        "leloir-core/internal/mcpgateway/shadow_test.go",
+        "leloir-core/internal/controlplane/orchestrator/shadow_annotation_test.go"
+      ],
       "metric": "acción interceptada; respuesta opaca; evento shadowed en audit"
     },
     {
@@ -281,7 +338,12 @@
       "agnostic_proof": [
         "holmesgpt"
       ],
-      "test": [],
+      "test": [
+        "scripts/chaos/quarantine.sh",
+        "scripts/e2e-thrash-quarantine.sh",
+        "leloir-core/internal/quarantine/quarantine_test.go",
+        "leloir-core/internal/mcpgateway/thrash_escalation_test.go"
+      ],
       "metric": "thrash → quarantine; auto-release por cooldown"
     },
     {
@@ -296,18 +358,23 @@
         "k8sgpt",
         "leloir-agent"
       ],
-      "test": [],
+      "test": [
+        "scripts/e2e-scenario.sh",
+        "leloir-core/internal/store/store_test.go"
+      ],
       "metric": "cada evento append-only; query por tenant/investigación"
     },
     {
       "id": "audit-siem",
       "seam": "Outcome",
       "crd": "audit-streaming",
-      "test_status": "not-tested",
+      "test_status": "unit",
       "core_affected": false,
       "substrate": "external",
       "agnostic_proof": [],
-      "test": [],
+      "test": [
+        "leloir-core/internal/controlplane/audit/streaming_test.go"
+      ],
       "metric": "eventos forwarded al sink; fail-open si muerto"
     },
     {
@@ -321,7 +388,11 @@
         "slack",
         "webhook"
       ],
-      "test": [],
+      "test": [
+        "leloir-core/internal/controlplane/orchestrator/notifications_test.go",
+        "leloir-core/internal/notifications/channels_test.go",
+        "leloir-core/internal/controlplane/crdwatcher/notificationchannels_test.go"
+      ],
       "metric": "evento de ciclo de vida despachado; filtros por ruta/evento/outcome"
     },
     {
@@ -334,7 +405,9 @@
       "agnostic_proof": [
         "alloy-prometheus"
       ],
-      "test": [],
+      "test": [
+        "scripts/e2e-dashboards.sh"
+      ],
       "metric": "cada panel Grafana se popula con data real"
     },
     {
@@ -349,7 +422,11 @@
         "k8sgpt",
         "leloir-agent"
       ],
-      "test": [],
+      "test": [
+        "scripts/e2e-governed-tool.sh",
+        "leloir-core/internal/config/scorecard_test.go",
+        "leloir-core/internal/controlplane/registry/drift_test.go"
+      ],
       "metric": "off-radar/coverage/drift reportados honesto (no fingido)"
     }
   ],

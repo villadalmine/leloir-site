@@ -717,7 +717,7 @@
     {
       "id": "memory-mcp",
       "milestone": "M18",
-      "status": "e2e-happy",
+      "status": "in-progress",
       "commit": "c96b5a2",
       "category": "connectors",
       "title": {
