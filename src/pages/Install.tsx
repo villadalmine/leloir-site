@@ -36,10 +36,20 @@ export function Install() {
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '24px', marginBottom: '48px' }}>
           <div className="glass-card" style={{ padding: '24px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '24px', borderBottom: '1px solid var(--border)', paddingBottom: '16px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px', borderBottom: '1px solid var(--border)', paddingBottom: '16px' }}>
               <Bot size={24} color="var(--primary)" />
               <h3 style={{ margin: 0, fontSize: '20px' }}>Actors (Agents)</h3>
             </div>
+            
+            <div style={{ fontSize: '14px', color: 'var(--muted)', marginBottom: '24px', lineHeight: '1.6', backgroundColor: 'rgba(59, 130, 246, 0.05)', padding: '16px', borderRadius: '8px', borderLeft: '3px solid var(--info)' }}>
+              <strong>¿Qué significa Gobernado vs Ungoverned?</strong><br />
+              Según la documentación oficial (<code>HOLMES_GOVERNANCE.md</code>), Leloir gobierna a través de <strong>Contención (AgentAdapter)</strong>, no por las CRDs nativas del agente. El MISMO agente puede correr de dos formas:
+              <ul style={{ marginTop: '8px', marginBottom: 0, paddingLeft: '20px' }}>
+                <li style={{ marginBottom: '4px' }}><strong style={{ color: 'var(--ok)' }}>Gobernado (Contenido 5/5):</strong> Corre a través de Leloir (ej. <code>mode2-holmes</code>). Sus costuras (Trigger, LLM, Tools, RBAC, Outcome) están restringidas por red, llaves virtuales y permisos namespaced.</li>
+                <li><strong style={{ color: '#ef4444' }}>Ungoverned (Off-radar Crudo):</strong> El agente corre nativo, compartido a nivel cluster sin pasar por Leloir (ej. <code>holmesgpt-raw</code>). Leloir lo detecta con total honestidad ("off-radar") pero no finge gobernarlo.</li>
+              </ul>
+            </div>
+
             <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
               {reportData.actors?.map((actor: any, i: number) => (
                 <div key={i} style={{ padding: '12px', backgroundColor: 'rgba(0,0,0,0.2)', borderRadius: '8px', border: '1px solid var(--border)' }}>
