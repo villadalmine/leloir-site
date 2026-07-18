@@ -34,12 +34,12 @@
     "ja": "プラットフォームチーム（一度）"
    },
    "does": {
-    "en": "Installs the 8 CRDs cluster-wide, deploys the control plane + MCP gateway, and creates a Tenant CR per customer that binds a namespace to its owner (this is the anti-spoof source of truth).",
-    "es": "Instala las 8 CRDs a nivel cluster, deploya el control plane + MCP gateway, y crea un Tenant CR por cliente que ata un namespace a su dueño (esta es la fuente de verdad anti-spoof).",
-    "de": "Installiert die 8 CRDs clusterweit, deployt Control Plane + MCP-Gateway und erstellt pro Kunde ein Tenant-CR, das einen Namespace an seinen Eigentümer bindet (Anti-Spoof-Wahrheitsquelle).",
-    "fr": "Installe les 8 CRD à l'échelle du cluster, déploie le control plane + la passerelle MCP, et crée un CR Tenant par client liant un namespace à son propriétaire (source de vérité anti-spoof).",
-    "zh": "在集群范围安装 8 个 CRD，部署控制平面 + MCP 网关，并为每个客户创建 Tenant CR，将命名空间绑定到其所有者（防伪造的真相来源）。",
-    "ja": "8 つの CRD をクラスタ全体にインストールし、コントロールプレーン＋MCP ゲートウェイをデプロイ、顧客ごとに namespace を所有者に紐づける Tenant CR を作成（なりすまし防止の真実の源）。"
+    "en": "Installs the 10 CRDs cluster-wide, deploys the control plane + MCP gateway, and creates a Tenant CR per customer that binds a namespace to its owner (this is the anti-spoof source of truth).",
+    "es": "Instala las 10 CRDs a nivel cluster, deploya el control plane + MCP gateway, y crea un Tenant CR por cliente que ata un namespace a su dueño (esta es la fuente de verdad anti-spoof).",
+    "de": "Installiert die 10 CRDs clusterweit, deployt Control Plane + MCP-Gateway und erstellt pro Kunde ein Tenant-CR, das einen Namespace an seinen Eigentümer bindet (Anti-Spoof-Wahrheitsquelle).",
+    "fr": "Installe les 10 CRD à l'échelle du cluster, déploie le control plane + la passerelle MCP, et crée un CR Tenant par client liant un namespace à son propriétaire (source de vérité anti-spoof).",
+    "zh": "在集群范围安装 10 个 CRD，部署控制平面 + MCP 网关，并为每个客户创建 Tenant CR，将命名空间绑定到其所有者（防伪造的真相来源）。",
+    "ja": "10 つの CRD をクラスタ全体にインストールし、コントロールプレーン＋MCP ゲートウェイをデプロイ、顧客ごとに namespace を所有者に紐づける Tenant CR を作成（なりすまし防止の真実の源）。"
    },
    "cmd": "helm install leloir oci://ghcr.io/villadalmine/leloir/leloir-controlplane --version 0.4.1 -n leloir-system --create-namespace\nkubectl apply -f tenant-acme.yaml    # binds namespace acme to its owner"
   },
