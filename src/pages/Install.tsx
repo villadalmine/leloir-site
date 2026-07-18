@@ -42,12 +42,18 @@ export function Install() {
             </div>
             
             <div style={{ fontSize: '14px', color: 'var(--muted)', marginBottom: '24px', lineHeight: '1.6', backgroundColor: 'rgba(59, 130, 246, 0.05)', padding: '16px', borderRadius: '8px', borderLeft: '3px solid var(--info)' }}>
-              <strong>¿Qué significa Gobernado vs Ungoverned?</strong><br />
-              Según la documentación oficial (<code>HOLMES_GOVERNANCE.md</code>), Leloir gobierna a través de <strong>Contención (AgentAdapter)</strong>, no por las CRDs nativas del agente. El MISMO agente puede correr de dos formas:
-              <ul style={{ marginTop: '8px', marginBottom: 0, paddingLeft: '20px' }}>
-                <li style={{ marginBottom: '4px' }}><strong style={{ color: 'var(--ok)' }}>Gobernado (Contenido 5/5):</strong> Corre a través de Leloir (ej. <code>mode2-holmes</code>). Sus costuras (Trigger, LLM, Tools, RBAC, Outcome) están restringidas por red, llaves virtuales y permisos namespaced.</li>
-                <li><strong style={{ color: '#ef4444' }}>Ungoverned (Off-radar Crudo):</strong> El agente corre nativo, compartido a nivel cluster sin pasar por Leloir (ej. <code>holmesgpt-raw</code>). Leloir lo detecta con total honestidad ("off-radar") pero no finge gobernarlo.</li>
-              </ul>
+              <strong>Governance & Demo Modes</strong><br />
+              <div style={{ marginTop: '8px', marginBottom: '12px' }}>
+                The agents below are running live in our demo cluster across three different architectural modes to prove agnostic governance:
+                <ul style={{ marginTop: '4px', marginBottom: '0', paddingLeft: '20px' }}>
+                  <li><strong>Mode 1 (SDK-Native):</strong> Agents built specifically for Leloir (e.g. <code>leloir-agent</code>) with first-class governance.</li>
+                  <li><strong>Mode 2 (Contained Black-box):</strong> External agents (e.g. <code>holmesgpt</code>) securely contained and governed via the AgentAdapter without needing native CRDs.</li>
+                  <li><strong>Mode 3 (Native Guardrails):</strong> Agents governed with strict LLM guardrails (like PII masking via Presidio) and budget limits.</li>
+                </ul>
+              </div>
+              <div>
+                <strong>Governed vs Ungoverned:</strong> When an agent connects <em>through</em> the Control Plane, it is <strong style={{ color: 'var(--ok)' }}>Governed</strong> (costuras protegidas). An <strong style={{ color: '#ef4444' }}>Ungoverned</strong> agent (e.g. <code>holmesgpt-raw</code>) is the exact same agent running natively against the cluster without Leloir's protection. We track it honestly ("off-radar") but do not fake its governance.
+              </div>
             </div>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>

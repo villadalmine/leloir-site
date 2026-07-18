@@ -155,6 +155,9 @@ export function Roadmap() {
                 </tbody>
               </table>
             </div>
+            <p style={{ color: 'var(--muted)', fontSize: '13px', marginTop: '16px', lineHeight: '1.5' }}>
+              <em>Note:</em> The <strong>LLM</strong> governance seam is empty in this table because agents <em>consume</em> LLMs, they do not provide them. The LLM seam is actively governed by infrastructure providers (e.g. <code>envoy-ai-gw</code>, <code>litellm-operator</code>) sitting between the agent and the API.
+            </p>
           </div>
         )}
       <div style={{ display: 'flex', flexDirection: 'column', gap: '64px' }}>
