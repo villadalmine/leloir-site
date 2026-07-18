@@ -1,6 +1,6 @@
 {
-  "generated": "2026-07-18T01:03:38Z",
-  "commit": "701bdde",
+  "generated": "2026-07-18T01:08:15Z",
+  "commit": "7e4c193",
   "summary": {
     "features_total": 23,
     "e2e_happy": 12,
@@ -231,7 +231,7 @@
     },
     {
       "id": "mode1-sre",
-      "via": "holmesgpt-sdk",
+      "via": "leloir-agent-sdk",
       "mode": "mode1",
       "governed": true,
       "kind": "agent",
