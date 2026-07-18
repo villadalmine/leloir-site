@@ -326,6 +326,50 @@
     "ja": "テナントの namespace にチャネルを宣言。チャット webhook URL はテナントが許可した Secret からのみ取得（controlplane SA への namespaced Role — fail-closed）。AlertRoute.spec.notify でルートを特定チャネルに絞れる。配信は fail-open：死んだエンドポイントが調査をブロックすることはなく、WORM 監査が真実の源。v1 は slack|teams|webhook を配信；telegram/pagerduty/opsgenie は宣言可能だが警告付きでスキップ。"
    },
    "yaml": "apiVersion: leloir.dev/v1alpha1\nkind: NotificationChannel\nmetadata: { name: oncall-slack, namespace: team-a-ns }\nspec:\n  type: slack\n  slack:\n    webhookURLSecretRef: { name: oncall-slack-webhook, key: url }\n  events: [investigation.failed, approval.pending]\n  # webhook genérico: spec.webhook.url + authSecretRef (Bearer)\n  # filtro fino: spec.notification.onOutcomes: [error, budget_exhausted]"
+  },
+  {
+   "kind": "Investigation",
+   "proof": "tested",
+   "reconciled": "leloir-core",
+   "purpose": {
+    "en": "Declarative one-shot investigation. The governed equivalent of a Holmes HealthCheck.",
+    "es": "Investigación declarativa de una sola vez. El equivalente gobernado de un HealthCheck de Holmes.",
+    "de": "Deklarative einmalige Untersuchung. Das gesteuerte Äquivalent zu einem Holmes HealthCheck.",
+    "fr": "Investigation déclarative ponctuelle. L'équivalent gouverné d'un HealthCheck de Holmes.",
+    "zh": "声明式单次调查。受治理的 Holmes HealthCheck 等价物。",
+    "ja": "宣言型の単発調査。Holmes の HealthCheck に相当する統治下の機能。"
+   },
+   "usage": {
+    "en": "Instead of throwing a raw question to an agent, you declare an Investigation. Leloir routes it, applies the budget, enforces HITL if needed, and audits the response.",
+    "es": "En vez de tirarle una pregunta cruda al agente, declarás una Investigation. Leloir la enruta, aplica presupuesto, fuerza HITL si hace falta y audita la respuesta.",
+    "de": "Anstatt eine rohe Frage an einen Agenten zu werfen, deklarieren Sie eine Investigation. Leloir routet sie, wendet Budget an, erzwingt bei Bedarf HITL und auditiert die Antwort.",
+    "fr": "Au lieu de lancer une question brute à un agent, vous déclarez une Investigation. Leloir la route, applique le budget, impose un HITL si nécessaire et audite la réponse.",
+    "zh": "与其直接向智能体提问，不如声明一个 Investigation。Leloir 会路由它，应用预算，在需要时强制 HITL，并审计响应。",
+    "ja": "エージェントに直接質問を投げる代わりに、Investigation を宣言します。Leloir がルートし、予算を適用し、必要なら HITL を強制し、レスポンスを監査します。"
+   },
+   "yaml": "apiVersion: leloir.dev/v1alpha1\nkind: Investigation\nmetadata:\n  name: investigate-pod-crash\nspec:\n  query: \"Why is the pod payments-db crashing?\"\n  timeoutMinutes: 5\n  budget:\n    maxUSD: 0.10"
+  },
+  {
+   "kind": "ScheduledInvestigation",
+   "proof": "tested",
+   "reconciled": "leloir-core",
+   "purpose": {
+    "en": "Proactive cron-based investigation. The governed equivalent of a Holmes ScheduledHealthCheck.",
+    "es": "Investigación proactiva basada en cron. El equivalente gobernado de un ScheduledHealthCheck de Holmes.",
+    "de": "Proaktive cron-basierte Untersuchung. Das gesteuerte Äquivalent zu einem Holmes ScheduledHealthCheck.",
+    "fr": "Investigation proactive basée sur cron. L'équivalent gouverné d'un ScheduledHealthCheck de Holmes.",
+    "zh": "基于 cron 的主动调查。受治理的 Holmes ScheduledHealthCheck 等价物。",
+    "ja": "cron ベースの事前調査。Holmes の ScheduledHealthCheck に相当する統治下の機能。"
+   },
+   "usage": {
+    "en": "The control plane runs a scheduler (no extra pods needed). On each trigger, it creates a standard Investigation that flows through the governed pipeline.",
+    "es": "El control plane corre un scheduler (sin pods extra). En cada ciclo, crea una Investigation estándar que pasa por todo el pipeline de gobernanza.",
+    "de": "Der Control Plane führt einen Scheduler aus (keine zusätzlichen Pods erforderlich). Bei jedem Auslöser erstellt er eine Standard-Investigation, die durch die gesteuerte Pipeline fließt.",
+    "fr": "Le control plane exécute un planificateur (aucun pod supplémentaire nécessaire). À chaque déclenchement, il crée une Investigation standard qui passe par le pipeline gouverné.",
+    "zh": "控制平面运行一个调度程序（无需额外 pod）。每次触发时，都会创建一个通过受治理管道流转的标准 Investigation。",
+    "ja": "コントロールプレーンがスケジューラを実行（追加のポッドは不要）。トリガーごとに、統治下のパイプラインを流れる標準の Investigation を作成します。"
+   },
+   "yaml": "apiVersion: leloir.dev/v1alpha1\nkind: ScheduledInvestigation\nmetadata:\n  name: daily-security-check\nspec:\n  schedule: \"0 8 * * *\"\n  template:\n    query: \"Check all nodes for unpatched CVEs.\"\n    timeoutMinutes: 10"
   }
  ],
  "metering": {
