@@ -1,6 +1,6 @@
 {
-  "generated": "2026-07-17T16:03:03Z",
-  "commit": "0686678",
+  "generated": "2026-07-18T01:03:38Z",
+  "commit": "701bdde",
   "summary": {
     "features_total": 23,
     "e2e_happy": 12,
@@ -378,6 +378,174 @@
         "Tools"
       ]
     }
+  ],
+  "conformance": [
+    {
+      "provider": "alloy-prometheus",
+      "is_agent": false,
+      "features_proven": 1,
+      "seams_covered": [
+        "Outcome"
+      ],
+      "features": [
+        "metrics-dashboards"
+      ]
+    },
+    {
+      "provider": "cilium-spire",
+      "is_agent": false,
+      "features_proven": 2,
+      "seams_covered": [
+        "RBAC"
+      ],
+      "features": [
+        "hardening-mtls",
+        "hardening-netpol"
+      ]
+    },
+    {
+      "provider": "envoy-ai-gw",
+      "is_agent": false,
+      "features_proven": 2,
+      "seams_covered": [
+        "LLM"
+      ],
+      "features": [
+        "budget-4layer",
+        "llm-metering-real"
+      ]
+    },
+    {
+      "provider": "holmesgpt",
+      "is_agent": true,
+      "features_proven": 14,
+      "seams_covered": [
+        "Outcome",
+        "RBAC",
+        "Tools",
+        "Trigger"
+      ],
+      "features": [
+        "a2a-delegation",
+        "alert-routing",
+        "audit-worm",
+        "containment-egress",
+        "hitl-approval",
+        "memory-honcho",
+        "memory-mcp",
+        "memory-rag",
+        "quarantine",
+        "scorecard-honesty",
+        "shadow-mode",
+        "skillsource",
+        "tenant-isolation",
+        "tools-via-gateway"
+      ]
+    },
+    {
+      "provider": "k8sgpt",
+      "is_agent": true,
+      "features_proven": 6,
+      "seams_covered": [
+        "Outcome",
+        "Tools",
+        "Trigger"
+      ],
+      "features": [
+        "alert-routing",
+        "audit-worm",
+        "containment-egress",
+        "scorecard-honesty",
+        "shadow-mode",
+        "tools-via-gateway"
+      ]
+    },
+    {
+      "provider": "kagent-a2a",
+      "is_agent": true,
+      "features_proven": 3,
+      "seams_covered": [
+        "RBAC",
+        "Tools",
+        "Trigger"
+      ],
+      "features": [
+        "a2a-delegation",
+        "memory-mcp",
+        "tenant-isolation"
+      ]
+    },
+    {
+      "provider": "leloir-agent",
+      "is_agent": true,
+      "features_proven": 7,
+      "seams_covered": [
+        "Outcome",
+        "Tools",
+        "Trigger"
+      ],
+      "features": [
+        "alert-routing",
+        "audit-worm",
+        "hitl-approval",
+        "memory-rag",
+        "scheduled-inv",
+        "scorecard-honesty",
+        "skillsource"
+      ]
+    },
+    {
+      "provider": "litellm-operator",
+      "is_agent": false,
+      "features_proven": 3,
+      "seams_covered": [
+        "LLM"
+      ],
+      "features": [
+        "budget-4layer",
+        "llm-metering-real",
+        "perTenant-keys"
+      ]
+    },
+    {
+      "provider": "slack",
+      "is_agent": false,
+      "features_proven": 1,
+      "seams_covered": [
+        "Outcome"
+      ],
+      "features": [
+        "notifications"
+      ]
+    },
+    {
+      "provider": "webhook",
+      "is_agent": false,
+      "features_proven": 1,
+      "seams_covered": [
+        "Outcome"
+      ],
+      "features": [
+        "notifications"
+      ]
+    }
+  ],
+  "agnostic_proven": [
+    "a2a-delegation",
+    "alert-routing",
+    "audit-worm",
+    "budget-4layer",
+    "containment-egress",
+    "hitl-approval",
+    "llm-metering-real",
+    "memory-mcp",
+    "memory-rag",
+    "notifications",
+    "scorecard-honesty",
+    "shadow-mode",
+    "skillsource",
+    "tenant-isolation",
+    "tools-via-gateway"
   ],
   "_note": "Proyección pública del report.json de Leloir (E2E-medido). Endpoints internos removidos."
 }
