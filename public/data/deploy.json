@@ -41,7 +41,7 @@
     "zh": "在集群范围安装 8 个 CRD，部署控制平面 + MCP 网关，并为每个客户创建 Tenant CR，将命名空间绑定到其所有者（防伪造的真相来源）。",
     "ja": "8 つの CRD をクラスタ全体にインストールし、コントロールプレーン＋MCP ゲートウェイをデプロイ、顧客ごとに namespace を所有者に紐づける Tenant CR を作成（なりすまし防止の真実の源）。"
    },
-   "cmd": "helm install leloir oci://ghcr.io/villadalmine/leloir/leloir-controlplane --version 0.2.0 -n leloir-system --create-namespace\nkubectl apply -f tenant-acme.yaml    # binds namespace acme to its owner"
+   "cmd": "helm install leloir oci://ghcr.io/villadalmine/leloir/leloir-controlplane --version 0.4.1 -n leloir-system --create-namespace\nkubectl apply -f tenant-acme.yaml    # binds namespace acme to its owner"
   },
   {
    "who": {
