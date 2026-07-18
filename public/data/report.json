@@ -1,6 +1,6 @@
 {
-  "generated": "2026-07-18T16:10:06Z",
-  "commit": "c89b718",
+  "generated": "2026-07-18T16:50:09Z",
+  "commit": "41345ff",
   "context": {
     "mode": "layer-a",
     "cli_measured": true,
@@ -360,9 +360,10 @@
       ],
       "test": [
         "scripts/e2e-scenario.sh",
-        "leloir-core/internal/store/store_test.go"
+        "leloir-core/internal/store/store_test.go",
+        "leloir-core/internal/controlplane/audit/hashchain_test.go"
       ],
-      "metric": "cada evento append-only; query por tenant/investigación"
+      "metric": "cada evento append-only + queryable (tamper-evidence/hash-chain = M2, NO construido)"
     },
     {
       "id": "audit-siem",
