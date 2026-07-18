@@ -47,7 +47,7 @@ export function Install() {
                 The agents below are running live in our demo cluster across three different architectural modes to prove agnostic governance:
                 <ul style={{ marginTop: '4px', marginBottom: '0', paddingLeft: '20px' }}>
                   <li><strong>Mode 1 (SDK-Native):</strong> Agents built specifically for Leloir (e.g. <code>leloir-agent</code>) with first-class governance.</li>
-                  <li><strong>Mode 2 (Contained Black-box):</strong> External agents (e.g. <code>holmesgpt</code>) securely contained and governed via the AgentAdapter without needing native CRDs.</li>
+                  <li><strong>Mode 2 (Contained Black-box):</strong> External agents (e.g. <code>holmesgpt</code>) securely contained and governed via the AgentAdapter. Their native operator/CRDs (e.g. <code>HealthChecks</code>) are intentionally bypassed; Leloir triggers them directly via their API (e.g. <code>/api/chat</code>) to enforce secure pathways.</li>
                   <li><strong>Mode 3 (Native Guardrails):</strong> Agents governed with strict LLM guardrails (like PII masking via Presidio) and budget limits.</li>
                 </ul>
               </div>
