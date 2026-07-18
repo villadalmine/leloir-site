@@ -1,5 +1,5 @@
 import { useSiteData, t } from '../hooks/useSiteData';
-import { CheckCircle2, CircleDashed, Clock, Flame, ShieldCheck } from 'lucide-react';
+import { CheckCircle2, CircleDashed, Clock, Flame, ShieldCheck, Server, Globe, Box } from 'lucide-react';
 
 const CATEGORY_META: Record<string, { title: string, desc: string }> = {
   tenancy: {
@@ -39,6 +39,20 @@ const getStatusBadge = (status: string) => {
       return <span className="badge" style={{ backgroundColor: 'rgba(156, 163, 175, 0.1)', color: '#9ca3af', border: '1px solid #9ca3af' }}><Clock size={12} style={{ marginRight: '4px' }} /> Not Tested</span>;
     default:
       return <span className="badge" style={{ backgroundColor: 'rgba(156, 163, 175, 0.1)', color: '#9ca3af', border: '1px solid #9ca3af' }}><Clock size={12} style={{ marginRight: '4px' }} /> Planned</span>;
+  }
+};
+
+const getSubstrateBadge = (substrate: string) => {
+  if (!substrate) return null;
+  switch (substrate) {
+    case 'any':
+      return <span className="badge" style={{ backgroundColor: 'rgba(168, 85, 247, 0.1)', color: '#a855f7', border: '1px solid #a855f7', fontSize: '11px', padding: '2px 6px' }}><Globe size={10} style={{ marginRight: '4px' }} /> Any Substrate</span>;
+    case 'standalone-cluster':
+      return <span className="badge" style={{ backgroundColor: 'rgba(59, 130, 246, 0.1)', color: '#3b82f6', border: '1px solid #3b82f6', fontSize: '11px', padding: '2px 6px' }}><Server size={10} style={{ marginRight: '4px' }} /> Standalone Cluster</span>;
+    case 'external':
+      return <span className="badge" style={{ backgroundColor: 'rgba(236, 72, 153, 0.1)', color: '#ec4899', border: '1px solid #ec4899', fontSize: '11px', padding: '2px 6px' }}><Box size={10} style={{ marginRight: '4px' }} /> External Env</span>;
+    default:
+      return null;
   }
 };
 
@@ -110,7 +124,10 @@ export function Roadmap() {
                         <td style={{ padding: '16px 8px', fontWeight: 500 }}>{t(f.title)}</td>
                         <td style={{ padding: '16px 8px', color: 'var(--muted)', fontSize: '14px' }}>{t(f.description)}</td>
                         <td style={{ padding: '16px 8px' }}>
-                          {getStatusBadge(finalStatus)}
+                          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', alignItems: 'flex-start' }}>
+                            {getStatusBadge(finalStatus)}
+                            {reportFeature?.substrate && getSubstrateBadge(reportFeature.substrate)}
+                          </div>
                         </td>
                       </tr>
                       );
