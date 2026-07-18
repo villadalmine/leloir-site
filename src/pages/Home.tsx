@@ -1,4 +1,5 @@
 import { useSiteData, t } from '../hooks/useSiteData';
+import { CheckCircle2, Clock, Unlock, Briefcase } from 'lucide-react';
 
 export function Home() {
   const { data: manifest, loading: manifestLoading, error: manifestError } = useSiteData<any>('manifest.json');
@@ -64,7 +65,19 @@ export function Home() {
           {featuresData.features.map((feat: any) => (
             <div key={feat.id} className="card" style={{ padding: '24px', display: 'flex', flexDirection: 'column' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '16px' }}>
-                <h3 style={{ margin: 0, fontSize: '18px', color: 'var(--fg)' }}>{t(feat.title)}</h3>
+                <h3 style={{ margin: 0, fontSize: '18px', color: 'var(--fg)', paddingRight: '8px' }}>{t(feat.title)}</h3>
+                <div style={{ display: 'flex', gap: '6px', flexShrink: 0, flexWrap: 'wrap', justifyContent: 'flex-end' }}>
+                  {feat.tier === 'oss' ? (
+                    <span className="badge" style={{ backgroundColor: 'rgba(59, 130, 246, 0.1)', color: '#3b82f6', border: '1px solid #3b82f6' }} title="Open Source Core"><Unlock size={12} style={{ marginRight: '4px' }} /> OSS</span>
+                  ) : (
+                    <span className="badge" style={{ backgroundColor: 'rgba(168, 85, 247, 0.1)', color: '#a855f7', border: '1px solid #a855f7' }} title="Commercial Tier"><Briefcase size={12} style={{ marginRight: '4px' }} /> Pro</span>
+                  )}
+                  {feat.status === 'proven' ? (
+                    <span className="badge" style={{ backgroundColor: 'rgba(52, 211, 153, 0.1)', color: 'var(--ok)', border: '1px solid var(--ok)' }}><CheckCircle2 size={12} style={{ marginRight: '4px' }} /> Proven</span>
+                  ) : (
+                    <span className="badge" style={{ backgroundColor: 'rgba(156, 163, 175, 0.1)', color: '#9ca3af', border: '1px solid #9ca3af' }}><Clock size={12} style={{ marginRight: '4px' }} /> Planned</span>
+                  )}
+                </div>
               </div>
               <p style={{ margin: 0, color: 'var(--muted)', fontSize: '14px', lineHeight: 1.6, flexGrow: 1 }}>
                 {t(feat.desc)}

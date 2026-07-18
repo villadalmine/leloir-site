@@ -33,7 +33,9 @@
         "fr": "The core data plane. Inspects and proxies all LLM and tool traffic, validating JWTs at layer 7 before traffic hits the Orchestrator.",
         "zh": "The core data plane. Inspects and proxies all LLM and tool traffic, validating JWTs at layer 7 before traffic hits the Orchestrator.",
         "ja": "The core data plane. Inspects and proxies all LLM and tool traffic, validating JWTs at layer 7 before traffic hits the Orchestrator."
-      }
+      },
+      "status": "proven",
+      "tier": "oss"
     },
     {
       "id": "dashboards",
@@ -52,7 +54,9 @@
         "fr": "Pre-built, plug-and-play Grafana dashboards mapping Leloir Prometheus metrics to executive summaries, cost analysis, and threat detection views.",
         "zh": "Pre-built, plug-and-play Grafana dashboards mapping Leloir Prometheus metrics to executive summaries, cost analysis, and threat detection views.",
         "ja": "Pre-built, plug-and-play Grafana dashboards mapping Leloir Prometheus metrics to executive summaries, cost analysis, and threat detection views."
-      }
+      },
+      "status": "proven",
+      "tier": "commercial"
     },
     {
       "id": "rbac-budgets",
@@ -71,7 +75,9 @@
         "fr": "Leverages native Kubernetes RBAC to isolate agent permissions. Sets hard caps on tokens and tool calls per execution.",
         "zh": "Leverages native Kubernetes RBAC to isolate agent permissions. Sets hard caps on tokens and tool calls per execution.",
         "ja": "Leverages native Kubernetes RBAC to isolate agent permissions. Sets hard caps on tokens and tool calls per execution."
-      }
+      },
+      "status": "proven",
+      "tier": "oss"
     },
     {
       "id": "rag-memory",
@@ -90,7 +96,9 @@
         "fr": "Uses pgvector to store incident resolutions. Upon a new alert, automatically retrieves the nearest historical incident in the same tenant to pre-load a dynamic runbook.",
         "zh": "Uses pgvector to store incident resolutions. Upon a new alert, automatically retrieves the nearest historical incident in the same tenant to pre-load a dynamic runbook.",
         "ja": "Uses pgvector to store incident resolutions. Upon a new alert, automatically retrieves the nearest historical incident in the same tenant to pre-load a dynamic runbook."
-      }
+      },
+      "status": "proven",
+      "tier": "oss"
     },
     {
       "id": "pluggable-memory",
@@ -109,7 +117,9 @@
         "fr": "Provides cross-session continuity to black-box agents via the MCP facade without modifying their runtime. Ships with Honcho as the recommended default, or plug your own (Letta, mem0, Cognee).",
         "zh": "Provides cross-session continuity to black-box agents via the MCP facade without modifying their runtime. Ships with Honcho as the recommended default, or plug your own (Letta, mem0, Cognee).",
         "ja": "Provides cross-session continuity to black-box agents via the MCP facade without modifying their runtime. Ships with Honcho as the recommended default, or plug your own (Letta, mem0, Cognee)."
-      }
+      },
+      "status": "proven",
+      "tier": "oss"
     },
     {
       "id": "auto-quarantine",
@@ -128,7 +138,9 @@
         "fr": "Detects anomalous agent behavior (e.g., massive fan-out, unapproved destructive K8s writes) and automatically pauses the investigation pending Human-In-The-Loop review.",
         "zh": "Detects anomalous agent behavior (e.g., massive fan-out, unapproved destructive K8s writes) and automatically pauses the investigation pending Human-In-The-Loop review.",
         "ja": "Detects anomalous agent behavior (e.g., massive fan-out, unapproved destructive K8s writes) and automatically pauses the investigation pending Human-In-The-Loop review."
-      }
+      },
+      "status": "proven",
+      "tier": "oss"
     },
     {
       "id": "siem",
@@ -147,7 +159,9 @@
         "fr": "Streams raw agent decision logs (tool payloads, token usage, containment triggers) directly to your preferred enterprise SIEM or log management platform for deep compliance auditing.",
         "zh": "Streams raw agent decision logs (tool payloads, token usage, containment triggers) directly to your preferred enterprise SIEM or log management platform for deep compliance auditing.",
         "ja": "Streams raw agent decision logs (tool payloads, token usage, containment triggers) directly to your preferred enterprise SIEM or log management platform for deep compliance auditing."
-      }
+      },
+      "status": "planned",
+      "tier": "commercial"
     },
     {
       "id": "mtls",
@@ -166,7 +180,9 @@
         "fr": "Enforces strict cryptographic identity for every component via SPIFFE/SPIRE. All inter-service and agent-to-tool communication is strictly authenticated via mutual TLS.",
         "zh": "Enforces strict cryptographic identity for every component via SPIFFE/SPIRE. All inter-service and agent-to-tool communication is strictly authenticated via mutual TLS.",
         "ja": "Enforces strict cryptographic identity for every component via SPIFFE/SPIRE. All inter-service and agent-to-tool communication is strictly authenticated via mutual TLS."
-      }
+      },
+      "status": "proven",
+      "tier": "oss"
     },
     {
       "id": "airgapped",
@@ -185,7 +201,9 @@
         "fr": "Provides bundled container images, offline chart dependencies, and specialized configuration for installation in completely disconnected, highly secure environments.",
         "zh": "Provides bundled container images, offline chart dependencies, and specialized configuration for installation in completely disconnected, highly secure environments.",
         "ja": "Provides bundled container images, offline chart dependencies, and specialized configuration for installation in completely disconnected, highly secure environments."
-      }
+      },
+      "status": "planned",
+      "tier": "commercial"
     }
   ]
 }
