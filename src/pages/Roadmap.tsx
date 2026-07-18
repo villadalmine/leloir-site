@@ -1,5 +1,5 @@
 import { useSiteData, t } from '../hooks/useSiteData';
-import { CheckCircle2, CircleDashed, Clock, Flame, ShieldCheck, Server, Globe, Box } from 'lucide-react';
+import { CheckCircle2, CircleDashed, Clock, Flame, ShieldCheck, Server, Globe, Box, Info, Check } from 'lucide-react';
 
 const CATEGORY_META: Record<string, { title: string, desc: string }> = {
   tenancy: {
@@ -62,22 +62,50 @@ export function Roadmap() {
 
   if (manifestLoading || reportLoading || !manifestData || !reportData) return <div className="container" style={{ padding: '100px 24px', textAlign: 'center' }}>Loading...</div>;
 
-  // Extract all unique categories from manifestData.features
   const categories = Array.from(new Set(manifestData.features.map((f: any) => f.category).filter(Boolean))) as string[];
+
+  const chaosStats = reportData?.chaos?.experiments?.reduce((acc: any, exp: any) => {
+    acc[exp.result] = (acc[exp.result] || 0) + 1;
+    return acc;
+  }, { PASS: 0, FAIL: 0, SKIP: 0 }) || { PASS: 0, FAIL: 0, SKIP: 0 };
+
+  const agentConformance = reportData?.conformance?.filter((c: any) => c.is_agent) || [];
+  const agnosticProvenCount = reportData?.agnostic_proven?.length || 0;
+  const SEAMS = ["Trigger", "Tools", "LLM", "RBAC", "Outcome"];
 
   return (
     <div id="roadmap" className="container" style={{ padding: '80px 24px' }}>
       <div style={{ textAlign: 'center', marginBottom: '64px' }}>
         <h1 style={{ fontSize: '48px', marginBottom: '24px' }}>Platform Roadmap</h1>
-        <p className="lead" style={{ maxWidth: '800px', margin: '0 auto', marginBottom: '32px' }}>
+        <p className="lead" style={{ maxWidth: '800px', margin: '0 auto', marginBottom: '16px' }}>
           Explore the deep architecture of Leloir and the development status of every strategic component.
         </p>
 
+        {reportData?.context && (
+          <div style={{ marginBottom: '32px' }}>
+            <span className="badge" style={{ backgroundColor: 'rgba(96, 165, 250, 0.1)', color: 'var(--info)', border: '1px solid var(--info)' }}>
+              <Info size={12} style={{ marginRight: '4px' }} />
+              Medido en contexto: {reportData.context.mode} 
+              {reportData.context.cli_measured && ' (CLI)'}
+              {reportData.context.chaos_included && ' + Chaos'}
+            </span>
+          </div>
+        )}
+
         {/* Chaos-Tested Banner */}
         <div className="glass-card" style={{ maxWidth: '900px', margin: '0 auto', padding: '32px', textAlign: 'left', borderLeft: '4px solid #ef4444' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
-            <Flame size={28} color="#ef4444" />
-            <h2 style={{ fontSize: '24px', margin: 0, color: 'white' }}>The Chaos-Tested Standard</h2>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px', justifyContent: 'space-between', flexWrap: 'wrap' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+              <Flame size={28} color="#ef4444" />
+              <h2 style={{ fontSize: '24px', margin: 0, color: 'white' }}>The Chaos-Tested Standard</h2>
+            </div>
+            {reportData?.chaos && (
+              <div style={{ display: 'flex', gap: '8px', fontSize: '14px', fontFamily: 'monospace', backgroundColor: 'rgba(0,0,0,0.2)', padding: '4px 12px', borderRadius: '4px' }}>
+                <span style={{ color: 'var(--ok)' }}>{chaosStats.PASS} PASS</span> / 
+                <span style={{ color: '#9ca3af' }}>{chaosStats.SKIP} SKIP</span> / 
+                <span style={{ color: '#ef4444' }}>{chaosStats.FAIL} FAIL</span>
+              </div>
+            )}
           </div>
           <p style={{ color: 'var(--muted)', fontSize: '16px', lineHeight: '1.6', marginBottom: '24px' }}>
             We downgraded our entire roadmap to 0% "Completed" today. In Leloir, a feature is only considered done when it survives automated fault injection (<span style={{ color: '#ef4444', fontFamily: 'monospace' }}>e2e-chaos</span>) in a production-like environment. Honest engineering means nothing is trusted until it breaks and recovers.
@@ -92,6 +120,43 @@ export function Roadmap() {
         </div>
       </div>
 
+        {/* Agnostic Conformance Matrix */}
+        {agentConformance.length > 0 && (
+          <div className="glass-card" style={{ maxWidth: '900px', margin: '32px auto 0', padding: '32px', textAlign: 'left', borderLeft: '4px solid #a855f7' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
+              <ShieldCheck size={28} color="#a855f7" />
+              <h2 style={{ fontSize: '24px', margin: 0, color: 'white' }}>Agnostic Governance</h2>
+            </div>
+            <p style={{ color: 'var(--muted)', fontSize: '16px', lineHeight: '1.6', marginBottom: '24px' }}>
+              Our Control Plane strictly prevents vendor lock-in. We have proven <strong style={{color: 'white'}}>{agnosticProvenCount} features</strong> consistently across multiple different agent architectures using the same governance rules.
+            </p>
+            <div style={{ overflowX: 'auto' }}>
+              <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'center', fontSize: '14px' }}>
+                <thead>
+                  <tr style={{ borderBottom: '1px solid var(--border)' }}>
+                    <th style={{ padding: '12px', textAlign: 'left', color: 'var(--muted)', fontWeight: 500 }}>Agent Engine</th>
+                    {SEAMS.map((seam: string) => <th key={seam} style={{ padding: '12px', color: 'var(--muted)', fontWeight: 500 }}>{seam}</th>)}
+                  </tr>
+                </thead>
+                <tbody>
+                  {agentConformance.map((agent: any) => (
+                    <tr key={agent.provider} style={{ borderBottom: '1px solid var(--border)' }}>
+                      <td style={{ padding: '12px', textAlign: 'left', fontWeight: 500 }}>{agent.provider}</td>
+                      {SEAMS.map((seam: string) => {
+                        const isCovered = agent.seams_covered?.includes(seam);
+                        return (
+                          <td key={seam} style={{ padding: '12px' }}>
+                            {isCovered ? <Check size={16} color="var(--ok)" style={{ margin: '0 auto' }} /> : <span style={{ color: '#4b5563' }}>-</span>}
+                          </td>
+                        );
+                      })}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        )}
       <div style={{ display: 'flex', flexDirection: 'column', gap: '64px' }}>
         {categories.map(cat => {
           const meta = CATEGORY_META[cat] || { title: cat, desc: '' };
