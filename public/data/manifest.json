@@ -717,8 +717,8 @@
     {
       "id": "memory-mcp",
       "milestone": "M18",
-      "status": "in-progress",
-      "commit": "c96b5a2",
+      "status": "tested",
+      "commit": "d238ce2",
       "category": "connectors",
       "title": {
         "en": "Per-tenant memory as an MCP server — black boxes remember, governed",
