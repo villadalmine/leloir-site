@@ -15,8 +15,8 @@ export function CRDs() {
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: '48px' }}>
         {data.crds.map((crd: any, idx: number) => (
-          <div key={idx} className="crd-card">
-            <div className="crd-head">
+          <div key={idx} className="glass-card" style={{ padding: 0 }}>
+            <div className="crd-head" style={{ padding: '24px', borderBottom: '1px solid rgba(255,255,255,0.05)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '16px' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                 <Terminal style={{ color: 'var(--accent)' }} size={20} />
                 <h3>{crd.kind}</h3>
@@ -33,7 +33,7 @@ export function CRDs() {
               </div>
             </div>
 
-            <div className="crd-body">
+            <div className="crd-body" style={{ padding: '24px', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '32px' }}>
               <div className="crd-text">
                 <div style={{ marginBottom: '32px' }}>
                   <h4>Purpose</h4>
@@ -45,7 +45,9 @@ export function CRDs() {
                 </div>
               </div>
               <div className="crd-code">
-                <pre><code>{crd.yaml}</code></pre>
+                <div className="code-block-wrapper">
+                  <pre style={{ margin: 0 }}><code>{crd.yaml}</code></pre>
+                </div>
               </div>
             </div>
           </div>

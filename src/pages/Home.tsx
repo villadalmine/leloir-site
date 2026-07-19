@@ -28,6 +28,7 @@ export function Home() {
       <div className="badges" style={{ justifyContent: 'center', marginBottom: '32px' }}>
         <span className="pill">Zero-Trust Architecture</span>
         <span className="pill">Kubernetes Native</span>
+        <span className="pill">Context-Aware Governance</span>
         <span className="pill">No Vendor Lock-in</span>
       </div>
 
@@ -93,9 +94,15 @@ export function Home() {
           <span>🧬</span> Why the name "Leloir"?
         </h2>
         <p style={{ color: 'var(--muted)', fontSize: '16px', lineHeight: 1.8, margin: 0 }}>
-          <strong>Luis Federico Leloir</strong> was an Argentine physician and biochemist who received the 1970 Nobel Prize in Chemistry for his discovery of the metabolic pathways in carbohydrates. 
+          <a href="https://en.wikipedia.org/wiki/Luis_Federico_Leloir" target="_blank" rel="noreferrer" style={{ color: 'var(--fg)', fontWeight: 600 }}>Luis Federico Leloir</a> was an Argentine physician and biochemist who received the 1970 Nobel Prize in Chemistry.
           <br/><br/>
-          Just as Leloir uncovered the fundamental <em>regulatory mechanisms of cellular biology</em>, this project aims to provide the fundamental <strong>regulatory mechanisms and governance</strong> for autonomous AI agents in production environments.
+          Before his work, science knew that living organisms consumed sugars (glucose) for energy, but nobody understood the exact mechanism the body used to transform, store, and regulate that energy. Leloir isolated a key molecule called <strong>UDP-glucose</strong>, discovering that it acts as the fundamental "transport and control mechanism" that allows cells to build energy reserves (glycogen). Without this regulatory mechanism, cellular life would collapse because it wouldn't know how to manage its own fuel.
+          <br/><br/>
+          <strong>The Analogy:</strong> Just as Leloir uncovered the <em>regulatory mechanisms of cellular biology</em>, this project provides the fundamental <strong>regulatory mechanisms and governance</strong> for autonomous AI agents. The Leloir Control Plane manages, regulates, and secures the "fuel" (access, permissions, budgets) of agents so that the cluster functions in a safe and orderly manner.
+          <br/><br/>
+          <a href="https://www.nobelprize.org/prizes/chemistry/1970/leloir/lecture/" target="_blank" rel="noreferrer" className="btn btn-outline" style={{ fontSize: '14px', padding: '8px 16px', marginTop: '12px' }}>
+            Read his 1970 Nobel Lecture →
+          </a>
         </p>
       </div>
 

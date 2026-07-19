@@ -40,8 +40,8 @@ export function Architecture() {
         
         <div className="grid2">
           {manifest.topologies.map((x: any, i: number) => (
-            <div key={i} className="card">
-              <h3>{t(x.title)}</h3>
+            <div key={i} className="glass-card">
+              <h3 style={{ borderBottom: 'none', margin: '0 0 12px 0' }}>{t(x.title)}</h3>
               <p>{t(x.text)}</p>
             </div>
           ))}
@@ -72,11 +72,13 @@ export function Architecture() {
         <p className="lead">{t(flow.sub)}</p>
         
         {flow.steps.map((s: any, i: number) => (
-          <div key={i} className="step">
-            <div className="num">{s.n}</div>
+          <div key={i} className="step glass-card" style={{ display: 'flex', gap: '20px', padding: '24px', marginBottom: '24px' }}>
+            <div className="num" style={{ background: 'rgba(59, 130, 246, 0.1)', color: 'var(--accent)', border: '1px solid rgba(59, 130, 246, 0.2)', width: '40px', height: '40px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '16px', fontWeight: 'bold', flexShrink: 0 }}>
+              {s.n}
+            </div>
             <div>
-              <h4>{t(s.action)}</h4>
-              <p>{t(s.detail)}</p>
+              <h4 style={{ margin: '0 0 8px 0', fontSize: '18px' }}>{t(s.action)}</h4>
+              <p style={{ margin: 0 }}>{t(s.detail)}</p>
             </div>
           </div>
         ))}

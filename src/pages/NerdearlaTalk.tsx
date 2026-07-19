@@ -76,7 +76,20 @@ export const NerdearlaTalk = () => {
         </div>
       </Slide>
 
-      {/* Diapositiva 5: El Cierre */}
+      {/* Diapositiva 5: Continuous Agent Validation */}
+      <Slide isActive={false}>
+        <h1>Validation as Code (CAV)</h1>
+        <p>¿Cómo confías en tu Agente mañana? <strong>Lo destruyes hoy.</strong></p>
+        <div className="highlight-box mt-4">
+          <ul>
+            <li>Leloir inyecta <strong>23 aserciones</strong> simulando comportamientos destructivos.</li>
+            <li>Prueba empírica continua: Si el agente logra escapar, la prueba falla.</li>
+            <li>Governance-as-code: <code>leloir-conformance --provision</code></li>
+          </ul>
+        </div>
+      </Slide>
+
+      {/* Diapositiva 6: El Cierre */}
       <Slide isActive={false}>
         <div className="text-center">
           <h1>Leloir</h1>

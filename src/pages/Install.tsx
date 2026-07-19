@@ -23,7 +23,9 @@ export function Install() {
           <div key={i}>
             <h3>{t(r.who)}</h3>
             <p>{t(r.does)}</p>
-            <pre><code>{r.cmd}</code></pre>
+            <div className="code-block-wrapper">
+              <pre><code>{r.cmd}</code></pre>
+            </div>
           </div>
         ))}
       </div>
