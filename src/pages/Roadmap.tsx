@@ -121,42 +121,92 @@ export function Roadmap() {
       </div>
 
         {/* Agnostic Conformance Matrix */}
-        {agentConformance.length > 0 && (
+        {(agentConformance.length > 0 || reportData?.conformance_measured) && (
           <div className="glass-card" style={{ maxWidth: '900px', margin: '32px auto 0', padding: '32px', textAlign: 'left', borderLeft: '4px solid #a855f7' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
               <ShieldCheck size={28} color="#a855f7" />
-              <h2 style={{ fontSize: '24px', margin: 0, color: 'white' }}>Agnostic Governance</h2>
+              <h2 style={{ fontSize: '24px', margin: 0, color: 'white' }}>Continuous Agent Validation</h2>
             </div>
             <p style={{ color: 'var(--muted)', fontSize: '16px', lineHeight: '1.6', marginBottom: '24px' }}>
-              Our Control Plane strictly prevents vendor lock-in. We have proven <strong style={{color: 'white'}}>{agnosticProvenCount} features</strong> consistently across multiple different agent architectures using the same governance rules.
+              Leloir measures agent behavior continuously. We contrast the <strong>Declared (Expected)</strong> architectural capability against the <strong>Empirical (Measured)</strong> governance bounds enforced by the live Control Plane on real agent containers.
             </p>
-            <div style={{ overflowX: 'auto' }}>
-              <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'center', fontSize: '14px' }}>
-                <thead>
-                  <tr style={{ borderBottom: '1px solid var(--border)' }}>
-                    <th style={{ padding: '12px', textAlign: 'left', color: 'var(--muted)', fontWeight: 500 }}>Agent Engine</th>
-                    {SEAMS.map((seam: string) => <th key={seam} style={{ padding: '12px', color: 'var(--muted)', fontWeight: 500 }}>{seam}</th>)}
-                  </tr>
-                </thead>
-                <tbody>
-                  {agentConformance.map((agent: any) => (
-                    <tr key={agent.provider} style={{ borderBottom: '1px solid var(--border)' }}>
-                      <td style={{ padding: '12px', textAlign: 'left', fontWeight: 500 }}>{agent.provider}</td>
-                      {SEAMS.map((seam: string) => {
-                        const isCovered = agent.seams_covered?.includes(seam);
-                        return (
-                          <td key={seam} style={{ padding: '12px' }}>
-                            {isCovered ? <Check size={16} color="var(--ok)" style={{ margin: '0 auto' }} /> : <span style={{ color: '#4b5563' }}>-</span>}
+            
+            {/* Expected Table */}
+            {agentConformance.length > 0 && (
+              <div style={{ marginBottom: '32px' }}>
+                <h3 style={{ fontSize: '16px', color: 'var(--info)', marginBottom: '16px' }}>Declared Capabilities (Graph)</h3>
+                <div style={{ overflowX: 'auto' }}>
+                  <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'center', fontSize: '14px' }}>
+                    <thead>
+                      <tr style={{ borderBottom: '1px solid var(--border)' }}>
+                        <th style={{ padding: '12px', textAlign: 'left', color: 'var(--muted)', fontWeight: 500 }}>Agent Engine</th>
+                        {SEAMS.map((seam: string) => <th key={seam} style={{ padding: '12px', color: 'var(--muted)', fontWeight: 500 }}>{seam}</th>)}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {agentConformance.map((agent: any) => (
+                        <tr key={agent.provider} style={{ borderBottom: '1px solid var(--border)' }}>
+                          <td style={{ padding: '12px', textAlign: 'left', fontWeight: 500 }}>{agent.provider}</td>
+                          {SEAMS.map((seam: string) => {
+                            const isCovered = agent.seams_covered?.includes(seam);
+                            return (
+                              <td key={seam} style={{ padding: '12px' }}>
+                                {isCovered ? <Check size={16} color="var(--ok)" style={{ margin: '0 auto' }} /> : <span style={{ color: '#4b5563' }}>-</span>}
+                              </td>
+                            );
+                          })}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+
+            {/* Measured Table */}
+            {reportData?.conformance_measured?.agents?.length > 0 && (
+              <div>
+                <h3 style={{ fontSize: '16px', color: 'var(--ok)', marginBottom: '16px' }}>Empirical Enforcement (Live Cluster)</h3>
+                <div style={{ overflowX: 'auto' }}>
+                  <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'center', fontSize: '14px' }}>
+                    <thead>
+                      <tr style={{ borderBottom: '1px solid var(--border)' }}>
+                        <th style={{ padding: '12px', textAlign: 'left', color: 'var(--muted)', fontWeight: 500 }}>Agent Engine</th>
+                        <th style={{ padding: '12px', color: 'var(--muted)', fontWeight: 500 }}>Tenant</th>
+                        <th style={{ padding: '12px', color: 'var(--muted)', fontWeight: 500 }}>Status</th>
+                        <th style={{ padding: '12px', color: 'var(--muted)', fontWeight: 500 }}>Bound Seams</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {reportData.conformance_measured.agents.map((agent: any) => (
+                        <tr key={agent.agent} style={{ borderBottom: '1px solid var(--border)' }}>
+                          <td style={{ padding: '12px', textAlign: 'left', fontWeight: 500, color: 'white' }}>{agent.agent}</td>
+                          <td style={{ padding: '12px', fontFamily: 'monospace', color: 'var(--muted)' }}>{agent.tenant}</td>
+                          <td style={{ padding: '12px' }}>
+                            {agent.governed ? 
+                              <span className="badge" style={{ backgroundColor: 'rgba(52, 211, 153, 0.1)', color: 'var(--ok)', border: '1px solid var(--ok)', fontSize: '11px' }}>
+                                <ShieldCheck size={10} style={{ marginRight: '4px' }} /> GOVERNED {agent.seams_bound}/5
+                              </span> 
+                            : '-'}
                           </td>
-                        );
-                      })}
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-            <p style={{ color: 'var(--muted)', fontSize: '13px', marginTop: '16px', lineHeight: '1.5' }}>
-              <em>Note:</em> The <strong>LLM</strong> governance seam is empty in this table because agents <em>consume</em> LLMs, they do not provide them. The LLM seam is actively governed by infrastructure providers (e.g. <code>envoy-ai-gw</code>, <code>litellm-operator</code>) sitting between the agent and the API.
+                          <td style={{ padding: '12px', textAlign: 'left', fontSize: '12px', lineHeight: '1.5' }}>
+                            {Object.entries(agent.seams || {}).map(([seam, value]) => (
+                              <div key={seam}><strong style={{ color: '#a855f7', textTransform: 'capitalize' }}>{seam}:</strong> <span style={{ color: 'var(--muted)' }}>{value as string}</span></div>
+                            ))}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+                <div style={{ marginTop: '16px', fontSize: '12px', color: 'var(--muted)' }}>
+                  <strong>Measurement Method:</strong> <code>{reportData.conformance_measured.agents[0]?.method}</code>
+                </div>
+              </div>
+            )}
+            
+            <p style={{ color: 'var(--muted)', fontSize: '13px', marginTop: '24px', lineHeight: '1.5', borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '16px' }}>
+              <em>Note:</em> The <strong>LLM</strong> governance seam is conditionally blank in declared graphs as agents consume LLMs, they don't provide them. However, in the empirical measurement, the Control Plane strictly enforces and tracks this layer (via <code>envoy-ai-gw</code>).
             </p>
           </div>
         )}
