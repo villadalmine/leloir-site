@@ -23,8 +23,8 @@
         "es": "Validación Continua de Agentes (CAV)",
         "de": "Continuous Agent Validation (CAV)",
         "fr": "Continuous Agent Validation (CAV)",
-        "zh": "Continuous Agent Validation (CAV)",
-        "ja": "Continuous Agent Validation (CAV)"
+        "zh": "持续智能体验证（CAV）",
+        "ja": "継続的エージェント検証（CAV）"
       },
       "desc": {
         "en": "Proves on YOUR cluster — per agent, per version — that each of the 5 governance seams actually holds. Spins up an ephemeral tenant, deploys the agent's real image, measures enforcement via live SubjectAccessReview, then tears down. Governance you can verify, not a PDF.",
@@ -85,9 +85,9 @@
         "en": "Agent-to-Agent (A2A) Governance",
         "es": "Gobernanza Agente-a-Agente (A2A)",
         "de": "Agent-to-Agent (A2A) Governance",
-        "fr": "Agent-to-Agent (A2A) Governance",
-        "zh": "Agent-to-Agent (A2A) Governance",
-        "ja": "Agent-to-Agent (A2A) Governance"
+        "fr": "Gouvernance Agent-to-Agent (A2A)",
+        "zh": "智能体间（A2A）治理",
+        "ja": "エージェント間 (A2A) ガバナンス"
       },
       "desc": {
         "en": "When one agent delegates to another, Leloir governs the hop: canInvoke policy, depth / fan-out caps, budget on the delegation, and a full audit — while honestly reporting the remote agent's own runtime (its LLM, its tools) as off-radar.",
@@ -176,10 +176,10 @@
       "desc": {
         "en": "Leloir plugs into a commodity LLM data plane (Envoy AI Gateway → litellm) instead of reinventing it — and provisions a per-tenant virtual key on top, so spend is metered and attributable. The gateway is the muscle; the governance above it is the moat.",
         "es": "Leloir se enchufa a un data plane de LLM commodity (Envoy AI Gateway → litellm) en vez de reinventarlo — y provisiona una virtual key por-tenant encima, para que el gasto sea medido y atribuible. El gateway es el músculo; la gobernanza por encima es el moat.",
-        "de": "Leloir plugs into a commodity LLM data plane (Envoy AI Gateway → litellm) instead of reinventing it — and provisions a per-tenant virtual key on top, so spend is metered and attributable. The gateway is the muscle; the governance above it is the moat.",
-        "fr": "Leloir plugs into a commodity LLM data plane (Envoy AI Gateway → litellm) instead of reinventing it — and provisions a per-tenant virtual key on top, so spend is metered and attributable. The gateway is the muscle; the governance above it is the moat.",
-        "zh": "Leloir plugs into a commodity LLM data plane (Envoy AI Gateway → litellm) instead of reinventing it — and provisions a per-tenant virtual key on top, so spend is metered and attributable. The gateway is the muscle; the governance above it is the moat.",
-        "ja": "Leloir plugs into a commodity LLM data plane (Envoy AI Gateway → litellm) instead of reinventing it — and provisions a per-tenant virtual key on top, so spend is metered and attributable. The gateway is the muscle; the governance above it is the moat."
+        "de": "Leloir nutzt eine Commodity-LLM-Datenebene (Envoy AI Gateway → litellm), anstatt sie neu zu erfinden — und stellt einen virtuellen Schlüssel pro Mandant bereit. Das Gateway ist der Muskel; die Governance ist der Burggraben.",
+        "fr": "Leloir s'intègre à un plan de données LLM standard (Envoy AI Gateway → litellm) au lieu de le réinventer — et fournit une clé virtuelle par tenant. La passerelle est le muscle; la gouvernance est la douve.",
+        "zh": "Leloir 接入商用 LLM 数据平面（Envoy AI Gateway → litellm），并提供每租户虚拟密钥。网关是肌肉；其上的治理是护城河。",
+        "ja": "Leloirは、LLMデータプレーン（Envoy AI Gateway → litellm）を再発明する代わりにそれに接続し、テナントごとの仮想キーをプロビジョニングします。ゲートウェイは筋肉であり、その上のガバナンスが濠です。"
       },
       "status": "proven",
       "tier": "oss"
@@ -231,18 +231,18 @@
       "title": {
         "en": "Zero-Trust Hardened (mTLS/SPIFFE)",
         "es": "Zero-Trust Hardened (mTLS/SPIFFE)",
-        "de": "Zero-Trust Hardened (mTLS/SPIFFE)",
-        "fr": "Zero-Trust Hardened (mTLS/SPIFFE)",
-        "zh": "Zero-Trust Hardened (mTLS/SPIFFE)",
-        "ja": "Zero-Trust Hardened (mTLS/SPIFFE)"
+        "de": "Zero-Trust Gehärtet (mTLS/SPIFFE)",
+        "fr": "Zero-Trust Renforcé (mTLS/SPIFFE)",
+        "zh": "零信任强化（mTLS/SPIFFE）",
+        "ja": "ゼロトラスト強化（mTLS/SPIFFE）"
       },
       "desc": {
         "en": "Enforces strict cryptographic identity for every component via SPIFFE/SPIRE. All inter-service and agent-to-tool communication is strictly authenticated via mutual TLS.",
         "es": "Enforces strict cryptographic identity for every component via SPIFFE/SPIRE. All inter-service and agent-to-tool communication is strictly authenticated via mutual TLS.",
-        "de": "Enforces strict cryptographic identity for every component via SPIFFE/SPIRE. All inter-service and agent-to-tool communication is strictly authenticated via mutual TLS.",
-        "fr": "Enforces strict cryptographic identity for every component via SPIFFE/SPIRE. All inter-service and agent-to-tool communication is strictly authenticated via mutual TLS.",
-        "zh": "Enforces strict cryptographic identity for every component via SPIFFE/SPIRE. All inter-service and agent-to-tool communication is strictly authenticated via mutual TLS.",
-        "ja": "Enforces strict cryptographic identity for every component via SPIFFE/SPIRE. All inter-service and agent-to-tool communication is strictly authenticated via mutual TLS."
+        "de": "Erzwingt eine strikte kryptografische Identität für jede Komponente über SPIFFE/SPIRE. Die gesamte Kommunikation wird strikt über mTLS authentifiziert.",
+        "fr": "Impose une identité cryptographique stricte pour chaque composant via SPIFFE/SPIRE. Toutes les communications sont strictement authentifiées via mTLS.",
+        "zh": "通过 SPIFFE/SPIRE 强制每个组件使用严格的加密身份。所有通信均通过双向 TLS 严格认证。",
+        "ja": "SPIFFE/SPIREを介して、すべてのコンポーネントに厳密な暗号化IDを強制します。すべての通信は相互TLSを介して厳密に認証されます。"
       },
       "status": "proven",
       "tier": "oss"
@@ -253,17 +253,17 @@
         "en": "CISO Grafana Dashboards",
         "es": "CISO Grafana Dashboards",
         "de": "CISO Grafana Dashboards",
-        "fr": "CISO Grafana Dashboards",
-        "zh": "CISO Grafana Dashboards",
-        "ja": "CISO Grafana Dashboards"
+        "fr": "Tableaux de bord CISO Grafana",
+        "zh": "CISO Grafana 仪表板",
+        "ja": "CISO Grafana ダッシュボード"
       },
       "desc": {
         "en": "Pre-built, plug-and-play Grafana dashboards mapping Leloir Prometheus metrics to executive summaries, cost analysis, and threat detection views.",
         "es": "Pre-built, plug-and-play Grafana dashboards mapping Leloir Prometheus metrics to executive summaries, cost analysis, and threat detection views.",
-        "de": "Pre-built, plug-and-play Grafana dashboards mapping Leloir Prometheus metrics to executive summaries, cost analysis, and threat detection views.",
-        "fr": "Pre-built, plug-and-play Grafana dashboards mapping Leloir Prometheus metrics to executive summaries, cost analysis, and threat detection views.",
-        "zh": "Pre-built, plug-and-play Grafana dashboards mapping Leloir Prometheus metrics to executive summaries, cost analysis, and threat detection views.",
-        "ja": "Pre-built, plug-and-play Grafana dashboards mapping Leloir Prometheus metrics to executive summaries, cost analysis, and threat detection views."
+        "de": "Vorgefertigte Grafana-Dashboards, die Leloir-Prometheus-Metriken auf Zusammenfassungen, Kostenanalysen und Bedrohungserkennungsansichten abbilden.",
+        "fr": "Tableaux de bord Grafana pré-construits qui associent les métriques Prometheus de Leloir à des résumés exécutifs, des analyses de coûts et des vues de détection de menaces.",
+        "zh": "预构建的即插即用 Grafana 仪表板，将 Leloir Prometheus 指标映射到执行摘要、成本分析和威胁检测视图。",
+        "ja": "Leloir Prometheus メトリクスを経営幹部向けサマリー、コスト分析、脅威検出ビューにマッピングする事前構築済みの Grafana ダッシュボード。"
       },
       "status": "proven",
       "tier": "commercial"

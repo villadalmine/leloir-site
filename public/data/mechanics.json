@@ -1,0 +1,176 @@
+{
+  "title": {
+    "en": "Governance Mechanics: Leloir vs. Dependencies",
+    "es": "Mecánica de Governance: Leloir vs. Dependencias",
+    "de": "Governance-Mechanik: Leloir vs. Abhängigkeiten",
+    "fr": "Mécanique de Gouvernance: Leloir vs. Dépendances",
+    "zh": "治理机制：Leloir 与依赖项",
+    "ja": "ガバナンスメカニズム: Leloir vs. 依存関係"
+  },
+  "description": {
+    "en": "Leloir is the control plane; it does not reinvent the underlying infrastructure—it orchestrates, provisions per-tenant, integrates, and attributes. Here is the honest boundary of what Leloir enforces versus what the dependencies handle.",
+    "es": "Leloir es el control plane; no reimplementa la infraestructura subyacente — la orquesta, provisiona por-tenant, integra y atribuye. Este es el límite honesto de lo que Leloir enforcea frente a lo que manejan las dependencias."
+  },
+  "mechanics": [
+    {
+      "id": "llm-budget",
+      "category": {
+        "en": "LLM / Budget per-key",
+        "es": "LLM / Budget por-key"
+      },
+      "dependency": {
+        "name": "Envoy AI GW → litellm",
+        "action": {
+          "en": "Proxies the LLM, cuts the key upon exceeding its limit, measures tokens/cost.",
+          "es": "Proxya el LLM, corta la key al exceder su límite, mide tokens/costo."
+        }
+      },
+      "leloir": {
+        "action": {
+          "en": "Provisions the key PER-TENANT, forces the agent to use it (containment), adds dynamic budget PER-INVESTIGATION (cancels the loop), and attributes the REAL model used per-agent.",
+          "es": "Provisiona la key POR-TENANT, fuerza al agente a usarla (contención), agrega budget POR-INVESTIGACIÓN (cancela el loop) y atribuye el modelo REAL por-agente."
+        }
+      }
+    },
+    {
+      "id": "network-egress",
+      "category": {
+        "en": "Network / Egress",
+        "es": "Red / Egress"
+      },
+      "dependency": {
+        "name": "Cilium",
+        "action": {
+          "en": "Enforces the CiliumNetworkPolicy (drops unauthorized packets).",
+          "es": "Enforcea la CiliumNetworkPolicy (dropea paquetes no autorizados)."
+        }
+      },
+      "leloir": {
+        "action": {
+          "en": "Generates the egress-lock per-agent (dictating what it can talk to) and declares it declaratively.",
+          "es": "Genera el egress-lock por-agente (dictando con quién puede hablar) y lo declara."
+        }
+      }
+    },
+    {
+      "id": "rbac-permissions",
+      "category": {
+        "en": "RBAC / Permissions",
+        "es": "RBAC / Permisos"
+      },
+      "dependency": {
+        "name": "K8s API + SubjectAccessReview",
+        "action": {
+          "en": "Decides allow/deny at the API level.",
+          "es": "Decide allow/deny a nivel de la API de Kubernetes."
+        }
+      },
+      "leloir": {
+        "action": {
+          "en": "Generates the ServiceAccount + Role scoped per-tenant, and empirically measures the verdict with SubjectAccessReview (Continuous Agent Validation).",
+          "es": "Genera el ServiceAccount + Role scopeado por-tenant, y mide el veredicto empíricamente con SubjectAccessReview (Continuous Agent Validation)."
+        }
+      }
+    },
+    {
+      "id": "network-identity",
+      "category": {
+        "en": "Network Identity / mTLS",
+        "es": "Identidad de Red / mTLS"
+      },
+      "dependency": {
+        "name": "Cilium + SPIRE",
+        "action": {
+          "en": "Emits the SVID, establishes the mTLS connection.",
+          "es": "Emite el SVID, establece la conexión mTLS."
+        }
+      },
+      "leloir": {
+        "action": {
+          "en": "Consumes the identity; wires the zero-trust hardening policies.",
+          "es": "Consume la identidad; cablea las políticas de hardening zero-trust."
+        }
+      }
+    },
+    {
+      "id": "storage-vectors",
+      "category": {
+        "en": "Storage / Vectors",
+        "es": "Storage / Vectores"
+      },
+      "dependency": {
+        "name": "Postgres + pgvector",
+        "action": {
+          "en": "Stores data, performs the cosine similarity search.",
+          "es": "Guarda los datos, realiza la búsqueda de similitud coseno."
+        }
+      },
+      "leloir": {
+        "action": {
+          "en": "Manages the schema, handles the capture/recall logic of the RAG, and enforces tenant-scoping of the queries.",
+          "es": "Administra el schema, maneja la lógica de capture/recall del RAG y aplica el scoping por-tenant de las queries."
+        }
+      }
+    },
+    {
+      "id": "tools-mcp",
+      "category": {
+        "en": "Tools Execution",
+        "es": "Ejecución de Tools"
+      },
+      "dependency": {
+        "name": "MCP Server Upstream",
+        "action": {
+          "en": "Executes the tool remotely.",
+          "es": "Ejecuta la tool."
+        }
+      },
+      "leloir": {
+        "action": {
+          "en": "The Gateway is the ONLY path. It enforces per-tenant scope, injects credentials, applies allowlists, rate-limits, approvals (HITL), and audits.",
+          "es": "El Gateway es el ÚNICO camino. Enforcea scope por-tenant, inyecta creds, aplica allowlists, rate-limit, aprobación (HITL) y audita."
+        }
+      }
+    },
+    {
+      "id": "trigger-routing",
+      "category": {
+        "en": "Trigger / Alerting",
+        "es": "Trigger / Alertas"
+      },
+      "dependency": {
+        "name": "Alertmanager",
+        "action": {
+          "en": "Fires the webhook.",
+          "es": "Dispara el webhook."
+        }
+      },
+      "leloir": {
+        "action": {
+          "en": "Routes the alert to the owning tenant (AlertRoute) and starts the governed investigation.",
+          "es": "Rutea el alert al tenant dueño (AlertRoute) y arranca la investigación gobernada."
+        }
+      }
+    },
+    {
+      "id": "outcome-audit",
+      "category": {
+        "en": "Outcome / Audit",
+        "es": "Outcome / Audit"
+      },
+      "dependency": {
+        "name": "Postgres",
+        "action": {
+          "en": "Persists the audit records.",
+          "es": "Persiste los registros en la base de datos."
+        }
+      },
+      "leloir": {
+        "action": {
+          "en": "Enforces append-only logic, computes the M2 Hash-chain for tamper-evidence, builds the scorecard, and reports metrics.",
+          "es": "Garantiza la lógica append-only, computa el Hash-chain M2 (tamper-evident), genera el scorecard honesto y reporta métricas."
+        }
+      }
+    }
+  ]
+}
