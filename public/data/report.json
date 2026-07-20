@@ -1,39 +1,20 @@
 {
-  "generated": "2026-07-18T16:50:09Z",
-  "commit": "41345ff",
+  "generated": "2026-07-20T00:34:59Z",
+  "commit": "dd64de1",
   "context": {
-    "mode": "layer-a",
-    "cli_measured": true,
-    "chaos_included": true
-  },
-  "chaos": {
-    "measured_at": "2026-07-18T07:55:33Z",
-    "context": "cluster",
-    "experiments": [
-      {
-        "id": "budget-4layer",
-        "result": "SKIP",
-        "reason": "API OIDC sin key"
-      },
-      {
-        "id": "containment-egress",
-        "result": "PASS"
-      },
-      {
-        "id": "tenant-isolation",
-        "result": "SKIP",
-        "reason": "API OIDC sin key"
-      }
-    ]
+    "mode": "declared-only",
+    "cli_measured": false,
+    "chaos_included": true,
+    "conformance_measured_included": true
   },
   "summary": {
     "features_total": 23,
-    "e2e_happy": 11,
+    "e2e_happy": 12,
     "e2e_chaos": 8,
-    "unit": 4,
+    "unit": 3,
     "not_tested": 0,
-    "actors_governed": 5,
-    "actors_planned": 2,
+    "actors_governed": 7,
+    "actors_planned": 0,
     "actors_offradar": 1
   },
   "features": [
@@ -199,7 +180,7 @@
       "id": "memory-mcp",
       "seam": "Tools",
       "crd": "MCPServer-memory",
-      "test_status": "unit",
+      "test_status": "e2e-happy",
       "core_affected": false,
       "substrate": "any",
       "agnostic_proof": [
@@ -207,6 +188,7 @@
         "kagent-a2a"
       ],
       "test": [
+        "scripts/e2e-memory-mcp.sh",
         "leloir-core/internal/memorymcp/server_test.go"
       ],
       "metric": "remember/recall/forget por tenant, aislado"
@@ -363,7 +345,7 @@
         "leloir-core/internal/store/store_test.go",
         "leloir-core/internal/controlplane/audit/hashchain_test.go"
       ],
-      "metric": "cada evento append-only + queryable (tamper-evidence/hash-chain = M2, NO construido)"
+      "metric": "cada evento append-only + queryable + hash-chained (tamper-evidence M2 CONSTRUIDA; Object-Lock WORM storage = M4)"
     },
     {
       "id": "audit-siem",
@@ -476,7 +458,7 @@
       "id": "kagent",
       "via": "a2a",
       "mode": "a2a",
-      "governed": "planned",
+      "governed": true,
       "kind": "agent",
       "implements": "agent-adapter"
     },
@@ -484,7 +466,7 @@
       "id": "k8sgpt",
       "via": "k8sgpt-conformance",
       "mode": "conformance",
-      "governed": "planned",
+      "governed": true,
       "kind": "agent",
       "implements": "agent-adapter"
     },
@@ -502,6 +484,7 @@
       "id": "honcho-memory",
       "kind": "mcp-server",
       "transport": "streamable-http",
+      "endpoint": "http://leloir-honcho-mcp.honcho.svc.cluster.local:8080/mcp",
       "via": "gateway"
     }
   ],
@@ -511,12 +494,12 @@
       "reads": "/api/v1/*",
       "auth": "lk_ api-key",
       "commands": [
-        "agents",
         "usage",
-        "apikeys list",
-        "agents --json"
+        "investigate",
+        "config",
+        "llm-credentials"
       ],
-      "status": "e2e-happy"
+      "status": "unit"
     }
   ],
   "contracts": [
@@ -758,5 +741,128 @@
     "tenant-isolation",
     "tools-via-gateway"
   ],
-  "_note": "Proyección pública del report.json de Leloir (E2E-medido). Endpoints internos removidos."
+  "chaos": {
+    "measured_at": "2026-07-18T07:55:33Z",
+    "context": "cluster",
+    "experiments": [
+      {
+        "id": "budget-4layer",
+        "result": "SKIP",
+        "reason": "API OIDC sin key"
+      },
+      {
+        "id": "containment-egress",
+        "result": "PASS"
+      },
+      {
+        "id": "tenant-isolation",
+        "result": "SKIP",
+        "reason": "API OIDC sin key"
+      }
+    ]
+  },
+  "conformance_measured": {
+    "measured_context": "cluster-real (client-go SubjectAccessReview + typed gets)",
+    "agents": [
+      {
+        "agent": "k8sgpt",
+        "tenant": "conf-k8sgpt",
+        "model": "contained",
+        "governed": true,
+        "seams_bound": 5,
+        "seams": {
+          "trigger": "alertroute→adapter",
+          "llm": "tenant-key-forced",
+          "tools": "egress-locked→gateway",
+          "rbac": "contained",
+          "outcome": "agent-running→audit"
+        },
+        "cluster_role_binding": "none",
+        "expected_features": [
+          "alert-routing",
+          "audit-worm",
+          "containment-egress",
+          "scorecard-honesty",
+          "shadow-mode",
+          "tools-via-gateway"
+        ],
+        "method": "client-go SubjectAccessReview + typed gets (enforcement desplegado, no scorecard reportado)"
+      },
+      {
+        "agent": "kagent",
+        "tenant": "conf-kagent",
+        "model": "a2a",
+        "governed": true,
+        "seams_bound": 2,
+        "seams": {
+          "trigger": "a2a-canInvoke-governed",
+          "llm": "off-radar (a2a: infra propia)",
+          "tools": "off-radar (a2a: infra propia)",
+          "rbac": "off-radar (a2a: infra propia)",
+          "outcome": "a2a-hop-audited"
+        },
+        "off_radar": [
+          "llm",
+          "tools",
+          "rbac"
+        ],
+        "cluster_role_binding": "n/a (a2a)",
+        "expected_features": [
+          "a2a-delegation",
+          "memory-mcp",
+          "tenant-isolation"
+        ],
+        "method": "client-go: AgentRegistration type:a2a + política canInvoke (delegación gobernada; LLM/tools/RBAC = infra propia del agente A2A, off-radar honesto; enforcement runtime del canInvoke probado en e2e-scenario/chaos)"
+      },
+      {
+        "agent": "mode2-holmes",
+        "tenant": "demo-mode2",
+        "model": "contained",
+        "governed": true,
+        "seams_bound": 5,
+        "seams": {
+          "trigger": "alertroute→adapter",
+          "llm": "tenant-key-forced",
+          "tools": "egress-locked→gateway",
+          "rbac": "contained",
+          "outcome": "agent-running→audit"
+        },
+        "cluster_role_binding": "none",
+        "expected_features": [
+          "a2a-delegation",
+          "alert-routing",
+          "audit-worm",
+          "containment-egress",
+          "hitl-approval",
+          "memory-honcho",
+          "memory-mcp",
+          "memory-rag",
+          "quarantine",
+          "scorecard-honesty",
+          "shadow-mode",
+          "skillsource",
+          "tenant-isolation",
+          "tools-via-gateway"
+        ],
+        "method": "client-go SubjectAccessReview + typed gets (enforcement desplegado, no scorecard reportado)"
+      },
+      {
+        "agent": "support-bot",
+        "tenant": "demo-support-bot",
+        "model": "contained",
+        "governed": true,
+        "seams_bound": 5,
+        "seams": {
+          "trigger": "alertroute→adapter",
+          "llm": "tenant-key-forced",
+          "tools": "egress-locked→gateway",
+          "rbac": "contained",
+          "outcome": "agent-running→audit"
+        },
+        "cluster_role_binding": "none",
+        "expected_features": null,
+        "method": "client-go SubjectAccessReview + typed gets (enforcement desplegado, no scorecard reportado)"
+      }
+    ]
+  }
 }

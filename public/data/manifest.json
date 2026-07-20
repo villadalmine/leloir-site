@@ -1011,7 +1011,7 @@
     {
       "id": "cli",
       "milestone": "M9",
-      "status": "e2e-happy",
+      "status": "in-progress",
       "commit": "c0768e7",
       "title": {
         "en": "leloir CLI",
