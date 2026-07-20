@@ -8,73 +8,178 @@
     "ja": "機能と階層"
   },
   "sub": {
-    "en": "Leloir provides a robust open-source core for AI governance. Advanced operational and strict-security capabilities require a commercial license.",
-    "es": "Leloir provee un core open-source robusto para gobernanza de IA. Capacidades operativas avanzadas y seguridad estricta requieren licencia comercial.",
-    "de": "Leloir bietet einen robusten Open-Source-Kern. Erweiterte Betriebs- und Sicherheitsfunktionen erfordern eine kommerzielle Lizenz.",
-    "fr": "Leloir fournit un noyau open-source robuste. Les capacités opérationnelles avancées exigent une licence.",
-    "zh": "Leloir 提供强大的开源 AI 治理核心。高级操作和严格安全功能需商业许可证。",
-    "ja": "Leloir は堅牢なオープンソースコアを提供します。高度な運用および厳格なセキュリティ機能にはライセンスが必要です。"
+    "en": "The moat is the control plane, not the data plane. Leloir's open-source core governs any agent across 5 seams — per-investigation enforcement, real-model attribution, multi-tenant isolation, A2A guards and Continuous Agent Validation. Advanced operational and strict-security capabilities require a commercial license.",
+    "es": "El moat es el control plane, no el data plane. El core open-source de Leloir gobierna cualquier agente en 5 costuras — enforcement por-investigación, atribución de modelo real, aislamiento multi-tenant, guardas A2A y Validación Continua de Agentes. Capacidades operativas avanzadas y seguridad estricta requieren licencia comercial.",
+    "de": "The moat is the control plane, not the data plane. Leloir's open-source core governs any agent across 5 seams — per-investigation enforcement, real-model attribution, multi-tenant isolation, A2A guards and Continuous Agent Validation. Advanced operational and strict-security capabilities require a commercial license.",
+    "fr": "The moat is the control plane, not the data plane. Leloir's open-source core governs any agent across 5 seams — per-investigation enforcement, real-model attribution, multi-tenant isolation, A2A guards and Continuous Agent Validation. Advanced operational and strict-security capabilities require a commercial license.",
+    "zh": "The moat is the control plane, not the data plane. Leloir's open-source core governs any agent across 5 seams — per-investigation enforcement, real-model attribution, multi-tenant isolation, A2A guards and Continuous Agent Validation. Advanced operational and strict-security capabilities require a commercial license.",
+    "ja": "The moat is the control plane, not the data plane. Leloir's open-source core governs any agent across 5 seams — per-investigation enforcement, real-model attribution, multi-tenant isolation, A2A guards and Continuous Agent Validation. Advanced operational and strict-security capabilities require a commercial license."
   },
   "features": [
     {
-      "id": "envoy-gateway",
+      "id": "cav",
       "title": {
-        "en": "Envoy AI Gateway (JWT L7)",
-        "es": "Envoy AI Gateway (JWT L7)",
-        "de": "Envoy AI Gateway (JWT L7)",
-        "fr": "Envoy AI Gateway (JWT L7)",
-        "zh": "Envoy AI Gateway (JWT L7)",
-        "ja": "Envoy AI Gateway (JWT L7)"
+        "en": "Continuous Agent Validation (CAV)",
+        "es": "Validación Continua de Agentes (CAV)",
+        "de": "Continuous Agent Validation (CAV)",
+        "fr": "Continuous Agent Validation (CAV)",
+        "zh": "Continuous Agent Validation (CAV)",
+        "ja": "Continuous Agent Validation (CAV)"
       },
       "desc": {
-        "en": "The core data plane. Inspects and proxies all LLM and tool traffic, validating JWTs at layer 7 before traffic hits the Orchestrator.",
-        "es": "The core data plane. Inspects and proxies all LLM and tool traffic, validating JWTs at layer 7 before traffic hits the Orchestrator.",
-        "de": "The core data plane. Inspects and proxies all LLM and tool traffic, validating JWTs at layer 7 before traffic hits the Orchestrator.",
-        "fr": "The core data plane. Inspects and proxies all LLM and tool traffic, validating JWTs at layer 7 before traffic hits the Orchestrator.",
-        "zh": "The core data plane. Inspects and proxies all LLM and tool traffic, validating JWTs at layer 7 before traffic hits the Orchestrator.",
-        "ja": "The core data plane. Inspects and proxies all LLM and tool traffic, validating JWTs at layer 7 before traffic hits the Orchestrator."
+        "en": "Proves on YOUR cluster — per agent, per version — that each of the 5 governance seams actually holds. Spins up an ephemeral tenant, deploys the agent's real image, measures enforcement via live SubjectAccessReview, then tears down. Governance you can verify, not a PDF.",
+        "es": "Prueba en TU cluster —por agente, por versión— que cada una de las 5 costuras de gobernanza realmente se sostiene. Levanta un tenant efímero, despliega la imagen real del agente, mide el enforcement con SubjectAccessReview en vivo, y lo destruye. Gobernanza verificable, no un PDF.",
+        "de": "Proves on YOUR cluster — per agent, per version — that each of the 5 governance seams actually holds. Spins up an ephemeral tenant, deploys the agent's real image, measures enforcement via live SubjectAccessReview, then tears down. Governance you can verify, not a PDF.",
+        "fr": "Proves on YOUR cluster — per agent, per version — that each of the 5 governance seams actually holds. Spins up an ephemeral tenant, deploys the agent's real image, measures enforcement via live SubjectAccessReview, then tears down. Governance you can verify, not a PDF.",
+        "zh": "Proves on YOUR cluster — per agent, per version — that each of the 5 governance seams actually holds. Spins up an ephemeral tenant, deploys the agent's real image, measures enforcement via live SubjectAccessReview, then tears down. Governance you can verify, not a PDF.",
+        "ja": "Proves on YOUR cluster — per agent, per version — that each of the 5 governance seams actually holds. Spins up an ephemeral tenant, deploys the agent's real image, measures enforcement via live SubjectAccessReview, then tears down. Governance you can verify, not a PDF."
       },
       "status": "proven",
       "tier": "oss"
     },
     {
-      "id": "dashboards",
+      "id": "per-investigation-enforcement",
       "title": {
-        "en": "CISO Grafana Dashboards",
-        "es": "CISO Grafana Dashboards",
-        "de": "CISO Grafana Dashboards",
-        "fr": "CISO Grafana Dashboards",
-        "zh": "CISO Grafana Dashboards",
-        "ja": "CISO Grafana Dashboards"
+        "en": "Per-Investigation Enforcement & Real-Model Attribution",
+        "es": "Enforcement por Investigación y Atribución de Modelo Real",
+        "de": "Per-Investigation Enforcement & Real-Model Attribution",
+        "fr": "Per-Investigation Enforcement & Real-Model Attribution",
+        "zh": "Per-Investigation Enforcement & Real-Model Attribution",
+        "ja": "Per-Investigation Enforcement & Real-Model Attribution"
       },
       "desc": {
-        "en": "Pre-built, plug-and-play Grafana dashboards mapping Leloir Prometheus metrics to executive summaries, cost analysis, and threat detection views.",
-        "es": "Pre-built, plug-and-play Grafana dashboards mapping Leloir Prometheus metrics to executive summaries, cost analysis, and threat detection views.",
-        "de": "Pre-built, plug-and-play Grafana dashboards mapping Leloir Prometheus metrics to executive summaries, cost analysis, and threat detection views.",
-        "fr": "Pre-built, plug-and-play Grafana dashboards mapping Leloir Prometheus metrics to executive summaries, cost analysis, and threat detection views.",
-        "zh": "Pre-built, plug-and-play Grafana dashboards mapping Leloir Prometheus metrics to executive summaries, cost analysis, and threat detection views.",
-        "ja": "Pre-built, plug-and-play Grafana dashboards mapping Leloir Prometheus metrics to executive summaries, cost analysis, and threat detection views."
+        "en": "Per-key budgets are a commodity — Envoy AI GW / litellm already do them. Leloir adds what they can't: it cancels a runaway agent loop mid-investigation (token / tool-call caps → budget_exhausted), and attributes every LLM call to the REAL upstream model, not the alias, per agent, in a tamper-evident audit.",
+        "es": "El budget por-key es commodity — Envoy AI GW / litellm ya lo hacen. Leloir agrega lo que ellos no pueden: cancela el bucle descontrolado de un agente a mitad de investigación (topes de tokens / tool-calls → budget_exhausted), y atribuye cada llamada LLM al modelo REAL del upstream, no el alias, por agente, en un audit tamper-evident.",
+        "de": "Per-key budgets are a commodity — Envoy AI GW / litellm already do them. Leloir adds what they can't: it cancels a runaway agent loop mid-investigation (token / tool-call caps → budget_exhausted), and attributes every LLM call to the REAL upstream model, not the alias, per agent, in a tamper-evident audit.",
+        "fr": "Per-key budgets are a commodity — Envoy AI GW / litellm already do them. Leloir adds what they can't: it cancels a runaway agent loop mid-investigation (token / tool-call caps → budget_exhausted), and attributes every LLM call to the REAL upstream model, not the alias, per agent, in a tamper-evident audit.",
+        "zh": "Per-key budgets are a commodity — Envoy AI GW / litellm already do them. Leloir adds what they can't: it cancels a runaway agent loop mid-investigation (token / tool-call caps → budget_exhausted), and attributes every LLM call to the REAL upstream model, not the alias, per agent, in a tamper-evident audit.",
+        "ja": "Per-key budgets are a commodity — Envoy AI GW / litellm already do them. Leloir adds what they can't: it cancels a runaway agent loop mid-investigation (token / tool-call caps → budget_exhausted), and attributes every LLM call to the REAL upstream model, not the alias, per agent, in a tamper-evident audit."
       },
       "status": "proven",
-      "tier": "commercial"
+      "tier": "oss"
     },
     {
-      "id": "rbac-budgets",
+      "id": "multi-tenant",
       "title": {
-        "en": "Basic Budgets & K8s RBAC",
-        "es": "Basic Budgets & K8s RBAC",
-        "de": "Basic Budgets & K8s RBAC",
-        "fr": "Basic Budgets & K8s RBAC",
-        "zh": "Basic Budgets & K8s RBAC",
-        "ja": "Basic Budgets & K8s RBAC"
+        "en": "Multi-Tenant Isolation",
+        "es": "Aislamiento Multi-Tenant",
+        "de": "Multi-Tenant Isolation",
+        "fr": "Multi-Tenant Isolation",
+        "zh": "Multi-Tenant Isolation",
+        "ja": "Multi-Tenant Isolation"
       },
       "desc": {
-        "en": "Leverages native Kubernetes RBAC to isolate agent permissions. Sets hard caps on tokens and tool calls per execution.",
-        "es": "Leverages native Kubernetes RBAC to isolate agent permissions. Sets hard caps on tokens and tool calls per execution.",
-        "de": "Leverages native Kubernetes RBAC to isolate agent permissions. Sets hard caps on tokens and tool calls per execution.",
-        "fr": "Leverages native Kubernetes RBAC to isolate agent permissions. Sets hard caps on tokens and tool calls per execution.",
-        "zh": "Leverages native Kubernetes RBAC to isolate agent permissions. Sets hard caps on tokens and tool calls per execution.",
-        "ja": "Leverages native Kubernetes RBAC to isolate agent permissions. Sets hard caps on tokens and tool calls per execution."
+        "en": "One agent, one blast radius. Every tenant gets isolated RBAC, audit, budget and a provisioned per-tenant LLM key; cross-tenant access is denied by default (chaos-tested: 403).",
+        "es": "Un agente, un radio de impacto. Cada tenant recibe RBAC, audit, budget y una key LLM provisionada por-tenant, aislados; el acceso cross-tenant se deniega por defecto (probado en chaos: 403).",
+        "de": "One agent, one blast radius. Every tenant gets isolated RBAC, audit, budget and a provisioned per-tenant LLM key; cross-tenant access is denied by default (chaos-tested: 403).",
+        "fr": "One agent, one blast radius. Every tenant gets isolated RBAC, audit, budget and a provisioned per-tenant LLM key; cross-tenant access is denied by default (chaos-tested: 403).",
+        "zh": "One agent, one blast radius. Every tenant gets isolated RBAC, audit, budget and a provisioned per-tenant LLM key; cross-tenant access is denied by default (chaos-tested: 403).",
+        "ja": "One agent, one blast radius. Every tenant gets isolated RBAC, audit, budget and a provisioned per-tenant LLM key; cross-tenant access is denied by default (chaos-tested: 403)."
+      },
+      "status": "proven",
+      "tier": "oss"
+    },
+    {
+      "id": "a2a",
+      "title": {
+        "en": "Agent-to-Agent (A2A) Governance",
+        "es": "Gobernanza Agente-a-Agente (A2A)",
+        "de": "Agent-to-Agent (A2A) Governance",
+        "fr": "Agent-to-Agent (A2A) Governance",
+        "zh": "Agent-to-Agent (A2A) Governance",
+        "ja": "Agent-to-Agent (A2A) Governance"
+      },
+      "desc": {
+        "en": "When one agent delegates to another, Leloir governs the hop: canInvoke policy, depth / fan-out caps, budget on the delegation, and a full audit — while honestly reporting the remote agent's own runtime (its LLM, its tools) as off-radar.",
+        "es": "Cuando un agente delega en otro, Leloir gobierna el hop: política canInvoke, topes de profundidad / fan-out, budget en la delegación, y audit completo — reportando honestamente el runtime propio del agente remoto (su LLM, sus tools) como off-radar.",
+        "de": "When one agent delegates to another, Leloir governs the hop: canInvoke policy, depth / fan-out caps, budget on the delegation, and a full audit — while honestly reporting the remote agent's own runtime (its LLM, its tools) as off-radar.",
+        "fr": "When one agent delegates to another, Leloir governs the hop: canInvoke policy, depth / fan-out caps, budget on the delegation, and a full audit — while honestly reporting the remote agent's own runtime (its LLM, its tools) as off-radar.",
+        "zh": "When one agent delegates to another, Leloir governs the hop: canInvoke policy, depth / fan-out caps, budget on the delegation, and a full audit — while honestly reporting the remote agent's own runtime (its LLM, its tools) as off-radar.",
+        "ja": "When one agent delegates to another, Leloir governs the hop: canInvoke policy, depth / fan-out caps, budget on the delegation, and a full audit — while honestly reporting the remote agent's own runtime (its LLM, its tools) as off-radar."
+      },
+      "status": "proven",
+      "tier": "oss"
+    },
+    {
+      "id": "containment-rbac",
+      "title": {
+        "en": "Containment & Scoped RBAC",
+        "es": "Contención y RBAC Acotado",
+        "de": "Containment & Scoped RBAC",
+        "fr": "Containment & Scoped RBAC",
+        "zh": "Containment & Scoped RBAC",
+        "ja": "Containment & Scoped RBAC"
+      },
+      "desc": {
+        "en": "Wraps a black-box agent in a tenant-scoped ServiceAccount plus a Cilium egress-lock, so it can only reach what you allow — and its LLM key is forced through the gateway. Declarative and admission-enforced: Leloir never deletes another operator's runtime.",
+        "es": "Envuelve a un agente caja-negra en un ServiceAccount acotado al tenant más un egress-lock de Cilium, para que sólo alcance lo que permitís — y su key LLM se fuerza por el gateway. Declarativo y aplicado en admisión: Leloir nunca borra el runtime de otro operator.",
+        "de": "Wraps a black-box agent in a tenant-scoped ServiceAccount plus a Cilium egress-lock, so it can only reach what you allow — and its LLM key is forced through the gateway. Declarative and admission-enforced: Leloir never deletes another operator's runtime.",
+        "fr": "Wraps a black-box agent in a tenant-scoped ServiceAccount plus a Cilium egress-lock, so it can only reach what you allow — and its LLM key is forced through the gateway. Declarative and admission-enforced: Leloir never deletes another operator's runtime.",
+        "zh": "Wraps a black-box agent in a tenant-scoped ServiceAccount plus a Cilium egress-lock, so it can only reach what you allow — and its LLM key is forced through the gateway. Declarative and admission-enforced: Leloir never deletes another operator's runtime.",
+        "ja": "Wraps a black-box agent in a tenant-scoped ServiceAccount plus a Cilium egress-lock, so it can only reach what you allow — and its LLM key is forced through the gateway. Declarative and admission-enforced: Leloir never deletes another operator's runtime."
+      },
+      "status": "proven",
+      "tier": "oss"
+    },
+    {
+      "id": "governance-scorecard",
+      "title": {
+        "en": "Honest Governance Scorecard",
+        "es": "Scorecard de Gobernanza Honesto",
+        "de": "Honest Governance Scorecard",
+        "fr": "Honest Governance Scorecard",
+        "zh": "Honest Governance Scorecard",
+        "ja": "Honest Governance Scorecard"
+      },
+      "desc": {
+        "en": "Reports which of the 5 seams it governs for each agent — AND which it can't (off-radar / blind spots). No competitor tells you what it doesn't see. A build guard blocks the docs and this site from claiming more than what's actually measured.",
+        "es": "Reporta cuáles de las 5 costuras gobierna para cada agente — Y cuáles no puede (off-radar / puntos ciegos). Ningún competidor te dice qué NO ve. Un guard de build impide que la doc y este site reclamen más de lo que realmente se midió.",
+        "de": "Reports which of the 5 seams it governs for each agent — AND which it can't (off-radar / blind spots). No competitor tells you what it doesn't see. A build guard blocks the docs and this site from claiming more than what's actually measured.",
+        "fr": "Reports which of the 5 seams it governs for each agent — AND which it can't (off-radar / blind spots). No competitor tells you what it doesn't see. A build guard blocks the docs and this site from claiming more than what's actually measured.",
+        "zh": "Reports which of the 5 seams it governs for each agent — AND which it can't (off-radar / blind spots). No competitor tells you what it doesn't see. A build guard blocks the docs and this site from claiming more than what's actually measured.",
+        "ja": "Reports which of the 5 seams it governs for each agent — AND which it can't (off-radar / blind spots). No competitor tells you what it doesn't see. A build guard blocks the docs and this site from claiming more than what's actually measured."
+      },
+      "status": "proven",
+      "tier": "oss"
+    },
+    {
+      "id": "auto-quarantine",
+      "title": {
+        "en": "Human-in-the-Loop & Anomaly Auto-Quarantine",
+        "es": "Human-in-the-Loop y Auto-Cuarentena de Anomalías",
+        "de": "Human-in-the-Loop & Anomaly Auto-Quarantine",
+        "fr": "Human-in-the-Loop & Anomaly Auto-Quarantine",
+        "zh": "Human-in-the-Loop & Anomaly Auto-Quarantine",
+        "ja": "Human-in-the-Loop & Anomaly Auto-Quarantine"
+      },
+      "desc": {
+        "en": "Risky actions require explicit human approval (HITL). Leloir also detects anomalous agent behavior — massive fan-out, unapproved destructive K8s writes — and automatically pauses the investigation pending review.",
+        "es": "Las acciones riesgosas requieren aprobación humana explícita (HITL). Leloir además detecta comportamiento anómalo del agente —fan-out masivo, escrituras destructivas no aprobadas en K8s— y pausa automáticamente la investigación a la espera de revisión.",
+        "de": "Risky actions require explicit human approval (HITL). Leloir also detects anomalous agent behavior — massive fan-out, unapproved destructive K8s writes — and automatically pauses the investigation pending review.",
+        "fr": "Risky actions require explicit human approval (HITL). Leloir also detects anomalous agent behavior — massive fan-out, unapproved destructive K8s writes — and automatically pauses the investigation pending review.",
+        "zh": "Risky actions require explicit human approval (HITL). Leloir also detects anomalous agent behavior — massive fan-out, unapproved destructive K8s writes — and automatically pauses the investigation pending review.",
+        "ja": "Risky actions require explicit human approval (HITL). Leloir also detects anomalous agent behavior — massive fan-out, unapproved destructive K8s writes — and automatically pauses the investigation pending review."
+      },
+      "status": "proven",
+      "tier": "oss"
+    },
+    {
+      "id": "envoy-gateway",
+      "title": {
+        "en": "LLM Gateway Integration (Envoy AI GW / litellm)",
+        "es": "Integración de LLM Gateway (Envoy AI GW / litellm)",
+        "de": "LLM Gateway Integration (Envoy AI GW / litellm)",
+        "fr": "LLM Gateway Integration (Envoy AI GW / litellm)",
+        "zh": "LLM Gateway Integration (Envoy AI GW / litellm)",
+        "ja": "LLM Gateway Integration (Envoy AI GW / litellm)"
+      },
+      "desc": {
+        "en": "Leloir plugs into a commodity LLM data plane (Envoy AI Gateway → litellm) instead of reinventing it — and provisions a per-tenant virtual key on top, so spend is metered and attributable. The gateway is the muscle; the governance above it is the moat.",
+        "es": "Leloir se enchufa a un data plane de LLM commodity (Envoy AI Gateway → litellm) en vez de reinventarlo — y provisiona una virtual key por-tenant encima, para que el gasto sea medido y atribuible. El gateway es el músculo; la gobernanza por encima es el moat.",
+        "de": "Leloir plugs into a commodity LLM data plane (Envoy AI Gateway → litellm) instead of reinventing it — and provisions a per-tenant virtual key on top, so spend is metered and attributable. The gateway is the muscle; the governance above it is the moat.",
+        "fr": "Leloir plugs into a commodity LLM data plane (Envoy AI Gateway → litellm) instead of reinventing it — and provisions a per-tenant virtual key on top, so spend is metered and attributable. The gateway is the muscle; the governance above it is the moat.",
+        "zh": "Leloir plugs into a commodity LLM data plane (Envoy AI Gateway → litellm) instead of reinventing it — and provisions a per-tenant virtual key on top, so spend is metered and attributable. The gateway is the muscle; the governance above it is the moat.",
+        "ja": "Leloir plugs into a commodity LLM data plane (Envoy AI Gateway → litellm) instead of reinventing it — and provisions a per-tenant virtual key on top, so spend is metered and attributable. The gateway is the muscle; the governance above it is the moat."
       },
       "status": "proven",
       "tier": "oss"
@@ -122,25 +227,46 @@
       "tier": "oss"
     },
     {
-      "id": "auto-quarantine",
+      "id": "mtls",
       "title": {
-        "en": "Anomaly Auto-Quarantine",
-        "es": "Anomaly Auto-Quarantine",
-        "de": "Anomaly Auto-Quarantine",
-        "fr": "Anomaly Auto-Quarantine",
-        "zh": "Anomaly Auto-Quarantine",
-        "ja": "Anomaly Auto-Quarantine"
+        "en": "Zero-Trust Hardened (mTLS/SPIFFE)",
+        "es": "Zero-Trust Hardened (mTLS/SPIFFE)",
+        "de": "Zero-Trust Hardened (mTLS/SPIFFE)",
+        "fr": "Zero-Trust Hardened (mTLS/SPIFFE)",
+        "zh": "Zero-Trust Hardened (mTLS/SPIFFE)",
+        "ja": "Zero-Trust Hardened (mTLS/SPIFFE)"
       },
       "desc": {
-        "en": "Detects anomalous agent behavior (e.g., massive fan-out, unapproved destructive K8s writes) and automatically pauses the investigation pending Human-In-The-Loop review.",
-        "es": "Detects anomalous agent behavior (e.g., massive fan-out, unapproved destructive K8s writes) and automatically pauses the investigation pending Human-In-The-Loop review.",
-        "de": "Detects anomalous agent behavior (e.g., massive fan-out, unapproved destructive K8s writes) and automatically pauses the investigation pending Human-In-The-Loop review.",
-        "fr": "Detects anomalous agent behavior (e.g., massive fan-out, unapproved destructive K8s writes) and automatically pauses the investigation pending Human-In-The-Loop review.",
-        "zh": "Detects anomalous agent behavior (e.g., massive fan-out, unapproved destructive K8s writes) and automatically pauses the investigation pending Human-In-The-Loop review.",
-        "ja": "Detects anomalous agent behavior (e.g., massive fan-out, unapproved destructive K8s writes) and automatically pauses the investigation pending Human-In-The-Loop review."
+        "en": "Enforces strict cryptographic identity for every component via SPIFFE/SPIRE. All inter-service and agent-to-tool communication is strictly authenticated via mutual TLS.",
+        "es": "Enforces strict cryptographic identity for every component via SPIFFE/SPIRE. All inter-service and agent-to-tool communication is strictly authenticated via mutual TLS.",
+        "de": "Enforces strict cryptographic identity for every component via SPIFFE/SPIRE. All inter-service and agent-to-tool communication is strictly authenticated via mutual TLS.",
+        "fr": "Enforces strict cryptographic identity for every component via SPIFFE/SPIRE. All inter-service and agent-to-tool communication is strictly authenticated via mutual TLS.",
+        "zh": "Enforces strict cryptographic identity for every component via SPIFFE/SPIRE. All inter-service and agent-to-tool communication is strictly authenticated via mutual TLS.",
+        "ja": "Enforces strict cryptographic identity for every component via SPIFFE/SPIRE. All inter-service and agent-to-tool communication is strictly authenticated via mutual TLS."
       },
       "status": "proven",
       "tier": "oss"
+    },
+    {
+      "id": "dashboards",
+      "title": {
+        "en": "CISO Grafana Dashboards",
+        "es": "CISO Grafana Dashboards",
+        "de": "CISO Grafana Dashboards",
+        "fr": "CISO Grafana Dashboards",
+        "zh": "CISO Grafana Dashboards",
+        "ja": "CISO Grafana Dashboards"
+      },
+      "desc": {
+        "en": "Pre-built, plug-and-play Grafana dashboards mapping Leloir Prometheus metrics to executive summaries, cost analysis, and threat detection views.",
+        "es": "Pre-built, plug-and-play Grafana dashboards mapping Leloir Prometheus metrics to executive summaries, cost analysis, and threat detection views.",
+        "de": "Pre-built, plug-and-play Grafana dashboards mapping Leloir Prometheus metrics to executive summaries, cost analysis, and threat detection views.",
+        "fr": "Pre-built, plug-and-play Grafana dashboards mapping Leloir Prometheus metrics to executive summaries, cost analysis, and threat detection views.",
+        "zh": "Pre-built, plug-and-play Grafana dashboards mapping Leloir Prometheus metrics to executive summaries, cost analysis, and threat detection views.",
+        "ja": "Pre-built, plug-and-play Grafana dashboards mapping Leloir Prometheus metrics to executive summaries, cost analysis, and threat detection views."
+      },
+      "status": "proven",
+      "tier": "commercial"
     },
     {
       "id": "siem",
@@ -162,27 +288,6 @@
       },
       "status": "planned",
       "tier": "commercial"
-    },
-    {
-      "id": "mtls",
-      "title": {
-        "en": "Zero-Trust Hardened (mTLS/SPIFFE)",
-        "es": "Zero-Trust Hardened (mTLS/SPIFFE)",
-        "de": "Zero-Trust Hardened (mTLS/SPIFFE)",
-        "fr": "Zero-Trust Hardened (mTLS/SPIFFE)",
-        "zh": "Zero-Trust Hardened (mTLS/SPIFFE)",
-        "ja": "Zero-Trust Hardened (mTLS/SPIFFE)"
-      },
-      "desc": {
-        "en": "Enforces strict cryptographic identity for every component via SPIFFE/SPIRE. All inter-service and agent-to-tool communication is strictly authenticated via mutual TLS.",
-        "es": "Enforces strict cryptographic identity for every component via SPIFFE/SPIRE. All inter-service and agent-to-tool communication is strictly authenticated via mutual TLS.",
-        "de": "Enforces strict cryptographic identity for every component via SPIFFE/SPIRE. All inter-service and agent-to-tool communication is strictly authenticated via mutual TLS.",
-        "fr": "Enforces strict cryptographic identity for every component via SPIFFE/SPIRE. All inter-service and agent-to-tool communication is strictly authenticated via mutual TLS.",
-        "zh": "Enforces strict cryptographic identity for every component via SPIFFE/SPIRE. All inter-service and agent-to-tool communication is strictly authenticated via mutual TLS.",
-        "ja": "Enforces strict cryptographic identity for every component via SPIFFE/SPIRE. All inter-service and agent-to-tool communication is strictly authenticated via mutual TLS."
-      },
-      "status": "proven",
-      "tier": "oss"
     },
     {
       "id": "airgapped",
