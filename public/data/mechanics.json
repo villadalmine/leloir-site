@@ -9,26 +9,42 @@
   },
   "description": {
     "en": "Leloir is the control plane; it does not reinvent the underlying infrastructure—it orchestrates, provisions per-tenant, integrates, and attributes. Here is the honest boundary of what Leloir enforces versus what the dependencies handle.",
-    "es": "Leloir es el control plane; no reimplementa la infraestructura subyacente — la orquesta, provisiona por-tenant, integra y atribuye. Este es el límite honesto de lo que Leloir enforcea frente a lo que manejan las dependencias."
+    "es": "Leloir es el control plane; no reimplementa la infraestructura subyacente — la orquesta, provisiona por-tenant, integra y atribuye. Este es el límite honesto de lo que Leloir enforcea frente a lo que manejan las dependencias.",
+    "de": "Leloir ist die Steuerungsebene; es erfindet die zugrunde liegende Infrastruktur nicht neu – es orchestriert, stellt mandantenfähig bereit, integriert und ordnet zu. Hier ist die ehrliche Grenze dessen, was Leloir erzwingt im Vergleich zu dem, was die Abhängigkeiten handhaben.",
+    "fr": "Leloir est le plan de contrôle ; il ne réinvente pas l'infrastructure sous-jacente — il orchestre, provisionne par locataire, intègre et attribue. Voici la frontière honnête de ce que Leloir applique par rapport à ce que gèrent les dépendances.",
+    "zh": "Leloir 是控制平面；它不会重新发明底层基础设施——它负责编排、按租户配置、集成和归因。这是 Leloir 强制执行的与依赖项处理的内容之间的诚实边界。",
+    "ja": "Leloir はコントロール プレーンです。基盤となるインフラストラクチャを再発明するのではなく、オーケストレーション、テナントごとのプロビジョニング、統合、属性付けを行います。これが Leloir が強制するものと依存関係が処理するものの正直な境界です。"
   },
   "mechanics": [
     {
       "id": "llm-budget",
       "category": {
         "en": "LLM / Budget per-key",
-        "es": "LLM / Budget por-key"
+        "es": "LLM / Budget por-key",
+        "de": "LLM / Budget pro Schlüssel",
+        "fr": "LLM / Budget par clé",
+        "zh": "LLM / 每个密钥的预算",
+        "ja": "LLM / キーごとの予算"
       },
       "dependency": {
         "name": "Envoy AI GW → litellm",
         "action": {
           "en": "Proxies the LLM, cuts the key upon exceeding its limit, measures tokens/cost.",
-          "es": "Proxya el LLM, corta la key al exceder su límite, mide tokens/costo."
+          "es": "Proxya el LLM, corta la key al exceder su límite, mide tokens/costo.",
+          "de": "Leitet das LLM weiter, sperrt den Schlüssel bei Überschreitung des Limits, misst Token/Kosten.",
+          "fr": "Agit comme proxy pour le LLM, coupe la clé lors du dépassement de sa limite, mesure les jetons/coûts.",
+          "zh": "代理 LLM，在超出限制时切断密钥，测量令牌/成本。",
+          "ja": "LLM をプロキシし、制限を超えるとキーを切断し、トークン/コストを測定します。"
         }
       },
       "leloir": {
         "action": {
           "en": "Provisions the key PER-TENANT, forces the agent to use it (containment), adds dynamic budget PER-INVESTIGATION (cancels the loop), and attributes the REAL model used per-agent.",
-          "es": "Provisiona la key POR-TENANT, fuerza al agente a usarla (contención), agrega budget POR-INVESTIGACIÓN (cancela el loop) y atribuye el modelo REAL por-agente."
+          "es": "Provisiona la key POR-TENANT, fuerza al agente a usarla (contención), agrega budget POR-INVESTIGACIÓN (cancela el loop) y atribuye el modelo REAL por-agente.",
+          "de": "Stellt den Schlüssel PRO MANDANT bereit, zwingt den Agenten ihn zu nutzen (Containment), fügt dynamisches Budget PRO UNTERSUCHUNG hinzu und ordnet das ECHTE Modell pro Agent zu.",
+          "fr": "Provisionne la clé PAR LOCATAIRE, force l'agent à l'utiliser (confinement), ajoute un budget dynamique PAR ENQUÊTE (annule la boucle) et attribue le VRAI modèle utilisé par agent.",
+          "zh": "按租户配置密钥，强制代理使用它（容器化），按调查添加动态预算（取消循环），并归因每个代理使用的真实模型。",
+          "ja": "テナントごとにキーをプロビジョニングし、エージェントにその使用を強制し（封じ込め）、調査ごとに動的な予算を追加し（ループをキャンセル）、エージェントごとに使用された実際のモデルを関連付けます。"
         }
       }
     },
@@ -36,19 +52,31 @@
       "id": "network-egress",
       "category": {
         "en": "Network / Egress",
-        "es": "Red / Egress"
+        "es": "Red / Egress",
+        "de": "Netzwerk / Egress",
+        "fr": "Réseau / Egress",
+        "zh": "网络 / 出口",
+        "ja": "ネットワーク / 出口"
       },
       "dependency": {
         "name": "Cilium",
         "action": {
           "en": "Enforces the CiliumNetworkPolicy (drops unauthorized packets).",
-          "es": "Enforcea la CiliumNetworkPolicy (dropea paquetes no autorizados)."
+          "es": "Enforcea la CiliumNetworkPolicy (dropea paquetes no autorizados).",
+          "de": "Erzwingt die CiliumNetworkPolicy (verwirft nicht autorisierte Pakete).",
+          "fr": "Applique la CiliumNetworkPolicy (rejette les paquets non autorisés).",
+          "zh": "强制执行 CiliumNetworkPolicy（丢弃未经授权的数据包）。",
+          "ja": "CiliumNetworkPolicyを強制します（不正なパケットを破棄します）。"
         }
       },
       "leloir": {
         "action": {
           "en": "Generates the egress-lock per-agent (dictating what it can talk to) and declares it declaratively.",
-          "es": "Genera el egress-lock por-agente (dictando con quién puede hablar) y lo declara."
+          "es": "Genera el egress-lock por-agente (dictando con quién puede hablar) y lo declara.",
+          "de": "Erzeugt die Egress-Sperre pro Agent (diktiert, mit wem er kommunizieren darf) und deklariert sie.",
+          "fr": "Génère le verrouillage de sortie par agent (dictant avec quoi il peut communiquer) et le déclare.",
+          "zh": "生成每个代理的出口锁定（决定它可以与谁通信）并声明它。",
+          "ja": "エージェントごとのエグレスロックを生成し（何と通信できるかを決定）、それを宣言します。"
         }
       }
     },
@@ -56,19 +84,31 @@
       "id": "rbac-permissions",
       "category": {
         "en": "RBAC / Permissions",
-        "es": "RBAC / Permisos"
+        "es": "RBAC / Permisos",
+        "de": "RBAC / Berechtigungen",
+        "fr": "RBAC / Autorisations",
+        "zh": "RBAC / 权限",
+        "ja": "RBAC / 権限"
       },
       "dependency": {
         "name": "K8s API + SubjectAccessReview",
         "action": {
           "en": "Decides allow/deny at the API level.",
-          "es": "Decide allow/deny a nivel de la API de Kubernetes."
+          "es": "Decide allow/deny a nivel de la API de Kubernetes.",
+          "de": "Entscheidet auf API-Ebene über Zulassen/Verweigern.",
+          "fr": "Décide d'autoriser/refuser au niveau de l'API.",
+          "zh": "在 API 级别决定允许/拒绝。",
+          "ja": "APIレベルで許可/拒否を決定します。"
         }
       },
       "leloir": {
         "action": {
           "en": "Generates the ServiceAccount + Role scoped per-tenant, and empirically measures the verdict with SubjectAccessReview (Continuous Agent Validation).",
-          "es": "Genera el ServiceAccount + Role scopeado por-tenant, y mide el veredicto empíricamente con SubjectAccessReview (Continuous Agent Validation)."
+          "es": "Genera el ServiceAccount + Role scopeado por-tenant, y mide el veredicto empíricamente con SubjectAccessReview (Continuous Agent Validation).",
+          "de": "Generiert das ServiceAccount + Role pro Mandant und misst das Urteil empirisch mit SubjectAccessReview.",
+          "fr": "Génère le ServiceAccount + Role par locataire et mesure empiriquement le verdict avec SubjectAccessReview.",
+          "zh": "生成每个租户的服务帐户 + 角色，并通过 SubjectAccessReview 经验性地测量裁决。",
+          "ja": "テナントごとのサービスアカウント + ロールを生成し、SubjectAccessReviewで評決を経験的に測定します。"
         }
       }
     },
@@ -76,19 +116,31 @@
       "id": "network-identity",
       "category": {
         "en": "Network Identity / mTLS",
-        "es": "Identidad de Red / mTLS"
+        "es": "Identidad de Red / mTLS",
+        "de": "Netzwerkidentität / mTLS",
+        "fr": "Identité Réseau / mTLS",
+        "zh": "网络身份 / mTLS",
+        "ja": "ネットワークID / mTLS"
       },
       "dependency": {
         "name": "Cilium + SPIRE",
         "action": {
           "en": "Emits the SVID, establishes the mTLS connection.",
-          "es": "Emite el SVID, establece la conexión mTLS."
+          "es": "Emite el SVID, establece la conexión mTLS.",
+          "de": "Stellt das SVID aus, baut die mTLS-Verbindung auf.",
+          "fr": "Émet le SVID, établit la connexion mTLS.",
+          "zh": "发出 SVID，建立 mTLS 连接。",
+          "ja": "SVID を発行し、mTLS 接続を確立します。"
         }
       },
       "leloir": {
         "action": {
           "en": "Consumes the identity; wires the zero-trust hardening policies.",
-          "es": "Consume la identidad; cablea las políticas de hardening zero-trust."
+          "es": "Consume la identidad; cablea las políticas de hardening zero-trust.",
+          "de": "Nutzt die Identität; verdrahtet die Zero-Trust Härtungsrichtlinien.",
+          "fr": "Consomme l'identité; met en place les politiques de sécurité Zero-Trust.",
+          "zh": "消耗身份；连接零信任强化策略。",
+          "ja": "アイデンティティを消費し、ゼロトラスト強化ポリシーを配線します。"
         }
       }
     },
@@ -96,19 +148,31 @@
       "id": "storage-vectors",
       "category": {
         "en": "Storage / Vectors",
-        "es": "Storage / Vectores"
+        "es": "Storage / Vectores",
+        "de": "Speicher / Vektoren",
+        "fr": "Stockage / Vecteurs",
+        "zh": "存储 / 向量",
+        "ja": "ストレージ / ベクトル"
       },
       "dependency": {
         "name": "Postgres + pgvector",
         "action": {
           "en": "Stores data, performs the cosine similarity search.",
-          "es": "Guarda los datos, realiza la búsqueda de similitud coseno."
+          "es": "Guarda los datos, realiza la búsqueda de similitud coseno.",
+          "de": "Speichert Daten, führt die Kosinus-Ähnlichkeitssuche durch.",
+          "fr": "Stocke les données, effectue la recherche de similarité cosinus.",
+          "zh": "存储数据，执行余弦相似度搜索。",
+          "ja": "データを保存し、コサイン類似度検索を実行します。"
         }
       },
       "leloir": {
         "action": {
           "en": "Manages the schema, handles the capture/recall logic of the RAG, and enforces tenant-scoping of the queries.",
-          "es": "Administra el schema, maneja la lógica de capture/recall del RAG y aplica el scoping por-tenant de las queries."
+          "es": "Administra el schema, maneja la lógica de capture/recall del RAG y aplica el scoping por-tenant de las queries.",
+          "de": "Verwaltet das Schema, handhabt die Capture/Recall-Logik des RAG und erzwingt das Mandanten-Scoping.",
+          "fr": "Gère le schéma, gère la logique de capture/rappel du RAG et applique le ciblage des requêtes par locataire.",
+          "zh": "管理模式，处理 RAG 的捕获/召回逻辑，并强制执行查询的租户范围。",
+          "ja": "スキーマを管理し、RAGのキャプチャ/リコールロジックを処理し、クエリのテナントスコープを強制します。"
         }
       }
     },
@@ -116,19 +180,31 @@
       "id": "tools-mcp",
       "category": {
         "en": "Tools Execution",
-        "es": "Ejecución de Tools"
+        "es": "Ejecución de Tools",
+        "de": "Tool-Ausführung",
+        "fr": "Exécution d'Outils",
+        "zh": "工具执行",
+        "ja": "ツールの実行"
       },
       "dependency": {
         "name": "MCP Server Upstream",
         "action": {
           "en": "Executes the tool remotely.",
-          "es": "Ejecuta la tool."
+          "es": "Ejecuta la tool.",
+          "de": "Führt das Tool aus.",
+          "fr": "Exécute l'outil.",
+          "zh": "执行工具。",
+          "ja": "ツールを実行します。"
         }
       },
       "leloir": {
         "action": {
           "en": "The Gateway is the ONLY path. It enforces per-tenant scope, injects credentials, applies allowlists, rate-limits, approvals (HITL), and audits.",
-          "es": "El Gateway es el ÚNICO camino. Enforcea scope por-tenant, inyecta creds, aplica allowlists, rate-limit, aprobación (HITL) y audita."
+          "es": "El Gateway es el ÚNICO camino. Enforcea scope por-tenant, inyecta creds, aplica allowlists, rate-limit, aprobación (HITL) y audita.",
+          "de": "Das Gateway ist der EINZIGE Weg. Es erzwingt Mandanten-Scope, fügt Zugangsdaten ein, wendet Allowlists an, regelt Rate-Limits und Audits.",
+          "fr": "La Passerelle est la SEULE voie. Elle applique la portée par locataire, injecte des identifiants, gère les listes autorisées et les audits.",
+          "zh": "网关是唯一的路径。它强制租户范围，注入凭据，应用白名单，速率限制，批准（HITL）和审计。",
+          "ja": "ゲートウェイは唯一のパスです。テナントの範囲を強制し、資格情報を注入し、許可リスト、レート制限、承認（HITL）および監査を適用します。"
         }
       }
     },
@@ -136,19 +212,31 @@
       "id": "trigger-routing",
       "category": {
         "en": "Trigger / Alerting",
-        "es": "Trigger / Alertas"
+        "es": "Trigger / Alertas",
+        "de": "Trigger / Alarmierung",
+        "fr": "Déclencheur / Alertes",
+        "zh": "触发 / 警报",
+        "ja": "トリガー / アラート"
       },
       "dependency": {
         "name": "Alertmanager",
         "action": {
           "en": "Fires the webhook.",
-          "es": "Dispara el webhook."
+          "es": "Dispara el webhook.",
+          "de": "Löst den Webhook aus.",
+          "fr": "Déclenche le webhook.",
+          "zh": "触发 webhook。",
+          "ja": "webhook をトリガーします。"
         }
       },
       "leloir": {
         "action": {
           "en": "Routes the alert to the owning tenant (AlertRoute) and starts the governed investigation.",
-          "es": "Rutea el alert al tenant dueño (AlertRoute) y arranca la investigación gobernada."
+          "es": "Rutea el alert al tenant dueño (AlertRoute) y arranca la investigación gobernada.",
+          "de": "Leitet den Alarm an den zuständigen Mandanten weiter und startet die Untersuchung.",
+          "fr": "Achemine l'alerte vers le locataire propriétaire et lance l'enquête régie.",
+          "zh": "将警报路由到所属租户并开始受监管的调查。",
+          "ja": "アラートを所有するテナントにルーティングし、管理された調査を開始します。"
         }
       }
     },
@@ -156,19 +244,31 @@
       "id": "outcome-audit",
       "category": {
         "en": "Outcome / Audit",
-        "es": "Outcome / Audit"
+        "es": "Outcome / Audit",
+        "de": "Ergebnis / Audit",
+        "fr": "Résultat / Audit",
+        "zh": "结果 / 审计",
+        "ja": "結果 / 監査"
       },
       "dependency": {
         "name": "Postgres",
         "action": {
           "en": "Persists the audit records.",
-          "es": "Persiste los registros en la base de datos."
+          "es": "Persiste los registros en la base de datos.",
+          "de": "Speichert die Audit-Datensätze dauerhaft.",
+          "fr": "Conserve les enregistrements d'audit.",
+          "zh": "持久化审计记录。",
+          "ja": "監査レコードを永続化します。"
         }
       },
       "leloir": {
         "action": {
           "en": "Enforces append-only logic, computes the M2 Hash-chain for tamper-evidence, builds the scorecard, and reports metrics.",
-          "es": "Garantiza la lógica append-only, computa el Hash-chain M2 (tamper-evident), genera el scorecard honesto y reporta métricas."
+          "es": "Garantiza la lógica append-only, computa el Hash-chain M2 (tamper-evident), genera el scorecard honesto y reporta métricas.",
+          "de": "Erzwingt Append-Only-Logik, berechnet die M2 Hash-Chain, erstellt die Scorecard und meldet Metriken.",
+          "fr": "Garantit la logique append-only, calcule la chaîne de hachage M2, génère le tableau de bord et rapporte les métriques.",
+          "zh": "强制执行仅追加逻辑，计算 M2 哈希链（防篡改），构建记分卡并报告指标。",
+          "ja": "追記のみのロジックを強制し、改ざん防止のために M2 ハッシュチェーンを計算し、スコアカードを構築し、メトリックを報告します。"
         }
       }
     }

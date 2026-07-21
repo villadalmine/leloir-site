@@ -1,7 +1,9 @@
-import { useSiteData, t } from '../hooks/useSiteData';
-import { Bot, Wrench, Terminal, Shield, ShieldAlert, CheckCircle2, Workflow } from 'lucide-react';
+import { useSiteData } from '../hooks/useSiteData';
+import { useLanguage } from '../hooks/useLanguage';
+import { Bot, Wrench, Terminal, Shield, ShieldAlert, CheckCircle2, Workflow, Link } from 'lucide-react';
 
 export function Install() {
+  const { t } = useLanguage();
   const { data: deployData, loading: deployLoading } = useSiteData<any>('deploy.json');
   const { data: reportData, loading: reportLoading } = useSiteData<any>('report.json');
 
@@ -94,6 +96,33 @@ export function Install() {
               ))}
             </div>
           </div>
+
+          <div className="glass-card" style={{ padding: '24px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '24px', borderBottom: '1px solid var(--border)', paddingBottom: '16px' }}>
+              <Link size={24} color="var(--primary)" />
+              <h3 style={{ margin: 0, fontSize: '20px' }}>Dependencies</h3>
+            </div>
+            <p style={{ fontSize: '14px', color: 'var(--muted)', marginBottom: '24px' }}>What the client provides vs what Leloir installs. Automatically sourced from the deployment graph.</p>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+              {reportData.dependencies?.map((dep: any, i: number) => (
+                <div key={i} style={{ padding: '12px', backgroundColor: 'rgba(0,0,0,0.2)', borderRadius: '8px', border: '1px solid var(--border)' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
+                    <strong style={{ fontSize: '16px' }}>{dep.id}</strong>
+                    {dep.kind === 'HARD' && <span className="badge" style={{ backgroundColor: 'rgba(239,68,68,0.1)', color: '#ef4444', padding: '2px 8px', fontSize: '11px' }}>HARD</span>}
+                    {dep.kind !== 'HARD' && <span className="badge" style={{ backgroundColor: 'rgba(59,130,246,0.1)', color: '#3b82f6', padding: '2px 8px', fontSize: '11px' }}>{dep.kind}</span>}
+                  </div>
+                  <div style={{ fontSize: '13px', color: 'var(--muted)', marginBottom: '8px' }}>
+                    {dep.desc}
+                  </div>
+                  {dep.if_absent && (
+                    <div style={{ fontSize: '12px', color: 'var(--muted)', borderTop: '1px solid rgba(255,255,255,0.05)', paddingTop: '8px' }}>
+                      <em>If absent:</em> {dep.if_absent}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
 
         <div className="glass-card" style={{ padding: '32px', borderLeft: '4px solid var(--primary)' }}>
@@ -111,6 +140,7 @@ export function Install() {
                 <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '16px' }}>
                   <strong style={{ fontSize: '18px' }}>{client.id}</strong>
                   {client.status === 'e2e-happy' && <span className="badge" style={{ backgroundColor: 'rgba(52, 211, 153, 0.1)', color: 'var(--ok)' }}><CheckCircle2 size={12} style={{marginRight:'4px'}}/> E2E Verified</span>}
+                  {client.status === 'unit' && <span className="badge" style={{ backgroundColor: 'rgba(59, 130, 246, 0.1)', color: '#3b82f6' }}><CheckCircle2 size={12} style={{marginRight:'4px'}}/> Unit Tested</span>}
                 </div>
                 <div style={{ fontSize: '14px', color: 'var(--muted)', marginBottom: '16px' }}>
                   <strong>Auth:</strong> <code>{client.auth}</code> &nbsp;|&nbsp; <strong>Target:</strong> <code>{client.reads}</code>

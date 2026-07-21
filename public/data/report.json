@@ -1,11 +1,31 @@
 {
-  "generated": "2026-07-20T00:34:59Z",
-  "commit": "dd64de1",
+  "generated": "2026-07-21T19:36:44Z",
+  "commit": "4cae8be",
   "context": {
     "mode": "declared-only",
     "cli_measured": false,
     "chaos_included": true,
     "conformance_measured_included": true
+  },
+  "chaos": {
+    "measured_at": "2026-07-18T07:55:33Z",
+    "context": "cluster",
+    "experiments": [
+      {
+        "id": "budget-4layer",
+        "result": "SKIP",
+        "reason": "API OIDC sin key"
+      },
+      {
+        "id": "containment-egress",
+        "result": "PASS"
+      },
+      {
+        "id": "tenant-isolation",
+        "result": "SKIP",
+        "reason": "API OIDC sin key"
+      }
+    ]
   },
   "summary": {
     "features_total": 23,
@@ -484,7 +504,12 @@
       "id": "honcho-memory",
       "kind": "mcp-server",
       "transport": "streamable-http",
-      "endpoint": "http://leloir-honcho-mcp.honcho.svc.cluster.local:8080/mcp",
+      "via": "gateway"
+    },
+    {
+      "id": "leloir-self",
+      "kind": "mcp-server",
+      "transport": "streamable-http",
       "via": "gateway"
     }
   ],
@@ -571,6 +596,80 @@
         "Outcome",
         "Tools"
       ]
+    }
+  ],
+  "dependencies": [
+    {
+      "id": "postgres-pgvector",
+      "kind": "HARD",
+      "class": "storage",
+      "implements": "persistence",
+      "desc": "Persistencia: audit, investigaciones, RAG episódico.",
+      "if_absent": "fail-closed — Leloir no arranca (el audit no puede perderse)."
+    },
+    {
+      "id": "envoy-ai-gw",
+      "kind": "HARD",
+      "class": "llm",
+      "implements": "llm-openai-compat",
+      "desc": "El endpoint LLM (OpenAI-compat) que los agentes usan — el \"AI gateway\". Leloir lo GOBIERNA (budget/metering/audit), NO lo deploya. Drivers: builtin | litellm-operator | envoy-ai-gw.",
+      "if_absent": "los agentes no pueden razonar — sin cerebro no hay investigación."
+    },
+    {
+      "id": "litellm-operator",
+      "kind": "optional",
+      "class": "llm",
+      "implements": "llm-openai-compat",
+      "desc": "Driver LLM alternativo: virtual-keys per-tenant vía CRDs.",
+      "if_absent": "se usa el driver builtin (endpoint directo) o envoy-ai-gw."
+    },
+    {
+      "id": "cilium-spire",
+      "kind": "optional",
+      "class": "cni-mtls",
+      "implements": "cni-netpol-mtls",
+      "desc": "CNI + mTLS SPIFFE: enforcea el egress-lock de la contención de caja-negra + el mTLS interno.",
+      "if_absent": "la contención de RED degrada; el RBAC seam (SA scopeado) sigue enforced por k8s."
+    },
+    {
+      "id": "envoy-gateway",
+      "kind": "optional",
+      "class": "ingress",
+      "implements": "gateway-api",
+      "desc": "Ingress (Gateway API) para el acceso externo a la UI/API.",
+      "if_absent": "usás port-forward o tu propio ingress."
+    },
+    {
+      "id": "alloy-prometheus",
+      "kind": "optional",
+      "class": "observability",
+      "implements": "observability-otlp",
+      "desc": "Métricas Prometheus + captura del modelo REAL del LLM (spans OTEL gen_ai).",
+      "if_absent": "el real_model cae a requested_model; las métricas/dashboards off."
+    },
+    {
+      "id": "honcho",
+      "kind": "optional",
+      "class": "memory-brain",
+      "implements": "none",
+      "desc": "Memory-brain externo (theory-of-mind) enchufado por MCPServer (contrato mcp).",
+      "if_absent": "el RAG episódico nativo (pgvector) sigue; la memoria externa off."
+    },
+    {
+      "id": "chat-webhook",
+      "kind": "optional",
+      "class": "notification",
+      "implements": "notification-sink",
+      "desc": "Notificaciones del ciclo de vida (Slack/Teams/webhook) vía NotificationChannel.",
+      "if_absent": "fail-open — no bloquea nada."
+    },
+    {
+      "id": "siem-sink",
+      "kind": "optional",
+      "class": "audit",
+      "implements": "audit-sink",
+      "desc": "Streaming del audit a tu SIEM/log platform (compliance).",
+      "if_absent": "fail-open — el audit local (Postgres) sigue."
     }
   ],
   "conformance": [
@@ -741,128 +840,5 @@
     "tenant-isolation",
     "tools-via-gateway"
   ],
-  "chaos": {
-    "measured_at": "2026-07-18T07:55:33Z",
-    "context": "cluster",
-    "experiments": [
-      {
-        "id": "budget-4layer",
-        "result": "SKIP",
-        "reason": "API OIDC sin key"
-      },
-      {
-        "id": "containment-egress",
-        "result": "PASS"
-      },
-      {
-        "id": "tenant-isolation",
-        "result": "SKIP",
-        "reason": "API OIDC sin key"
-      }
-    ]
-  },
-  "conformance_measured": {
-    "measured_context": "cluster-real (client-go SubjectAccessReview + typed gets)",
-    "agents": [
-      {
-        "agent": "k8sgpt",
-        "tenant": "conf-k8sgpt",
-        "model": "contained",
-        "governed": true,
-        "seams_bound": 5,
-        "seams": {
-          "trigger": "alertroute→adapter",
-          "llm": "tenant-key-forced",
-          "tools": "egress-locked→gateway",
-          "rbac": "contained",
-          "outcome": "agent-running→audit"
-        },
-        "cluster_role_binding": "none",
-        "expected_features": [
-          "alert-routing",
-          "audit-worm",
-          "containment-egress",
-          "scorecard-honesty",
-          "shadow-mode",
-          "tools-via-gateway"
-        ],
-        "method": "client-go SubjectAccessReview + typed gets (enforcement desplegado, no scorecard reportado)"
-      },
-      {
-        "agent": "kagent",
-        "tenant": "conf-kagent",
-        "model": "a2a",
-        "governed": true,
-        "seams_bound": 2,
-        "seams": {
-          "trigger": "a2a-canInvoke-governed",
-          "llm": "off-radar (a2a: infra propia)",
-          "tools": "off-radar (a2a: infra propia)",
-          "rbac": "off-radar (a2a: infra propia)",
-          "outcome": "a2a-hop-audited"
-        },
-        "off_radar": [
-          "llm",
-          "tools",
-          "rbac"
-        ],
-        "cluster_role_binding": "n/a (a2a)",
-        "expected_features": [
-          "a2a-delegation",
-          "memory-mcp",
-          "tenant-isolation"
-        ],
-        "method": "client-go: AgentRegistration type:a2a + política canInvoke (delegación gobernada; LLM/tools/RBAC = infra propia del agente A2A, off-radar honesto; enforcement runtime del canInvoke probado en e2e-scenario/chaos)"
-      },
-      {
-        "agent": "mode2-holmes",
-        "tenant": "demo-mode2",
-        "model": "contained",
-        "governed": true,
-        "seams_bound": 5,
-        "seams": {
-          "trigger": "alertroute→adapter",
-          "llm": "tenant-key-forced",
-          "tools": "egress-locked→gateway",
-          "rbac": "contained",
-          "outcome": "agent-running→audit"
-        },
-        "cluster_role_binding": "none",
-        "expected_features": [
-          "a2a-delegation",
-          "alert-routing",
-          "audit-worm",
-          "containment-egress",
-          "hitl-approval",
-          "memory-honcho",
-          "memory-mcp",
-          "memory-rag",
-          "quarantine",
-          "scorecard-honesty",
-          "shadow-mode",
-          "skillsource",
-          "tenant-isolation",
-          "tools-via-gateway"
-        ],
-        "method": "client-go SubjectAccessReview + typed gets (enforcement desplegado, no scorecard reportado)"
-      },
-      {
-        "agent": "support-bot",
-        "tenant": "demo-support-bot",
-        "model": "contained",
-        "governed": true,
-        "seams_bound": 5,
-        "seams": {
-          "trigger": "alertroute→adapter",
-          "llm": "tenant-key-forced",
-          "tools": "egress-locked→gateway",
-          "rbac": "contained",
-          "outcome": "agent-running→audit"
-        },
-        "cluster_role_binding": "none",
-        "expected_features": null,
-        "method": "client-go SubjectAccessReview + typed gets (enforcement desplegado, no scorecard reportado)"
-      }
-    ]
-  }
+  "_note": "Proyección pública del report.json de Leloir (E2E-medido). Endpoints internos removidos."
 }

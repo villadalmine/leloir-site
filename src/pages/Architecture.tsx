@@ -1,5 +1,6 @@
+import { useLanguage } from '../hooks/useLanguage';
 import { useEffect, useRef } from 'react';
-import { useSiteData, useSiteText, t } from '../hooks/useSiteData';
+import { useSiteData, useSiteText} from '../hooks/useSiteData';
 import mermaid from 'mermaid';
 import { Cpu } from 'lucide-react';
 
@@ -25,6 +26,7 @@ function Diagram() {
 }
 
 export function Architecture() {
+  const { t } = useLanguage();
   const { data: manifest, loading: mLoading } = useSiteData<any>('manifest.json');
   const { data: flow, loading: fLoading } = useSiteData<any>('flow.json');
 

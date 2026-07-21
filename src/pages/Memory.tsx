@@ -1,7 +1,9 @@
+
 import { BrainCircuit, Database, Plug, BarChart, ShieldCheck, AlertTriangle, XCircle, CheckCircle2 } from 'lucide-react';
 import './Memory.css';
 
 export function Memory() {
+
   return (
     <div className="memory-page">
       <div className="memory-hero">

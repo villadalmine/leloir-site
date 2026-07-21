@@ -1,4 +1,5 @@
-import { useSiteData, t } from '../hooks/useSiteData';
+import { useSiteData } from '../hooks/useSiteData';
+import { useLanguage } from '../hooks/useLanguage';
 import { CheckCircle2, CircleDashed, Clock, Flame, ShieldCheck, Server, Globe, Box, Info, Check } from 'lucide-react';
 
 const CATEGORY_META: Record<string, { title: string, desc: string }> = {
@@ -57,6 +58,7 @@ const getSubstrateBadge = (substrate: string) => {
 };
 
 export function Roadmap() {
+  const { t } = useLanguage();
   const { data: manifestData, loading: manifestLoading } = useSiteData<any>('manifest.json');
   const { data: reportData, loading: reportLoading } = useSiteData<any>('report.json');
 
@@ -70,7 +72,7 @@ export function Roadmap() {
   }, { PASS: 0, FAIL: 0, SKIP: 0 }) || { PASS: 0, FAIL: 0, SKIP: 0 };
 
   const agentConformance = reportData?.conformance?.filter((c: any) => c.is_agent) || [];
-  const agnosticProvenCount = reportData?.agnostic_proven?.length || 0;
+  // const agnosticProvenCount = reportData?.agnostic_proven?.length || 0;
   const SEAMS = ["Trigger", "Tools", "LLM", "RBAC", "Outcome"];
 
   return (

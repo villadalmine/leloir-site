@@ -1,7 +1,9 @@
-import { useSiteData, t } from '../hooks/useSiteData';
+import { useSiteData } from '../hooks/useSiteData';
+import { useLanguage } from '../hooks/useLanguage';
 import { Check, Minus } from 'lucide-react';
 
 export function Editions() {
+  const { t } = useLanguage();
   const { data, loading } = useSiteData<any>('features.json');
 
   if (loading || !data) return <div className="container" style={{ padding: '100px 24px', textAlign: 'center' }}>Loading...</div>;

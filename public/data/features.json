@@ -3,17 +3,17 @@
     "en": "Features & Tiers",
     "es": "Características & Tiers",
     "de": "Funktionen & Tiers",
-    "fr": "Fonctionnalités & Tiers",
+    "fr": "Fonctionnalités & Niveaux",
     "zh": "功能与层级",
     "ja": "機能と階層"
   },
   "sub": {
     "en": "The moat is the control plane, not the data plane. Leloir's open-source core governs any agent across 5 seams — per-investigation enforcement, real-model attribution, multi-tenant isolation, A2A guards and Continuous Agent Validation. Advanced operational and strict-security capabilities require a commercial license.",
     "es": "El moat es el control plane, no el data plane. El core open-source de Leloir gobierna cualquier agente en 5 costuras — enforcement por-investigación, atribución de modelo real, aislamiento multi-tenant, guardas A2A y Validación Continua de Agentes. Capacidades operativas avanzadas y seguridad estricta requieren licencia comercial.",
-    "de": "The moat is the control plane, not the data plane. Leloir's open-source core governs any agent across 5 seams — per-investigation enforcement, real-model attribution, multi-tenant isolation, A2A guards and Continuous Agent Validation. Advanced operational and strict-security capabilities require a commercial license.",
-    "fr": "The moat is the control plane, not the data plane. Leloir's open-source core governs any agent across 5 seams — per-investigation enforcement, real-model attribution, multi-tenant isolation, A2A guards and Continuous Agent Validation. Advanced operational and strict-security capabilities require a commercial license.",
-    "zh": "The moat is the control plane, not the data plane. Leloir's open-source core governs any agent across 5 seams — per-investigation enforcement, real-model attribution, multi-tenant isolation, A2A guards and Continuous Agent Validation. Advanced operational and strict-security capabilities require a commercial license.",
-    "ja": "The moat is the control plane, not the data plane. Leloir's open-source core governs any agent across 5 seams — per-investigation enforcement, real-model attribution, multi-tenant isolation, A2A guards and Continuous Agent Validation. Advanced operational and strict-security capabilities require a commercial license."
+    "de": "Der Burggraben ist die Steuerungsebene, nicht die Datenebene. Leloirs Open-Source-Kern verwaltet jeden Agenten über 5 Nähte hinweg — Durchsetzung pro Untersuchung, echte Modellzuordnung, mandantenfähige Isolation, A2A-Wächter und kontinuierliche Agentenvalidierung. Erweiterte Betriebs- und strenge Sicherheitsfunktionen erfordern eine kommerzielle Lizenz.",
+    "fr": "L'avantage concurrentiel est le plan de contrôle, pas le plan de données. Le noyau open-source de Leloir régit tout agent à travers 5 points de contrôle — application par investigation, attribution réelle du modèle, isolation multi-locataires, gardes A2A et validation continue de l'agent. Les capacités opérationnelles avancées et de sécurité stricte nécessitent une licence commerciale.",
+    "zh": "护城河是控制平面，而不是数据平面。Leloir 的开源核心跨 5 个接缝管理任何代理——每次调查强制执行、真实模型归因、多租户隔离、A2A 防护和持续代理验证。高级操作和严格安全功能需要商业许可证。",
+    "ja": "堀はデータプレーンではなくコントロールプレーンです。Leloirのオープンソースコアは、5つのシーム（調査ごとの施行、実モデルの属性付け、マルチテナントの分離、A2Aガード、および継続的なエージェント検証）にわたってエージェントを管理します。高度な運用および厳格なセキュリティ機能には商用ライセンスが必要です。"
   },
   "features": [
     {
@@ -21,18 +21,18 @@
       "title": {
         "en": "Continuous Agent Validation (CAV)",
         "es": "Validación Continua de Agentes (CAV)",
-        "de": "Continuous Agent Validation (CAV)",
-        "fr": "Continuous Agent Validation (CAV)",
-        "zh": "持续智能体验证（CAV）",
-        "ja": "継続的エージェント検証（CAV）"
+        "de": "Kontinuierliche Agentenvalidierung (CAV)",
+        "fr": "Validation Continue de l'Agent (CAV)",
+        "zh": "持续代理验证 (CAV)",
+        "ja": "継続的エージェント検証 (CAV)"
       },
       "desc": {
         "en": "Proves on YOUR cluster — per agent, per version — that each of the 5 governance seams actually holds. Spins up an ephemeral tenant, deploys the agent's real image, measures enforcement via live SubjectAccessReview, then tears down. Governance you can verify, not a PDF.",
         "es": "Prueba en TU cluster —por agente, por versión— que cada una de las 5 costuras de gobernanza realmente se sostiene. Levanta un tenant efímero, despliega la imagen real del agente, mide el enforcement con SubjectAccessReview en vivo, y lo destruye. Gobernanza verificable, no un PDF.",
-        "de": "Proves on YOUR cluster — per agent, per version — that each of the 5 governance seams actually holds. Spins up an ephemeral tenant, deploys the agent's real image, measures enforcement via live SubjectAccessReview, then tears down. Governance you can verify, not a PDF.",
-        "fr": "Proves on YOUR cluster — per agent, per version — that each of the 5 governance seams actually holds. Spins up an ephemeral tenant, deploys the agent's real image, measures enforcement via live SubjectAccessReview, then tears down. Governance you can verify, not a PDF.",
-        "zh": "Proves on YOUR cluster — per agent, per version — that each of the 5 governance seams actually holds. Spins up an ephemeral tenant, deploys the agent's real image, measures enforcement via live SubjectAccessReview, then tears down. Governance you can verify, not a PDF.",
-        "ja": "Proves on YOUR cluster — per agent, per version — that each of the 5 governance seams actually holds. Spins up an ephemeral tenant, deploys the agent's real image, measures enforcement via live SubjectAccessReview, then tears down. Governance you can verify, not a PDF."
+        "de": "Beweist in IHREM Cluster — pro Agent, pro Version —, dass jede der 5 Governance-Nähte tatsächlich hält. Fährt einen temporären Mandanten hoch, stellt das echte Image des Agenten bereit, misst die Durchsetzung über eine Live-SubjectAccessReview und baut ihn dann wieder ab. Governance, die Sie verifizieren können, kein PDF.",
+        "fr": "Prouve sur VOTRE cluster — par agent, par version — que chacun des 5 points de gouvernance tient réellement. Lance un locataire éphémère, déploie l'image réelle de l'agent, mesure l'application via une SubjectAccessReview en direct, puis le détruit. Une gouvernance que vous pouvez vérifier, pas un PDF.",
+        "zh": "在您的集群上证明——每个代理、每个版本——5 个治理接缝中的每一个确实有效。启动临时租户，部署代理的真实映像，通过实时 SubjectAccessReview 测量强制执行情况，然后拆除。您可以验证的治理，而不是 PDF。",
+        "ja": "あなたのクラスターで（エージェントごと、バージョンごとに）5つのガバナンスシームのそれぞれが実際に機能することを証明します。一時的なテナントを立ち上げ、エージェントの実際のイメージをデプロイし、ライブのSubjectAccessReviewを介して施行を測定し、その後解体します。PDFではなく、検証可能なガバナンスです。"
       },
       "status": "proven",
       "tier": "oss"
@@ -42,18 +42,18 @@
       "title": {
         "en": "Per-Investigation Enforcement & Real-Model Attribution",
         "es": "Enforcement por Investigación y Atribución de Modelo Real",
-        "de": "Per-Investigation Enforcement & Real-Model Attribution",
-        "fr": "Per-Investigation Enforcement & Real-Model Attribution",
-        "zh": "Per-Investigation Enforcement & Real-Model Attribution",
-        "ja": "Per-Investigation Enforcement & Real-Model Attribution"
+        "de": "Durchsetzung pro Untersuchung & echte Modellzuordnung",
+        "fr": "Application par Investigation & Attribution du Modèle Réel",
+        "zh": "按调查执行和真实模型归因",
+        "ja": "調査ごとの施行と実モデルの属性付け"
       },
       "desc": {
         "en": "Per-key budgets are a commodity — Envoy AI GW / litellm already do them. Leloir adds what they can't: it cancels a runaway agent loop mid-investigation (token / tool-call caps → budget_exhausted), and attributes every LLM call to the REAL upstream model, not the alias, per agent, in a tamper-evident audit.",
         "es": "El budget por-key es commodity — Envoy AI GW / litellm ya lo hacen. Leloir agrega lo que ellos no pueden: cancela el bucle descontrolado de un agente a mitad de investigación (topes de tokens / tool-calls → budget_exhausted), y atribuye cada llamada LLM al modelo REAL del upstream, no el alias, por agente, en un audit tamper-evident.",
-        "de": "Per-key budgets are a commodity — Envoy AI GW / litellm already do them. Leloir adds what they can't: it cancels a runaway agent loop mid-investigation (token / tool-call caps → budget_exhausted), and attributes every LLM call to the REAL upstream model, not the alias, per agent, in a tamper-evident audit.",
-        "fr": "Per-key budgets are a commodity — Envoy AI GW / litellm already do them. Leloir adds what they can't: it cancels a runaway agent loop mid-investigation (token / tool-call caps → budget_exhausted), and attributes every LLM call to the REAL upstream model, not the alias, per agent, in a tamper-evident audit.",
-        "zh": "Per-key budgets are a commodity — Envoy AI GW / litellm already do them. Leloir adds what they can't: it cancels a runaway agent loop mid-investigation (token / tool-call caps → budget_exhausted), and attributes every LLM call to the REAL upstream model, not the alias, per agent, in a tamper-evident audit.",
-        "ja": "Per-key budgets are a commodity — Envoy AI GW / litellm already do them. Leloir adds what they can't: it cancels a runaway agent loop mid-investigation (token / tool-call caps → budget_exhausted), and attributes every LLM call to the REAL upstream model, not the alias, per agent, in a tamper-evident audit."
+        "de": "Budgets pro Schlüssel sind eine Selbstverständlichkeit — Envoy AI GW / litellm tun dies bereits. Leloir fügt hinzu, was sie nicht können: Es bricht eine außer Kontrolle geratene Agentenschleife mitten in der Untersuchung ab und ordnet jeden LLM-Aufruf dem ECHTEN Upstream-Modell zu, pro Agent, in einem manipulationssicheren Audit.",
+        "fr": "Les budgets par clé sont une commodité — Envoy AI GW / litellm les gèrent déjà. Leloir ajoute ce qu'ils ne peuvent pas : il annule une boucle d'agent hors de contrôle en pleine investigation, et attribue chaque appel LLM au VRAI modèle en amont, par agent, dans un audit infalsifiable.",
+        "zh": "每个密钥的预算是商品——Envoy AI GW / litellm 已经做到了。Leloir 添加了它们做不到的功能：它在调查中途取消失控的代理循环，并在防篡改审计中按代理将每个 LLM 调用归因于真实的真实上游模型。",
+        "ja": "キーごとの予算はコモディティです（Envoy AI GW / litellmはすでに実行しています）。Leloirはそれらができないことを追加します：調査の途中で暴走したエージェントループをキャンセルし、改ざん防止監査でエージェントごとに各LLM呼び出しを実際のアップストリームモデルに属性付けします。"
       },
       "status": "proven",
       "tier": "oss"
@@ -63,18 +63,18 @@
       "title": {
         "en": "Multi-Tenant Isolation",
         "es": "Aislamiento Multi-Tenant",
-        "de": "Multi-Tenant Isolation",
-        "fr": "Multi-Tenant Isolation",
-        "zh": "Multi-Tenant Isolation",
-        "ja": "Multi-Tenant Isolation"
+        "de": "Mandantenfähige Isolation",
+        "fr": "Isolation Multi-Locataires",
+        "zh": "多租户隔离",
+        "ja": "マルチテナントの分離"
       },
       "desc": {
         "en": "One agent, one blast radius. Every tenant gets isolated RBAC, audit, budget and a provisioned per-tenant LLM key; cross-tenant access is denied by default (chaos-tested: 403).",
         "es": "Un agente, un radio de impacto. Cada tenant recibe RBAC, audit, budget y una key LLM provisionada por-tenant, aislados; el acceso cross-tenant se deniega por defecto (probado en chaos: 403).",
-        "de": "One agent, one blast radius. Every tenant gets isolated RBAC, audit, budget and a provisioned per-tenant LLM key; cross-tenant access is denied by default (chaos-tested: 403).",
-        "fr": "One agent, one blast radius. Every tenant gets isolated RBAC, audit, budget and a provisioned per-tenant LLM key; cross-tenant access is denied by default (chaos-tested: 403).",
-        "zh": "One agent, one blast radius. Every tenant gets isolated RBAC, audit, budget and a provisioned per-tenant LLM key; cross-tenant access is denied by default (chaos-tested: 403).",
-        "ja": "One agent, one blast radius. Every tenant gets isolated RBAC, audit, budget and a provisioned per-tenant LLM key; cross-tenant access is denied by default (chaos-tested: 403)."
+        "de": "Ein Agent, ein Explosionsradius. Jeder Mandant erhält isoliertes RBAC, Audit, Budget und einen LLM-Schlüssel pro Mandant; mandantenübergreifender Zugriff wird standardmäßig verweigert.",
+        "fr": "Un agent, un rayon d'impact. Chaque locataire bénéficie de RBAC isolé, d'un audit, d'un budget et d'une clé LLM provisionnée ; l'accès entre locataires est refusé par défaut.",
+        "zh": "一个代理，一个爆炸半径。每个租户获得隔离的 RBAC、审计、预算和按租户配置的 LLM 密钥；默认拒绝跨租户访问。",
+        "ja": "1つのエージェント、1つの爆発半径。各テナントは隔離されたRBAC、監査、予算、テナントごとのLLMキーを取得し、テナント間のアクセスはデフォルトで拒否されます。"
       },
       "status": "proven",
       "tier": "oss"
@@ -85,17 +85,17 @@
         "en": "Agent-to-Agent (A2A) Governance",
         "es": "Gobernanza Agente-a-Agente (A2A)",
         "de": "Agent-to-Agent (A2A) Governance",
-        "fr": "Gouvernance Agent-to-Agent (A2A)",
-        "zh": "智能体间（A2A）治理",
+        "fr": "Gouvernance Agent à Agent (A2A)",
+        "zh": "代理到代理 (A2A) 治理",
         "ja": "エージェント間 (A2A) ガバナンス"
       },
       "desc": {
         "en": "When one agent delegates to another, Leloir governs the hop: canInvoke policy, depth / fan-out caps, budget on the delegation, and a full audit — while honestly reporting the remote agent's own runtime (its LLM, its tools) as off-radar.",
         "es": "Cuando un agente delega en otro, Leloir gobierna el hop: política canInvoke, topes de profundidad / fan-out, budget en la delegación, y audit completo — reportando honestamente el runtime propio del agente remoto (su LLM, sus tools) como off-radar.",
-        "de": "When one agent delegates to another, Leloir governs the hop: canInvoke policy, depth / fan-out caps, budget on the delegation, and a full audit — while honestly reporting the remote agent's own runtime (its LLM, its tools) as off-radar.",
-        "fr": "When one agent delegates to another, Leloir governs the hop: canInvoke policy, depth / fan-out caps, budget on the delegation, and a full audit — while honestly reporting the remote agent's own runtime (its LLM, its tools) as off-radar.",
-        "zh": "When one agent delegates to another, Leloir governs the hop: canInvoke policy, depth / fan-out caps, budget on the delegation, and a full audit — while honestly reporting the remote agent's own runtime (its LLM, its tools) as off-radar.",
-        "ja": "When one agent delegates to another, Leloir governs the hop: canInvoke policy, depth / fan-out caps, budget on the delegation, and a full audit — while honestly reporting the remote agent's own runtime (its LLM, its tools) as off-radar."
+        "de": "Wenn ein Agent an einen anderen delegiert, verwaltet Leloir den Hop: canInvoke-Richtlinie, Fan-out-Obergrenzen, Budget für die Delegation und ein vollständiges Audit — während die Laufzeit des entfernten Agenten ehrlich als Off-Radar gemeldet wird.",
+        "fr": "Lorsqu'un agent délègue à un autre, Leloir régit le saut : politique canInvoke, limites de distribution, budget sur la délégation et audit complet — tout en signalant honnêtement l'exécution de l'agent distant comme étant hors radar.",
+        "zh": "当一个代理委托给另一个代理时，Leloir 管理这一跳：canInvoke 策略、扇出上限、委托预算和完整审计——同时诚实地将远程代理自己的运行时报告为雷达之外。",
+        "ja": "あるエージェントが別のエージェントに委任すると、Leloirはホップを管理します：canInvokeポリシー、ファンアウトの制限、委任の予算、および完全な監査—リモートエージェント自身のランタイムをレーダー外として正直に報告します。"
       },
       "status": "proven",
       "tier": "oss"
@@ -106,17 +106,17 @@
         "en": "Containment & Scoped RBAC",
         "es": "Contención y RBAC Acotado",
         "de": "Containment & Scoped RBAC",
-        "fr": "Containment & Scoped RBAC",
-        "zh": "Containment & Scoped RBAC",
-        "ja": "Containment & Scoped RBAC"
+        "fr": "Confinement & RBAC Ciblé",
+        "zh": "容器化和范围 RBAC",
+        "ja": "封じ込めとスコープされたRBAC"
       },
       "desc": {
         "en": "Wraps a black-box agent in a tenant-scoped ServiceAccount plus a Cilium egress-lock, so it can only reach what you allow — and its LLM key is forced through the gateway. Declarative and admission-enforced: Leloir never deletes another operator's runtime.",
         "es": "Envuelve a un agente caja-negra en un ServiceAccount acotado al tenant más un egress-lock de Cilium, para que sólo alcance lo que permitís — y su key LLM se fuerza por el gateway. Declarativo y aplicado en admisión: Leloir nunca borra el runtime de otro operator.",
-        "de": "Wraps a black-box agent in a tenant-scoped ServiceAccount plus a Cilium egress-lock, so it can only reach what you allow — and its LLM key is forced through the gateway. Declarative and admission-enforced: Leloir never deletes another operator's runtime.",
-        "fr": "Wraps a black-box agent in a tenant-scoped ServiceAccount plus a Cilium egress-lock, so it can only reach what you allow — and its LLM key is forced through the gateway. Declarative and admission-enforced: Leloir never deletes another operator's runtime.",
-        "zh": "Wraps a black-box agent in a tenant-scoped ServiceAccount plus a Cilium egress-lock, so it can only reach what you allow — and its LLM key is forced through the gateway. Declarative and admission-enforced: Leloir never deletes another operator's runtime.",
-        "ja": "Wraps a black-box agent in a tenant-scoped ServiceAccount plus a Cilium egress-lock, so it can only reach what you allow — and its LLM key is forced through the gateway. Declarative and admission-enforced: Leloir never deletes another operator's runtime."
+        "de": "Verpackt einen Black-Box-Agenten in ein mandantenbezogenes ServiceAccount und eine Cilium-Egress-Sperre, sodass er nur das erreichen kann, was Sie zulassen — und sein LLM-Schlüssel wird durch das Gateway erzwungen.",
+        "fr": "Enveloppe un agent boîte noire dans un ServiceAccount ciblé par locataire et un verrouillage de sortie Cilium, afin qu'il ne puisse atteindre que ce que vous autorisez — et sa clé LLM est forcée à travers la passerelle.",
+        "zh": "将黑盒代理包装在租户范围内的 ServiceAccount 加上 Cilium 出口锁定中，因此它只能达到您允许的范围——它的 LLM 密钥被迫通过网关。",
+        "ja": "ブラックボックスエージェントをテナントスコープのServiceAccountとCiliumエグレスロックでラップするため、許可したものにしか到達できません—LLMキーはゲートウェイを通過するように強制されます。"
       },
       "status": "proven",
       "tier": "oss"
@@ -126,18 +126,18 @@
       "title": {
         "en": "Honest Governance Scorecard",
         "es": "Scorecard de Gobernanza Honesto",
-        "de": "Honest Governance Scorecard",
-        "fr": "Honest Governance Scorecard",
-        "zh": "Honest Governance Scorecard",
-        "ja": "Honest Governance Scorecard"
+        "de": "Ehrliche Governance-Scorecard",
+        "fr": "Tableau de Bord de Gouvernance Honnête",
+        "zh": "诚实的治理记分卡",
+        "ja": "正直なガバナンススコアカード"
       },
       "desc": {
         "en": "Reports which of the 5 seams it governs for each agent — AND which it can't (off-radar / blind spots). No competitor tells you what it doesn't see. A build guard blocks the docs and this site from claiming more than what's actually measured.",
         "es": "Reporta cuáles de las 5 costuras gobierna para cada agente — Y cuáles no puede (off-radar / puntos ciegos). Ningún competidor te dice qué NO ve. Un guard de build impide que la doc y este site reclamen más de lo que realmente se midió.",
-        "de": "Reports which of the 5 seams it governs for each agent — AND which it can't (off-radar / blind spots). No competitor tells you what it doesn't see. A build guard blocks the docs and this site from claiming more than what's actually measured.",
-        "fr": "Reports which of the 5 seams it governs for each agent — AND which it can't (off-radar / blind spots). No competitor tells you what it doesn't see. A build guard blocks the docs and this site from claiming more than what's actually measured.",
-        "zh": "Reports which of the 5 seams it governs for each agent — AND which it can't (off-radar / blind spots). No competitor tells you what it doesn't see. A build guard blocks the docs and this site from claiming more than what's actually measured.",
-        "ja": "Reports which of the 5 seams it governs for each agent — AND which it can't (off-radar / blind spots). No competitor tells you what it doesn't see. A build guard blocks the docs and this site from claiming more than what's actually measured."
+        "de": "Meldet, welche der 5 Nähte es für jeden Agenten verwaltet — UND welche nicht (Off-Radar / blinde Flecken). Kein Konkurrent sagt Ihnen, was er nicht sieht.",
+        "fr": "Indique lequel des 5 points de contrôle il régit pour chaque agent — ET ceux qu'il ne peut pas (hors radar / angles morts). Aucun concurrent ne vous dit ce qu'il ne voit pas.",
+        "zh": "报告它为每个代理管理 5 个接缝中的哪一个——以及哪些不能（雷达之外/盲点）。没有竞争对手会告诉你它看不到什么。",
+        "ja": "各エージェントの5つのシームのうちどれを管理しているか、そしてどれができないか（レーダー外/死角）を報告します。競合他社は自分たちが見えないものを教えてくれません。"
       },
       "status": "proven",
       "tier": "oss"
@@ -148,17 +148,17 @@
         "en": "Human-in-the-Loop & Anomaly Auto-Quarantine",
         "es": "Human-in-the-Loop y Auto-Cuarentena de Anomalías",
         "de": "Human-in-the-Loop & Anomaly Auto-Quarantine",
-        "fr": "Human-in-the-Loop & Anomaly Auto-Quarantine",
-        "zh": "Human-in-the-Loop & Anomaly Auto-Quarantine",
-        "ja": "Human-in-the-Loop & Anomaly Auto-Quarantine"
+        "fr": "Humain dans la Boucle & Auto-Quarantaine d'Anomalie",
+        "zh": "人在循环和异常自动隔离",
+        "ja": "Human-in-the-Loopと異常の自動隔離"
       },
       "desc": {
         "en": "Risky actions require explicit human approval (HITL). Leloir also detects anomalous agent behavior — massive fan-out, unapproved destructive K8s writes — and automatically pauses the investigation pending review.",
         "es": "Las acciones riesgosas requieren aprobación humana explícita (HITL). Leloir además detecta comportamiento anómalo del agente —fan-out masivo, escrituras destructivas no aprobadas en K8s— y pausa automáticamente la investigación a la espera de revisión.",
-        "de": "Risky actions require explicit human approval (HITL). Leloir also detects anomalous agent behavior — massive fan-out, unapproved destructive K8s writes — and automatically pauses the investigation pending review.",
-        "fr": "Risky actions require explicit human approval (HITL). Leloir also detects anomalous agent behavior — massive fan-out, unapproved destructive K8s writes — and automatically pauses the investigation pending review.",
-        "zh": "Risky actions require explicit human approval (HITL). Leloir also detects anomalous agent behavior — massive fan-out, unapproved destructive K8s writes — and automatically pauses the investigation pending review.",
-        "ja": "Risky actions require explicit human approval (HITL). Leloir also detects anomalous agent behavior — massive fan-out, unapproved destructive K8s writes — and automatically pauses the investigation pending review."
+        "de": "Riskante Aktionen erfordern die ausdrückliche Genehmigung eines Menschen (HITL). Leloir erkennt auch anomales Verhalten — und pausiert die Untersuchung automatisch.",
+        "fr": "Les actions risquées nécessitent une approbation humaine explicite (HITL). Leloir détecte également les comportements anormaux — et met automatiquement l'investigation en pause.",
+        "zh": "危险行为需要明确的人工批准 (HITL)。Leloir 还会检测异常的代理行为——并自动暂停调查以待审查。",
+        "ja": "リスクの高いアクションには明示的な人間の承認（HITL）が必要です。Leloirはまた、異常なエージェントの動作を検出し、調査を自動的に一時停止します。"
       },
       "status": "proven",
       "tier": "oss"
@@ -169,17 +169,17 @@
         "en": "LLM Gateway Integration (Envoy AI GW / litellm)",
         "es": "Integración de LLM Gateway (Envoy AI GW / litellm)",
         "de": "LLM Gateway Integration (Envoy AI GW / litellm)",
-        "fr": "LLM Gateway Integration (Envoy AI GW / litellm)",
-        "zh": "LLM Gateway Integration (Envoy AI GW / litellm)",
-        "ja": "LLM Gateway Integration (Envoy AI GW / litellm)"
+        "fr": "Intégration Passerelle LLM (Envoy AI GW / litellm)",
+        "zh": "LLM 网关集成 (Envoy AI GW / litellm)",
+        "ja": "LLMゲートウェイ統合（Envoy AI GW / litellm）"
       },
       "desc": {
         "en": "Leloir plugs into a commodity LLM data plane (Envoy AI Gateway → litellm) instead of reinventing it — and provisions a per-tenant virtual key on top, so spend is metered and attributable. The gateway is the muscle; the governance above it is the moat.",
         "es": "Leloir se enchufa a un data plane de LLM commodity (Envoy AI Gateway → litellm) en vez de reinventarlo — y provisiona una virtual key por-tenant encima, para que el gasto sea medido y atribuible. El gateway es el músculo; la gobernanza por encima es el moat.",
-        "de": "Leloir nutzt eine Commodity-LLM-Datenebene (Envoy AI Gateway → litellm), anstatt sie neu zu erfinden — und stellt einen virtuellen Schlüssel pro Mandant bereit. Das Gateway ist der Muskel; die Governance ist der Burggraben.",
-        "fr": "Leloir s'intègre à un plan de données LLM standard (Envoy AI Gateway → litellm) au lieu de le réinventer — et fournit une clé virtuelle par tenant. La passerelle est le muscle; la gouvernance est la douve.",
-        "zh": "Leloir 接入商用 LLM 数据平面（Envoy AI Gateway → litellm），并提供每租户虚拟密钥。网关是肌肉；其上的治理是护城河。",
-        "ja": "Leloirは、LLMデータプレーン（Envoy AI Gateway → litellm）を再発明する代わりにそれに接続し、テナントごとの仮想キーをプロビジョニングします。ゲートウェイは筋肉であり、その上のガバナンスが濠です。"
+        "de": "Leloir nutzt eine Commodity-LLM-Datenebene, anstatt sie neu zu erfinden — und stellt einen virtuellen Schlüssel pro Mandant bereit. Das Gateway ist der Muskel; die Governance ist der Burggraben.",
+        "fr": "Leloir s'intègre à un plan de données LLM standard au lieu de le réinventer — et fournit une clé virtuelle par locataire. La passerelle est le muscle ; la gouvernance est l'avantage concurrentiel.",
+        "zh": "Leloir 插入商品 LLM 数据平面，而不是重新发明它——并提供每个租户的虚拟密钥。网关是肌肉；治理是护城河。",
+        "ja": "LeloirはコモディティLLMデータプレーンにプラグインし、テナントごとの仮想キーをプロビジョニングします。ゲートウェイは筋肉であり、ガバナンスは堀です。"
       },
       "status": "proven",
       "tier": "oss"
@@ -189,18 +189,18 @@
       "title": {
         "en": "RAG Episodic Memory",
         "es": "RAG Episodic Memory",
-        "de": "RAG Episodic Memory",
-        "fr": "RAG Episodic Memory",
-        "zh": "RAG Episodic Memory",
-        "ja": "RAG Episodic Memory"
+        "de": "RAG Episodisches Gedächtnis",
+        "fr": "Mémoire Épisodique RAG",
+        "zh": "RAG 情景记忆",
+        "ja": "RAG エピソード記憶"
       },
       "desc": {
         "en": "Uses pgvector to store incident resolutions. Upon a new alert, automatically retrieves the nearest historical incident in the same tenant to pre-load a dynamic runbook.",
         "es": "Uses pgvector to store incident resolutions. Upon a new alert, automatically retrieves the nearest historical incident in the same tenant to pre-load a dynamic runbook.",
-        "de": "Uses pgvector to store incident resolutions. Upon a new alert, automatically retrieves the nearest historical incident in the same tenant to pre-load a dynamic runbook.",
-        "fr": "Uses pgvector to store incident resolutions. Upon a new alert, automatically retrieves the nearest historical incident in the same tenant to pre-load a dynamic runbook.",
-        "zh": "Uses pgvector to store incident resolutions. Upon a new alert, automatically retrieves the nearest historical incident in the same tenant to pre-load a dynamic runbook.",
-        "ja": "Uses pgvector to store incident resolutions. Upon a new alert, automatically retrieves the nearest historical incident in the same tenant to pre-load a dynamic runbook."
+        "de": "Verwendet pgvector zur Speicherung von Vorfallauflösungen. Ruft bei einem neuen Alarm automatisch den nächsten historischen Vorfall im selben Mandanten ab.",
+        "fr": "Utilise pgvector pour stocker les résolutions d'incidents. Lors d'une nouvelle alerte, récupère automatiquement l'incident historique le plus proche dans le même locataire.",
+        "zh": "使用 pgvector 存储事件解决方案。收到新警报时，自动检索同一租户中最近的历史事件。",
+        "ja": "インシデントの解決を保存するためにpgvectorを使用します。新しいアラートが発生すると、同じテナント内の最も近い履歴インシデントを自動的に取得します。"
       },
       "status": "proven",
       "tier": "oss"
@@ -211,17 +211,17 @@
         "en": "Pluggable Agent Memory (Honcho)",
         "es": "Pluggable Agent Memory (Honcho)",
         "de": "Pluggable Agent Memory (Honcho)",
-        "fr": "Pluggable Agent Memory (Honcho)",
-        "zh": "Pluggable Agent Memory (Honcho)",
-        "ja": "Pluggable Agent Memory (Honcho)"
+        "fr": "Mémoire d'Agent Pluggable (Honcho)",
+        "zh": "可插拔代理内存 (Honcho)",
+        "ja": "プラグ可能なエージェントメモリ (Honcho)"
       },
       "desc": {
         "en": "Provides cross-session continuity to black-box agents via the MCP facade without modifying their runtime. Ships with Honcho as the recommended default, or plug your own (Letta, mem0, Cognee).",
         "es": "Provides cross-session continuity to black-box agents via the MCP facade without modifying their runtime. Ships with Honcho as the recommended default, or plug your own (Letta, mem0, Cognee).",
-        "de": "Provides cross-session continuity to black-box agents via the MCP facade without modifying their runtime. Ships with Honcho as the recommended default, or plug your own (Letta, mem0, Cognee).",
-        "fr": "Provides cross-session continuity to black-box agents via the MCP facade without modifying their runtime. Ships with Honcho as the recommended default, or plug your own (Letta, mem0, Cognee).",
-        "zh": "Provides cross-session continuity to black-box agents via the MCP facade without modifying their runtime. Ships with Honcho as the recommended default, or plug your own (Letta, mem0, Cognee).",
-        "ja": "Provides cross-session continuity to black-box agents via the MCP facade without modifying their runtime. Ships with Honcho as the recommended default, or plug your own (Letta, mem0, Cognee)."
+        "de": "Bietet Black-Box-Agenten sitzungsübergreifende Kontinuität über die MCP-Fassade, ohne deren Laufzeit zu ändern.",
+        "fr": "Fournit une continuité inter-sessions aux agents boîte noire via la façade MCP sans modifier leur exécution.",
+        "zh": "通过 MCP 门面向黑盒代理提供跨会话连续性，而无需修改其运行时。",
+        "ja": "MCPファサードを介して、ランタイムを変更することなく、ブラックボックスエージェントにセッション間の継続性を提供します。"
       },
       "status": "proven",
       "tier": "oss"
@@ -232,17 +232,17 @@
         "en": "Zero-Trust Hardened (mTLS/SPIFFE)",
         "es": "Zero-Trust Hardened (mTLS/SPIFFE)",
         "de": "Zero-Trust Gehärtet (mTLS/SPIFFE)",
-        "fr": "Zero-Trust Renforcé (mTLS/SPIFFE)",
-        "zh": "零信任强化（mTLS/SPIFFE）",
-        "ja": "ゼロトラスト強化（mTLS/SPIFFE）"
+        "fr": "Renforcé Zero-Trust (mTLS/SPIFFE)",
+        "zh": "零信任强化 (mTLS/SPIFFE)",
+        "ja": "ゼロトラスト強化 (mTLS/SPIFFE)"
       },
       "desc": {
         "en": "Enforces strict cryptographic identity for every component via SPIFFE/SPIRE. All inter-service and agent-to-tool communication is strictly authenticated via mutual TLS.",
         "es": "Enforces strict cryptographic identity for every component via SPIFFE/SPIRE. All inter-service and agent-to-tool communication is strictly authenticated via mutual TLS.",
-        "de": "Erzwingt eine strikte kryptografische Identität für jede Komponente über SPIFFE/SPIRE. Die gesamte Kommunikation wird strikt über mTLS authentifiziert.",
-        "fr": "Impose une identité cryptographique stricte pour chaque composant via SPIFFE/SPIRE. Toutes les communications sont strictement authentifiées via mTLS.",
-        "zh": "通过 SPIFFE/SPIRE 强制每个组件使用严格的加密身份。所有通信均通过双向 TLS 严格认证。",
-        "ja": "SPIFFE/SPIREを介して、すべてのコンポーネントに厳密な暗号化IDを強制します。すべての通信は相互TLSを介して厳密に認証されます。"
+        "de": "Erzwingt eine strikte kryptografische Identität für jede Komponente. Die gesamte Kommunikation wird über mTLS authentifiziert.",
+        "fr": "Impose une identité cryptographique stricte pour chaque composant. Toutes les communications sont authentifiées via mTLS.",
+        "zh": "强制每个组件使用严格的加密身份。所有通信均通过 mTLS 认证。",
+        "ja": "すべてのコンポーネントに厳密な暗号化IDを強制します。すべての通信はmTLSを介して認証されます。"
       },
       "status": "proven",
       "tier": "oss"
@@ -260,10 +260,10 @@
       "desc": {
         "en": "Pre-built, plug-and-play Grafana dashboards mapping Leloir Prometheus metrics to executive summaries, cost analysis, and threat detection views.",
         "es": "Pre-built, plug-and-play Grafana dashboards mapping Leloir Prometheus metrics to executive summaries, cost analysis, and threat detection views.",
-        "de": "Vorgefertigte Grafana-Dashboards, die Leloir-Prometheus-Metriken auf Zusammenfassungen, Kostenanalysen und Bedrohungserkennungsansichten abbilden.",
-        "fr": "Tableaux de bord Grafana pré-construits qui associent les métriques Prometheus de Leloir à des résumés exécutifs, des analyses de coûts et des vues de détection de menaces.",
-        "zh": "预构建的即插即用 Grafana 仪表板，将 Leloir Prometheus 指标映射到执行摘要、成本分析和威胁检测视图。",
-        "ja": "Leloir Prometheus メトリクスを経営幹部向けサマリー、コスト分析、脅威検出ビューにマッピングする事前構築済みの Grafana ダッシュボード。"
+        "de": "Vorgefertigte Grafana-Dashboards, die Leloir-Prometheus-Metriken abbilden.",
+        "fr": "Tableaux de bord Grafana pré-construits mappant les métriques Prometheus de Leloir.",
+        "zh": "预构建的 Grafana 仪表板，映射 Leloir Prometheus 指标。",
+        "ja": "Leloir Prometheusメトリクスをマッピングする事前構築済みのGrafanaダッシュボード。"
       },
       "status": "proven",
       "tier": "commercial"
@@ -274,17 +274,17 @@
         "en": "SIEM Audit Log Streaming",
         "es": "SIEM Audit Log Streaming",
         "de": "SIEM Audit Log Streaming",
-        "fr": "SIEM Audit Log Streaming",
-        "zh": "SIEM Audit Log Streaming",
-        "ja": "SIEM Audit Log Streaming"
+        "fr": "Streaming des Journaux d'Audit SIEM",
+        "zh": "SIEM 审计日志流",
+        "ja": "SIEM 監査ログストリーミング"
       },
       "desc": {
         "en": "Streams raw agent decision logs (tool payloads, token usage, containment triggers) directly to your preferred enterprise SIEM or log management platform for deep compliance auditing.",
         "es": "Streams raw agent decision logs (tool payloads, token usage, containment triggers) directly to your preferred enterprise SIEM or log management platform for deep compliance auditing.",
-        "de": "Streams raw agent decision logs (tool payloads, token usage, containment triggers) directly to your preferred enterprise SIEM or log management platform for deep compliance auditing.",
-        "fr": "Streams raw agent decision logs (tool payloads, token usage, containment triggers) directly to your preferred enterprise SIEM or log management platform for deep compliance auditing.",
-        "zh": "Streams raw agent decision logs (tool payloads, token usage, containment triggers) directly to your preferred enterprise SIEM or log management platform for deep compliance auditing.",
-        "ja": "Streams raw agent decision logs (tool payloads, token usage, containment triggers) directly to your preferred enterprise SIEM or log management platform for deep compliance auditing."
+        "de": "Überträgt rohe Entscheidungslogs des Agenten direkt an Ihre bevorzugte SIEM-Plattform.",
+        "fr": "Diffuse les journaux de décision bruts de l'agent directement vers votre plateforme SIEM préférée.",
+        "zh": "将原始代理决策日志直接流式传输到您的首选 SIEM 平台。",
+        "ja": "エージェントの生意思決定ログを優先するSIEMプラットフォームに直接ストリーミングします。"
       },
       "status": "planned",
       "tier": "commercial"
@@ -295,17 +295,17 @@
         "en": "Air-Gapped Installation",
         "es": "Air-Gapped Installation",
         "de": "Air-Gapped Installation",
-        "fr": "Air-Gapped Installation",
-        "zh": "Air-Gapped Installation",
-        "ja": "Air-Gapped Installation"
+        "fr": "Installation Air-Gapped",
+        "zh": "隔离网络安装",
+        "ja": "エアギャップインストール"
       },
       "desc": {
         "en": "Provides bundled container images, offline chart dependencies, and specialized configuration for installation in completely disconnected, highly secure environments.",
         "es": "Provides bundled container images, offline chart dependencies, and specialized configuration for installation in completely disconnected, highly secure environments.",
-        "de": "Provides bundled container images, offline chart dependencies, and specialized configuration for installation in completely disconnected, highly secure environments.",
-        "fr": "Provides bundled container images, offline chart dependencies, and specialized configuration for installation in completely disconnected, highly secure environments.",
-        "zh": "Provides bundled container images, offline chart dependencies, and specialized configuration for installation in completely disconnected, highly secure environments.",
-        "ja": "Provides bundled container images, offline chart dependencies, and specialized configuration for installation in completely disconnected, highly secure environments."
+        "de": "Bietet gebündelte Container-Images und spezialisierte Konfiguration für sichere Umgebungen.",
+        "fr": "Fournit des images de conteneurs groupées et une configuration spécialisée pour les environnements sécurisés.",
+        "zh": "为安全环境提供捆绑的容器映像和专门配置。",
+        "ja": "安全な環境向けにバンドルされたコンテナイメージと専用設定を提供します。"
       },
       "status": "planned",
       "tier": "commercial"

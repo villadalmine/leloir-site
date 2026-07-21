@@ -1,7 +1,10 @@
-import { useSiteData, t } from '../hooks/useSiteData';
+import { useSiteData } from '../hooks/useSiteData';
+import { useLanguage } from '../hooks/useLanguage';
 import { CheckCircle2, Clock, Unlock, Briefcase } from 'lucide-react';
+import { SelfAwareAgent } from '../components/SelfAwareAgent';
 
 export function Home() {
+  const { t } = useLanguage();
   const { data: manifest, loading: manifestLoading, error: manifestError } = useSiteData<any>('manifest.json');
   const { data: featuresData, loading: featuresLoading, error: featuresError } = useSiteData<any>('features.json');
 
@@ -36,6 +39,13 @@ export function Home() {
         <a href={manifest.project.repo} target="_blank" rel="noreferrer" className="btn btn-primary" style={{ fontSize: '16px', padding: '12px 32px' }}>
           {t(manifest.ui.cta_repo)}
         </a>
+      </div>
+
+      {/* Self-Aware Agent Demo Section */}
+      <div style={{ margin: '0 auto 80px', maxWidth: '800px' }}>
+        <h2 style={{ marginBottom: '24px', fontSize: '2rem' }}>Flagship Self-Aware Agent</h2>
+        <p style={{ color: '#94a3b8', marginBottom: '32px' }}>Empirically measured governance introspection. Tamper-evident M2 attestation.</p>
+        <SelfAwareAgent />
       </div>
 
       {/* Differentiators Section (Mapped dynamically from manifest.json) */}
