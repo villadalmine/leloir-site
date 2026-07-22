@@ -263,12 +263,12 @@
       },
       "leloir": {
         "action": {
-          "en": "Enforces append-only logic, computes the M2 Hash-chain for tamper-evidence, builds the scorecard, and reports metrics.",
-          "es": "Garantiza la lógica append-only, computa el Hash-chain M2 (tamper-evident), genera el scorecard honesto y reporta métricas.",
-          "de": "Erzwingt Append-Only-Logik, berechnet die M2 Hash-Chain, erstellt die Scorecard und meldet Metriken.",
-          "fr": "Garantit la logique append-only, calcule la chaîne de hachage M2, génère le tableau de bord et rapporte les métriques.",
-          "zh": "强制执行仅追加逻辑，计算 M2 哈希链（防篡改），构建记分卡并报告指标。",
-          "ja": "追記のみのロジックを強制し、改ざん防止のために M2 ハッシュチェーンを計算し、スコアカードを構築し、メトリックを報告します。"
+          "en": "Enforces append-only logic, computes the Hash-chain for tamper-evidence, builds the scorecard, and reports metrics.",
+          "es": "Garantiza la lógica append-only, computa el Hash-chain (tamper-evident), genera el scorecard honesto y reporta métricas.",
+          "de": "Erzwingt Append-Only-Logik, berechnet die Hash-Chain, erstellt die Scorecard und meldet Metriken.",
+          "fr": "Garantit la logique append-only, calcule la chaîne de hachage, génère le tableau de bord et rapporte les métriques.",
+          "zh": "强制执行仅追加逻辑，计算 哈希链（防篡改），构建记分卡并报告指标。",
+          "ja": "追記のみのロジックを強制し、改ざん防止のために ハッシュチェーンを計算し、スコアカードを構築し、メトリックを報告します。"
         }
       }
     }
