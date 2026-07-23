@@ -1,8 +1,9 @@
 import { useLanguage } from '../hooks/useLanguage';
 import { useEffect, useRef } from 'react';
-import { useSiteData, useSiteText} from '../hooks/useSiteData';
+import { useSiteData, useSiteText } from '../hooks/useSiteData';
+import { ArchitectureSimulator } from '../components/ArchitectureSimulator';
 import mermaid from 'mermaid';
-import { Cpu } from 'lucide-react';
+import { Cpu, Layers } from 'lucide-react';
 
 function Diagram() {
   const { text: mmd, loading } = useSiteText('architecture.mmd');
@@ -35,8 +36,36 @@ export function Architecture() {
   return (
     <div className="container" style={{ padding: '80px 24px' }}>
       
+      {/* High-Level Architecture Hero Infographic Banner */}
+      <div style={{ marginBottom: '64px', textAlign: 'center' }}>
+        <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'rgba(59, 130, 246, 0.1)', color: '#60a5fa', border: '1px solid rgba(59, 130, 246, 0.2)', padding: '6px 16px', borderRadius: '20px', fontSize: '13px', fontWeight: 600, marginBottom: '16px' }}>
+          <Layers size={16} />
+          HIGH-LEVEL CONCEPTUAL ARCHITECTURE
+        </div>
+        <h1 style={{ fontSize: '40px', fontWeight: 800, color: 'white', marginBottom: '16px', letterSpacing: '-0.5px' }}>
+          The 5 Seams of Leloir Governance
+        </h1>
+        <p className="lead" style={{ maxWidth: '800px', margin: '0 auto 32px auto' }}>
+          Single Source of Truth: every alert, LLM token, tool call, and human decision is cryptographically chained into an immutable WORM audit log.
+        </p>
+
+        <div style={{ borderRadius: '20px', overflow: 'hidden', border: '1px solid rgba(255, 255, 255, 0.12)', boxShadow: '0 20px 40px rgba(0,0,0,0.6)' }}>
+          <img 
+            src="/images/architecture_hero.jpg" 
+            alt="Leloir Kubernetes AI Agent Governance Control Plane Architecture" 
+            style={{ width: '100%', height: 'auto', display: 'block' }}
+          />
+        </div>
+      </div>
+
+      {/* Dynamic Source-Derived Architecture Simulator */}
+      <div id="simulator-section">
+        <ArchitectureSimulator />
+      </div>
+
       {/* Topologies */}
       <div id="topologies" style={{ marginBottom: '80px' }}>
+
         <h2 style={{ borderBottom: 'none', marginBottom: '12px' }}>{t(manifest.ui.topo_title)}</h2>
         <p className="lead">{t(manifest.ui.topo_sub)}</p>
         
