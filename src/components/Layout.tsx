@@ -27,6 +27,7 @@ export function Layout() {
             <NavLink to="/roadmap" className={({ isActive }) => isActive ? 'active' : ''}>Roadmap</NavLink>
             <NavLink to="/memory" className={({ isActive }) => isActive ? 'active' : ''}>Memory</NavLink>
             <NavLink to="/editions" className={({ isActive }) => isActive ? 'active' : ''}>Editions</NavLink>
+            <NavLink to="/console" className={({ isActive }) => isActive ? 'active' : ''} style={{ color: '#38bdf8', fontWeight: 600 }}>Console (M0+M1)</NavLink>
             <div className="language-selector" style={{ position: 'relative', display: 'flex', alignItems: 'center', marginLeft: '16px' }}>
               <Globe size={16} color="var(--muted)" style={{ marginRight: '6px' }} />
               <select 

@@ -9,6 +9,7 @@ import { Roadmap } from './pages/Roadmap';
 import { Memory } from './pages/Memory';
 import { Editions } from './pages/Editions';
 import { NerdearlaTalk } from './pages/NerdearlaTalk';
+import { Console } from './pages/Console';
 import './index.css';
 
 function ScrollToTop() {
@@ -32,6 +33,7 @@ function App() {
           <Route path="roadmap" element={<Roadmap />} />
           <Route path="memory" element={<Memory />} />
           <Route path="editions" element={<Editions />} />
+          <Route path="console" element={<Console />} />
         </Route>
         <Route path="/nerdearla-2026" element={<NerdearlaTalk />} />
       </Routes>
