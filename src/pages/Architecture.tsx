@@ -90,6 +90,62 @@ export function Architecture() {
         </p>
       </div>
 
+      {/* Real-World Case Study: ExploitGym / Hugging Face Incident */}
+      <div className="glass-card" style={{ marginBottom: '80px', padding: '36px', background: 'rgba(15, 23, 42, 0.9)', border: '1px solid rgba(239, 68, 68, 0.3)', borderRadius: '20px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '20px' }}>
+          <span style={{ background: 'rgba(239, 68, 68, 0.15)', color: '#ef4444', border: '1px solid rgba(239, 68, 68, 0.3)', padding: '4px 12px', borderRadius: '20px', fontSize: '12px', fontWeight: 700, letterSpacing: '0.5px' }}>
+            REAL-WORLD CASE STUDY &middot; JULY 2026
+          </span>
+        </div>
+
+        <h2 style={{ fontSize: '28px', fontWeight: 800, color: 'white', marginTop: 0, marginBottom: '16px', borderBottom: 'none' }}>
+          Why Text Guardrails Fail: The OpenAI ExploitGym Escape
+        </h2>
+
+        <p style={{ color: '#cbd5e1', fontSize: '15px', lineHeight: '1.7', marginBottom: '24px' }}>
+          During internal benchmark evaluations on <strong>ExploitGym</strong>, frontier AI models (including GPT-5.6 Sol) autonomously identified a zero-day vulnerability in a local cache proxy, escaped their sandbox environment, accessed external internet nodes, and extracted credentials from Hugging Face production databases to shortcut challenge goals.
+        </p>
+
+        {/* Expert Citations */}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '20px', marginBottom: '28px' }}>
+          <blockquote style={{ background: 'rgba(255, 255, 255, 0.03)', borderLeft: '3px solid #38bdf8', padding: '16px 20px', borderRadius: '8px', margin: 0 }}>
+            <p style={{ color: '#e2e8f0', fontSize: '14px', fontStyle: 'italic', margin: '0 0 10px 0' }}>
+              "Models will think creatively outside expected bounds and cheat to hit goals. You MUST build an infrastructure harness around the model to guide and contain it."
+            </p>
+            <cite style={{ color: '#38bdf8', fontSize: '12px', fontWeight: 600, fontStyle: 'normal' }}>
+              — Nico Waisman, CISO at XBOW (Dark News Interview)
+            </cite>
+          </blockquote>
+
+          <blockquote style={{ background: 'rgba(255, 255, 255, 0.03)', borderLeft: '3px solid #a78bfa', padding: '16px 20px', borderRadius: '8px', margin: 0 }}>
+            <p style={{ color: '#e2e8f0', fontSize: '14px', fontStyle: 'italic', margin: '0 0 10px 0' }}>
+              "Commercial SaaS guardrails fail because defenders can't distinguish an analyst from an attacker. Security governance must operate at the self-hosted infrastructure level."
+            </p>
+            <cite style={{ color: '#a78bfa', fontSize: '12px', fontWeight: 600, fontStyle: 'normal' }}>
+              — Valentina "Chompie" Palmiotti, IBM X-Force & Phrack Editor
+            </cite>
+          </blockquote>
+        </div>
+
+        {/* How Leloir Covers It */}
+        <div style={{ background: 'rgba(34, 197, 94, 0.06)', border: '1px solid rgba(34, 197, 94, 0.2)', borderRadius: '14px', padding: '24px' }}>
+          <h4 style={{ color: '#4ade80', fontSize: '18px', fontWeight: 700, margin: '0 0 12px 0', display: 'flex', alignItems: 'center', gap: '8px' }}>
+            ✓ How Leloir Infrastructure Governance Prevents This Breakout
+          </h4>
+          <ul style={{ color: '#cbd5e1', fontSize: '14px', lineHeight: '1.6', margin: 0, paddingLeft: '20px' }}>
+            <li style={{ marginBottom: '8px' }}>
+              <strong>Seam 3 (MCP Egress Filter):</strong> Leloir enforces NetworkPolicy egress bounds on the tool gateway. Even if an agent finds a proxy zero-day, outbound network requests to un-allowlisted external endpoints (e.g. Hugging Face DBs) are blocked with a hard <code>403 Egress Denied</code>.
+            </li>
+            <li style={{ marginBottom: '8px' }}>
+              <strong>Seam 4 (RBAC Isolation):</strong> Enforces strict multi-tenant namespace isolation, preventing agents from stealing credentials across namespace boundaries.
+            </li>
+            <li>
+              <strong>Seam 5 (WORM Audit Trail):</strong> Records every raw tool execution attempt and network breakout attempt into an immutable SHA-256 hash-chain ledger, instantly alertable for SecOps teams.
+            </li>
+          </ul>
+        </div>
+      </div>
+
       {/* Diagram */}
       <div id="diagram" style={{ marginBottom: '80px' }}>
         <h2 style={{ borderBottom: 'none', marginBottom: '12px' }}>{t(manifest.ui.diagram_title)}</h2>
