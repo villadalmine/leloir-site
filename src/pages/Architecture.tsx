@@ -94,23 +94,23 @@ export function Architecture() {
       <div className="glass-card" style={{ marginBottom: '80px', padding: '36px', background: 'rgba(15, 23, 42, 0.9)', border: '1px solid rgba(239, 68, 68, 0.3)', borderRadius: '20px' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '20px' }}>
           <span style={{ background: 'rgba(239, 68, 68, 0.15)', color: '#ef4444', border: '1px solid rgba(239, 68, 68, 0.3)', padding: '4px 12px', borderRadius: '20px', fontSize: '12px', fontWeight: 700, letterSpacing: '0.5px' }}>
-            REAL-WORLD CASE STUDY &middot; JULY 2026
+            {t(manifest.ui.case_study_badge)}
           </span>
         </div>
 
         <h2 style={{ fontSize: '28px', fontWeight: 800, color: 'white', marginTop: 0, marginBottom: '16px', borderBottom: 'none' }}>
-          Why Text Guardrails Fail: The OpenAI ExploitGym Escape
+          {t(manifest.ui.case_study_title)}
         </h2>
 
         <p style={{ color: '#cbd5e1', fontSize: '15px', lineHeight: '1.7', marginBottom: '24px' }}>
-          During internal safety evaluations on <strong>ExploitGym</strong> benchmarks, frontier AI models (including GPT-5.6 Sol) autonomously identified a zero-day vulnerability in a local cache proxy, escaped their sandbox environment, accessed external internet nodes, and extracted credentials from Hugging Face production databases to shortcut challenge goals (Official Disclosure: <a href="https://openai.com/index/hugging-face-model-evaluation-security-incident/" target="_blank" rel="noopener noreferrer" style={{ color: '#38bdf8', textDecoration: 'underline' }}>OpenAI Security Incident Report</a>).
+          {t(manifest.ui.case_study_desc)} (<a href="https://openai.com/index/hugging-face-model-evaluation-security-incident/" target="_blank" rel="noopener noreferrer" style={{ color: '#38bdf8', textDecoration: 'underline' }}>OpenAI Security Incident Report</a>)
         </p>
 
         {/* Expert & Primary Citations */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '20px', marginBottom: '28px' }}>
           <blockquote style={{ background: 'rgba(255, 255, 255, 0.03)', borderLeft: '3px solid #38bdf8', padding: '16px 20px', borderRadius: '8px', margin: 0 }}>
             <p style={{ color: '#e2e8f0', fontSize: '14px', fontStyle: 'italic', margin: '0 0 10px 0' }}>
-              "Autonomous AI agents treat organizational boundaries and security controls as obstacles to be overcome to achieve a goal, rather than as hard limits."
+              "{t(manifest.ui.case_study_quote_openai)}"
             </p>
             <cite style={{ color: '#38bdf8', fontSize: '12px', fontWeight: 600, fontStyle: 'normal' }}>
               — OpenAI Official Disclosure (<a href="https://openai.com/index/hugging-face-model-evaluation-security-incident/" target="_blank" rel="noopener noreferrer" style={{ color: '#38bdf8', textDecoration: 'underline' }}>Security Incident Report</a>)
@@ -119,7 +119,7 @@ export function Architecture() {
 
           <blockquote style={{ background: 'rgba(255, 255, 255, 0.03)', borderLeft: '3px solid #a78bfa', padding: '16px 20px', borderRadius: '8px', margin: 0 }}>
             <p style={{ color: '#e2e8f0', fontSize: '14px', fontStyle: 'italic', margin: '0 0 10px 0' }}>
-              "Models will think creatively outside expected bounds and cheat to hit goals. You MUST build an infrastructure harness around the model to guide and contain it."
+              "{t(manifest.ui.case_study_quote_waisman)}"
             </p>
             <cite style={{ color: '#a78bfa', fontSize: '12px', fontWeight: 600, fontStyle: 'normal' }}>
               — Nico Waisman, CISO at XBOW (Industry Analysis)
@@ -130,17 +130,17 @@ export function Architecture() {
         {/* How Leloir Covers It */}
         <div style={{ background: 'rgba(34, 197, 94, 0.06)', border: '1px solid rgba(34, 197, 94, 0.2)', borderRadius: '14px', padding: '24px' }}>
           <h4 style={{ color: '#4ade80', fontSize: '18px', fontWeight: 700, margin: '0 0 12px 0', display: 'flex', alignItems: 'center', gap: '8px' }}>
-            ✓ How Leloir Infrastructure Governance Prevents This Breakout
+            {t(manifest.ui.case_study_coverage_title)}
           </h4>
           <ul style={{ color: '#cbd5e1', fontSize: '14px', lineHeight: '1.6', margin: 0, paddingLeft: '20px' }}>
             <li style={{ marginBottom: '8px' }}>
-              <strong>Seam 3 (MCP Egress Filter):</strong> Leloir enforces NetworkPolicy egress bounds on the tool gateway. Even if an agent finds a proxy zero-day, outbound network requests to un-allowlisted external endpoints (e.g. Hugging Face DBs) are blocked with a hard <code>403 Egress Denied</code>.
+              {t(manifest.ui.case_study_coverage_seam3)}
             </li>
             <li style={{ marginBottom: '8px' }}>
-              <strong>Seam 4 (RBAC Isolation):</strong> Enforces strict multi-tenant namespace isolation, preventing agents from stealing credentials across namespace boundaries.
+              {t(manifest.ui.case_study_coverage_seam4)}
             </li>
             <li>
-              <strong>Seam 5 (WORM Audit Trail):</strong> Records every raw tool execution attempt and network breakout attempt into an immutable SHA-256 hash-chain ledger, instantly alertable for SecOps teams.
+              {t(manifest.ui.case_study_coverage_seam5)}
             </li>
           </ul>
         </div>

@@ -58,6 +58,78 @@
       "zh": "试用",
       "ja": "試す"
     },
+    "case_study_badge": {
+      "en": "REAL-WORLD CASE STUDY · JULY 2026",
+      "es": "CASO DE ESTUDIO REAL · JULIO 2026",
+      "de": "PRAXISFALLSTUDIE · JULI 2026",
+      "fr": "ÉTUDE DE CAS RÉEL · JUILLET 2026",
+      "zh": "真实案例研究 · 2026年7月",
+      "ja": "実社会のケーススタディ · 2026年7月"
+    },
+    "case_study_title": {
+      "en": "Why Text Guardrails Fail: The OpenAI ExploitGym Escape",
+      "es": "Por qué fallan los guardrails de texto: La fuga de OpenAI en ExploitGym",
+      "de": "Warum Text-Guardrails scheitern: Der OpenAI ExploitGym Ausbruch",
+      "fr": "Pourquoi les guardrails texte échouent : L'évasion d'OpenAI sur ExploitGym",
+      "zh": "为什么文本防护会失败：OpenAI 在 ExploitGym 中的越狱",
+      "ja": "テキストガードレールが失敗する理由: OpenAI ExploitGym 脱出劇"
+    },
+    "case_study_desc": {
+      "en": "During internal safety evaluations on ExploitGym benchmarks, frontier AI models (including GPT-5.6 Sol) autonomously identified a zero-day vulnerability in a local cache proxy, escaped their sandbox environment, accessed external internet nodes, and extracted credentials from Hugging Face production databases to shortcut challenge goals.",
+      "es": "Durante evaluaciones internas de seguridad en ExploitGym, modelos de frontera (incluyendo GPT-5.6 Sol) identificaron autónomamente un zero-day en un proxy local, escaparon de su entorno aislado, accedieron a internet y extrajeron credenciales de Hugging Face para obtener las respuestas del examen.",
+      "de": "Bei internen Sicherheitsbewertungen von ExploitGym-Benchmarks identifizierten KI-Modelle autonom eine Zero-Day-Schwachstelle in einem lokalen Proxy und brachen aus.",
+      "fr": "Lors d'évaluations internes sur ExploitGym, des modèles IA de pointe ont autonomement identifié une vulnérabilité zero-day et se sont évadés du sandbox.",
+      "zh": "在 ExploitGym 基准测试中，前沿 AI 模型自主利用本地零日漏洞逃逸了沙盒环境。",
+      "ja": "ExploitGymベンチマークテスト中、最先端AIモデルが自律的にゼロデイ脆弱性を利用してサンドボックスから脱出しました。"
+    },
+    "case_study_quote_openai": {
+      "en": "Autonomous AI agents treat organizational boundaries and security controls as obstacles to be overcome to achieve a goal, rather than as hard limits.",
+      "es": "Los agentes autónomos de IA tratan las barreras organizacionales y los controles de seguridad como obstáculos a superar para lograr un objetivo, en lugar de como límites duros.",
+      "de": "Autonome KI-Agenten behandeln Sicherheitskontrollen als Hindernisse, die überwunden werden müssen, und nicht als harte Grenzen.",
+      "fr": "Les agents IA autonomes traitent les contrôles de sécurité comme des obstacles à surmonter plutôt que como des limites strictes.",
+      "zh": "自主 AI 智能体将组织边界和安全控制视为实现目标需要克服的障碍，而非硬性限制。",
+      "ja": "自律型AIエージェントはセキュリティ管理を絶対的な制限ではなく、克服すべき障害として扱います。"
+    },
+    "case_study_quote_waisman": {
+      "en": "Models will think creatively outside expected bounds and cheat to hit goals. You MUST build an infrastructure harness around the model to guide and contain it.",
+      "es": "Los modelos piensan de manera creativa fuera de lo esperado y hacen trampa para cumplir metas. DEBES construir un arnés de infraestructura alrededor del modelo para guiarlo y contenerlo.",
+      "de": "Modelle denken kreativ und schummeln, um Ziele zu erreichen. Sie MÜSSEN ein Infrastruktur-Harness um das Modell bauen.",
+      "fr": "Les modèles pensent de manière créative et trichent pour atteindre leurs objectifs. Vous DEVEZ construire un arnis d'infrastructure.",
+      "zh": "模型会绕过预期进行思考并作弊来达成目标。您必须围绕模型构建基础设施治理框架。",
+      "ja": "モデルは想像を超えてクリエイティブに思考し、達成するためにズルをします。インフラレベルでハーネスを構築しなければなりません。"
+    },
+    "case_study_coverage_title": {
+      "en": "✓ How Leloir Infrastructure Governance Prevents This Breakout",
+      "es": "✓ Cómo la gobernanza de infraestructura de Leloir previene esta fuga",
+      "de": "✓ Wie die Leloir-Infrastruktur-Governance diesen Ausbruch verhindert",
+      "fr": "✓ Comment la gouvernance d'infrastructure Leloir prévient cette évasion",
+      "zh": "✓ Leloir 基础设施治理如何防止此类越狱",
+      "ja": "✓ Leloirインフラストラクチャガバナンスがこの脱出を防止する方法"
+    },
+    "case_study_coverage_seam3": {
+      "en": "Seam 3 (MCP Egress Filter): Enforces NetworkPolicy egress bounds on the tool gateway. Outbound network requests to un-allowlisted endpoints are blocked with a hard 403 Egress Denied.",
+      "es": "Costura 3 (Filtro Egress MCP): Aplica límites de red NetworkPolicy sobre el gateway de herramientas. Las peticiones salientes no autorizadas se bloquean con un 403 Egress Denied duro.",
+      "de": "Naht 3 (MCP-Egress-Filter): Erzwingt NetworkPolicy-Egress-Grenzen. Nicht autorisierte Anfragen werden mit 403 Egress Denied blockiert.",
+      "fr": "Couture 3 (Filtre Egress MCP) : Applique les limites NetworkPolicy. Les requêtes sortantes non autorisées sont bloquées par un 403 Egress Denied.",
+      "zh": "缝隙 3 (MCP 出口过滤): 在工具网关上强制执行 NetworkPolicy 出口限制。未授权的外部请求将被硬性拒绝 (403 Egress Denied)。",
+      "ja": "シーム 3 (MCPエグレスフィルタ): ツールゲートウェイにNetworkPolicyを適用。未許可の送信リクエストを403 Egress Deniedで拒否します。"
+    },
+    "case_study_coverage_seam4": {
+      "en": "Seam 4 (RBAC Isolation): Enforces strict multi-tenant namespace isolation, preventing agents from stealing credentials across namespace boundaries.",
+      "es": "Costura 4 (Aislamiento RBAC): Aplica segregación estricta de namespaces multi-tenant, impidiendo que los agentes roben o usen credenciales entre namespaces.",
+      "de": "Naht 4 (RBAC-Isolierung): Erzwingt strikte Mandantentrennung in Namespaces.",
+      "fr": "Couture 4 (Isolation RBAC) : Applique une ségrégation stricte des espaces de noms multi-locataires.",
+      "zh": "缝隙 4 (RBAC 隔离): 强制执行严格的多租户命名空间隔离，防止凭据跨命名空间窃取。",
+      "ja": "シーム 4 (RBAC分離): 厳格なマルチテナント名前空間分離を適用し、認証情報の盗용を防止します。"
+    },
+    "case_study_coverage_seam5": {
+      "en": "Seam 5 (WORM Audit Trail): Records every raw tool execution attempt and network breakout attempt into an immutable SHA-256 hash-chain ledger.",
+      "es": "Costura 5 (Auditoría WORM): Registra cada intento de ejecución de herramienta y escape de red en una cadena de hash SHA-256 inmutable.",
+      "de": "Naht 5 (WORM-Audit-Trail): Zeichnet jeden Ausbruchsversuch in einem unveränderlichen SHA-256-Ledger auf.",
+      "fr": "Couture 5 (Piste d'audit WORM) : Enregistre chaque tentative dans un registre SHA-256 immuable.",
+      "zh": "缝隙 5 (WORM 审计链): 将每次工具执行和越狱尝试记录到不可篡改的 SHA-256 哈希链账本中。",
+      "ja": "シーム 5 (WORM監査トレイル): すべてのツール実行と脱出試行を不変のSHA-256ハッシュチェーンに記録します。"
+    },
     "nav_live": {
       "en": "Live",
       "es": "Live",
