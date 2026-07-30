@@ -527,6 +527,25 @@
         "zh": "模型、价格、工具、端点、限额 — 全部通过 config/CRD。凡是部署间会变的，都进配置。",
         "ja": "モデル・価格・ツール・エンドポイント・上限 — すべて config/CRD で。デプロイ間で変わりうるものは config へ。"
       }
+    },
+    {
+      "icon": "🧠",
+      "title": {
+        "en": "Self-Aware Governance-Native Agent",
+        "es": "Agente Self-Aware Gobernado",
+        "de": "Selbstbewusster Governance-Agent",
+        "fr": "Agent autonome conscient de sa gouvernance",
+        "zh": "自感知治理原生智能体",
+        "ja": "ガバナンスネイティブ自律認識エージェント"
+      },
+      "text": {
+        "en": "The flagship agent introspects its own budget, seams, and drift via read-only tools (self_budget, self_drift). It cooperates with governance bounds before executing infra actions — verified live with SHA-256 M2 tamper-evident WORM audit (10/10 PASS).",
+        "es": "El agente flagship mecha herramientas reflexivas read-only (self_budget, self_drift) para consultar su presupuesto y drift antes de ejecutar acciones de infraestructura — verificado en vivo con auditoría WORM atestada M2 (10/10 PASS).",
+        "de": "Der Flaggschiff-Agent prüft sein eigenes Budget und Drift über schreibgeschützte Tools (self_budget, self_drift), bevor er Infra-Aktionen ausführt — live verifiziert mit SHA-256 M2 WORM-Audit (10/10 PASS).",
+        "fr": "L'agent amiral consulte son propre budget et sa dérive via des outils en lecture seule (self_budget, self_drift) avant d'exécuter des actions infra — vérifié en direct avec audit WORM M2 (10/10 PASS).",
+        "zh": "旗舰智能体在执行基础设施操作前，通过只读工具 (self_budget, self_drift) 自查预算和漂移 — 经 SHA-256 M2 防篡改 WORM 审计实测验证 (10/10 通过)。",
+        "ja": "フラグシップエージェントはインフラ操作の実行前に、読み取り専用ツール (self_budget, self_drift) で自身の予算とドリフトを自律確認します — SHA-256 M2 不変 WORM 監査でライブ実証済み (10/10 合格)。"
+      }
     }
   ],
   "topologies": [
