@@ -103,7 +103,7 @@ export function Architecture() {
         </h2>
 
         <p style={{ color: '#cbd5e1', fontSize: '15px', lineHeight: '1.7', marginBottom: '24px' }}>
-          {t(manifest.ui.case_study_desc)} (<a href="https://openai.com/index/hugging-face-model-evaluation-security-incident/" target="_blank" rel="noopener noreferrer" style={{ color: '#38bdf8', textDecoration: 'underline' }}>OpenAI Security Incident Report</a>)
+          {t(manifest.ui.case_study_desc)} (<a href="https://openai.com/index/hugging-face-model-evaluation-security-incident/" target="_blank" rel="noopener noreferrer" style={{ color: '#38bdf8', textDecoration: 'underline' }}>OpenAI Security Incident Report</a> · <a href="https://huggingface.co/blog/security-incident-july-2026" target="_blank" rel="noopener noreferrer" style={{ color: '#38bdf8', textDecoration: 'underline' }}>Hugging Face disclosure</a>)
         </p>
 
         {/* Expert & Primary Citations */}
@@ -122,7 +122,7 @@ export function Architecture() {
               "{t(manifest.ui.case_study_quote_waisman)}"
             </p>
             <cite style={{ color: '#a78bfa', fontSize: '12px', fontWeight: 600, fontStyle: 'normal' }}>
-              — Nico Waisman, CISO at XBOW (Industry Analysis)
+              — Nico Waisman, CISO at XBOW (<a href="https://techcrunch.com/2026/07/30/in-the-hugging-face-breach-openais-hacker-was-noisy-and-fast-but-not-unstoppable/" target="_blank" rel="noopener noreferrer" style={{ color: '#a78bfa', textDecoration: 'underline' }}>TechCrunch, Jul 30 2026</a>)
             </cite>
           </blockquote>
         </div>
@@ -132,6 +132,9 @@ export function Architecture() {
           <h4 style={{ color: '#4ade80', fontSize: '18px', fontWeight: 700, margin: '0 0 12px 0', display: 'flex', alignItems: 'center', gap: '8px' }}>
             {t(manifest.ui.case_study_coverage_title)}
           </h4>
+          <p style={{ color: '#94a3b8', fontSize: '13px', fontStyle: 'italic', lineHeight: '1.6', margin: '0 0 14px 0' }}>
+            {t(manifest.ui.case_study_scenario_note)}
+          </p>
           <ul style={{ color: '#cbd5e1', fontSize: '14px', lineHeight: '1.6', margin: 0, paddingLeft: '20px' }}>
             <li style={{ marginBottom: '8px' }}>
               {t(manifest.ui.case_study_coverage_seam3)}

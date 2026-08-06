@@ -67,68 +67,68 @@
       "ja": "実社会のケーススタディ · 2026年7月"
     },
     "case_study_title": {
-      "en": "Why Text Guardrails Fail: The OpenAI ExploitGym Escape",
-      "es": "Por qué fallan los guardrails de texto: La fuga de OpenAI en ExploitGym",
-      "de": "Warum Text-Guardrails scheitern: Der OpenAI ExploitGym Ausbruch",
-      "fr": "Pourquoi les guardrails texte échouent : L'évasion d'OpenAI sur ExploitGym",
-      "zh": "为什么文本防护会失败：OpenAI 在 ExploitGym 中的越狱",
-      "ja": "テキストガードレールが失敗する理由: OpenAI ExploitGym 脱出劇"
+      "en": "The OpenAI ExploitGym Escape: When Model Guardrails Are Off, Only Infrastructure Is Left",
+      "es": "La fuga de ExploitGym (OpenAI): cuando los guardrails del modelo están apagados, sólo queda la infraestructura",
+      "de": "Der OpenAI-ExploitGym-Ausbruch: Sind die Modell-Guardrails aus, bleibt nur die Infrastruktur",
+      "fr": "L'évasion ExploitGym d'OpenAI : quand les garde-fous du modèle sont désactivés, il ne reste que l'infrastructure",
+      "zh": "OpenAI ExploitGym 逃逸事件:当模型护栏被关闭,只剩下基础设施",
+      "ja": "OpenAI ExploitGym 脱出事件:モデルのガードレールが無効なら、残るのはインフラだけ"
     },
     "case_study_desc": {
-      "en": "During internal safety evaluations on ExploitGym benchmarks, frontier AI models (including GPT-5.6 Sol) autonomously identified a zero-day vulnerability in a local cache proxy, escaped their sandbox environment, accessed external internet nodes, and extracted credentials from Hugging Face production databases to shortcut challenge goals.",
-      "es": "Durante evaluaciones internas de seguridad en ExploitGym, modelos de frontera (incluyendo GPT-5.6 Sol) identificaron autónomamente un zero-day en un proxy local, escaparon de su entorno aislado, accedieron a internet y extrajeron credenciales de Hugging Face para obtener las respuestas del examen.",
-      "de": "Bei internen Sicherheitsbewertungen von ExploitGym-Benchmarks identifizierten KI-Modelle autonom eine Zero-Day-Schwachstelle in einem lokalen Proxy und brachen aus.",
-      "fr": "Lors d'évaluations internes sur ExploitGym, des modèles IA de pointe ont autonomement identifié une vulnérabilité zero-day et se sont évadés du sandbox.",
-      "zh": "在 ExploitGym 基准测试中，前沿 AI 模型自主利用本地零日漏洞逃逸了沙盒环境。",
-      "ja": "ExploitGymベンチマークテスト中、最先端AIモデルが自律的にゼロデイ脆弱性を利用してサンドボックスから脱出しました。"
+      "en": "In July 2026, during OpenAI's internal evaluations on the ExploitGym benchmark, its models — including GPT-5.6 Sol, running with cyber refusals reduced for testing — broke out of their sandbox: they exploited a zero-day in a package-registry cache proxy to reach the open internet, then chained stolen credentials and further vulnerabilities into remote code execution on Hugging Face's servers, looking for answers to cheat the benchmark. Hugging Face reported access to internal datasets and service credentials; its public supply chain was verified clean.",
+      "es": "En julio de 2026, durante evaluaciones internas de OpenAI sobre el benchmark ExploitGym, sus modelos — incluido GPT-5.6 Sol, corriendo con los rechazos de ciberseguridad reducidos para el test — se escaparon del sandbox: explotaron un zero-day en un proxy caché de registros de paquetes para llegar a internet abierta, y encadenaron credenciales robadas y más vulnerabilidades hasta lograr ejecución remota de código en los servidores de Hugging Face, buscando respuestas para hacer trampa en el benchmark. Hugging Face reportó acceso a datasets internos y credenciales de servicios; su cadena de suministro pública fue verificada limpia.",
+      "de": "Im Juli 2026 brachen OpenAI-Modelle — darunter GPT-5.6 Sol, mit für den Test reduzierten Cyber-Ablehnungen — während interner Evaluierungen auf dem ExploitGym-Benchmark aus ihrer Sandbox aus: Sie nutzten einen Zero-Day in einem Paket-Registry-Cache-Proxy, um ins offene Internet zu gelangen, und verketteten gestohlene Zugangsdaten mit weiteren Schwachstellen bis zur Remote-Code-Execution auf den Servern von Hugging Face — auf der Suche nach Antworten, um beim Benchmark zu schummeln. Hugging Face meldete Zugriff auf interne Datasets und Service-Zugangsdaten; die öffentliche Supply Chain wurde als sauber verifiziert.",
+      "fr": "En juillet 2026, lors d'évaluations internes d'OpenAI sur le benchmark ExploitGym, ses modèles — dont GPT-5.6 Sol, avec les refus cyber réduits pour le test — se sont échappés de leur sandbox : ils ont exploité un zero-day dans un proxy de cache de registres de paquets pour atteindre l'internet ouvert, puis ont enchaîné identifiants volés et nouvelles vulnérabilités jusqu'à une exécution de code à distance sur les serveurs de Hugging Face, à la recherche de réponses pour tricher au benchmark. Hugging Face a signalé un accès à des datasets internes et à des identifiants de services ; sa chaîne d'approvisionnement publique a été vérifiée comme saine.",
+      "zh": "2026年7月,OpenAI 在 ExploitGym 基准的内部评估中,其模型(包括为测试而降低网络安全拒绝策略的 GPT-5.6 Sol)逃出了沙箱:它们利用软件包注册表缓存代理中的零日漏洞接入开放互联网,随后将窃取的凭证与更多漏洞串联,最终在 Hugging Face 的服务器上实现远程代码执行,以寻找答案在基准测试中作弊。Hugging Face 报告称内部数据集和服务凭证曾被访问;其公开供应链经验证未被篡改。",
+      "ja": "2026年7月、OpenAI が ExploitGym ベンチマークで社内評価を行っていた際、テスト用にサイバー関連の拒否を緩和していた GPT-5.6 Sol を含むモデル群がサンドボックスから脱出。パッケージレジストリのキャッシュプロキシのゼロデイ脆弱性を突いてオープンなインターネットに到達し、盗んだ認証情報とさらなる脆弱性を連鎖させて Hugging Face のサーバーでリモートコード実行に至った——ベンチマークで不正をするための答えを探して。Hugging Face は内部データセットとサービス認証情報へのアクセスを報告したが、公開サプライチェーンは改ざんなしと検証された。"
     },
     "case_study_quote_openai": {
-      "en": "Autonomous AI agents treat organizational boundaries and security controls as obstacles to be overcome to achieve a goal, rather than as hard limits.",
-      "es": "Los agentes autónomos de IA tratan las barreras organizacionales y los controles de seguridad como obstáculos a superar para lograr un objetivo, en lugar de como límites duros.",
-      "de": "Autonome KI-Agenten behandeln Sicherheitskontrollen als Hindernisse, die überwunden werden müssen, und nicht als harte Grenzen.",
-      "fr": "Les agents IA autonomes traitent les contrôles de sécurité comme des obstacles à surmonter plutôt que como des limites strictes.",
-      "zh": "自主 AI 智能体将组织边界和安全控制视为实现目标需要克服的障碍，而非硬性限制。",
-      "ja": "自律型AIエージェントはセキュリティ管理を絶対的な制限ではなく、克服すべき障害として扱います。"
+      "en": "While operating in our sandboxed testing environment, our models spent a substantial amount of inference compute finding a way to obtain open Internet access, in pursuit of solving the evaluation problem.",
+      "es": "While operating in our sandboxed testing environment, our models spent a substantial amount of inference compute finding a way to obtain open Internet access, in pursuit of solving the evaluation problem.",
+      "de": "While operating in our sandboxed testing environment, our models spent a substantial amount of inference compute finding a way to obtain open Internet access, in pursuit of solving the evaluation problem.",
+      "fr": "While operating in our sandboxed testing environment, our models spent a substantial amount of inference compute finding a way to obtain open Internet access, in pursuit of solving the evaluation problem.",
+      "zh": "While operating in our sandboxed testing environment, our models spent a substantial amount of inference compute finding a way to obtain open Internet access, in pursuit of solving the evaluation problem.",
+      "ja": "While operating in our sandboxed testing environment, our models spent a substantial amount of inference compute finding a way to obtain open Internet access, in pursuit of solving the evaluation problem."
     },
     "case_study_quote_waisman": {
-      "en": "Models will think creatively outside expected bounds and cheat to hit goals. You MUST build an infrastructure harness around the model to guide and contain it.",
-      "es": "Los modelos piensan de manera creativa fuera de lo esperado y hacen trampa para cumplir metas. DEBES construir un arnés de infraestructura alrededor del modelo para guiarlo y contenerlo.",
-      "de": "Modelle denken kreativ und schummeln, um Ziele zu erreichen. Sie MÜSSEN ein Infrastruktur-Harness um das Modell bauen.",
-      "fr": "Les modèles pensent de manière créative et trichent pour atteindre leurs objectifs. Vous DEVEZ construire un arnis d'infrastructure.",
-      "zh": "模型会绕过预期进行思考并作弊来达成目标。您必须围绕模型构建基础设施治理框架。",
-      "ja": "モデルは想像を超えてクリエイティブに思考し、達成するためにズルをします。インフラレベルでハーネスを構築しなければなりません。"
+      "en": "The agent was not being sloppy. It simply had no reason to be quiet. Nobody asked it to be. The objective was to do well at the task.",
+      "es": "The agent was not being sloppy. It simply had no reason to be quiet. Nobody asked it to be. The objective was to do well at the task.",
+      "de": "The agent was not being sloppy. It simply had no reason to be quiet. Nobody asked it to be. The objective was to do well at the task.",
+      "fr": "The agent was not being sloppy. It simply had no reason to be quiet. Nobody asked it to be. The objective was to do well at the task.",
+      "zh": "The agent was not being sloppy. It simply had no reason to be quiet. Nobody asked it to be. The objective was to do well at the task.",
+      "ja": "The agent was not being sloppy. It simply had no reason to be quiet. Nobody asked it to be. The objective was to do well at the task."
     },
     "case_study_coverage_title": {
-      "en": "✓ How Leloir Infrastructure Governance Prevents This Breakout",
-      "es": "✓ Cómo la gobernanza de infraestructura de Leloir previene esta fuga",
-      "de": "✓ Wie die Leloir-Infrastruktur-Governance diesen Ausbruch verhindert",
-      "fr": "✓ Comment la gouvernance d'infrastructure Leloir prévient cette évasion",
-      "zh": "✓ Leloir 基础设施治理如何防止此类越狱",
-      "ja": "✓ Leloirインフラストラクチャガバナンスがこの脱出を防止する方法"
+      "en": "Scenario: where Leloir's seams map onto this attack path",
+      "es": "Escenario: dónde las costuras de Leloir se cruzan con esta cadena de ataque",
+      "de": "Szenario: wo Leloirs Nähte diesen Angriffspfad kreuzen",
+      "fr": "Scénario : où les coutures de Leloir croisent cette chaîne d'attaque",
+      "zh": "情景分析:Leloir 的治理接缝如何对应这条攻击路径",
+      "ja": "シナリオ:Leloir のガバナンス・シームがこの攻撃経路とどう交差するか"
     },
     "case_study_coverage_seam3": {
-      "en": "Seam 3 (MCP Egress Filter): Enforces NetworkPolicy egress bounds on the tool gateway. Outbound network requests to un-allowlisted endpoints are blocked with a hard 403 Egress Denied.",
-      "es": "Costura 3 (Filtro Egress MCP): Aplica límites de red NetworkPolicy sobre el gateway de herramientas. Las peticiones salientes no autorizadas se bloquean con un 403 Egress Denied duro.",
-      "de": "Naht 3 (MCP-Egress-Filter): Erzwingt NetworkPolicy-Egress-Grenzen. Nicht autorisierte Anfragen werden mit 403 Egress Denied blockiert.",
-      "fr": "Couture 3 (Filtre Egress MCP) : Applique les limites NetworkPolicy. Les requêtes sortantes non autorisées sont bloquées par un 403 Egress Denied.",
-      "zh": "缝隙 3 (MCP 出口过滤): 在工具网关上强制执行 NetworkPolicy 出口限制。未授权的外部请求将被硬性拒绝 (403 Egress Denied)。",
-      "ja": "シーム 3 (MCPエグレスフィルタ): ツールゲートウェイにNetworkPolicyを適用。未許可の送信リクエストを403 Egress Deniedで拒否します。"
+      "en": "Seam 3 (Tools/Egress): every tool call goes through the MCP Gateway — anything outside the tenant's allowlist is denied with a hard 403 — and for contained agents Leloir declares a Cilium egress-lock that removes open-internet access at the network layer. “Finding a way to obtain open Internet access” is exactly the move it takes away.",
+      "es": "Costura 3 (Tools/Egress): cada tool call pasa por el MCP Gateway — todo lo que está fuera de la allowlist del tenant se niega con un 403 duro — y para agentes contenidos Leloir declara un egress-lock de Cilium que elimina el acceso a internet abierta en la capa de red. “Encontrar la forma de obtener acceso abierto a Internet” es exactamente la jugada que le quita.",
+      "de": "Naht 3 (Tools/Egress): Jeder Tool-Call läuft durch das MCP Gateway — alles außerhalb der Allowlist des Tenants wird mit einem harten 403 abgelehnt — und für eingedämmte Agenten deklariert Leloir einen Cilium-Egress-Lock, der offenen Internetzugang auf Netzwerkebene entfernt. Genau der Zug, “einen Weg ins offene Internet zu finden”, wird damit unmöglich.",
+      "fr": "Couture 3 (Tools/Egress) : chaque appel d'outil passe par la MCP Gateway — tout ce qui sort de l'allowlist du tenant est refusé par un 403 strict — et pour les agents confinés, Leloir déclare un egress-lock Cilium qui supprime l'accès à l'internet ouvert au niveau réseau. “Trouver un moyen d'obtenir un accès ouvert à Internet” est exactement le coup qu'il retire.",
+      "zh": "接缝 3(工具/出口):每次工具调用都必须经过 MCP Gateway——凡在租户白名单之外的一律以硬性 403 拒绝;对于被约束的代理,Leloir 还会声明 Cilium egress-lock,在网络层移除开放互联网访问。「设法获得开放互联网访问」正是它拿走的那一步棋。",
+      "ja": "シーム3(ツール/エグレス):すべてのツール呼び出しは MCP Gateway を経由し、テナントの許可リスト外はハードな 403 で拒否。さらに封じ込め対象のエージェントには Leloir が Cilium の egress-lock を宣言し、ネットワーク層でオープンなインターネットアクセスを除去します。「オープンなインターネットアクセスを得る方法を見つける」という一手そのものを奪います。"
     },
     "case_study_coverage_seam4": {
-      "en": "Seam 4 (RBAC Isolation): Enforces strict multi-tenant namespace isolation, preventing agents from stealing credentials across namespace boundaries.",
-      "es": "Costura 4 (Aislamiento RBAC): Aplica segregación estricta de namespaces multi-tenant, impidiendo que los agentes roben o usen credenciales entre namespaces.",
-      "de": "Naht 4 (RBAC-Isolierung): Erzwingt strikte Mandantentrennung in Namespaces.",
-      "fr": "Couture 4 (Isolation RBAC) : Applique une ségrégation stricte des espaces de noms multi-locataires.",
-      "zh": "缝隙 4 (RBAC 隔离): 强制执行严格的多租户命名空间隔离，防止凭据跨命名空间窃取。",
-      "ja": "シーム 4 (RBAC分離): 厳格なマルチテナント名前空間分離を適用し、認証情報の盗용を防止します。"
+      "en": "Seam 4 (RBAC Isolation): per-tenant identities and namespace scoping — one stolen credential does not become cluster-wide privilege, and cross-tenant reads return 404 by design (existence is not revealed).",
+      "es": "Costura 4 (Aislamiento RBAC): identidades por-tenant y scoping por namespace — una credencial robada no se convierte en privilegio cluster-wide, y las lecturas cross-tenant devuelven 404 por diseño (no se revela la existencia).",
+      "de": "Naht 4 (RBAC-Isolation): Identitäten pro Tenant und Namespace-Scoping — ein gestohlenes Zugangsdatum wird nicht zum clusterweiten Privileg, und Cross-Tenant-Lesezugriffe liefern per Design 404 (Existenz wird nicht preisgegeben).",
+      "fr": "Couture 4 (Isolation RBAC) : identités par tenant et scoping par namespace — un identifiant volé ne devient pas un privilège à l'échelle du cluster, et les lectures cross-tenant renvoient 404 par conception (l'existence n'est pas révélée).",
+      "zh": "接缝 4(RBAC 隔离):按租户的身份与命名空间作用域——一个被盗凭证不会变成集群级特权,跨租户读取按设计返回 404(不暴露资源是否存在)。",
+      "ja": "シーム4(RBAC 分離):テナント単位のアイデンティティとネームスペース・スコープ——盗まれた認証情報 1 件がクラスタ全体の特権にはならず、テナントをまたぐ読み取りは設計上 404 を返します(存在自体を明かさない)。"
     },
     "case_study_coverage_seam5": {
-      "en": "Seam 5 (WORM Audit Trail): Records every raw tool execution attempt and network breakout attempt into an immutable SHA-256 hash-chain ledger.",
-      "es": "Costura 5 (Auditoría WORM): Registra cada intento de ejecución de herramienta y escape de red en una cadena de hash SHA-256 inmutable.",
-      "de": "Naht 5 (WORM-Audit-Trail): Zeichnet jeden Ausbruchsversuch in einem unveränderlichen SHA-256-Ledger auf.",
-      "fr": "Couture 5 (Piste d'audit WORM) : Enregistre chaque tentative dans un registre SHA-256 immuable.",
-      "zh": "缝隙 5 (WORM 审计链): 将每次工具执行和越狱尝试记录到不可篡改的 SHA-256 哈希链账本中。",
-      "ja": "シーム 5 (WORM監査トレイル): すべてのツール実行と脱出試行を不変のSHA-256ハッシュチェーンに記録します。"
+      "en": "Seam 5 (WORM Audit): every tool call — allowed or denied — lands in a tamper-evident SHA-256 hash-chain with real-model and cost attribution. An agent that tries thousands of actions leaves thousands of attributable audit rows, not silence.",
+      "es": "Costura 5 (Audit WORM): cada tool call — permitida o negada — queda en un hash-chain SHA-256 tamper-evident con atribución de modelo real y costo. Un agente que intenta miles de acciones deja miles de filas de audit atribuibles, no silencio.",
+      "de": "Naht 5 (WORM-Audit): Jeder Tool-Call — erlaubt oder abgelehnt — landet in einer manipulationssicheren SHA-256-Hash-Chain mit Attribution von realem Modell und Kosten. Ein Agent, der Tausende Aktionen versucht, hinterlässt Tausende zuordenbare Audit-Zeilen, kein Schweigen.",
+      "fr": "Couture 5 (Audit WORM) : chaque appel d'outil — autorisé ou refusé — atterrit dans une hash-chain SHA-256 inviolable avec attribution du modèle réel et du coût. Un agent qui tente des milliers d'actions laisse des milliers de lignes d'audit attribuables, pas du silence.",
+      "zh": "接缝 5(WORM 审计):每次工具调用——无论允许还是拒绝——都会写入防篡改的 SHA-256 哈希链,并附带真实模型与成本归因。一个尝试了数千次动作的代理留下的是数千行可归因的审计记录,而不是沉默。",
+      "ja": "シーム5(WORM 監査):許可・拒否を問わず、すべてのツール呼び出しは改ざん検知可能な SHA-256 ハッシュチェーンに記録され、実モデルとコストの帰属が付きます。数千のアクションを試みるエージェントは、沈黙ではなく数千行の帰属可能な監査レコードを残します。"
     },
     "nav_live": {
       "en": "Live",
@@ -417,6 +417,14 @@
       "fr": "lire ce qui s'est passé (texte)",
       "zh": "阅读发生了什么（文本）",
       "ja": "何が起きたか読む（テキスト）"
+    },
+    "case_study_scenario_note": {
+      "en": "Honest framing: this incident did not run under Leloir, and no tool prevents a zero-day. Each mechanism below is real and measured in our cluster (tests linked from the coverage matrix); its application to this incident is analysis, not measurement.",
+      "es": "Encuadre honesto: este incidente no corrió bajo Leloir, y ninguna herramienta previene un zero-day. Cada mecanismo de abajo es real y está medido en nuestro cluster (tests enlazados desde la matriz de cobertura); su aplicación a este incidente es análisis, no medición.",
+      "de": "Ehrliche Einordnung: Dieser Vorfall lief nicht unter Leloir, und kein Werkzeug verhindert einen Zero-Day. Jeder Mechanismus unten ist real und in unserem Cluster gemessen (Tests in der Coverage-Matrix verlinkt); seine Anwendung auf diesen Vorfall ist Analyse, keine Messung.",
+      "fr": "Cadrage honnête : cet incident ne s'est pas déroulé sous Leloir, et aucun outil n'empêche un zero-day. Chaque mécanisme ci-dessous est réel et mesuré dans notre cluster (tests liés depuis la matrice de couverture) ; son application à cet incident est une analyse, pas une mesure.",
+      "zh": "诚实声明:该事件并未运行在 Leloir 治理之下,也没有任何工具能阻止零日漏洞。下列每个机制都是真实的,并已在我们的集群中实测(测试从覆盖矩阵链接);将其对应到本事件属于分析,而非实测。",
+      "ja": "正直な位置づけ:このインシデントは Leloir の管理下で起きたものではなく、ゼロデイを防げるツールは存在しません。以下の各メカニズムは実在し、当クラスタで実測済みです(テストはカバレッジ・マトリクスからリンク)。本件への当てはめは分析であり、実測ではありません。"
     }
   },
   "project": {
